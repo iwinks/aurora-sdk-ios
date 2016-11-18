@@ -1,0 +1,19 @@
+PODS:
+  - iwinks-ble-core-ios (0.1.0)
+  - Nimble (5.1.1)
+
+DEPENDENCIES:
+  - iwinks-ble-core-ios (from `../`)
+  - Nimble
+
+EXTERNAL SOURCES:
+  iwinks-ble-core-ios:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  iwinks-ble-core-ios: 46400e60a58a62e66d56246f9544d477e103f0a5
+  Nimble: 415e3aa3267e7bc2c96b05fa814ddea7bb686a29
+
+PODFILE CHECKSUM: c6c53d94a8e195b5f90f6e1849653c680f700b2d
+
+COCOAPODS: 1.2.0.beta.1

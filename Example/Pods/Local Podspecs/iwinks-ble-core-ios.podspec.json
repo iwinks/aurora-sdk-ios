@@ -1,0 +1,22 @@
+{
+  "name": "iwinks-ble-core-ios",
+  "version": "0.1.0",
+  "summary": "iWinks BluetoothLE core library",
+  "description": "Library dedicated to provide developer access to Aurora BLE API.",
+  "homepage": "www.google.com",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Rafael Nobre": "nobre84@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/<GITHUB_USERNAME>/iwinks-ble-core-ios.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "iwinks-ble-core-ios/Classes/**/*"
+}
