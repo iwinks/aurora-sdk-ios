@@ -7,17 +7,29 @@
 //
 
 import UIKit
+import RZBluetooth
 
 class ViewController: UIViewController {
-
+    
+    let centralManager = RZBCentralManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        centralManager.scanForPeripherals(withServices: [CBUUID.rzb_UUIDForHeartRateService()], options: nil) { scanInfo, error in
+            guard let peripheral = scanInfo?.peripheral else {
+                print("ERROR: \(error!)")
+                return
+            }
+            self.centralManager.stopScan()
+            peripheral.addHeartRateObserver({ measurement, error in
+                guard let heartRate = measurement?.heartRate else { return }
+                print("HEART RATE: \(heartRate)")
+                }, completion: { error in
+                    guard let error = error else { return }
+                    print("ERROR: \(error)")
+            })
+        }
     }
 
 }

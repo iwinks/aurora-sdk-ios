@@ -89,9 +89,11 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "$BUILT_PRODUCTS_DIR/RZBluetooth.default-Mock/RZBluetooth.framework"
   install_framework "$BUILT_PRODUCTS_DIR/iwinks-ble-core-ios/iwinks_ble_core_ios.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "$BUILT_PRODUCTS_DIR/RZBluetooth.default-Mock/RZBluetooth.framework"
   install_framework "$BUILT_PRODUCTS_DIR/iwinks-ble-core-ios/iwinks_ble_core_ios.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then

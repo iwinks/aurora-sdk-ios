@@ -2,9 +2,12 @@ use_frameworks!
 
 target 'iwinks-ble-core-ios_Example' do
   pod 'iwinks-ble-core-ios', :path => '../'
+  pod 'RZBluetooth'
+  pod 'RZBluetooth/Mock'
 
   target 'iwinks-ble-core-ios_Tests' do
     inherit! :search_paths
+    pod 'RZBluetooth/Test'
     pod 'Nimble'
   end
 end
