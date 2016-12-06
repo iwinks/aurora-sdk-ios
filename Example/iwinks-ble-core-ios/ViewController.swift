@@ -9,9 +9,10 @@
 import UIKit
 import RZBluetooth
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, CBCentralManagerDelegate {
     
     let centralManager = RZBCentralManager()
+    //let centralCBManager = CBCentralManager(delegate: self, queue: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,5 +33,17 @@ class ViewController: UIViewController {
         }
     }
 
+    func centralManagerDidUpdateState(_ central: CBCentralManager) {
+        
+    }
+    
+    func centralManager(_ central: CBCentralManager, willRestoreState dict: [String : Any]) {
+        
+    }
+    
+    func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
+        
+    }
+    
 }
 

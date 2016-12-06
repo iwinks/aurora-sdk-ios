@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00DC3E321DEF7C42002B4A4A /* SimulatedPacketDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DC3E311DEF7C42002B4A4A /* SimulatedPacketDevice.swift */; };
 		0D3C673C5588F01E040D8A00 /* Pods_iwinks_ble_core_ios_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5968AE78594D87B292CD179 /* Pods_iwinks_ble_core_ios_Example.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
@@ -29,7 +28,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00DC3E311DEF7C42002B4A4A /* SimulatedPacketDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimulatedPacketDevice.swift; sourceTree = "<group>"; };
 		18BC090380F50D103204F4EA /* Pods-iwinks-ble-core-ios_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iwinks-ble-core-ios_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iwinks-ble-core-ios_Tests/Pods-iwinks-ble-core-ios_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		587CE947E36418CFF7A7DA69 /* Pods-iwinks-ble-core-ios_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iwinks-ble-core-ios_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-iwinks-ble-core-ios_Example/Pods-iwinks-ble-core-ios_Example.release.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* iwinks-ble-core-ios_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iwinks-ble-core-ios_Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,7 +117,6 @@
 			children = (
 				607FACEB1AFB9204008FA782 /* BLETests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
-				00DC3E311DEF7C42002B4A4A /* SimulatedPacketDevice.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -366,7 +363,6 @@
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
-				00DC3E321DEF7C42002B4A4A /* SimulatedPacketDevice.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,5 +1,6 @@
 PODS:
-  - iwinks-ble-core-ios (0.1.0)
+  - iwinks-ble-core-ios (0.1.0):
+    - RZBluetooth
   - Nimble (5.1.1)
   - RZBluetooth (1.1.1):
     - RZBluetooth/Core (= 1.1.1)
@@ -21,7 +22,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  iwinks-ble-core-ios: 46400e60a58a62e66d56246f9544d477e103f0a5
+  iwinks-ble-core-ios: 60b480e432c2248d1cffff2ea6e00b5b057069c5
   Nimble: 415e3aa3267e7bc2c96b05fa814ddea7bb686a29
   RZBluetooth: 717ffd8c5f1ba1dac8fe5d56707981e8389c7e6d
 

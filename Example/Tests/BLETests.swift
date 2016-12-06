@@ -55,7 +55,9 @@ class BLETests: RZBSimulatedTestCase {
         waitForQueueFlush()
         
         device.batteryLevel = 80
-        expect(battery).toEventually(equal(80))
+        
+        waitForQueueFlush()
+        expect(battery) == 80
     }
     
 }
@@ -73,6 +75,7 @@ class SimulatedPacketDevice: RZBSimulatedDevice {
         
         service.characteristics = [toDevice, fromDevice]
         addService(service)
+        addBatteryService()
         addWriteCallback(forCharacteristicUUID: PacketUUID.toDevice) { [weak self] request -> CBATTError.Code in
             if let strongSelf = self, let value = request.value {
                 let pkt = Packet.fromData(data: value as NSData)
