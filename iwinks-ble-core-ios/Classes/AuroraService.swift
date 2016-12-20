@@ -10,13 +10,13 @@ import UIKit
 import CoreBluetooth
 
 public class AuroraService: NSObject {
-    class var uuid: CBUUID {
+    public class var uuid: CBUUID {
         get {
             return CBUUID(string: "6175726F-7261-454D-AF79-42B381AF0204")
         }
     }
     
-    class var events: AuroraEvents {
+    public class var events: AuroraEvents {
         get {
             return AuroraEvents()
         }

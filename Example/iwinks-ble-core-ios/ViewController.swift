@@ -8,14 +8,15 @@
 
 import UIKit
 import RZBluetooth
+import iwinks_ble_core_ios
 
 class ViewController: UIViewController, CBCentralManagerDelegate {
     
     let centralManager = RZBCentralManager()
-    //let centralCBManager = CBCentralManager(delegate: self, queue: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
         centralManager.scanForPeripherals(withServices: [CBUUID.rzb_UUIDForHeartRateService()], options: nil) { scanInfo, error in
             guard let peripheral = scanInfo?.peripheral else {

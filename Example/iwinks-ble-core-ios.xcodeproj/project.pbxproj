@@ -7,14 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0D3C673C5588F01E040D8A00 /* Pods_iwinks_ble_core_ios_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5968AE78594D87B292CD179 /* Pods_iwinks_ble_core_ios_Example.framework */; };
+		008C78291DF8CC3D009A700E /* AuroraSimulatedDeviceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008C78281DF8CC3D009A700E /* AuroraSimulatedDeviceTests.swift */; };
+		093A86AAA99CF77F5866406C /* Pods_iwinks_ble_core_ios_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 344133513176B4B6322F6139 /* Pods_iwinks_ble_core_ios_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* BLETests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* BLETests.swift */; };
-		682925D86081CF4BEC2E31ED /* Pods_iwinks_ble_core_ios_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A021150F35CAD158215CC526 /* Pods_iwinks_ble_core_ios_Tests.framework */; };
+		F30774DDC6F6EE05F8583459 /* Pods_iwinks_ble_core_ios_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8119F7AE5A0E9BC26091A86B /* Pods_iwinks_ble_core_ios_Example.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,8 +29,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		18BC090380F50D103204F4EA /* Pods-iwinks-ble-core-ios_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iwinks-ble-core-ios_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iwinks-ble-core-ios_Tests/Pods-iwinks-ble-core-ios_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		587CE947E36418CFF7A7DA69 /* Pods-iwinks-ble-core-ios_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iwinks-ble-core-ios_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-iwinks-ble-core-ios_Example/Pods-iwinks-ble-core-ios_Example.release.xcconfig"; sourceTree = "<group>"; };
+		008C78281DF8CC3D009A700E /* AuroraSimulatedDeviceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuroraSimulatedDeviceTests.swift; sourceTree = "<group>"; };
+		344133513176B4B6322F6139 /* Pods_iwinks_ble_core_ios_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iwinks_ble_core_ios_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* iwinks-ble-core-ios_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iwinks-ble-core-ios_Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -40,12 +41,13 @@
 		607FACE51AFB9204008FA782 /* iwinks-ble-core-ios_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iwinks-ble-core-ios_Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* BLETests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLETests.swift; sourceTree = "<group>"; };
+		67EC87F736F1356440F79735 /* Pods-iwinks-ble-core-ios_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iwinks-ble-core-ios_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-iwinks-ble-core-ios_Example/Pods-iwinks-ble-core-ios_Example.release.xcconfig"; sourceTree = "<group>"; };
+		79D2CB1776F643DD91E3B978 /* Pods-iwinks-ble-core-ios_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iwinks-ble-core-ios_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iwinks-ble-core-ios_Tests/Pods-iwinks-ble-core-ios_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		8119F7AE5A0E9BC26091A86B /* Pods_iwinks_ble_core_ios_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iwinks_ble_core_ios_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86CF6146647452ACB66097A3 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		93F888E0FD06C39841208C91 /* iwinks-ble-core-ios.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = "iwinks-ble-core-ios.podspec"; path = "../iwinks-ble-core-ios.podspec"; sourceTree = "<group>"; };
-		A021150F35CAD158215CC526 /* Pods_iwinks_ble_core_ios_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iwinks_ble_core_ios_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B9B25B68BBA9F0BDF691809A /* Pods-iwinks-ble-core-ios_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iwinks-ble-core-ios_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iwinks-ble-core-ios_Example/Pods-iwinks-ble-core-ios_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		C5968AE78594D87B292CD179 /* Pods_iwinks_ble_core_ios_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iwinks_ble_core_ios_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D3C17A43711BFB18077BA181 /* Pods-iwinks-ble-core-ios_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iwinks-ble-core-ios_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iwinks-ble-core-ios_Tests/Pods-iwinks-ble-core-ios_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		A2BADA3F66B1D6C947BBF0D3 /* Pods-iwinks-ble-core-ios_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iwinks-ble-core-ios_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iwinks-ble-core-ios_Tests/Pods-iwinks-ble-core-ios_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		C8D928690927BED5C935384A /* Pods-iwinks-ble-core-ios_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iwinks-ble-core-ios_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iwinks-ble-core-ios_Example/Pods-iwinks-ble-core-ios_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		E4C7EA0FDC191922F1D262E2 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -54,7 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D3C673C5588F01E040D8A00 /* Pods_iwinks_ble_core_ios_Example.framework in Frameworks */,
+				F30774DDC6F6EE05F8583459 /* Pods_iwinks_ble_core_ios_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,7 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				682925D86081CF4BEC2E31ED /* Pods_iwinks_ble_core_ios_Tests.framework in Frameworks */,
+				093A86AAA99CF77F5866406C /* Pods_iwinks_ble_core_ios_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,8 +78,8 @@
 				607FACD21AFB9204008FA782 /* Example for iwinks-ble-core-ios */,
 				607FACE81AFB9204008FA782 /* Tests */,
 				607FACD11AFB9204008FA782 /* Products */,
-				F76D47905074DF69E0213724 /* Pods */,
-				959136D8FC8834619873ED43 /* Frameworks */,
+				CA304107E6D7A9187B9F8436 /* Pods */,
+				6843B2A683589B0311F7DBD4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -116,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				607FACEB1AFB9204008FA782 /* BLETests.swift */,
+				008C78281DF8CC3D009A700E /* AuroraSimulatedDeviceTests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -139,22 +142,22 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
-		959136D8FC8834619873ED43 /* Frameworks */ = {
+		6843B2A683589B0311F7DBD4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C5968AE78594D87B292CD179 /* Pods_iwinks_ble_core_ios_Example.framework */,
-				A021150F35CAD158215CC526 /* Pods_iwinks_ble_core_ios_Tests.framework */,
+				8119F7AE5A0E9BC26091A86B /* Pods_iwinks_ble_core_ios_Example.framework */,
+				344133513176B4B6322F6139 /* Pods_iwinks_ble_core_ios_Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F76D47905074DF69E0213724 /* Pods */ = {
+		CA304107E6D7A9187B9F8436 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B9B25B68BBA9F0BDF691809A /* Pods-iwinks-ble-core-ios_Example.debug.xcconfig */,
-				587CE947E36418CFF7A7DA69 /* Pods-iwinks-ble-core-ios_Example.release.xcconfig */,
-				D3C17A43711BFB18077BA181 /* Pods-iwinks-ble-core-ios_Tests.debug.xcconfig */,
-				18BC090380F50D103204F4EA /* Pods-iwinks-ble-core-ios_Tests.release.xcconfig */,
+				C8D928690927BED5C935384A /* Pods-iwinks-ble-core-ios_Example.debug.xcconfig */,
+				67EC87F736F1356440F79735 /* Pods-iwinks-ble-core-ios_Example.release.xcconfig */,
+				79D2CB1776F643DD91E3B978 /* Pods-iwinks-ble-core-ios_Tests.debug.xcconfig */,
+				A2BADA3F66B1D6C947BBF0D3 /* Pods-iwinks-ble-core-ios_Tests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -166,12 +169,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "iwinks-ble-core-ios_Example" */;
 			buildPhases = (
-				93FF1C3E6BE09293192A5E1D /* [CP] Check Pods Manifest.lock */,
+				09788308C47A4FFD56077C19 /* [CP] Check Pods Manifest.lock */,
 				607FACCC1AFB9204008FA782 /* Sources */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
-				D298CD6E87AAF75CE8CAEEAA /* [CP] Embed Pods Frameworks */,
-				ECCE346C0F55DD9E0EA8A22C /* [CP] Copy Pods Resources */,
+				C4174762A598D1FB2A667C45 /* [CP] Embed Pods Frameworks */,
+				23654CC79FFBDE28108A435E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -186,12 +189,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "iwinks-ble-core-ios_Tests" */;
 			buildPhases = (
-				F3B2F990042515E8EC058F96 /* [CP] Check Pods Manifest.lock */,
+				F8F641AA3128BD25F7F85A6A /* [CP] Check Pods Manifest.lock */,
 				607FACE11AFB9204008FA782 /* Sources */,
 				607FACE21AFB9204008FA782 /* Frameworks */,
 				607FACE31AFB9204008FA782 /* Resources */,
-				8E27F3666672165E0DB6C06D /* [CP] Embed Pods Frameworks */,
-				31D63A5EFBF9F67660C4DAAE /* [CP] Copy Pods Resources */,
+				3520BE08D1AB97A06167B650 /* [CP] Embed Pods Frameworks */,
+				87010D0D0C653C387DE12B89 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -210,12 +213,14 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = APA2MKTPVQ;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -264,37 +269,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		31D63A5EFBF9F67660C4DAAE /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iwinks-ble-core-ios_Tests/Pods-iwinks-ble-core-ios_Tests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8E27F3666672165E0DB6C06D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iwinks-ble-core-ios_Tests/Pods-iwinks-ble-core-ios_Tests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		93FF1C3E6BE09293192A5E1D /* [CP] Check Pods Manifest.lock */ = {
+		09788308C47A4FFD56077C19 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -309,22 +284,7 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		D298CD6E87AAF75CE8CAEEAA /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iwinks-ble-core-ios_Example/Pods-iwinks-ble-core-ios_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		ECCE346C0F55DD9E0EA8A22C /* [CP] Copy Pods Resources */ = {
+		23654CC79FFBDE28108A435E /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -339,7 +299,52 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iwinks-ble-core-ios_Example/Pods-iwinks-ble-core-ios_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F3B2F990042515E8EC058F96 /* [CP] Check Pods Manifest.lock */ = {
+		3520BE08D1AB97A06167B650 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iwinks-ble-core-ios_Tests/Pods-iwinks-ble-core-ios_Tests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		87010D0D0C653C387DE12B89 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iwinks-ble-core-ios_Tests/Pods-iwinks-ble-core-ios_Tests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C4174762A598D1FB2A667C45 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iwinks-ble-core-ios_Example/Pods-iwinks-ble-core-ios_Example-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F8F641AA3128BD25F7F85A6A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -370,6 +375,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				008C78291DF8CC3D009A700E /* AuroraSimulatedDeviceTests.swift in Sources */,
 				607FACEC1AFB9204008FA782 /* BLETests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -417,8 +423,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -462,8 +470,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -482,15 +492,18 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		607FACF01AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B9B25B68BBA9F0BDF691809A /* Pods-iwinks-ble-core-ios_Example.debug.xcconfig */;
+			baseConfigurationReference = C8D928690927BED5C935384A /* Pods-iwinks-ble-core-ios_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = APA2MKTPVQ;
 				INFOPLIST_FILE = "iwinks-ble-core-ios/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -503,9 +516,11 @@
 		};
 		607FACF11AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 587CE947E36418CFF7A7DA69 /* Pods-iwinks-ble-core-ios_Example.release.xcconfig */;
+			baseConfigurationReference = 67EC87F736F1356440F79735 /* Pods-iwinks-ble-core-ios_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = APA2MKTPVQ;
 				INFOPLIST_FILE = "iwinks-ble-core-ios/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -518,7 +533,7 @@
 		};
 		607FACF31AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D3C17A43711BFB18077BA181 /* Pods-iwinks-ble-core-ios_Tests.debug.xcconfig */;
+			baseConfigurationReference = 79D2CB1776F643DD91E3B978 /* Pods-iwinks-ble-core-ios_Tests.debug.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -538,7 +553,7 @@
 		};
 		607FACF41AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 18BC090380F50D103204F4EA /* Pods-iwinks-ble-core-ios_Tests.release.xcconfig */;
+			baseConfigurationReference = A2BADA3F66B1D6C947BBF0D3 /* Pods-iwinks-ble-core-ios_Tests.release.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

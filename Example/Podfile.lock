@@ -13,7 +13,6 @@ PODS:
 DEPENDENCIES:
   - iwinks-ble-core-ios (from `../`)
   - Nimble
-  - RZBluetooth
   - RZBluetooth/Mock
   - RZBluetooth/Test
 
@@ -26,6 +25,6 @@ SPEC CHECKSUMS:
   Nimble: 415e3aa3267e7bc2c96b05fa814ddea7bb686a29
   RZBluetooth: 717ffd8c5f1ba1dac8fe5d56707981e8389c7e6d
 
-PODFILE CHECKSUM: 0f4c61dfc2a9bc88de38a3f43ae9276f270c6bbe
+PODFILE CHECKSUM: 5ff7d7b2c21fb708e9e7fdbe68709f41126168e0
 
 COCOAPODS: 1.2.0.beta.1

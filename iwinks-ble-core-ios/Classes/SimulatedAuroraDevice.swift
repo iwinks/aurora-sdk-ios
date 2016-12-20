@@ -9,29 +9,19 @@
 import UIKit
 import RZBluetooth
 
-class AuroraSimulatedDevice: RZBSimulatedDevice {
-    
-//    let service = CBMutableService(type: PacketUUID.service, primary: true)
-//    let toDevice = CBMutableCharacteristic(type: PacketUUID.toDevice, properties: [.write], value: nil, permissions: [.writeable])
-//    let fromDevice = CBMutableCharacteristic(type: PacketUUID.fromDevice, properties: [.notify], value: nil, permissions: [.readable])
-//    
+public class AuroraSimulatedDevice: RZBSimulatedDevice {
+
     override init(queue: DispatchQueue?, options: [AnyHashable : Any]) {
         super.init(queue: queue, options: options)
         
-        addService(buildAuroraService())
+        addService(buildGenericAccessService())
+        addService(buildDeviceInformationService())
         addBatteryService()
+        addService(buildHeartRateService())
+        addService(buildCurrentTimeService())
+        addService(buildEnvironmentalSensingService())
+        addService(buildAuroraService())
         
-        
-//        service.characteristics = [toDevice, fromDevice]
-//        addService(service)
-//        addBatteryService()
-//        addWriteCallback(forCharacteristicUUID: PacketUUID.toDevice) { [weak self] request -> CBATTError.Code in
-//            if let strongSelf = self, let value = request.value {
-//                let pkt = Packet.fromData(data: value as NSData)
-//                strongSelf.handlePacket(packet: pkt)
-//            }
-//            return .success
-//        }
     }
     
     private func buildAuroraService() -> CBMutableService {
@@ -74,18 +64,200 @@ class AuroraSimulatedDevice: RZBSimulatedDevice {
         auroraService.characteristics = [ signalMonitor, sleepMonitor, movement, stimPresented, awakening, autoShutdown, reserved1, reserved2, reserved3, reserved4, reserved5, reserved6, reserved7, reserved8, reserved9, reserved10 ]
         
         self.addReadCallback(forCharacteristicUUID: signalMonitor.uuid) { request -> CBATTError.Code in
-            var value: Int = 100
+            var value: Int = 1
             request.value = NSData(bytes: &value, length: MemoryLayout<Int>.size) as Data
             return .success
         }
         
         self.addReadCallback(forCharacteristicUUID: sleepMonitor.uuid) { request -> CBATTError.Code in
-            var value: Int = 4
-            request.value = NSData(bytes: &value, length: MemoryLayout<Int>.size) as Data
+            var value: Int32 = 1 // 1 - Awake, 2 - Light, 3 - Deep, 4 - REM
+            request.value = Data(buffer: UnsafeBufferPointer(start: &value, count: 1))
+            return .success
+        }
+        
+        self.addReadCallback(forCharacteristicUUID: movement.uuid) { request -> CBATTError.Code in
+            var value: Int32 = 3 // 1 - Low, 2 - Moderate, 3 - Strong
+            request.value = Data(buffer: UnsafeBufferPointer(start: &value, count: 1))
+            return .success
+        }
+        
+        self.addReadCallback(forCharacteristicUUID: stimPresented.uuid) { request -> CBATTError.Code in
+            var value: Int32 = 1 // 1 - Stim presented
+            request.value = Data(buffer: UnsafeBufferPointer(start: &value, count: 1))
+            return .success
+        }
+        
+        self.addReadCallback(forCharacteristicUUID: awakening.uuid) { request -> CBATTError.Code in
+            var value: Int32 = 1 // 1 - Awakening happened
+            request.value = Data(buffer: UnsafeBufferPointer(start: &value, count: 1))
+            return .success
+        }
+        
+        self.addReadCallback(forCharacteristicUUID: autoShutdown.uuid) { request -> CBATTError.Code in
+            var value: Int32 = 1 // 1 - Auto shutdown happened
+            request.value = Data(buffer: UnsafeBufferPointer(start: &value, count: 1))
+            return .success
+        }
+        
+        self.addReadCallback(forCharacteristicUUID: reserved1.uuid) { request -> CBATTError.Code in
+            var value: Int32 = 1
+            request.value = Data(buffer: UnsafeBufferPointer(start: &value, count: 1))
+            return .success
+        }
+        
+        self.addReadCallback(forCharacteristicUUID: reserved2.uuid) { request -> CBATTError.Code in
+            var value: Int32 = 2
+            request.value = Data(buffer: UnsafeBufferPointer(start: &value, count: 1))
+            return .success
+        }
+        
+        self.addReadCallback(forCharacteristicUUID: reserved3.uuid) { request -> CBATTError.Code in
+            var value: Int32 = 3
+            request.value = Data(buffer: UnsafeBufferPointer(start: &value, count: 1))
+            return .success
+        }
+        
+        self.addReadCallback(forCharacteristicUUID: reserved4.uuid) { request -> CBATTError.Code in
+            var value: Int32 = 4
+            request.value = Data(buffer: UnsafeBufferPointer(start: &value, count: 1))
+            return .success
+        }
+        
+        self.addReadCallback(forCharacteristicUUID: reserved5.uuid) { request -> CBATTError.Code in
+            var value: Int32 = 5
+            request.value = Data(buffer: UnsafeBufferPointer(start: &value, count: 1))
+            return .success
+        }
+        
+        self.addReadCallback(forCharacteristicUUID: reserved6.uuid) { request -> CBATTError.Code in
+            var value: Int32 = 6
+            request.value = Data(buffer: UnsafeBufferPointer(start: &value, count: 1))
+            return .success
+        }
+        
+        self.addReadCallback(forCharacteristicUUID: reserved7.uuid) { request -> CBATTError.Code in
+            var value: Int32 = 7
+            request.value = Data(buffer: UnsafeBufferPointer(start: &value, count: 1))
+            return .success
+        }
+        
+        self.addReadCallback(forCharacteristicUUID: reserved8.uuid) { request -> CBATTError.Code in
+            var value: Int32 = 8
+            request.value = Data(buffer: UnsafeBufferPointer(start: &value, count: 1))
+            return .success
+        }
+        
+        self.addReadCallback(forCharacteristicUUID: reserved9.uuid) { request -> CBATTError.Code in
+            var value: Int32 = 9
+            request.value = Data(buffer: UnsafeBufferPointer(start: &value, count: 1))
+            return .success
+        }
+        
+        self.addReadCallback(forCharacteristicUUID: reserved10.uuid) { request -> CBATTError.Code in
+            var value: Int32 = 10
+            request.value = Data(buffer: UnsafeBufferPointer(start: &value, count: 1))
             return .success
         }
         
         return auroraService
+    }
+    
+    private func buildGenericAccessService() -> CBMutableService {
+        let genericAccessService = CBMutableService(type: CBUUID(string: "1800"), primary: false)
+        
+        let props: CBCharacteristicProperties = [.read]
+        
+        let name = "Aurora Dreamband".data(using: String.Encoding.utf8)
+        let deviceName = CBMutableCharacteristic(type: CBUUID(string: "2A00"), properties:props , value: name!, permissions: [.readable])
+        
+        let appearance = CBMutableCharacteristic(type: CBUUID(string: "2A01"), properties:props , value: Data(bytes: [ 0x00, 0x00]), permissions: [.readable])
+        
+        genericAccessService.characteristics = [ deviceName, appearance ]
+        
+        return genericAccessService
+    }
+    
+    private func buildDeviceInformationService() -> CBMutableService {
+        let deviceInformationService = CBMutableService(type: CBUUID(string: "180A"), primary: false)
+        
+        let props: CBCharacteristicProperties = [.read]
+        
+        let manufactor = "iWinks".data(using: String.Encoding.utf8)
+        let manufactorName = CBMutableCharacteristic(type: CBUUID(string: "2A29"), properties:props, value: manufactor!, permissions: [.readable])
+        
+        let model = "Aurora v1r3".data(using: String.Encoding.utf8)
+        let modelName = CBMutableCharacteristic(type: CBUUID(string: "2A24"), properties:props, value: model!, permissions: [.readable])
+        
+        let firmware = "1.0.0".data(using: String.Encoding.utf8)
+        let firmwareRevision = CBMutableCharacteristic(type: CBUUID(string: "2A26"), properties:props, value: firmware!, permissions: [.readable])
+        
+        let softwareRevision = CBMutableCharacteristic(type: CBUUID(string: "2A28"), properties:props, value: nil, permissions: [.readable])
+        
+        deviceInformationService.characteristics = [ manufactorName, modelName, firmwareRevision, softwareRevision ]
+        
+        self.addReadCallback(forCharacteristicUUID: softwareRevision.uuid) { request -> CBATTError.Code in
+            var value: Int64 = 1
+            request.value = Data(buffer: UnsafeBufferPointer(start: &value, count: 1))
+            return .success
+        }
+        
+        return deviceInformationService
+    }
+    
+    private func buildHeartRateService() -> CBMutableService {
+        let heartRateService = CBMutableService(type: CBUUID(string: "180D"), primary: false)
+        
+        let props: CBCharacteristicProperties = [.read, .notify, .indicate]
+        
+        let heartRateMeasurement = CBMutableCharacteristic(type: CBUUID(string: "2A37"), properties:props , value: nil, permissions: [.readable])
+        
+        let bodySensorLocation = CBMutableCharacteristic(type: CBUUID(string: "2A38"), properties:props , value: Data(bytes: [0x00]), permissions: [.readable])
+        
+        self.addReadCallback(forCharacteristicUUID: heartRateMeasurement.uuid) { request -> CBATTError.Code in
+            request.value = Data(bytes: [0x01, 0x02])
+            return .success
+        }
+        
+        heartRateService.characteristics = [ heartRateMeasurement, bodySensorLocation ]
+        
+        return heartRateService
+    }
+    
+    private func buildCurrentTimeService() -> CBMutableService {
+        let currentTimeService = CBMutableService(type: CBUUID(string: "1805"), primary: false)
+        
+        let props: CBCharacteristicProperties = [.read, .notify, .indicate]
+        
+        let currentTime = CBMutableCharacteristic(type: CBUUID(string: "2A2B"), properties:props , value: nil, permissions: [.readable])
+        
+        self.addReadCallback(forCharacteristicUUID: currentTime.uuid) { request -> CBATTError.Code in
+            var value: Int32 = 1 // 1 - Auto shutdown happened
+            request.value = Data(buffer: UnsafeBufferPointer(start: &value, count: 1))
+            request.value = Data(bytes: [0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A])
+            return .success
+        }
+        
+        currentTimeService.characteristics = [ currentTime ]
+        
+        return currentTimeService
+    }
+
+    private func buildEnvironmentalSensingService() -> CBMutableService {
+        let environmentalSensingService = CBMutableService(type: CBUUID(string: "181A"), primary: false)
+        
+        let props: CBCharacteristicProperties = [.read, .notify, .indicate]
+        
+        let temperature = CBMutableCharacteristic(type: CBUUID(string: "2A6E"), properties:props , value: nil, permissions: [.readable])
+        
+        self.addReadCallback(forCharacteristicUUID: temperature.uuid) { request -> CBATTError.Code in
+            var value: Int16 = 23
+            request.value = Data(buffer: UnsafeBufferPointer(start: &value, count: 1))
+            return .success
+        }
+        
+        environmentalSensingService.characteristics = [ temperature ]
+        
+        return environmentalSensingService
     }
     
 }
