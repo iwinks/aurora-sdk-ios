@@ -1,0 +1,6 @@
+framework module Pods_AuroraDreamband_Example {
+  umbrella header "Pods-AuroraDreamband_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

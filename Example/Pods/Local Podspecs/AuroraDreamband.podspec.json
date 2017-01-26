@@ -1,5 +1,5 @@
 {
-  "name": "iwinks-ble-core-ios",
+  "name": "AuroraDreamband",
   "version": "0.1.0",
   "summary": "iWinks BluetoothLE core library",
   "description": "Library dedicated to provide developer access to Aurora BLE API.",
@@ -18,18 +18,30 @@
   "platforms": {
     "ios": "8.0"
   },
-  "source_files": "iwinks-ble-core-ios/Classes/**/*",
+  "source_files": "AuroraDreamband/Classes/**/*",
   "dependencies": {
     "RZBluetooth": [
 
     ]
   },
+  "default_subspecs": "Core",
   "subspecs": [
     {
-      "name": "iwinks-ble-simulation-ios",
-      "source_files": "iwinks-ble-core-ios/Simulation/**/*",
+      "name": "Core"
+    },
+    {
+      "name": "Simulation",
+      "source_files": "AuroraDreamband/Simulation/**/*",
       "dependencies": {
         "RZBluetooth/Mock": [
+
+        ]
+      }
+    },
+    {
+      "name": "Testing",
+      "dependencies": {
+        "RZBluetooth/Test": [
 
         ]
       }

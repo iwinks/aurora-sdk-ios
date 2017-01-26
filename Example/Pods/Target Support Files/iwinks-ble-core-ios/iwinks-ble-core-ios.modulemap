@@ -1,6 +1,0 @@
-framework module iwinks_ble_core_ios {
-  umbrella header "iwinks-ble-core-ios-umbrella.h"
-
-  export *
-  module * { export * }
-}

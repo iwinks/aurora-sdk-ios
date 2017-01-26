@@ -1,12 +1,12 @@
 use_frameworks!
 
-target 'iwinks-ble-core-ios_Example' do
-  pod 'iwinks-ble-core-ios', :path => '../'
-  pod 'RZBluetooth/Mock'
+target 'AuroraDreamband_Example' do
+  pod 'AuroraDreamband', :path => '../'
+  pod 'AuroraDreamband/Simulation', :path => '../'
 
-  target 'iwinks-ble-core-ios_Tests' do
+  target 'AuroraDreamband_Tests' do
     inherit! :search_paths
     pod 'Nimble'
-    pod 'RZBluetooth/Test'
+    pod 'AuroraDreamband/Testing', :path => '../'
   end
 end

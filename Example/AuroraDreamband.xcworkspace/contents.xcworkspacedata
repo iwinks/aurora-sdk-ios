@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/nobre/Documents/iwinks-ble-core-ios/Example/AuroraDreamband.xcodeproj">
+      location = "group:AuroraDreamband.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

@@ -1,0 +1,6 @@
+framework module Pods_AuroraDreamband_Tests {
+  umbrella header "Pods-AuroraDreamband_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

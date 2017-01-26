@@ -1,6 +1,15 @@
 PODS:
-  - iwinks-ble-core-ios (0.1.0):
+  - AuroraDreamband (0.1.0):
+    - AuroraDreamband/Core (= 0.1.0)
     - RZBluetooth
+  - AuroraDreamband/Core (0.1.0):
+    - RZBluetooth
+  - AuroraDreamband/Simulation (0.1.0):
+    - RZBluetooth
+    - RZBluetooth/Mock
+  - AuroraDreamband/Testing (0.1.0):
+    - RZBluetooth
+    - RZBluetooth/Test
   - Nimble (5.1.1)
   - RZBluetooth (1.1.1):
     - RZBluetooth/Core (= 1.1.1)
@@ -11,20 +20,20 @@ PODS:
     - RZBluetooth/Mock
 
 DEPENDENCIES:
-  - iwinks-ble-core-ios (from `../`)
+  - AuroraDreamband (from `../`)
+  - AuroraDreamband/Simulation (from `../`)
+  - AuroraDreamband/Testing (from `../`)
   - Nimble
-  - RZBluetooth/Mock
-  - RZBluetooth/Test
 
 EXTERNAL SOURCES:
-  iwinks-ble-core-ios:
+  AuroraDreamband:
     :path: "../"
 
 SPEC CHECKSUMS:
-  iwinks-ble-core-ios: 60b480e432c2248d1cffff2ea6e00b5b057069c5
+  AuroraDreamband: 73334ae1d47e951105b4773d231f7ce664354e88
   Nimble: 415e3aa3267e7bc2c96b05fa814ddea7bb686a29
   RZBluetooth: 717ffd8c5f1ba1dac8fe5d56707981e8389c7e6d
 
-PODFILE CHECKSUM: 5ff7d7b2c21fb708e9e7fdbe68709f41126168e0
+PODFILE CHECKSUM: e89e6d1b1df2f5730aea33ef46355ebbe22f66f6
 
 COCOAPODS: 1.2.0.beta.1

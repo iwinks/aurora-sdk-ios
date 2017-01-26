@@ -1,7 +1,6 @@
 import XCTest
 import Nimble
 import RZBluetooth
-@testable import iwinks_ble_core_ios
 
 class BLETests: RZBSimulatedTestCase {
     

@@ -9,7 +9,7 @@
 import XCTest
 import Nimble
 import RZBluetooth
-import iwinks_ble_core_ios
+import AuroraDreamband
 
 class AuroraSimulatedDeviceTests: RZBSimulatedTestCase {
     
