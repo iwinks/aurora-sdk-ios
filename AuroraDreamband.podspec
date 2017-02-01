@@ -16,6 +16,7 @@ Library dedicated to provide developer access to Aurora BLE API.
   s.source_files = 'AuroraDreamband/Classes/**/*'
 
   s.dependency 'RZBluetooth'
+  s.dependency 'AwaitKit'
 
   s.default_subspec = 'Core'
 

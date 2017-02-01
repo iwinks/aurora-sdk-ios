@@ -8,8 +8,10 @@
 
 import UIKit
 import RZBluetooth
+import PromiseKit
+import AwaitKit
 
-public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
+public class AuroraDreamband: NSObject {
     
     public static let shared = AuroraDreamband()
     
@@ -17,13 +19,10 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
     
     public var connected = false
     
+    var peripheral: RZBPeripheral?
+    
     internal override init() {
         super.init()
-    }
-    
-
-    public func peripheral(_ peripheral: RZBPeripheral, connectionEvent event: RZBPeripheralStateEvent, error: Error?) {
-        print("Peripheral \(peripheral), event \(event), error \(error)")
     }
 
     public func connect() {
@@ -35,12 +34,7 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
             }
             self.centralManager.stopScan()
             peripheral.maintainConnection = true
-            peripheral.connectionDelegate = self
             print("CONNECTED to Aurora Dreamband.")
-            
-            peripheral.fetchBatteryLevel({ (level, error) in
-                print("BATTERY_LEVEL \(level) error \(error).")
-            })
             
             //signal
             peripheral.enableNotify(forCharacteristicUUID: AuroraService.events.streamData, serviceUUID: AuroraService.uuid, onUpdate: { (char, error) in
@@ -86,6 +80,13 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
             }, completion: { (char, error) in
                 print("OBSERVING TRANSFER_STATUS with error \(error)")
             })
+            
+            self.peripheral = peripheral
         }
     }
+    
+    public func disconnect() {
+        
+    }
+
 }
