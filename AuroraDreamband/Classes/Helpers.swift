@@ -28,7 +28,7 @@ class Helpers: NSObject {
             }
             
             if data.count > TRANSFER_MAX_PAYLOAD {
-                throw NSError(domain: "AuroraDreambandErrorDomain", code: 2, userInfo: [NSLocalizedDescriptionKey:"Exceeded max write payload."])
+                throw AuroraErrors.maxPayloadExceeded(size: data.count)
             }
             
             
@@ -58,7 +58,7 @@ class Helpers: NSObject {
                 resolve()
             }
             if data.count > TRANSFER_MAX_PACKET_LENGTH {
-                reject(NSError(domain: "AuroraDreambandErrorDomain", code: 1, userInfo: [NSLocalizedDescriptionKey: "Exceeded max write packet length."]))
+                throw AuroraErrors.maxPayloadExceeded(size: data.count)
             }
             peripheral.write(data, characteristicUUID: characteristicUUID, serviceUUID: AuroraService.uuid) { characteristic, error in
                 if let error = error  {
@@ -80,11 +80,11 @@ class Helpers: NSObject {
     func read(from characteristicUUID: CBUUID, in peripheral: RZBPeripheral, count: Int) -> Promise<Data> {
         return async {
             if count <= 0 {
-                throw NSError(domain: "AuroraDreambandErrorDomain", code: 3, userInfo: [NSLocalizedDescriptionKey:"Cannot read less than 1 byte."])
+                throw AuroraErrors.readNothingAttempt
             }
             
             if count > TRANSFER_MAX_PAYLOAD {
-                throw NSError(domain: "AuroraDreambandErrorDomain", code: 2, userInfo: [NSLocalizedDescriptionKey:"Exceeded max read payload."])
+                throw AuroraErrors.maxPayloadExceeded(size: count)
             }
             
             var buffer = Data();
@@ -124,8 +124,20 @@ class Helpers: NSObject {
                 if let data = characteristic?.value  {
                     return resolve(data)
                 }
-                reject(NSError(domain: "AuroraErrorDomain", code: 4, userInfo: [NSLocalizedDescriptionKey: "Nothing to read and no explicit error thrown."]))
+                reject(AuroraErrors.unknownReadError)
             }
+        }
+    }
+    
+    /**
+     Subscribes to a characteristic and returns a Promise that resolves when the subscription resolves, or rejects when unable to bind to it. If the characteristic already has a value prior to subscription, it can be obtained in the Promise resolutions itself. Following characteristic changes will be sent to the `onUpdate` callback
+     
+     - parameter characteristicUUID: <#characteristicUUID description#>
+     - parameter peripheral:         <#peripheral description#>
+     */
+    func charSubscribe(to characteristicUUID: CBUUID, in peripheral: RZBPeripheral) -> Promise<CBCharacteristic> {
+        return Promise { resolve, reject in
+            
         }
     }
 
