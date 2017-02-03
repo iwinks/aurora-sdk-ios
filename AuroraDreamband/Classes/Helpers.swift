@@ -130,14 +130,29 @@ class Helpers: NSObject {
     }
     
     /**
-     Subscribes to a characteristic and returns a Promise that resolves when the subscription resolves, or rejects when unable to bind to it. If the characteristic already has a value prior to subscription, it can be obtained in the Promise resolutions itself. Following characteristic changes will be sent to the `onUpdate` callback
+     Subscribes to a characteristic and returns a Promise that resolves when the subscription resolves, or rejects when unable to bind to it. If the characteristic already has a value prior to subscription, it can be obtained in the Promise resolution itself. Following characteristic changes will be sent to the `onUpdate` callback
      
-     - parameter characteristicUUID: <#characteristicUUID description#>
-     - parameter peripheral:         <#peripheral description#>
+     - parameter characteristicUUID: UUID of the characteristic to read
+     - parameter peripheral:         discovered peripheral to read from
      */
-    func charSubscribe(to characteristicUUID: CBUUID, in peripheral: RZBPeripheral) -> Promise<CBCharacteristic> {
+    func charSubscribe(to characteristicUUID: CBUUID, in peripheral: RZBPeripheral, updateHandler: @escaping (() throws -> CBCharacteristic) -> Void) -> Promise<CBCharacteristic> {
         return Promise { resolve, reject in
-            
+            peripheral.enableNotify(forCharacteristicUUID: characteristicUUID, serviceUUID: AuroraService.uuid, onUpdate: { char, error in
+                if let char = char {
+                    return updateHandler { return char }
+                }
+                if let error = error {
+                    return updateHandler { throw error }
+                }
+            }, completion: { char, error in
+                if let error = error  {
+                    return reject(error)
+                }
+                if let char = char  {
+                    return resolve(char)
+                }
+                reject(AuroraErrors.unknownReadError)
+            })
         }
     }
 
