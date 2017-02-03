@@ -10,6 +10,7 @@ public enum AuroraErrors: LocalizedError {
     case maxPayloadExceeded(size: Int)
     case readNothingAttempt
     case unknownReadError
+    case notConnected
 
     public var errorDescription: String? {
         switch self {
@@ -21,6 +22,9 @@ public enum AuroraErrors: LocalizedError {
             
         case .unknownReadError:
             return "Nothing to read and no explicit error thrown."
+            
+        case .notConnected:
+            return "Unable to execute command. You are not connected to Aurora."
         }
     }
 }

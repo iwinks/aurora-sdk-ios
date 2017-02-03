@@ -32,61 +32,71 @@ public class AuroraDreamband: NSObject {
                 print("ERROR: \(error!)")
                 return
             }
+            self.peripheral = peripheral
             self.centralManager.stopScan()
             peripheral.maintainConnection = true
             print("CONNECTED to Aurora Dreamband.")
             
-            //signal
-            peripheral.enableNotify(forCharacteristicUUID: AuroraService.events.streamData, serviceUUID: AuroraService.uuid, onUpdate: { (char, error) in
-                print("UPDATED CHAR STREAM_DATA with data \(char?.value) and error \(error)")
-            }, completion: { (char, error) in
-                print("OBSERVING STREAM_DATA with error \(error)")
-            })
+            let helper = BleHelper(peripheral: peripheral)
             
-            peripheral.enableNotify(forCharacteristicUUID: AuroraService.events.buttonMonitor, serviceUUID: AuroraService.uuid, onUpdate: { (char, error) in
-                guard let data = char?.value
-                    else {
-                        print("UPDATED CHAR BUTTON_MONITOR with no data and error \(error)")
-                        return
+            helper.charSubscribe(to: AuroraService.events.streamData) { updateHandler in
+                print("updateHandler")
+                do {
+                    let characteristic = try updateHandler()
+                    print("Char update \(characteristic)")
                 }
-                let value: Int32 = data.scanValue(start: 0, length: 1)
-                print("UPDATED CHAR BUTTON_MONITOR with rawData \(data as NSData), value \(value) and error \(error)")
-            }, completion: { (char, error) in
-                print("OBSERVING BUTTON_MONITOR with error \(error)")
-            })
-            
-            peripheral.enableNotify(forCharacteristicUUID: AuroraService.events.usbMonitor, serviceUUID: AuroraService.uuid, onUpdate: { (char, error) in
-                print("UPDATED CHAR USB_MONITOR with data \(char!.value! as NSData) and error \(error)")
-            }, completion: { (char, error) in
-                print("OBSERVING USB_MONITOR with error \(error)")
-            })
-            
-            peripheral.enableNotify(forCharacteristicUUID: AuroraService.events.batteryMonitor, serviceUUID: AuroraService.uuid, onUpdate: { (char, error) in
-                guard let data = char?.value
-                     else {
-                    print("UPDATED CHAR BATTERY_MONITOR with no data and error \(error)")
-                        return
+                catch {
+                    print("Error! \(error)")
                 }
-                let value: Int32 = data.scanValue(start: 0, length: 1)
-                print("UPDATED CHAR BATTERY_MONITOR with rawData \(data as NSData), value \(value) and error \(error)")
-                
-            }, completion: { (char, error) in
-                print("OBSERVING BATTERY_MONITOR with error \(error)")
-            })
-
+            }.then { char in
+                print("Subscribed succesfully to streamData")
+            }.catch { error in
+                print("Failed to subscribe streamData with error \(error)")
+            }
             
-            peripheral.enableNotify(forCharacteristicUUID: AuroraService.events.transferStatus, serviceUUID: AuroraService.uuid, onUpdate: { (char, error) in
-                print("UPDATED TRANSFER_STATUS with data \(char?.value) and error \(error)")
-            }, completion: { (char, error) in
-                print("OBSERVING TRANSFER_STATUS with error \(error)")
-            })
+            helper.charSubscribe(to: AuroraService.events.transferStatus) { updateHandler in
+                print("updateHandler")
+                do {
+                    let characteristic = try updateHandler()
+                    print("Char update \(characteristic)")
+                }
+                catch {
+                    print("Error! \(error)")
+                }
+            }.then { char in
+                print("Subscribed succesfully to transferStatus")
+                self.execute(command: "clock-display")
+            }.catch { error in
+                print("Failed to subscribe transferStatus with error \(error)")
+            }
             
-            self.peripheral = peripheral
         }
     }
     
     public func disconnect() {
         
+    }
+    
+    func execute(command: String) -> Promise<Void> {
+        return async {
+            guard let peripheral = self.peripheral else {
+                throw AuroraErrors.notConnected
+            }
+            
+            print("Executing command \(command)")
+
+            let helper = BleHelper(peripheral: peripheral)
+            
+            //write the status byte, indicating start of command
+            try await(helper.write(data: TransferState.idle.rawValue.data, to: AuroraService.events.transferStatus))
+            
+            //write the actual command string as ascii (max 128bytes)
+            try await(helper.write(data: command.data, to: AuroraService.events.transferData))
+            
+            //write the status byte, indicating end of command
+            try await(helper.write(data: TransferState.cmdExecute.rawValue.data, to: AuroraService.events.transferStatus))            
+        }
+
     }
 
 }

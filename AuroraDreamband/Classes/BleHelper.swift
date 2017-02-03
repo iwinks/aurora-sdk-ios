@@ -10,18 +10,30 @@ import RZBluetooth
 import PromiseKit
 import AwaitKit
 
-class Helpers: NSObject {
+class BleHelper: NSObject {
+    
+    let peripheral: RZBPeripheral
+    let service: CBUUID
+    
+    init(peripheral: RZBPeripheral, service: CBUUID? = nil) {
+        self.peripheral = peripheral
+        if let service = service {
+            self.service = service
+        }
+        else {
+            self.service = AuroraService.uuid
+        }
+    }
     
     /**
      Writes a buffer up to 128 bytes, splitting it in 20 bytes chunks to an Aurora Dreamband device and service.
      
      - parameter data:               the data to write. Must not exceed 128 bytes
      - parameter characteristicUUID: UUID of the characteristic to write
-     - parameter peripheral:         discovered peripheral to write in
      
      - returns: a promise that resolves when the data is succesfully written, and rejects otherwise
      */
-    func write(data: Data, to characteristicUUID: CBUUID, in peripheral: RZBPeripheral) -> Promise<Void> {
+    func write(data: Data, to characteristicUUID: CBUUID) -> Promise<Void> {
         return async {
             if data.count == 0 {
                 return
@@ -38,7 +50,7 @@ class Helpers: NSObject {
                     break
                 }
                 
-                try? await(self.write(chunk: chunk, to: characteristicUUID, in: peripheral))
+                try? await(self.write(chunk: chunk, to: characteristicUUID))
             }
         }
     }
@@ -48,11 +60,10 @@ class Helpers: NSObject {
      
      - parameter data:               the data to write. Must not exceed 20 bytes
      - parameter characteristicUUID: UUID of the characteristic to write
-     - parameter peripheral:         discovered peripheral to write in
      
      - returns: a promise that resolves when the data is succesfully written, and rejects otherwise
      */
-    func write(chunk data: Data, to characteristicUUID: CBUUID, in peripheral: RZBPeripheral) -> Promise<Void> {
+    func write(chunk data: Data, to characteristicUUID: CBUUID) -> Promise<Void> {
         return Promise { resolve, reject in
             if data.count == 0 {
                 resolve()
@@ -60,7 +71,7 @@ class Helpers: NSObject {
             if data.count > TRANSFER_MAX_PACKET_LENGTH {
                 throw AuroraErrors.maxPayloadExceeded(size: data.count)
             }
-            peripheral.write(data, characteristicUUID: characteristicUUID, serviceUUID: AuroraService.uuid) { characteristic, error in
+            peripheral.write(data, characteristicUUID: characteristicUUID, serviceUUID: service) { characteristic, error in
                 if let error = error  {
                     return reject(error)
                 }
@@ -77,7 +88,7 @@ class Helpers: NSObject {
      
      - returns: a promise that resolves when the data is succesfully read, and rejects otherwise
      */
-    func read(from characteristicUUID: CBUUID, in peripheral: RZBPeripheral, count: Int) -> Promise<Data> {
+    func read(from characteristicUUID: CBUUID, count: Int) -> Promise<Data> {
         return async {
             if count <= 0 {
                 throw AuroraErrors.readNothingAttempt
@@ -95,7 +106,7 @@ class Helpers: NSObject {
             while packetCount > 0 {
                 
                 //read the packet, and add it to packet array
-                let packet = try await(self.readPacket(from: characteristicUUID, in: peripheral))
+                let packet = try await(self.readPacket(from: characteristicUUID))
                 buffer.append(packet)
                 
                 packetCount -= 1
@@ -111,13 +122,12 @@ class Helpers: NSObject {
      Reads a chunk of data containing a max payload of 20 bytes from the Aurora service at the requested peripheral/uuid
      
      - parameter characteristicUUID: UUID of the characteristic to read
-     - parameter peripheral:         discovered peripheral to read from
      
      - returns: a promise that resolves when the data is succesfully read, and rejects otherwise
      */
-    func readPacket(from characteristicUUID: CBUUID, in peripheral: RZBPeripheral) -> Promise<Data> {
+    func readPacket(from characteristicUUID: CBUUID) -> Promise<Data> {
         return Promise { resolve, reject in
-            peripheral.readCharacteristicUUID(characteristicUUID, serviceUUID: AuroraService.uuid) { characteristic, error in
+            peripheral.readCharacteristicUUID(characteristicUUID, serviceUUID: service) { characteristic, error in
                 if let error = error  {
                     return reject(error)
                 }
@@ -133,11 +143,10 @@ class Helpers: NSObject {
      Subscribes to a characteristic and returns a Promise that resolves when the subscription resolves, or rejects when unable to bind to it. If the characteristic already has a value prior to subscription, it can be obtained in the Promise resolution itself. Following characteristic changes will be sent to the `onUpdate` callback
      
      - parameter characteristicUUID: UUID of the characteristic to read
-     - parameter peripheral:         discovered peripheral to read from
      */
-    func charSubscribe(to characteristicUUID: CBUUID, in peripheral: RZBPeripheral, updateHandler: @escaping (() throws -> CBCharacteristic) -> Void) -> Promise<CBCharacteristic> {
+    func charSubscribe(to characteristicUUID: CBUUID, updateHandler: @escaping (() throws -> CBCharacteristic) -> Void) -> Promise<CBCharacteristic> {
         return Promise { resolve, reject in
-            peripheral.enableNotify(forCharacteristicUUID: characteristicUUID, serviceUUID: AuroraService.uuid, onUpdate: { char, error in
+            peripheral.enableNotify(forCharacteristicUUID: characteristicUUID, serviceUUID: service, onUpdate: { char, error in
                 if let char = char {
                     return updateHandler { return char }
                 }
