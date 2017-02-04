@@ -7,44 +7,21 @@
 //
 
 import UIKit
-import RZBluetooth
 import AuroraDreamband
 
-class ViewController: UIViewController, CBCentralManagerDelegate {
-    
-    let centralManager = RZBCentralManager()
+class ViewController: UIViewController {
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view, typically from a nib.
-        centralManager.scanForPeripherals(withServices: [CBUUID.rzb_UUIDForHeartRateService()], options: nil) { scanInfo, error in
-            guard let peripheral = scanInfo?.peripheral else {
-                print("ERROR: \(error!)")
-                return
-            }
-            self.centralManager.stopScan()
-            peripheral.addHeartRateObserver({ measurement, error in
-                guard let heartRate = measurement?.heartRate else { return }
-                print("HEART RATE: \(heartRate)")
-                }, completion: { error in
-                    guard let error = error else { return }
-                    print("ERROR: \(error)")
-            })
-        }
     }
 
-    func centralManagerDidUpdateState(_ central: CBCentralManager) {
-        
+    @IBAction func connectTapped(_ sender: Any) {
+        AuroraDreamband.shared.connect()
     }
     
-    func centralManager(_ central: CBCentralManager, willRestoreState dict: [String : Any]) {
-        
+    @IBAction func disconnectTapped(_ sender: Any) {
+        AuroraDreamband.shared.disconnect()
     }
-    
-    func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        
-    }
-    
 }
 

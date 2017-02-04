@@ -20,11 +20,14 @@ extension DataConvertible {
     
     var data: Data {
         var value = self
-        return Data(buffer: UnsafeBufferPointer(start: &value, count: 1))
+        let result = Data(buffer: UnsafeBufferPointer(start: &value, count: 1))
+        return result
     }
 }
 
 extension Int : DataConvertible { }
+extension Int32 : DataConvertible { }
+extension Int16 : DataConvertible { }
 extension Float : DataConvertible { }
 extension Double : DataConvertible { }
 
@@ -34,6 +37,7 @@ extension String: DataConvertible {
     }
     var data: Data {
         // Note: a conversion to UTF-8 cannot fail.
-        return self.data(using: .utf8)!
+        let result = self.data(using: .utf8)!
+        return result
     }
 }

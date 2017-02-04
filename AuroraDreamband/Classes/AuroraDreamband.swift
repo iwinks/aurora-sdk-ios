@@ -34,6 +34,7 @@ public class AuroraDreamband: NSObject {
             }
             self.peripheral = peripheral
             self.centralManager.stopScan()
+            self.connected = true
             peripheral.maintainConnection = true
             print("CONNECTED to Aurora Dreamband.")
             
@@ -63,7 +64,7 @@ public class AuroraDreamband: NSObject {
                 catch {
                     print("Error! \(error)")
                 }
-            }.then { char in
+            }.then { char -> Void in
                 print("Subscribed succesfully to transferStatus")
                 self.execute(command: "clock-display")
             }.catch { error in
@@ -74,7 +75,12 @@ public class AuroraDreamband: NSObject {
     }
     
     public func disconnect() {
-        
+        centralManager.stopScan()
+        if let peripheral = peripheral {
+            centralManager.coreCentralManager.cancelPeripheralConnection(peripheral.corePeripheral)
+        }
+        connected = false
+        print("DISCONNECTED")
     }
     
     func execute(command: String) -> Promise<Void> {

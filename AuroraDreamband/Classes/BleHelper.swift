@@ -43,14 +43,23 @@ class BleHelper: NSObject {
                 throw AuroraErrors.maxPayloadExceeded(size: data.count)
             }
             
+            let chunkCount = data.count / TRANSFER_MAX_PACKET_LENGTH
             
-            for i in 0..<(data.count+TRANSFER_MAX_PACKET_LENGTH) {
-                let chunk = data.subdata(in: i..<(i+TRANSFER_MAX_PACKET_LENGTH))
+            for i in 0...chunkCount {
+                let chunkStart = i * TRANSFER_MAX_PACKET_LENGTH
+                var chunkEnd = chunkStart + TRANSFER_MAX_PACKET_LENGTH
+                
+                if chunkEnd > data.count {
+                    chunkEnd = data.count
+                }
+                
+                let chunk = data.subdata(in: chunkStart..<chunkEnd)
+                
                 if chunk.count == 0 {
                     break
                 }
                 
-                try? await(self.write(chunk: chunk, to: characteristicUUID))
+                try await(self.write(chunk: chunk, to: characteristicUUID))
             }
         }
     }

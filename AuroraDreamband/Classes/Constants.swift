@@ -9,7 +9,7 @@
 let TRANSFER_MAX_PACKET_LENGTH = 20
 let TRANSFER_MAX_PAYLOAD = 128
 
-public enum SleepStage: Int {
+public enum SleepStage: Int32 {
     case unknown = 0
     case awake = 1
     case light = 2
@@ -17,7 +17,7 @@ public enum SleepStage: Int {
     case rem = 4
 }
 
-enum TransferState: Int {
+enum TransferState: Int16 {
     case idle = 0
     case cmdExecute = 1
     case cmdRespReady = 2
@@ -26,7 +26,7 @@ enum TransferState: Int {
     case cmdInputReady = 5
 }
 
-enum DataType: Int {
+enum DataType: Int32 {
     case unknown = 0
     case bool = 1
     case char = 2
@@ -41,7 +41,7 @@ enum DataType: Int {
     case ptr = 11
 }
 
-enum EventOutput: Int {
+enum EventOutput: Int32 {
     case usb = 0
     case log = 1
     case sessionFile = 2
@@ -49,7 +49,7 @@ enum EventOutput: Int {
     case bluetooth = 4
 }
 
-enum Stream: Int {
+enum Stream: Int32 {
     
     case signalQuality = 0
     case rawEeg = 1
@@ -92,7 +92,7 @@ enum Stream: Int {
     case streamReserved14 = 31
 }
 
-enum StreamOutput: Int {
+enum StreamOutput: Int32 {
     case silent = 0
     case fileCsv = 1
     case fileRaw = 2

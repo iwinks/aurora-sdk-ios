@@ -22,6 +22,12 @@
   "dependencies": {
     "RZBluetooth": [
 
+    ],
+    "PromiseKit": [
+
+    ],
+    "AwaitKit": [
+
     ]
   },
   "default_subspecs": "Core",
