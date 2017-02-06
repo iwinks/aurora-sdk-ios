@@ -109,7 +109,7 @@ class BleHelper: NSObject {
             
             var buffer = Data();
             
-            var packetCount = Int(ceil(Double(count / TRANSFER_MAX_PACKET_LENGTH)))
+            var packetCount = Int(ceil(Float(count) / Float(TRANSFER_MAX_PACKET_LENGTH)))
             
             //read packets until we've read all required bytes
             while packetCount > 0 {
@@ -153,15 +153,16 @@ class BleHelper: NSObject {
      
      - parameter characteristicUUID: UUID of the characteristic to read
      */
-    func charSubscribe(to characteristicUUID: CBUUID, updateHandler: @escaping (() throws -> CBCharacteristic) -> Void) -> Promise<CBCharacteristic> {
+    func charSubscribe(to characteristicUUID: CBUUID, updateHandler: @escaping (@escaping () throws -> Data) -> Void) -> Promise<CBCharacteristic> {
         return Promise { resolve, reject in
             peripheral.enableNotify(forCharacteristicUUID: characteristicUUID, serviceUUID: service, onUpdate: { char, error in
-                if let char = char {
-                    return updateHandler { return char }
+                if let data = char?.value {
+                    return updateHandler { return data }
                 }
                 if let error = error {
                     return updateHandler { throw error }
                 }
+                return updateHandler { throw AuroraErrors.unknownReadError }
             }, completion: { char, error in
                 if let error = error  {
                     return reject(error)
@@ -169,7 +170,7 @@ class BleHelper: NSObject {
                 if let char = char  {
                     return resolve(char)
                 }
-                reject(AuroraErrors.unknownReadError)
+                reject(AuroraErrors.unknownSubscribeError)
             })
         }
     }

@@ -28,6 +28,8 @@ extension DataConvertible {
 extension Int : DataConvertible { }
 extension Int32 : DataConvertible { }
 extension Int16 : DataConvertible { }
+extension Int8 : DataConvertible { }
+extension UInt8 : DataConvertible { }
 extension Float : DataConvertible { }
 extension Double : DataConvertible { }
 

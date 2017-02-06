@@ -17,7 +17,7 @@ public enum SleepStage: Int32 {
     case rem = 4
 }
 
-enum TransferState: Int16 {
+enum TransferState: UInt8 {
     case idle = 0
     case cmdExecute = 1
     case cmdRespReady = 2
