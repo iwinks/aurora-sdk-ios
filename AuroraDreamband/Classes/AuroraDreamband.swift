@@ -11,7 +11,7 @@ import RZBluetooth
 import PromiseKit
 import AwaitKit
 
-public class AuroraDreamband: NSObject {
+public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
     
     public static let shared = AuroraDreamband()
     
@@ -36,27 +36,8 @@ public class AuroraDreamband: NSObject {
             }
             self.peripheral = peripheral
             self.centralManager.stopScan()
-            self.connected = true
             peripheral.maintainConnection = true
-            print("CONNECTED to Aurora Dreamband.")
-            
-            let helper = BleHelper(peripheral: peripheral)
-            
-            self.helper = helper
-            
-            helper.charSubscribe(to: AuroraService.events.streamData, updateHandler: self.transferStreamHandler).then { char in
-                print("Subscribed succesfully to streamData")
-            }.catch { error in
-                print("Failed to subscribe streamData with error \(error)")
-            }
-            
-            helper.charSubscribe(to: AuroraService.events.transferStatus, updateHandler: self.transferStatusHandler).then { char -> Void in
-                print("Subscribed succesfully to transferStatus")
-                self.sessionFolders()
-            }.catch { error in
-                print("Failed to subscribe transferStatus with error \(error)")
-            }
-            
+            peripheral.connectionDelegate = self
         }
     }
     
@@ -69,19 +50,49 @@ public class AuroraDreamband: NSObject {
         print("DISCONNECTED")
     }
     
-    public func clockDisplay() {
-        execute(command: "clock-display")
+    public func clockDisplay(completion: @escaping (() throws -> String) -> Void) {
+        execute(command: "clock-display").then { result in
+            completion { return result }
+        }.catch { error in
+            completion { throw error }
+        }
+
     }
     
-    public func sessionFolders() {
-        execute(command: "sd-dir-read sessions *@*")
+    public func sessionFolders(completion: @escaping (() throws -> String) -> Void) {
+        execute(command: "sd-dir-read sessions *@*").then { result in
+            completion { return result }
+        }.catch { error in
+            completion { throw error }
+        }
+
     }
     
-    public func profileList() {
-        execute(command: "sd-file-read profiles/_profiles.list")
+    public func profileList(completion: @escaping (() throws -> String) -> Void) {
+        execute(command: "sd-file-read profiles/_profiles.list").then { result in
+            completion { return result }
+        }.catch { error in
+            completion { throw error }
+        }
     }
     
-    internal func execute(command: String) -> Promise<Void> {
+    public func help(completion: @escaping (() throws -> String) -> Void) {
+        execute(command: "help").then { result in
+            completion { return result }
+        }.catch { error in
+            completion { throw error }
+        }
+    }
+    
+    public func buzz(note: Int, duration: Int, completion: @escaping (() throws -> Void) -> Void) {
+        execute(command: "buzz-note \(note) \(duration)").then { void in
+            completion { return void }
+        }.catch { error in
+            completion { throw error }
+        }
+    }
+    
+    internal func execute<T>(command: String) -> Promise<T> {
         return async {
             guard let peripheral = self.peripheral,
                 let helper = self.helper else {
@@ -97,9 +108,47 @@ public class AuroraDreamband: NSObject {
             try await(helper.write(data: command.data, to: AuroraService.events.transferData))
             
             //write the status byte, indicating end of command
-            try await(helper.write(data: TransferState.cmdExecute.rawValue.data, to: AuroraService.events.transferStatus))            
+            try await(helper.write(data: TransferState.cmdExecute.rawValue.data, to: AuroraService.events.transferStatus))
+            
+            return try await(Promise<T> { resolve, reject in
+                reject(AuroraErrors.unknownReadError)
+            })
         }
 
+    }
+    
+    public func peripheral(_ peripheral: RZBPeripheral, connectionEvent event: RZBPeripheralStateEvent, error: Error?) {
+        if event == .connectSuccess {
+            // perform any connection set up here that should occur on every connection
+            print("AURORA CONNECTED")
+            connected = true
+            
+            
+            let helper = BleHelper(peripheral: peripheral)
+            
+            self.helper = helper
+            self.peripheral = peripheral
+            
+            helper.charSubscribe(to: AuroraService.events.streamData, updateHandler: self.transferStreamHandler).then { char in
+                print("Subscribed succesfully to streamData")
+            }.catch { error in
+                print("Failed to subscribe streamData with error \(error)")
+            }
+            
+            helper.charSubscribe(to: AuroraService.events.transferStatus, updateHandler: self.transferStatusHandler).then { char -> Void in
+                print("Subscribed succesfully to transferStatus")
+            }.catch { error in
+                print("Failed to subscribe transferStatus with error \(error)")
+            }
+        }
+        else {
+            print("AURORA DISCONNECTED")
+            connected = false
+            // The device is disconnected. maintainConnection will attempt a connection event
+            // immediately after this. This default maintainConnection behavior may not be
+            // desired for your application. A backoff timer or other behavior could be
+            // implemented here.
+        }
     }
     
     var cmdOutputBuffers = Data()
@@ -107,8 +156,6 @@ public class AuroraDreamband: NSObject {
     
     private func transferStatusHandler(_ updateHandler: @escaping () throws -> Data) {
         return async {
-            print("transferStatusHandler")
-            
             let status = try updateHandler()
             
             guard let peripheral = self.peripheral,
@@ -119,7 +166,7 @@ public class AuroraDreamband: NSObject {
                 throw AuroraErrors.unknownStateError
             }
             
-            print("Status \(state)")
+            print("transferStatusHandler state \(state)")
             
             switch (state) {
                 
@@ -149,7 +196,7 @@ public class AuroraDreamband: NSObject {
             case TransferState.cmdRespReady:
                 
                 let count = Int(status[1])
-                print("\(count) bytes to read")
+                print("\(self.cmdResponseLines.count) lines + \(count) bytes")
                 
                 //second status byte is number of bytes available to read
                 let responseLineBuffer = try await(helper.read(from: AuroraService.events.transferData, count: count))
@@ -165,7 +212,7 @@ public class AuroraDreamband: NSObject {
             case TransferState.cmdOutputReady:
                 
                 let count = Int(status[1])
-                print("\(count) bytes to read")
+                print("\(self.cmdOutputBuffers.count) + \(count) bytes")
                 
                 //second status byte is number of bytes available to read
                 let outputBuffer = try await(helper.read(from: AuroraService.events.transferData, count: count))
