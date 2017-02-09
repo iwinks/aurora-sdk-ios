@@ -52,7 +52,7 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
     
     public func clockDisplay(completion: @escaping (() throws -> String) -> Void) {
         execute(command: "clock-display").then { result in
-            completion { return result }
+            completion { return try self.currentCommand.responseString() }
         }.catch { error in
             completion { throw error }
         }
@@ -61,16 +61,16 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
     
     public func sessionFolders(completion: @escaping (() throws -> String) -> Void) {
         execute(command: "sd-dir-read sessions *@*").then { result in
-            completion { return result }
+            completion { return try self.currentCommand.responseString() }
         }.catch { error in
             completion { throw error }
         }
 
     }
     
-    public func profileList(completion: @escaping (() throws -> String) -> Void) {
+    public func profileList(completion: @escaping (() throws -> Data) -> Void) {
         execute(command: "sd-file-read profiles/_profiles.list").then { result in
-            completion { return result }
+            completion { return self.currentCommand.response }
         }.catch { error in
             completion { throw error }
         }
@@ -78,21 +78,21 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
     
     public func help(completion: @escaping (() throws -> String) -> Void) {
         execute(command: "help").then { result in
-            completion { return result }
+            completion { return try self.currentCommand.responseString() }
         }.catch { error in
             completion { throw error }
         }
     }
     
     public func buzz(note: Int, duration: Int, completion: @escaping (() throws -> Void) -> Void) {
-        execute(command: "buzz-note \(note) \(duration)").then { void in
-            completion { return void }
+        execute(command: "buzz-note \(note) \(duration)").then {
+            completion { }
         }.catch { error in
             completion { throw error }
         }
     }
     
-    internal func execute<T>(command: String) -> Promise<T> {
+    internal func execute(command: String) -> Promise<Void> {
         return async {
             guard let peripheral = self.peripheral,
                 let helper = self.helper else {
@@ -110,8 +110,17 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
             //write the status byte, indicating end of command
             try await(helper.write(data: TransferState.cmdExecute.rawValue.data, to: AuroraService.events.transferStatus))
             
-            return try await(Promise<T> { resolve, reject in
-                reject(AuroraErrors.unknownReadError)
+            
+            try await(Promise<Data> { resolve, reject in
+                self.currentCommand.finishedHandler = { data, error in
+                    if let error = error {
+                        return reject(error)
+                    }
+                    if let data = data {
+                        return resolve(data)
+                    }
+                    reject(AuroraErrors.unknownReadError)
+                }
             })
         }
 
@@ -151,8 +160,7 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
         }
     }
     
-    var cmdOutputBuffers = Data()
-    var cmdResponseLines = [String]()
+    fileprivate var currentCommand = Command()
     
     private func transferStatusHandler(_ updateHandler: @escaping () throws -> Data) {
         return async {
@@ -168,58 +176,35 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
             
             print("transferStatusHandler state \(state)")
             
+            self.currentCommand.status = state
+            
             switch (state) {
                 
             //is this the end of a command? i.e now idle
-            case TransferState.idle:
+            case .idle:
                 
                 //non-zero status[1] indicates command error
                 if (status[1] != 0) {
                     print("CMD ERROR: ", status[1])
+                    self.currentCommand.error = AuroraErrors.commandError(code: status[1], message: try? self.currentCommand.responseString())
                 }
                 
-                if (self.cmdOutputBuffers.count > 0) {
-                    
-                    print("CMD OUTPUT:")
-                    print(String(data: self.cmdOutputBuffers))
-                    self.cmdOutputBuffers = Data()
-                }
-                
-                if (self.cmdResponseLines.count > 0) {
-                    
-                    print("CMD RESPONSE:")
-                    print(self.cmdResponseLines.joined(separator: "\n"))
-                    self.cmdResponseLines = [];
-                }
-                
-            //do we have a response to receive
-            case TransferState.cmdRespReady:
-                
+            //do we have a response to receive (line or data blob)
+            case .cmdRespReady, .cmdOutputReady:
                 let count = Int(status[1])
-                print("\(self.cmdResponseLines.count) lines + \(count) bytes")
-                
-                //second status byte is number of bytes available to read
-                let responseLineBuffer = try await(helper.read(from: AuroraService.events.transferData, count: count))
-                
-                if let lineString = String(data: responseLineBuffer, encoding: .utf8) {
-                    self.cmdResponseLines.append(lineString)
+                print("\(self.currentCommand.response.count) + \(count) bytes")
+
+                // line responses need a \n separator
+                if state == .cmdRespReady && self.currentCommand.response.count == 0 {
+                    self.currentCommand.response.append("\n".data)
                 }
-                else {
-                    print("Failed to convert \(responseLineBuffer) into a String")
-                }
-                
-            //output to receive?
-            case TransferState.cmdOutputReady:
-                
-                let count = Int(status[1])
-                print("\(self.cmdOutputBuffers.count) + \(count) bytes")
                 
                 //second status byte is number of bytes available to read
                 let outputBuffer = try await(helper.read(from: AuroraService.events.transferData, count: count))
-                self.cmdOutputBuffers.append(outputBuffer)
+                self.currentCommand.response.append(outputBuffer)
                 
             //command waiting for input
-            case TransferState.cmdInputRequested:
+            case .cmdInputRequested:
                 
                 try await(helper.write(data: "ABCDEFGHIJKLMNOPQRSTUVWXWZ123456789abcdefghijklmnopqrstuvwxyz\r\r\r\r".data, to: AuroraService.events.transferData))
                 try await(helper.write(data: TransferState.cmdInputReady.rawValue.data, to: AuroraService.events.transferData));
@@ -241,4 +226,24 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
         }
     }
 
+}
+
+fileprivate class Command: NSObject {
+    var status = TransferState.idle {
+        didSet {
+            if status == .idle {
+                finishedHandler?(response, error)
+            }
+        }
+    }
+    var error: Error?
+    var response = Data()
+    var finishedHandler: ((Data?, Error?) -> Void)?
+    
+    func responseString() throws -> String {
+        if let lines = String(data: response) {
+            return lines
+        }
+        throw AuroraErrors.unparseableCommandResult
+    }
 }

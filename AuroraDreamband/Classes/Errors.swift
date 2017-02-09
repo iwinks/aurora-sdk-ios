@@ -13,6 +13,8 @@ public enum AuroraErrors: LocalizedError {
     case unknownSubscribeError
     case unknownStateError
     case notConnected
+    case commandError(code: UInt8, message: String?)
+    case unparseableCommandResult
 
     public var errorDescription: String? {
         switch self {
@@ -33,6 +35,12 @@ public enum AuroraErrors: LocalizedError {
             
         case .notConnected:
             return "Unable to execute command. You are not connected to Aurora."
+            
+        case .commandError(let code, let message):
+            return "Command failed with error code: \(code). Message: \(message)"
+            
+        case .unparseableCommandResult:
+            return "Unable to convert command result to lines."
         }
     }
 }
