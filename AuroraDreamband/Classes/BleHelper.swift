@@ -115,7 +115,7 @@ class BleHelper: NSObject {
             while packetCount > 0 {
                 
                 //read the packet, and add it to packet array
-                let packet = try await(self.readPacket(from: characteristicUUID))
+                let packet = try await(self.read(from: characteristicUUID))
                 buffer.append(packet)
                 
                 packetCount -= 1
@@ -134,7 +134,7 @@ class BleHelper: NSObject {
      
      - returns: a promise that resolves when the data is succesfully read, and rejects otherwise
      */
-    func readPacket(from characteristicUUID: CBUUID) -> Promise<Data> {
+    private func read(from characteristicUUID: CBUUID) -> Promise<Data> {
         return Promise { resolve, reject in
             peripheral.readCharacteristicUUID(characteristicUUID, serviceUUID: service) { characteristic, error in
                 if let error = error  {
@@ -153,7 +153,7 @@ class BleHelper: NSObject {
      
      - parameter characteristicUUID: UUID of the characteristic to read
      */
-    func charSubscribe(to characteristicUUID: CBUUID, updateHandler: @escaping (@escaping () throws -> Data) -> Void) -> Promise<CBCharacteristic> {
+    func subscribe(to characteristicUUID: CBUUID, updateHandler: @escaping (@escaping () throws -> Data) -> Void) -> Promise<CBCharacteristic> {
         return Promise { resolve, reject in
             peripheral.enableNotify(forCharacteristicUUID: characteristicUUID, serviceUUID: service, onUpdate: { char, error in
                 if let data = char?.value {

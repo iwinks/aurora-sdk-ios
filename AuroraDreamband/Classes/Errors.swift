@@ -15,6 +15,8 @@ public enum AuroraErrors: LocalizedError {
     case notConnected
     case commandError(code: UInt8, message: String?)
     case unparseableCommandResult
+    case commandNotFinished
+    case commandNotFound
 
     public var errorDescription: String? {
         switch self {
@@ -41,6 +43,12 @@ public enum AuroraErrors: LocalizedError {
             
         case .unparseableCommandResult:
             return "Unable to convert command result to lines."
+            
+        case .commandNotFinished:
+            return "The command is not finished yet."
+            
+        case .commandNotFound:
+            return "There is no command in execution."
         }
     }
 }
