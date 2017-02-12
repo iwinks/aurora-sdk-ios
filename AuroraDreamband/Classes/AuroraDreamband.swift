@@ -19,21 +19,27 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
     
     public var connected = false
     
+    public var loggingEnabled = false {
+        didSet {
+            _loggingEnabled = loggingEnabled
+        }
+    }
+    
     var peripheral: RZBPeripheral?
     
     var helper: BleHelper?
     
-    private var commands = [Command]()
+    private var commandQueue = CommandQueue()
     
     internal override init() {
         super.init()
     }
 
     public func connect() {
-        print("CONNECTING...")
+        log("CONNECTING...")
         centralManager.scanForPeripherals(withServices: [AuroraService.uuid], options: nil) { scanInfo, error in
             guard let peripheral = scanInfo?.peripheral else {
-                print("ERROR: \(error!)")
+                log("ERROR: \(error!)")
                 return
             }
             self.peripheral = peripheral
@@ -49,7 +55,7 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
             centralManager.coreCentralManager.cancelPeripheralConnection(peripheral.corePeripheral)
         }
         connected = false
-        print("DISCONNECTED")
+        log("DISCONNECTED")
     }
     
     public func clockDisplay(completion: @escaping (() throws -> String) -> Void) {
@@ -102,32 +108,34 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
                     throw AuroraErrors.notConnected
                 }
                 
-                print("Executing command \(string)")
+                log("Executing command \(string)")
                 
                 let command = Command()
                 
                 command.errorHandler = { error in
+                    self.commandQueue.dequeue(command: command)
                     reject(error)
                 }
                 command.successHandler = { command in
+                    self.commandQueue.dequeue(command: command)
                     resolve(command)
                 }
-                
-//                if let currentCommand = self.commands.last {
-//                    
-//                }
-                
-                self.commands.append(command)
-                
-                //write the status byte, indicating start of command
-                try await(helper.write(data: TransferState.idle.rawValue.data, to: AuroraService.events.transferStatus))
-                
-                //write the actual command string as ascii (max 128bytes)
-                try await(helper.write(data: string.data, to: AuroraService.events.transferData))
-                
-                //write the status byte, indicating end of command
-                try await(helper.write(data: TransferState.cmdExecute.rawValue.data, to: AuroraService.events.transferStatus))
-                
+
+                self.commandQueue.enqueue(command: command) {
+                    do {
+                        //write the status byte, indicating start of command
+                        try await(helper.write(data: TransferState.idle.rawValue.data, to: AuroraService.events.transferStatus))
+                        
+                        //write the actual command string as ascii (max 128bytes)
+                        try await(helper.write(data: string.data, to: AuroraService.events.transferData))
+                        
+                        //write the status byte, indicating end of command
+                        try await(helper.write(data: TransferState.cmdExecute.rawValue.data, to: AuroraService.events.transferStatus))
+                    }
+                    catch {
+                        reject(error)
+                    }
+                }
             }
         }
     }
@@ -135,7 +143,7 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
     public func peripheral(_ peripheral: RZBPeripheral, connectionEvent event: RZBPeripheralStateEvent, error: Error?) {
         if event == .connectSuccess {
             // perform any connection set up here that should occur on every connection
-            print("AURORA CONNECTED")
+            log("AURORA CONNECTED")
             connected = true
             
             let helper = BleHelper(peripheral: peripheral)
@@ -144,19 +152,19 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
             self.peripheral = peripheral
             
             helper.subscribe(to: AuroraService.events.streamData, updateHandler: self.transferStreamHandler).then { char in
-                print("Subscribed succesfully to streamData")
+                log("Subscribed succesfully to streamData")
             }.catch { error in
-                print("Failed to subscribe streamData with error \(error)")
+                log("Failed to subscribe streamData with error \(error)")
             }
             
             helper.subscribe(to: AuroraService.events.transferStatus, updateHandler: self.transferStatusHandler).then { char -> Void in
-                print("Subscribed succesfully to transferStatus")
+                log("Subscribed succesfully to transferStatus")
             }.catch { error in
-                print("Failed to subscribe transferStatus with error \(error)")
+                log("Failed to subscribe transferStatus with error \(error)")
             }
         }
         else {
-            print("AURORA DISCONNECTED")
+            log("AURORA DISCONNECTED")
             connected = false
             // The device is disconnected. maintainConnection will attempt a connection event
             // immediately after this. This default maintainConnection behavior may not be
@@ -177,16 +185,17 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
                 throw AuroraErrors.unknownStateError
             }
             
-            guard let command = self.commands.last else {
+            guard let command = self.commandQueue.current else {
                 throw AuroraErrors.commandNotFound
             }
             
-            print("transferStatusHandler state \(state)")
+            log("transferStatusHandler state \(state)")
             
             switch (state) {
                 
             // End of current command
             case .idle:
+                log(">>>> IDLE")
                 
                 var error: Error?
                 //non-zero status[1] indicates command error
@@ -195,25 +204,42 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
                 }
                 command.finish(error: error)
                 
+                log("<<<< IDLE")
+                
             // Received response line(s)
             case .cmdRespReady:
-                //second status byte is number of bytes available to read
+                log(">>>> READ RESPONSE")
+                
+                // Second status byte is number of bytes available to read
                 let count = Int(status[1])
                 // Append line to current command's response
-                try command.append(response: try await(helper.read(from: AuroraService.events.transferData, count: count)))
+                try command.append(response: { () throws -> Data in
+                    try await(helper.read(from: AuroraService.events.transferData, count: count))
+                })
+                
+                log("<<<< READ RESPONSE")
                 
             // Received binary output
             case .cmdOutputReady:
-                let count = Int(status[1])
+                log(">>>> READ OUTPUT")
+                
                 // Second status byte is number of bytes available to read
+                let count = Int(status[1])
                 // Append chunk to current command's output
-                command.append(output: try await(helper.read(from: AuroraService.events.transferData, count: count)))
+                try command.append(output: { () throws -> Data in
+                    try await(helper.read(from: AuroraService.events.transferData, count: count))
+                })
+                
+                log("<<<< READ OUTPUT")
                 
             // Command waiting for input
             case .cmdInputRequested:
+                log(">>>> INPUT REQUEST")
                 
                 try await(helper.write(data: "ABCDEFGHIJKLMNOPQRSTUVWXWZ123456789abcdefghijklmnopqrstuvwxyz\r\r\r\r".data, to: AuroraService.events.transferData))
                 try await(helper.write(data: TransferState.cmdInputReady.rawValue.data, to: AuroraService.events.transferData));
+                
+                log("<<<< INPUT REQUEST")
                 
             default:
                 break
@@ -222,19 +248,28 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
     }
     
     private func transferStreamHandler(_ updateHandler: () throws -> Data) {
-        print("transferStreamHandler")
+        log("transferStreamHandler")
         do {
             let data = try updateHandler()
-            print("Char data \(data)")
+            log("Char data \(data)")
         }
         catch {
-            print("Error! \(error)")
+            log("Error! \(error)")
         }
     }
-
+    
+    
 }
 
-private class Command {
+private class Command: NSObject {
+    var pendingOperations = 0 {
+        didSet {
+            if pendingOperations == 0 && finished {
+                log("finished command after last response came in")
+                handleFinish()
+            }
+        }
+    }
     private var response = [String]()
     private var output = Data()
     private var error: Error?
@@ -257,28 +292,78 @@ private class Command {
         return output
     }
     
-    func append(response data: Data) throws {
+    func append(response handler: () throws -> Data) throws {
+        pendingOperations += 1
+        
+        let data = try handler()
         if let line = String(data: data, encoding: .utf8) {
             response.append(line)
         }
         else {
             throw AuroraErrors.unparseableCommandResult
         }
-        print("Appended response line with \(data.count) bytes. Total lines \(response.count)")
+        log("Appended response line with \(data.count) bytes. Total lines \(response.count)")
+        
+        pendingOperations -= 1
     }
     
-    func append(output data: Data) {
+    func append(output handler: () throws -> Data) throws {
+        pendingOperations += 1
+        
+        let data = try handler()
         output.append(data)
-        print("Appended output chunk with \(data.count) bytes. Total bytes \(output.count)")
+        log("Appended output chunk with \(data.count) bytes. Total bytes \(output.count)")
+        
+        pendingOperations -= 1
     }
     
     func finish(error: Error?) {
         finished = true
+        self.error = error
+        
+        if pendingOperations == 0 {
+            log("finished command")
+            handleFinish()
+            
+        }
+        else {
+            log("finished command while busy, waiting for last response to come in...")
+        }
+    }
+    
+    private func handleFinish() {
         if let error = error {
             errorHandler?(error)
         }
         else {
             successHandler?(self)
         }
+    }
+}
+
+private class CommandQueue {
+    
+    var current: Command? {
+        get {
+            return commands.first
+        }
+    }
+    private var commands = [Command]()
+    private var handlers = [() -> Void]()
+
+    func enqueue(command: Command, readyHandler: @escaping () -> Void) {
+        commands.append(command)
+        handlers.append(readyHandler)
+        if commands.count == 1 {
+            readyHandler()
+        }
+    }
+    
+    func dequeue(command: Command) {
+        if let index = commands.index(of: command) {
+            commands.remove(at: index)
+            let _ = handlers.remove(at: index)
+        }
+        handlers.first?()
     }
 }

@@ -6,12 +6,12 @@
 //
 //
 
-protocol DataConvertible {
+public protocol DataConvertible {
     init?(data: Data)
     var data: Data { get }
 }
 
-extension DataConvertible {
+public extension DataConvertible {
     
     init?(data: Data) {
         guard data.count == MemoryLayout<Self>.size else { return nil }
@@ -34,10 +34,10 @@ extension Float : DataConvertible { }
 extension Double : DataConvertible { }
 
 extension String: DataConvertible {
-    init?(data: Data) {
+    public init?(data: Data) {
         self.init(data: data, encoding: .utf8)
     }
-    var data: Data {
+    public var data: Data {
         // Note: a conversion to UTF-8 cannot fail.
         let result = self.data(using: .utf8)!
         return result
