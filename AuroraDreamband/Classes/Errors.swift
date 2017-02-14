@@ -39,7 +39,7 @@ public enum AuroraErrors: LocalizedError {
             return "Unable to execute command. You are not connected to Aurora."
             
         case .commandError(let code, let message):
-            return "Command failed with error code: \(code). Message: \(message)"
+            return "Command failed with error code: \(code). Message: \(message ?? "")"
             
         case .unparseableCommandResult:
             return "Unable to convert command result to lines."

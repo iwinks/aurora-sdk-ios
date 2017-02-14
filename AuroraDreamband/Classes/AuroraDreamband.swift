@@ -76,9 +76,17 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
 
     }
     
-    public func profileList(completion: @escaping (() throws -> Data) -> Void) {
+    public func readProfile(completion: @escaping (() throws -> Data) -> Void) {
         execute(command: "sd-file-read profiles/_profiles.list").then { result in
             completion { return try result.outputBuffer() }
+        }.catch { error in
+            completion { throw error }
+        }
+    }
+    
+    public func write(profile data: Data, completion: @escaping (() throws -> String) -> Void) {
+        execute(command: "sd-file-write profiles/_profiles.list_test 0", data: data).then { result in
+            completion { return try result.responseString() }
         }.catch { error in
             completion { throw error }
         }
@@ -100,7 +108,7 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
         }
     }
     
-    private func execute(command string: String) -> Promise<Command> {
+    private func execute(command string: String, data: Data? = nil) -> Promise<Command> {
         return Promise<Command> { resolve, reject in
             async {
                 guard let peripheral = self.peripheral,
@@ -110,7 +118,7 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
                 
                 log("Executing command \(string)")
                 
-                let command = Command()
+                let command = Command(data: data)
                 
                 command.errorHandler = { error in
                     self.commandQueue.dequeue(command: command)
@@ -196,13 +204,8 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
             // End of current command
             case .idle:
                 log(">>>> IDLE")
-                
-                var error: Error?
-                //non-zero status[1] indicates command error
-                if (status[1] != 0) {
-                    error = AuroraErrors.commandError(code: status[1], message: try? command.responseString())
-                }
-                command.finish(error: error)
+                                
+                command.finish(status: status[1])
                 
                 log("<<<< IDLE")
                 
@@ -236,8 +239,13 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
             case .cmdInputRequested:
                 log(">>>> INPUT REQUEST")
                 
-                try await(helper.write(data: "ABCDEFGHIJKLMNOPQRSTUVWXWZ123456789abcdefghijklmnopqrstuvwxyz\r\r\r\r".data, to: AuroraService.events.transferData))
-                try await(helper.write(data: TransferState.cmdInputReady.rawValue.data, to: AuroraService.events.transferData));
+                var data = Data()
+                if let input = command.data {
+                    data.append(input)
+                }
+                data.append("\r\r\r\r".data)
+                try await(helper.write(data: data, to: AuroraService.events.transferData))
+                try await(helper.write(data: TransferState.cmdInputReady.rawValue.data, to: AuroraService.events.transferStatus));
                 
                 log("<<<< INPUT REQUEST")
                 
@@ -262,7 +270,10 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
 }
 
 private class Command: NSObject {
-    var pendingOperations = 0 {
+    
+    private(set) var data: Data?
+    
+    private var pendingOperations = 0 {
         didSet {
             if pendingOperations == 0 && finished {
                 log("finished command after last response came in")
@@ -272,8 +283,12 @@ private class Command: NSObject {
     }
     private var response = [String]()
     private var output = Data()
-    private var error: Error?
+    private var status: UInt8 = 0
     private var finished = false
+    
+    init(data: Data? = nil) {
+        self.data = data
+    }
     
     var successHandler: ((Command) -> Void)?
     var errorHandler: ((Error) -> Void)?
@@ -317,9 +332,9 @@ private class Command: NSObject {
         pendingOperations -= 1
     }
     
-    func finish(error: Error?) {
+    func finish(status: UInt8) {
         finished = true
-        self.error = error
+        self.status = status
         
         if pendingOperations == 0 {
             log("finished command")
@@ -332,8 +347,8 @@ private class Command: NSObject {
     }
     
     private func handleFinish() {
-        if let error = error {
-            errorHandler?(error)
+        if status != 0 {
+            errorHandler?(AuroraErrors.commandError(code: status, message: try? responseString()))
         }
         else {
             successHandler?(self)
