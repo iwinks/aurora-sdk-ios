@@ -34,8 +34,11 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
     internal override init() {
         super.init()
     }
+    
+    // MARK: - Public API
 
-    public func connect() {
+    // MARK: - Connection
+    public func connect(completion: (() -> Void)? = nil) {
         log("CONNECTING...")
         centralManager.scanForPeripherals(withServices: [AuroraService.uuid], options: nil) { scanInfo, error in
             guard let peripheral = scanInfo?.peripheral else {
@@ -46,16 +49,53 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
             self.centralManager.stopScan()
             peripheral.maintainConnection = true
             peripheral.connectionDelegate = self
+            completion?()
         }
     }
     
-    public func disconnect() {
+    public func disconnect(completion: (() -> Void)? = nil) {
         centralManager.stopScan()
         if let peripheral = peripheral {
-            centralManager.coreCentralManager.cancelPeripheralConnection(peripheral.corePeripheral)
+            peripheral.cancelConnection() { error in
+                self.connected = false
+                log("DISCONNECTED")
+                completion?()
+            }
         }
-        connected = false
-        log("DISCONNECTED")
+    }
+    
+    // MARK: - Commands
+    
+    /**
+     Returns the number of unsynced sessions in the Aurora.
+     
+     - parameter completion: handler with an inner closure that returns the number of sessions, or throws in case of errors
+     */
+    public func unsyncedSessionCount(completion: @escaping (() throws -> Int) -> Void) {
+        execute(command: "sd-dir-read sessions *@*").then { result in
+            completion { return result.response.count }
+        }.catch { error in
+            completion { throw error }
+        }
+    }
+    
+    /**
+     Returns text files with the contents of all unsynced sessions in the Aurora.
+     
+     - parameter completion: handler with an inner closure that returns an array of session Data, or throws in case of errors
+     */
+    public func unsyncedSessions(completion: @escaping (() throws -> [Data]) -> Void) {
+        // List all unsynced sessions
+        execute(command: "sd-dir-read sessions *@*").then { result in
+            // For each unsynced session, read its session.txt file
+            return when(fulfilled: result.response.map { self.execute(command: "sd-file-read session.txt sessions/\($0)") })
+        }.then { result in
+            // When all reads finish, return their output as an array
+            completion { return result.map { $0.output } }
+        }.catch { error in
+            // Or thow an error if anything fails along the way
+            completion { throw error }
+        }
     }
     
     public func clockDisplay(completion: @escaping (() throws -> String) -> Void) {
@@ -78,7 +118,7 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
     
     public func readProfile(completion: @escaping (() throws -> Data) -> Void) {
         execute(command: "sd-file-read profiles/_profiles.list").then { result in
-            completion { return try result.outputBuffer() }
+            completion { return try result.output }
         }.catch { error in
             completion { throw error }
         }
@@ -118,7 +158,7 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
                 
                 log("Executing command \(string)")
                 
-                let command = Command(data: data)
+                let command = Command(string, data: data)
                 
                 command.errorHandler = { error in
                     self.commandQueue.dequeue(command: command)
@@ -273,6 +313,8 @@ private class Command: NSObject {
     
     private(set) var data: Data?
     
+    private(set) var command: String
+    
     private var pendingOperations = 0 {
         didSet {
             if pendingOperations == 0 && finished {
@@ -281,30 +323,27 @@ private class Command: NSObject {
             }
         }
     }
-    private var response = [String]()
-    private var output = Data()
     private var status: UInt8 = 0
     private var finished = false
     
-    init(data: Data? = nil) {
+    init(_ command: String, data: Data? = nil) {
+        self.command = command
         self.data = data
+    }
+    
+    override var description: String {
+        get {
+            return "Command: \(command), completed: \(finished && pendingOperations == 0), response: \(try? responseString())"
+        }
     }
     
     var successHandler: ((Command) -> Void)?
     var errorHandler: ((Error) -> Void)?
+    var response = [String]()
+    var output = Data()
     
-    func responseString() throws -> String {
-        if !finished {
-            throw AuroraErrors.commandNotFinished
-        }
+    func responseString() -> String {
         return response.joined(separator: "\n")
-    }
-    
-    func outputBuffer() throws -> Data {
-        if !finished {
-            throw AuroraErrors.commandNotFinished
-        }
-        return output
     }
     
     func append(response handler: () throws -> Data) throws {
