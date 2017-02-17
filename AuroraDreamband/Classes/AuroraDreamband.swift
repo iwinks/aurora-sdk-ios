@@ -6,10 +6,17 @@
 //
 //
 
+import Foundation
 import UIKit
 import RZBluetooth
 import PromiseKit
 import AwaitKit
+
+// Definition:
+public extension Notification.Name {
+    public static let auroraDreambandConnected = Notification.Name("auroraDreambandConnected")
+    public static let auroraDreambandDisconnected = Notification.Name("auroraDreambandDisconnected")
+}
 
 public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
     
@@ -25,11 +32,13 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
         }
     }
     
-    var peripheral: RZBPeripheral?
+    private var peripheral: RZBPeripheral?
     
-    var helper: BleHelper?
+    private var helper: BleHelper?
     
     private var commandQueue = CommandQueue()
+    
+    private var pendingHandlers = [() -> Void]()
     
     internal override init() {
         super.init()
@@ -38,29 +47,39 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
     // MARK: - Public API
 
     // MARK: - Connection
-    public func connect(completion: (() -> Void)? = nil) {
+    public func connect() {
+        if connected {
+            log("ALREADY CONNECTED")
+            return
+        }
         log("CONNECTING...")
-        centralManager.scanForPeripherals(withServices: [AuroraService.uuid], options: nil) { scanInfo, error in
-            guard let peripheral = scanInfo?.peripheral else {
-                log("ERROR: \(error!)")
-                return
+        RZBUserInteraction.setTimeout(300)
+        RZBUserInteraction.perform {
+            self.centralManager.scanForPeripherals(withServices: [AuroraService.uuid], options: nil) { scanInfo, error in
+                guard let peripheral = scanInfo?.peripheral else {
+                    log("ERROR: \(error!)")
+                    return
+                }
+                self.peripheral = peripheral
+                self.centralManager.stopScan()
+                peripheral.maintainConnection = true
+                peripheral.connectionDelegate = self
             }
-            self.peripheral = peripheral
-            self.centralManager.stopScan()
-            peripheral.maintainConnection = true
-            peripheral.connectionDelegate = self
-            completion?()
         }
     }
     
-    public func disconnect(completion: (() -> Void)? = nil) {
+    public func disconnect() {
         centralManager.stopScan()
         if let peripheral = peripheral {
-            peripheral.cancelConnection() { error in
-                self.connected = false
-                log("DISCONNECTED")
-                completion?()
-            }
+            peripheral.cancelConnection()        }
+    }
+    
+    public func afterConnected(handler: @escaping () -> Void) {
+        if connected {
+            handler()
+        }
+        else {
+            pendingHandlers.append(handler)
         }
     }
     
@@ -84,16 +103,26 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
      
      - parameter completion: handler with an inner closure that returns an array of session Data, or throws in case of errors
      */
-    public func unsyncedSessions(completion: @escaping (() throws -> [Data]) -> Void) {
-        // List all unsynced sessions
-        execute(command: "sd-dir-read sessions *@*").then { result in
+    public func unsyncedSessions(completion: @escaping (() throws -> [(name: String, data: Data)]) -> Void) {
+        firstly {
+            // List all unsynced sessions
+            execute(command: "sd-dir-read sessions *@*")
+        }.then { result in
             // For each unsynced session, read its session.txt file
-            return when(fulfilled: result.response.map { self.execute(command: "sd-file-read session.txt sessions/\($0)") })
+            when(fulfilled: result.response.map { self.execute(command: "sd-file-read session.txt sessions/\($0)") })
         }.then { result in
             // When all reads finish, return their output as an array
-            completion { return result.map { $0.output } }
+            completion { return result.map { ($0.command.replacingOccurrences(of: "sd-file-read session.txt ", with: ""), $0.output) } }
         }.catch { error in
             // Or thow an error if anything fails along the way
+            completion { throw error }
+        }
+    }
+    
+    public func eraseSyncedSession(id: String, name: String, completion: @escaping (() throws -> Void) -> Void) {
+        execute(command: "sd-dir-del \(name)").then { result in
+            completion { }
+        }.catch { error in
             completion { throw error }
         }
     }
@@ -191,29 +220,29 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
     public func peripheral(_ peripheral: RZBPeripheral, connectionEvent event: RZBPeripheralStateEvent, error: Error?) {
         if event == .connectSuccess {
             // perform any connection set up here that should occur on every connection
-            log("AURORA CONNECTED")
-            connected = true
-            
             let helper = BleHelper(peripheral: peripheral)
             
             self.helper = helper
             self.peripheral = peripheral
             
-            helper.subscribe(to: AuroraService.events.streamData, updateHandler: self.transferStreamHandler).then { char in
-                log("Subscribed succesfully to streamData")
-            }.catch { error in
-                log("Failed to subscribe streamData with error \(error)")
-            }
+            let streamDataSubscription = helper.subscribe(to: AuroraService.events.streamData, updateHandler: self.transferStreamHandler)
+            let transferStatusSubscription = helper.subscribe(to: AuroraService.events.transferStatus, updateHandler: self.transferStatusHandler)
             
-            helper.subscribe(to: AuroraService.events.transferStatus, updateHandler: self.transferStatusHandler).then { char -> Void in
-                log("Subscribed succesfully to transferStatus")
-            }.catch { error in
-                log("Failed to subscribe transferStatus with error \(error)")
+            when(fulfilled: streamDataSubscription, transferStatusSubscription).then { _,_ -> Void in
+                log("AURORA CONNECTED")
+                self.connected = true
+                NotificationCenter.default.post(name: .auroraDreambandConnected, object: nil)
+                self.pendingHandlers.forEach { $0() }
+                self.pendingHandlers.removeAll()
+            }
+            .catch { error in
+                log("Failed to subscribe characteristics with error \(error)")
             }
         }
         else {
             log("AURORA DISCONNECTED")
             connected = false
+            NotificationCenter.default.post(name: .auroraDreambandDisconnected, object: nil)
             // The device is disconnected. maintainConnection will attempt a connection event
             // immediately after this. This default maintainConnection behavior may not be
             // desired for your application. A backoff timer or other behavior could be
