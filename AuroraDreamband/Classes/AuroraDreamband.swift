@@ -119,6 +119,13 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
         }
     }
     
+    /**
+     Erases the session specified from the Aurora
+     
+     - parameter id:         session id received by the rest API after syncing the session
+     - parameter name:       name of the session in the Aurora file system
+     - parameter completion: handler with an inner closure that returns the session is erased, or throws in case of errors
+     */
     public func eraseSyncedSession(id: String, name: String, completion: @escaping (() throws -> Void) -> Void) {
         execute(command: "sd-dir-del \(name)").then { result in
             completion { }
@@ -127,22 +134,12 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
         }
     }
     
-    public func clockDisplay(completion: @escaping (() throws -> String) -> Void) {
-        execute(command: "clock-display").then { result in
-            completion { return try result.responseString() }
+    public func osInfo(completion: @escaping (() throws -> Int) -> Void) {
+        execute(command: "os-info").then { result in
+            completion { return 0 }
         }.catch { error in
-            completion { throw error }
+                completion { throw error }
         }
-
-    }
-    
-    public func sessionFolders(completion: @escaping (() throws -> String) -> Void) {
-        execute(command: "sd-dir-read sessions *@*").then { result in
-            completion { return try result.responseString() }
-        }.catch { error in
-            completion { throw error }
-        }
-
     }
     
     public func readProfile(completion: @escaping (() throws -> Data) -> Void) {
