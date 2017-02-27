@@ -134,9 +134,13 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
         }
     }
     
-    public func osInfo(completion: @escaping (() throws -> Int) -> Void) {
-        execute(command: "os-info").then { result in
-            completion { return 0 }
+    public func osVersion(completion: @escaping (() throws -> Int) -> Void) {
+        execute(command: "os-info").then { result -> Void in
+            guard let version = result.responseString().components(separatedBy: "\n").first?.replacingOccurrences(of: "Version: ", with: "") else {
+                throw AuroraErrors.unparseableCommandResult
+            }
+            let intVersion = Int(version) ?? (version == "1.4.2" ? 10402 : 10401)
+            completion { return intVersion }
         }.catch { error in
                 completion { throw error }
         }
@@ -144,7 +148,7 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
     
     public func readProfile(completion: @escaping (() throws -> Data) -> Void) {
         execute(command: "sd-file-read profiles/_profiles.list").then { result in
-            completion { return try result.output }
+            completion { return result.output }
         }.catch { error in
             completion { throw error }
         }
@@ -152,7 +156,7 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
     
     public func write(profile data: Data, completion: @escaping (() throws -> String) -> Void) {
         execute(command: "sd-file-write profiles/_profiles.list_test 0", data: data).then { result in
-            completion { return try result.responseString() }
+            completion { return result.responseString() }
         }.catch { error in
             completion { throw error }
         }
@@ -160,7 +164,7 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
     
     public func help(completion: @escaping (() throws -> String) -> Void) {
         execute(command: "help").then { result in
-            completion { return try result.responseString() }
+            completion { return result.responseString() }
         }.catch { error in
             completion { throw error }
         }
