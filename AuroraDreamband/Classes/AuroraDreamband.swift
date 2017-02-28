@@ -252,7 +252,12 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
     }
     
     private func transferStatusHandler(_ updateHandler: @escaping () throws -> Data) {
-        return async {
+        guard let command = self.commandQueue.current else {
+            log("Command not found, aborting transferStatusHandler")
+            return
+        }
+        
+        async {
             let status = try updateHandler()
             
             guard let peripheral = self.peripheral,
@@ -261,10 +266,6 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
             }
             guard let state = TransferState(rawValue: status[0]) else {
                 throw AuroraErrors.unknownStateError
-            }
-            
-            guard let command = self.commandQueue.current else {
-                throw AuroraErrors.commandNotFound
             }
             
             log("transferStatusHandler state \(state)")
@@ -322,6 +323,9 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
             default:
                 break
             }
+        }.catch { error in
+            log("Error processing transferStatusHandler: \(error.localizedDescription)")
+            command.error = error
         }
     }
     
@@ -344,6 +348,8 @@ private class Command: NSObject {
     private(set) var data: Data?
     
     private(set) var command: String
+    
+    var error: Error?
     
     private var pendingOperations = 0 {
         didSet {
@@ -418,6 +424,9 @@ private class Command: NSObject {
     private func handleFinish() {
         if status != 0 {
             errorHandler?(AuroraErrors.commandError(code: status, message: try? responseString()))
+        }
+        else if let error = error {
+            errorHandler?(error)
         }
         else {
             successHandler?(self)
