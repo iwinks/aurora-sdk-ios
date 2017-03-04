@@ -146,6 +146,24 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
         }
     }
     
+    /**
+     Updates the Aurora with the provided firmware file
+     
+     - parameter data:       the contents of an Aurora's hex firmware file
+     - parameter completion: handler with an inner closure that returns when the update is finished, or throws in case of errors
+     */
+    public func osUpdate(firmware data: Data, completion: @escaping (() throws -> Void) -> Void) {
+        firstly {
+            return self.execute(command: "sd-file-write aurora.hex_test 0 / 1", data: data)
+        }.then { result in
+            return self.execute(command: "os-info")
+        }.then { result in
+            completion { }
+        }.catch { error in
+            completion { throw error }
+        }
+    }
+    
     public func readProfile(completion: @escaping (() throws -> Data) -> Void) {
         execute(command: "sd-file-read profiles/_profiles.list").then { result in
             completion { return result.output }
