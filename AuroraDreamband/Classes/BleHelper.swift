@@ -59,6 +59,7 @@ class BleHelper: NSObject {
                     break
                 }
                 
+                log("Sending inner chunk \(i+1) of \(chunkCount+1) with \(chunk.count) bytes")
                 try await(self.write(chunk: chunk, to: characteristicUUID))
             }
         }

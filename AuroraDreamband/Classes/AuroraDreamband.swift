@@ -310,13 +310,22 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
             case .cmdInputRequested:
                 log(">>>> INPUT REQUEST")
                 
-                var data = Data()
-                if let input = command.data {
-                    data.append(input)
+                log("Getting next chunk")
+                let chunk = command.nextChunk()
+                let currentChunk = command.currentChunk + 1
+                let chunkCount = command.chunkCount + 1
+                
+                if currentChunk > 1 {
+                    log("Sleeping 1000ms before writing next payload: \(Date())")
+                    try await { Thread.sleep(forTimeInterval: 1) }
+                    log("Slept 1000ms before writing next payload: \(Date())")
                 }
-                data.append("\r\r\r\r".data)
-                try await(helper.write(data: data, to: AuroraService.events.transferData))
+                
+                log("Sending chunk \(currentChunk) of \(chunkCount) with \(chunk.count) bytes")
+                try await(helper.write(data: chunk, to: AuroraService.events.transferData))
+                log("Sent chunk \(currentChunk). Flushing data...")
                 try await(helper.write(data: TransferState.cmdInputReady.rawValue.data, to: AuroraService.events.transferStatus));
+                log("Sent chunk \(currentChunk) and flushed data.")
                 
                 log("<<<< INPUT REQUEST")
                 
