@@ -5,9 +5,25 @@
 //  Created by Rafael Nobre on 28/01/17.
 //
 //
+import CoreBluetooth
 
 let TRANSFER_MAX_PACKET_LENGTH = 20
-let TRANSFER_MAX_PAYLOAD = 128
+let TRANSFER_MAX_PAYLOAD = 120
+let AURORA_SERVICE_UUID = CBUUID(string: "6175726f-7261-454d-af79-42b381af0204")
+
+struct AuroraChars {
+    static let commandData = CBUUID(string: "6175726f-7261-49ce-8077-b954b033c880")
+    static let commandStatus = CBUUID(string: "6175726f-7261-49ce-8077-b954b033c881")
+    
+    static let eventIndicated = CBUUID(string: "6175726f-7261-49ce-8077-a614a0dda570")
+    static let eventNotified = CBUUID(string: "6175726f-7261-49ce-8077-a614a0dda571")
+    
+    static let commandOutputIndicated = CBUUID(string: "6175726f-7261-49ce-8077-b954b033c882")
+    static let commandOutputNotified = CBUUID(string: "6175726f-7261-49ce-8077-b954b033c883")
+    
+    static let streamDataIndicated = CBUUID(string: "6175726f-7261-49ce-8077-b954b033c890")
+    static let streamDataNotified = CBUUID(string: "6175726f-7261-49ce-8077-b954b033c891")
+}
 
 public enum SleepStage: Int32 {
     case unknown = 0
@@ -17,13 +33,12 @@ public enum SleepStage: Int32 {
     case rem = 4
 }
 
-enum TransferState: UInt8 {
+enum CommandState: UInt8 {
     case idle = 0
-    case cmdExecute = 1
-    case cmdRespReady = 2
-    case cmdOutputReady = 3
-    case cmdInputRequested = 4
-    case cmdInputReady = 5
+    case execute = 1
+    case responseObjectReady = 2
+    case responseTableReady = 3
+    case inputRequested = 4
 }
 
 enum DataType: Int32 {
@@ -41,62 +56,111 @@ enum DataType: Int32 {
     case ptr = 11
 }
 
-enum EventOutput: Int32 {
-    case usb = 0
-    case log = 1
-    case sessionFile = 2
-    case profile = 3
-    case bluetooth = 4
+struct EventOutputIds: OptionSet {
+    let rawValue: UInt8
+    
+    static let usb       = EventOutputIds(rawValue: 1 << 0)
+    static let log       = EventOutputIds(rawValue: 1 << 1)
+    static let session   = EventOutputIds(rawValue: 1 << 2)
+    static let profile   = EventOutputIds(rawValue: 1 << 3)
+    static let bluetooth = EventOutputIds(rawValue: 1 << 4)
 }
 
-enum Stream: Int32 {
-    
-    case signalQuality = 0
-    case rawEeg = 1
-    case heartRate = 2
-    case accelX = 3
-    
-    case accelY = 4
-    case accelZ = 5
-    case gyroX = 6
-    case gyroY = 7
-    
-    case gyroZ = 8
-    case temperature = 9
-    case battery = 10
-    case streamReserved1 = 11
-    
-    case streamReserved2 = 12
-    case streamReserved3 = 13
-    case streamReserved4 = 14
-    case streamReserved5 = 15
-    
-    case sleepFeatures = 16
-    case sleepStages = 17
-    case sleepTracker = 18
-    case streamReserved6 = 19
-    
-    case streamReserved7 = 20
-    case streamReserved8 = 21
-    case streamReserved9 = 22
-    case streamReserved10 = 23
-    
-    case accelMagnitude = 24
-    case gyroMagnitude = 25
-    case rotationRoll = 26
-    case rotationPitch = 27
-    
-    case streamReserved11 = 28
-    case streamReserved12 = 29
-    case streamReserved13 = 30
-    case streamReserved14 = 31
+struct EventIds: OptionSet {
+    let rawValue: UInt32
+
+    static let signalMonitor       = EventIds(rawValue: 1 << 0)
+    static let sleepTrackerMonitor = EventIds(rawValue: 1 << 1)
+    static let movementMonitor     = EventIds(rawValue: 1 << 2)
+    static let stimPresented       = EventIds(rawValue: 1 << 3)
+
+    static let awakening           = EventIds(rawValue: 1 << 4)
+    static let autoShutdown        = EventIds(rawValue: 1 << 5)
+    static let eventReserved1      = EventIds(rawValue: 1 << 6)
+    static let eventReserved2      = EventIds(rawValue: 1 << 7)
+
+    static let eventReserved3      = EventIds(rawValue: 1 << 8)
+    static let eventReserved4      = EventIds(rawValue: 1 << 9)
+    static let eventReserved5      = EventIds(rawValue: 1 << 10)
+    static let eventReserved6      = EventIds(rawValue: 1 << 11)
+
+    static let eventReserved7      = EventIds(rawValue: 1 << 12)
+    static let eventReserved8      = EventIds(rawValue: 1 << 13)
+    static let eventReserved9      = EventIds(rawValue: 1 << 14)
+    static let eventReserved10     = EventIds(rawValue: 1 << 15)
+
+    static let buttonMonitor       = EventIds(rawValue: 1 << 16)
+    static let sdcardMonitor       = EventIds(rawValue: 1 << 17)
+    static let usbMonitor          = EventIds(rawValue: 1 << 18)
+    static let batteryMonitor      = EventIds(rawValue: 1 << 19)
+
+    static let buzzMonitor         = EventIds(rawValue: 1 << 20)
+    static let ledMonitor          = EventIds(rawValue: 1 << 21)
+    static let eventReserved11     = EventIds(rawValue: 1 << 22)
+    static let eventReserved12     = EventIds(rawValue: 1 << 23)
+
+    static let bleMonitor          = EventIds(rawValue: 1 << 24)
+    static let bleNotify           = EventIds(rawValue: 1 << 25)
+    static let bleIndicate         = EventIds(rawValue: 1 << 26)
+    static let clockAlarmFire      = EventIds(rawValue: 1 << 27)
+
+    static let clockTimer0Fire     = EventIds(rawValue: 1 << 28)
+    static let clockTimer1Fire     = EventIds(rawValue: 1 << 29)
+    static let clockTimer2Fire     = EventIds(rawValue: 1 << 30)
+    static let clockTimerFire      = EventIds(rawValue: 1 << 31)
 }
 
-enum StreamOutput: Int32 {
-    case silent = 0
-    case fileCsv = 1
-    case fileRaw = 2
-    case console = 3
-    case dataLog = 4
-    case ble = 5
+struct StreamIds: OptionSet {
+    let rawValue: UInt32
+    
+    static let signalQuality    = StreamIds(rawValue: 1 << 0)
+    static let rawEeg           = StreamIds(rawValue: 1 << 1)
+    static let heartRate        = StreamIds(rawValue: 1 << 2)
+    static let accelX           = StreamIds(rawValue: 1 << 3)
+    
+    static let accelY           = StreamIds(rawValue: 1 << 4)
+    static let accelZ           = StreamIds(rawValue: 1 << 5)
+    static let gyroX            = StreamIds(rawValue: 1 << 6)
+    static let gyroY            = StreamIds(rawValue: 1 << 7)
+    
+    static let gyroZ            = StreamIds(rawValue: 1 << 8)
+    static let temperature      = StreamIds(rawValue: 1 << 9)
+    static let battery          = StreamIds(rawValue: 1 << 10)
+    static let streamReserved1  = StreamIds(rawValue: 1 << 11)
+    
+    static let streamReserved2  = StreamIds(rawValue: 1 << 12)
+    static let streamReserved3  = StreamIds(rawValue: 1 << 13)
+    static let streamReserved4  = StreamIds(rawValue: 1 << 14)
+    static let streamReserved5  = StreamIds(rawValue: 1 << 15)
+    
+    static let sleepFeatures    = StreamIds(rawValue: 1 << 16)
+    static let sleepStages      = StreamIds(rawValue: 1 << 17)
+    static let sleepTracker     = StreamIds(rawValue: 1 << 18)
+    static let streamReserved6  = StreamIds(rawValue: 1 << 19)
+    
+    static let streamReserved7  = StreamIds(rawValue: 1 << 20)
+    static let streamReserved8  = StreamIds(rawValue: 1 << 21)
+    static let streamReserved9  = StreamIds(rawValue: 1 << 22)
+    static let streamReserved10 = StreamIds(rawValue: 1 << 23)
+    
+    static let accelMagnitude   = StreamIds(rawValue: 1 << 24)
+    static let gyroMagnitude    = StreamIds(rawValue: 1 << 25)
+    static let rotationRoll     = StreamIds(rawValue: 1 << 26)
+    static let rotationPitch    = StreamIds(rawValue: 1 << 27)
+    
+    static let streamReserved11 = StreamIds(rawValue: 1 << 28)
+    static let streamReserved12 = StreamIds(rawValue: 1 << 29)
+    static let streamReserved13 = StreamIds(rawValue: 1 << 30)
+    static let streamReserved14 = StreamIds(rawValue: 1 << 31)
+}
+
+struct StreamOutputIds: OptionSet {
+    let rawValue: UInt8
+
+    static let silent    = StreamOutputIds(rawValue: 1 << 0)
+    static let fileCsv   = StreamOutputIds(rawValue: 1 << 1)
+    static let fileRaw   = StreamOutputIds(rawValue: 1 << 2)
+    static let console   = StreamOutputIds(rawValue: 1 << 3)
+    static let dataLog   = StreamOutputIds(rawValue: 1 << 4)
+    static let bluetooth = StreamOutputIds(rawValue: 1 << 5)
 }

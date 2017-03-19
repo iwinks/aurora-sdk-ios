@@ -10,9 +10,7 @@ import UIKit
 
 class Command: NSObject {
     
-    private var data: Data?
-    var currentChunk = -1
-    var chunkCount = 0
+    private(set) var data: Data?
     private(set) var command: String
     
     var error: Error?
@@ -85,35 +83,6 @@ class Command: NSObject {
         else {
             log("finished command while busy, waiting for last response to come in...")
         }
-    }
-    
-    func nextChunk() -> Data {
-        currentChunk += 1
-        
-        let trailingData = "\r\r\r\r".data
-        guard let data = data else {
-            return trailingData
-        }
-        chunkCount = data.count / TRANSFER_MAX_PAYLOAD
-        
-        if currentChunk > chunkCount {
-            return trailingData
-        }
-        
-        let chunkStart = currentChunk * TRANSFER_MAX_PAYLOAD
-        var chunkEnd = chunkStart + TRANSFER_MAX_PAYLOAD
-        
-        if chunkEnd > data.count {
-            chunkEnd = data.count
-        }
-        
-        var chunk = data.subdata(in: chunkStart..<chunkEnd)
-        
-        if currentChunk == chunkCount && chunk.count + trailingData.count <= TRANSFER_MAX_PAYLOAD {
-            chunk.append(trailingData)
-        }
-        
-        return chunk
     }
     
     private func handleFinish() {

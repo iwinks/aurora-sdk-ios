@@ -21,7 +21,7 @@ class BleHelper: NSObject {
             self.service = service
         }
         else {
-            self.service = AuroraService.uuid
+            self.service = AURORA_SERVICE_UUID
         }
     }
     
@@ -37,10 +37,6 @@ class BleHelper: NSObject {
         return async {
             if data.count == 0 {
                 return
-            }
-            
-            if data.count > TRANSFER_MAX_PAYLOAD {
-                throw AuroraErrors.maxPayloadExceeded(size: data.count)
             }
             
             let chunkCount = data.count / TRANSFER_MAX_PACKET_LENGTH
@@ -59,7 +55,7 @@ class BleHelper: NSObject {
                     break
                 }
                 
-                log("Sending inner chunk \(i+1) of \(chunkCount+1) with \(chunk.count) bytes")
+                log("Sending chunk \(i+1) of \(chunkCount+1) with \(chunk.count) bytes")
                 try await(self.write(chunk: chunk, to: characteristicUUID))
             }
         }

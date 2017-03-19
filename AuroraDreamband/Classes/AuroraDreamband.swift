@@ -55,7 +55,7 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
         log("CONNECTING...")
         RZBUserInteraction.setTimeout(300)
         RZBUserInteraction.perform {
-            self.centralManager.scanForPeripherals(withServices: [AuroraService.uuid], options: nil) { scanInfo, error in
+            self.centralManager.scanForPeripherals(withServices: [AURORA_SERVICE_UUID], options: nil) { scanInfo, error in
                 guard let peripheral = scanInfo?.peripheral else {
                     log("ERROR: \(error!)")
                     return
@@ -220,13 +220,13 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
                 self.commandQueue.enqueue(command: command) {
                     do {
                         //write the status byte, indicating start of command
-                        try await(helper.write(data: TransferState.idle.rawValue.data, to: AuroraService.events.transferStatus))
+                        try await(helper.write(data: CommandState.idle.rawValue.data, to: AuroraChars.commandStatus))
                         
                         //write the actual command string as ascii (max 128bytes)
-                        try await(helper.write(data: string.data, to: AuroraService.events.transferData))
+                        try await(helper.write(data: string.data, to: AuroraChars.commandData))
                         
                         //write the status byte, indicating end of command
-                        try await(helper.write(data: TransferState.cmdExecute.rawValue.data, to: AuroraService.events.transferStatus))
+                        try await(helper.write(data: CommandState.execute.rawValue.data, to: AuroraChars.commandStatus))
                     }
                     catch {
                         reject(error)
@@ -244,10 +244,13 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
             self.helper = helper
             self.peripheral = peripheral
             
-            let streamDataSubscription = helper.subscribe(to: AuroraService.events.streamData, updateHandler: self.transferStreamHandler)
-            let transferStatusSubscription = helper.subscribe(to: AuroraService.events.transferStatus, updateHandler: self.transferStatusHandler)
+            var requiredSubscriptions = [Promise<CBCharacteristic>]()
+            requiredSubscriptions.append(helper.subscribe(to: AuroraChars.commandStatus, updateHandler: self.commandStatusHandler))
+            requiredSubscriptions.append(helper.subscribe(to: AuroraChars.commandOutputIndicated, updateHandler: self.commandOutputHandler))
+            requiredSubscriptions.append(helper.subscribe(to: AuroraChars.eventIndicated, updateHandler: self.eventHandler))
+            requiredSubscriptions.append(helper.subscribe(to: AuroraChars.streamDataIndicated, updateHandler: self.streamHandler))
             
-            when(fulfilled: streamDataSubscription, transferStatusSubscription).then { _,_ -> Void in
+            when(fulfilled: requiredSubscriptions).then { _ -> Void in
                 log("AURORA CONNECTED")
                 self.connected = true
                 NotificationCenter.default.post(name: .auroraDreambandConnected, object: nil)
@@ -269,7 +272,7 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
         }
     }
     
-    private func transferStatusHandler(_ updateHandler: @escaping () throws -> Data) {
+    private func commandStatusHandler(_ updateHandler: @escaping () throws -> Data) {
         guard let command = self.commandQueue.current else {
             log("Command not found, aborting transferStatusHandler")
             return
@@ -282,7 +285,7 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
                 let helper = self.helper else {
                 throw AuroraErrors.notConnected
             }
-            guard let state = TransferState(rawValue: status[0]) else {
+            guard let state = CommandState(rawValue: status[0]) else {
                 throw AuroraErrors.unknownStateError
             }
             
@@ -299,51 +302,30 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
                 log("<<<< IDLE")
                 
             // Received response line(s)
-            case .cmdRespReady:
+            case .responseTableReady, .responseObjectReady:
                 log(">>>> READ RESPONSE")
                 
                 // Second status byte is number of bytes available to read
                 let count = Int(status[1])
                 // Append line to current command's response
                 try command.append(response: { () throws -> Data in
-                    try await(helper.read(from: AuroraService.events.transferData, count: count))
+                    try await(helper.read(from: AuroraChars.commandData, count: count))
                 })
                 
                 log("<<<< READ RESPONSE")
                 
-            // Received binary output
-            case .cmdOutputReady:
-                log(">>>> READ OUTPUT")
-                
-                // Second status byte is number of bytes available to read
-                let count = Int(status[1])
-                // Append chunk to current command's output
-                try command.append(output: { () throws -> Data in
-                    try await(helper.read(from: AuroraService.events.transferData, count: count))
-                })
-                
-                log("<<<< READ OUTPUT")
-                
             // Command waiting for input
-            case .cmdInputRequested:
+            case .inputRequested:
                 log(">>>> INPUT REQUEST")
                 
-                log("Getting next chunk")
-                let chunk = command.nextChunk()
-                let currentChunk = command.currentChunk + 1
-                let chunkCount = command.chunkCount + 1
-                
-                if currentChunk > 1 {
-                    log("Sleeping 1000ms before writing next payload: \(Date())")
-                    try await { Thread.sleep(forTimeInterval: 1) }
-                    log("Slept 1000ms before writing next payload: \(Date())")
+                if let data = command.data {
+                    log("Writing data with \(data.count) bytes")
+                    try await(helper.write(data: data, to: AuroraChars.commandData))
+                    log("Finished writing data")
                 }
-                
-                log("Sending chunk \(currentChunk) of \(chunkCount) with \(chunk.count) bytes")
-                try await(helper.write(data: chunk, to: AuroraService.events.transferData))
-                log("Sent chunk \(currentChunk). Flushing data...")
-                try await(helper.write(data: TransferState.cmdInputReady.rawValue.data, to: AuroraService.events.transferStatus));
-                log("Sent chunk \(currentChunk) and flushed data.")
+                else {
+                    log("No data to write.")
+                }
                 
                 log("<<<< INPUT REQUEST")
                 
@@ -356,8 +338,41 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
         }
     }
     
-    private func transferStreamHandler(_ updateHandler: () throws -> Data) {
-        log("transferStreamHandler")
+    private func commandOutputHandler(_ updateHandler: @escaping () throws -> Data) {
+        log("commandOutputHandler")
+        guard let command = self.commandQueue.current else {
+            log("Command not found, aborting commandOutputHandler")
+            return
+        }
+        
+        async {
+            let output = try updateHandler()
+            
+            guard let peripheral = self.peripheral,
+                let helper = self.helper else {
+                    throw AuroraErrors.notConnected
+            }
+
+            let data = try updateHandler()
+            log("Char data \(data)")
+            log(">>>> READ OUTPUT")
+
+            // Second byte is number of bytes available to read
+            let count = Int(output[1])
+            // Append chunk to current command's output
+            try command.append(output: { () throws -> Data in
+                try await(helper.read(from: AuroraChars.commandData, count: count))
+            })
+            
+            log("<<<< READ OUTPUT")
+        }.catch { error in
+            log("Error processing commandOutputHandler: \(error.localizedDescription)")
+            command.error = error
+        }
+    }
+    
+    private func eventHandler(_ updateHandler: @escaping () throws -> Data) {
+        log("eventHandler")
         do {
             let data = try updateHandler()
             log("Char data \(data)")
@@ -367,5 +382,15 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
         }
     }
     
+    private func streamHandler(_ updateHandler: () throws -> Data) {
+        log("streamHandler")
+        do {
+            let data = try updateHandler()
+            log("Char data \(data)")
+        }
+        catch {
+            log("Error! \(error)")
+        }
+    }
     
 }
