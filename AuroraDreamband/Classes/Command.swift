@@ -6,8 +6,6 @@
 //
 //
 
-import UIKit
-
 class Command: NSObject {
     
     private(set) var data: Data?
@@ -46,6 +44,42 @@ class Command: NSObject {
         return response.joined(separator: "\n")
     }
     
+    func responseTable() throws -> [[String: String]] {
+        guard let header = response.first else {
+            throw AuroraErrors.unparseableCommandResult
+        }
+        
+        let headerRow = header.components(separatedBy: "|").map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+        
+        let rows = response.flatMap { row -> [String : String]? in
+            guard row != header else {
+                return nil
+            }
+            
+            let cols = row.components(separatedBy: "|").map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+            
+            var tableRow = [String: String]()
+            for (index, element) in cols.enumerated() {
+                tableRow[headerRow[index]] = cols[index]
+            }
+            
+            return tableRow
+        }
+        
+        return rows
+    }
+    
+    func responseObject() throws -> [String: String] {
+        var object = [String: String]()
+        
+        for line in response {
+            let pair = line.components(separatedBy: " : ")
+            object[pair[0]] = pair[1]
+        }
+        
+        return object
+    }
+    
     func append(response handler: () throws -> Data) throws {
         pendingOperations += 1
         
@@ -66,7 +100,7 @@ class Command: NSObject {
         
         let data = try handler()
         output.append(data)
-        log("Appended output chunk with \(data.count) bytes. Total bytes \(output.count)")
+        log("Appended output chunk with \(data.count) bytes and \((data as NSData).description) content. Total bytes \(output.count)")
         
         pendingOperations -= 1
     }

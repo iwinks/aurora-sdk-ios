@@ -136,7 +136,7 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
     
     public func osVersion(completion: @escaping (() throws -> Int) -> Void) {
         execute(command: "os-info").then { result -> Void in
-            guard let version = result.responseString().components(separatedBy: "\n").first?.replacingOccurrences(of: "Version: ", with: "") else {
+            guard let version = try result.responseObject()["Version"] else {
                 throw AuroraErrors.unparseableCommandResult
             }
             let intVersion = Int(version) ?? (version == "1.4.2" ? 10402 : 10401)
@@ -154,7 +154,7 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
      */
     public func osUpdate(firmware data: Data, completion: @escaping (() throws -> Void) -> Void) {
         firstly {
-            return self.execute(command: "sd-file-write aurora.hex_test 0 / 1", data: data)
+            return self.execute(command: "sd-file-write aurora.hex_test / 0 0 250", data: data)
         }.then { result in
             return self.execute(command: "os-info")
         }.then { result in
@@ -246,18 +246,21 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
             
             var requiredSubscriptions = [Promise<CBCharacteristic>]()
             requiredSubscriptions.append(helper.subscribe(to: AuroraChars.commandStatus, updateHandler: self.commandStatusHandler))
-            requiredSubscriptions.append(helper.subscribe(to: AuroraChars.commandOutputIndicated, updateHandler: self.commandOutputHandler))
-            requiredSubscriptions.append(helper.subscribe(to: AuroraChars.eventIndicated, updateHandler: self.eventHandler))
-            requiredSubscriptions.append(helper.subscribe(to: AuroraChars.streamDataIndicated, updateHandler: self.streamHandler))
+            requiredSubscriptions.append(helper.subscribe(to: AuroraChars.commandOutputNotified, updateHandler: self.commandOutputHandler))
+            requiredSubscriptions.append(helper.subscribe(to: AuroraChars.eventNotified, updateHandler: self.eventHandler))
+            requiredSubscriptions.append(helper.subscribe(to: AuroraChars.streamDataNotified, updateHandler: self.streamHandler))
             
-            when(fulfilled: requiredSubscriptions).then { _ -> Void in
+            when(fulfilled: requiredSubscriptions).then { _ -> Promise<Command> in
+                let eventIdMask: EventIds = [.buttonMonitor, .batteryMonitor]
+                return self.execute(command: "event-output-enable \(eventIdMask.rawValue) 16")
+            }.then { eventMask -> Void in
+                log("event_mask \(try? eventMask.responseTable())")
                 log("AURORA CONNECTED")
                 self.connected = true
                 NotificationCenter.default.post(name: .auroraDreambandConnected, object: nil)
                 self.pendingHandlers.forEach { $0() }
                 self.pendingHandlers.removeAll()
-            }
-            .catch { error in
+            }.catch { error in
                 log("Failed to subscribe characteristics with error \(error)")
             }
         }
@@ -346,23 +349,8 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
         }
         
         async {
-            let output = try updateHandler()
-            
-            guard let peripheral = self.peripheral,
-                let helper = self.helper else {
-                    throw AuroraErrors.notConnected
-            }
-
-            let data = try updateHandler()
-            log("Char data \(data)")
-            log(">>>> READ OUTPUT")
-
-            // Second byte is number of bytes available to read
-            let count = Int(output[1])
             // Append chunk to current command's output
-            try command.append(output: { () throws -> Data in
-                try await(helper.read(from: AuroraChars.commandData, count: count))
-            })
+            try command.append(output: updateHandler)
             
             log("<<<< READ OUTPUT")
         }.catch { error in
@@ -375,7 +363,10 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
         log("eventHandler")
         do {
             let data = try updateHandler()
-            log("Char data \(data)")
+            let event: Int8 = data.scanValue(start: 0, length: 1)
+            let flags: Int32 = data.scanValue(start: 1, length: 4)
+            log("Char event \(event)")
+            log("Char flags \(flags)")
         }
         catch {
             log("Error! \(error)")
