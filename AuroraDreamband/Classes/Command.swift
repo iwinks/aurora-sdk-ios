@@ -90,7 +90,6 @@ class Command: NSObject {
         else {
             throw AuroraErrors.unparseableCommandResult
         }
-        log("Appended response line with \(data.count) bytes. Total lines \(response.count)")
         
         pendingOperations -= 1
     }
@@ -110,18 +109,14 @@ class Command: NSObject {
         self.status = status
         
         if pendingOperations == 0 {
-            log("finished command")
             handleFinish()
-            
-        }
-        else {
-            log("finished command while busy, waiting for last response to come in...")
         }
     }
     
     private func handleFinish() {
+        log("|====================================\nCommand: \(command)\nStatus: \(status) Error: \(error)\nResponse: \(responseString())\n====================================|")
         if status != 0 {
-            errorHandler?(AuroraErrors.commandError(code: status, message: try? responseString()))
+            errorHandler?(AuroraErrors.commandError(code: status, message: (try? responseObject())?["Message"]))
         }
         else if let error = error {
             errorHandler?(error)

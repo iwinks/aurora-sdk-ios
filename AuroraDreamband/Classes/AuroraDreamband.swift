@@ -91,8 +91,8 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
      - parameter completion: handler with an inner closure that returns the number of sessions, or throws in case of errors
      */
     public func unsyncedSessionCount(completion: @escaping (() throws -> Int) -> Void) {
-        execute(command: "sd-dir-read sessions *@*").then { result in
-            completion { return result.response.count }
+        execute(command: "sd-dir-read sessions 0 *@*").then { result in
+            completion { return try result.responseTable().count }
         }.catch { error in
             completion { throw error }
         }
@@ -106,13 +106,13 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
     public func unsyncedSessions(completion: @escaping (() throws -> [(name: String, data: Data)]) -> Void) {
         firstly {
             // List all unsynced sessions
-            execute(command: "sd-dir-read sessions *@*")
+            execute(command: "sd-dir-read sessions 0 *@*")
         }.then { result in
             // For each unsynced session, read its session.txt file
-            when(fulfilled: result.response.map { self.execute(command: "sd-file-read session.txt sessions/\($0)") })
+            when(fulfilled: try result.responseTable().flatMap { $0["Name"] }.map { self.execute(command: "sd-file-read session.txt \($0)") })
         }.then { result in
             // When all reads finish, return their output as an array
-            completion { return result.map { ($0.command.replacingOccurrences(of: "sd-file-read session.txt ", with: ""), $0.output) } }
+            completion { return result.map { ($0.command.replacingOccurrences(of: "sd-file-read session.txt sessions/", with: ""), $0.output) } }
         }.catch { error in
             // Or thow an error if anything fails along the way
             completion { throw error }
@@ -120,14 +120,14 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
     }
     
     /**
-     Erases the session specified from the Aurora
+     Renames the session specified from Aurora
      
      - parameter id:         session id received by the rest API after syncing the session
      - parameter name:       name of the session in the Aurora file system
-     - parameter completion: handler with an inner closure that returns the session is erased, or throws in case of errors
+     - parameter completion: handler with an inner closure that returns the session is renamed, or throws in case of errors
      */
-    public func eraseSyncedSession(id: String, name: String, completion: @escaping (() throws -> Void) -> Void) {
-        execute(command: "sd-dir-del \(name)").then { result in
+    public func renameSyncedSession(id: String, name: String, completion: @escaping (() throws -> Void) -> Void) {
+        execute(command: "sd-rename sessions/\(name) sessions/\(id)").then { result in
             completion { }
         }.catch { error in
             completion { throw error }
@@ -250,11 +250,13 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
             requiredSubscriptions.append(helper.subscribe(to: AuroraChars.eventNotified, updateHandler: self.eventHandler))
             requiredSubscriptions.append(helper.subscribe(to: AuroraChars.streamDataNotified, updateHandler: self.streamHandler))
             
-            when(fulfilled: requiredSubscriptions).then { _ -> Promise<Command> in
-                let eventIdMask: EventIds = [.buttonMonitor, .batteryMonitor]
-                return self.execute(command: "event-output-enable \(eventIdMask.rawValue) 16")
+            when(fulfilled: requiredSubscriptions).then { _ in
+                return self.execute(command: "prof-unload")
+            }.then { _ in
+                return self.execute(command: "clock-set \(self.clockSetTime())")
+            }.then { _ in
+                return self.execute(command: "event-output-enable \(EventIds([.batteryMonitor]).rawValue) 16")
             }.then { eventMask -> Void in
-                log("event_mask \(try? eventMask.responseTable())")
                 log("AURORA CONNECTED")
                 self.connected = true
                 NotificationCenter.default.post(name: .auroraDreambandConnected, object: nil)
@@ -273,6 +275,12 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
             // desired for your application. A backoff timer or other behavior could be
             // implemented here.
         }
+    }
+    
+    private func clockSetTime() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy MM dd A"
+        return formatter.string(from: Date())
     }
     
     private func commandStatusHandler(_ updateHandler: @escaping () throws -> Data) {

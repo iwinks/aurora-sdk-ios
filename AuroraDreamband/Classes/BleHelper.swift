@@ -56,9 +56,7 @@ class BleHelper: NSObject {
                 }
                 
                 log("Sending chunk \(i+1) of \(chunkCount+1) with \(chunk.count) bytes")
-                let start = Date()
                 try await(self.write(chunk: chunk, to: characteristicUUID, acknowledged: acknowledged))
-                log("Interval: \(start.timeIntervalSinceNow * -1000)ms")
                 
             }
         }
