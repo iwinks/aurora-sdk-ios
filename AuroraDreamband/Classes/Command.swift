@@ -8,7 +8,7 @@
 
 class Command: NSObject {
     
-    private(set) var data: Data?
+    var data: Data?
     private(set) var command: String
     
     var error: Error?

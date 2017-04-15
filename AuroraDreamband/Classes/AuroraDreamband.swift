@@ -154,7 +154,7 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
      */
     public func osUpdate(firmware data: Data, completion: @escaping (() throws -> Void) -> Void) {
         firstly {
-            return self.execute(command: "sd-file-write aurora.hex_test / 0 0 250", data: data)
+            return self.execute(command: "sd-file-write aurora.hex_test / 0 1 250", data: data)
         }.then { result in
             return self.execute(command: "os-info")
         }.then { result in
@@ -323,7 +323,11 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
                 
                 if let data = command.data {
                     log("Writing data with \(data.count) bytes")
-                    try await(helper.write(data: data, to: AuroraChars.commandData))
+                    command.data = nil
+                    let start = Date()
+                    try await(helper.write(data: data, to: AuroraChars.commandData, acknowledged: true))
+                    let elapsed = start.timeIntervalSinceNow * -1
+                    print("\(elapsed * 1000)ms elapsed to write \(data.count) bytes. Throughput: \(Double(data.count)/elapsed)bytes/s")
                     log("Finished writing data")
                 }
                 else {

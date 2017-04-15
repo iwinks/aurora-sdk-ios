@@ -33,7 +33,7 @@ class BleHelper: NSObject {
      
      - returns: a promise that resolves when the data is succesfully written, and rejects otherwise
      */
-    func write(data: Data, to characteristicUUID: CBUUID) -> Promise<Void> {
+    func write(data: Data, to characteristicUUID: CBUUID, acknowledged: Bool = true) -> Promise<Void> {
         return async {
             if data.count == 0 {
                 return
@@ -56,7 +56,10 @@ class BleHelper: NSObject {
                 }
                 
                 log("Sending chunk \(i+1) of \(chunkCount+1) with \(chunk.count) bytes")
-                try await(self.write(chunk: chunk, to: characteristicUUID))
+                let start = Date()
+                try await(self.write(chunk: chunk, to: characteristicUUID, acknowledged: acknowledged))
+                log("Interval: \(start.timeIntervalSinceNow * -1000)ms")
+                
             }
         }
     }
@@ -69,7 +72,7 @@ class BleHelper: NSObject {
      
      - returns: a promise that resolves when the data is succesfully written, and rejects otherwise
      */
-    func write(chunk data: Data, to characteristicUUID: CBUUID) -> Promise<Void> {
+    func write(chunk data: Data, to characteristicUUID: CBUUID, acknowledged: Bool = true) -> Promise<Void> {
         return Promise { resolve, reject in
             if data.count == 0 {
                 resolve()
@@ -77,10 +80,17 @@ class BleHelper: NSObject {
             if data.count > TRANSFER_MAX_PACKET_LENGTH {
                 throw AuroraErrors.maxPayloadExceeded(size: data.count)
             }
-            peripheral.write(data, characteristicUUID: characteristicUUID, serviceUUID: service) { characteristic, error in
-                if let error = error  {
-                    return reject(error)
-                }
+            
+            if acknowledged {
+                peripheral.write(data, characteristicUUID: characteristicUUID, serviceUUID: service) { characteristic, error in
+                    if let error = error  {
+                        return reject(error)
+                    }
+                    resolve()
+                 }
+            }
+            else {
+                peripheral.write(data, characteristicUUID: characteristicUUID, serviceUUID: service)
                 resolve()
             }
         }
