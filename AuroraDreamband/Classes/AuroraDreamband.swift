@@ -214,6 +214,15 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
                 }
                 command.successHandler = { command in
                     self.commandQueue.dequeue(command: command)
+                    
+                    if let data = data {
+                        let dataChecksum = CRC32(data: data).crc
+                        let bleChecksum = command.checksum()
+                        if dataChecksum != bleChecksum {
+                            return reject(AuroraErrors.corruptionError)
+                        }
+                    }
+                    
                     resolve(command)
                 }
 

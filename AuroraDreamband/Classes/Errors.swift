@@ -17,6 +17,7 @@ public enum AuroraErrors: LocalizedError {
     case unparseableCommandResult
     case commandNotFinished
     case commandNotFound
+    case corruptionError
 
     public var errorDescription: String? {
         switch self {
@@ -49,6 +50,9 @@ public enum AuroraErrors: LocalizedError {
             
         case .commandNotFound:
             return "There is no command in execution."
+        
+        case .corruptionError:
+            return "Data transmission corruption occurred."
         }
     }
 }

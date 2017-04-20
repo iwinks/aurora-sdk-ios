@@ -113,6 +113,14 @@ class Command: NSObject {
         }
     }
     
+    func checksum() -> UInt32? {
+        let crc = try? responseObject()["CRC"]
+        if let crc = crc ?? nil {
+            return UInt32(crc.replacingOccurrences(of: "0x", with: ""), radix: 16)
+        }
+        return nil
+    }
+    
     private func handleFinish() {
         log("|====================================\nCommand: \(command)\nStatus: \(status) Error: \(error)\nResponse: \(responseString())\n====================================|")
         if status != 0 {
