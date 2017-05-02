@@ -18,6 +18,7 @@ public enum AuroraErrors: LocalizedError {
     case commandNotFinished
     case commandNotFound
     case corruptionError
+    case responseTypeIncorrect
 
     public var errorDescription: String? {
         switch self {
@@ -53,6 +54,9 @@ public enum AuroraErrors: LocalizedError {
         
         case .corruptionError:
             return "Data transmission corruption occurred."
+            
+        case .responseTypeIncorrect:
+            return "Response type is incorrect for current command."
         }
     }
 }

@@ -38,7 +38,10 @@ class Command: NSObject {
     var successHandler: ((Command) -> Void)?
     var errorHandler: ((Error) -> Void)?
     var response = [String]()
-    var output = Data()
+    var hasData = false
+    lazy var output: Data = {
+        return Data()
+    }()
     
     func responseString() -> String {
         return response.joined(separator: "\n")
@@ -74,6 +77,9 @@ class Command: NSObject {
         
         for line in response {
             let pair = line.components(separatedBy: " : ")
+            guard pair.count >= 2 else {
+                throw AuroraErrors.responseTypeIncorrect
+            }
             object[pair[0]] = pair[1]
         }
         
@@ -98,6 +104,7 @@ class Command: NSObject {
         pendingOperations += 1
         
         let data = try handler()
+        hasData = true
         output.append(data)
         log("Appended output chunk with \(data.count) bytes and \((data as NSData).description) content. Total bytes \(output.count)")
         

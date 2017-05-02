@@ -107,9 +107,9 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
         firstly {
             // List all unsynced sessions
             execute(command: "sd-dir-read sessions 0 *@*")
-        }.then { result in
+        }.then { result -> Promise<[Command]> in
             // For each unsynced session, read its session.txt file
-            when(fulfilled: try result.responseTable().flatMap { $0["Name"] }.map { self.execute(command: "sd-file-read session.txt \($0)") })
+            when(fulfilled: try result.responseTable().flatMap { $0["Name"] }.map { self.execute(command: "sd-file-read session.txt \($0)") }.makeIterator(), concurrently: 1)
         }.then { result in
             // When all reads finish, return their output as an array
             completion { return result.map { ($0.command.replacingOccurrences(of: "sd-file-read session.txt sessions/", with: ""), $0.output) } }
@@ -128,6 +128,20 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
      */
     public func renameSyncedSession(id: String, name: String, completion: @escaping (() throws -> Void) -> Void) {
         execute(command: "sd-rename sessions/\(name) sessions/\(id)").then { result in
+            completion { }
+        }.catch { error in
+            completion { throw error }
+        }
+    }
+    
+    /**
+     Removes the session specified from Aurora
+     
+     - parameter name:       name of the session in the Aurora file system
+     - parameter completion: handler with an inner closure that returns, or throws in case of errors
+     */
+    public func removeEmptySession(name: String, completion: @escaping (() throws -> Void) -> Void) {
+        execute(command: "sd-dir-del sessions/\(name)").then { result in
             completion { }
         }.catch { error in
             completion { throw error }
@@ -215,11 +229,20 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
                 command.successHandler = { command in
                     self.commandQueue.dequeue(command: command)
                     
-                    if let data = data {
-                        let dataChecksum = CRC32(data: data).crc
-                        let bleChecksum = command.checksum()
-                        if dataChecksum != bleChecksum {
-                            return reject(AuroraErrors.corruptionError)
+                    if let bleChecksum = command.checksum() {
+                        if let data = data {
+                            let writeChecksum = CRC32(data: data).crc
+                            log("writeChecksum: \(writeChecksum), bleChecksum: \(bleChecksum)")
+                            if writeChecksum != bleChecksum {
+                                return reject(AuroraErrors.corruptionError)
+                            }
+                        }
+                        else if command.hasData {
+                            let readChecksum = CRC32(data: command.output).crc
+                            log("readChecksum: \(readChecksum), bleChecksum: \(bleChecksum)")
+                            if readChecksum != bleChecksum {
+                                return reject(AuroraErrors.corruptionError)
+                            }
                         }
                     }
                     
@@ -255,9 +278,9 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
             
             var requiredSubscriptions = [Promise<CBCharacteristic>]()
             requiredSubscriptions.append(helper.subscribe(to: AuroraChars.commandStatus, updateHandler: self.commandStatusHandler))
-            requiredSubscriptions.append(helper.subscribe(to: AuroraChars.commandOutputNotified, updateHandler: self.commandOutputHandler))
-            requiredSubscriptions.append(helper.subscribe(to: AuroraChars.eventNotified, updateHandler: self.eventHandler))
-            requiredSubscriptions.append(helper.subscribe(to: AuroraChars.streamDataNotified, updateHandler: self.streamHandler))
+            requiredSubscriptions.append(helper.subscribe(to: AuroraChars.commandOutputIndicated, updateHandler: self.commandOutputHandler))
+            requiredSubscriptions.append(helper.subscribe(to: AuroraChars.eventIndicated, updateHandler: self.eventHandler))
+            requiredSubscriptions.append(helper.subscribe(to: AuroraChars.streamDataIndicated, updateHandler: self.streamHandler))
             
             when(fulfilled: requiredSubscriptions).then { _ in
                 return self.execute(command: "prof-unload")
@@ -276,7 +299,7 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
             }
         }
         else {
-            log("AURORA DISCONNECTED")
+             log("AURORA DISCONNECTED")
             connected = false
             NotificationCenter.default.post(name: .auroraDreambandDisconnected, object: nil)
             // The device is disconnected. maintainConnection will attempt a connection event
