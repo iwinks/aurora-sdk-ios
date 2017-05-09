@@ -51,7 +51,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AuroraDreamband: 7db84ecf1683933d59a27b84616c2ecf0b3f05d3
+  AuroraDreamband: b832158cdf0e9f2435e11a3c6c911bec796ad597
   AwaitKit: 1645b708f13a15ac7fa9c1a39d6808f799e5a1ec
   Nimble: 415e3aa3267e7bc2c96b05fa814ddea7bb686a29
   PromiseKit: 593b5e24ded6cbb1ebc708bc2c3428a8a5632d91

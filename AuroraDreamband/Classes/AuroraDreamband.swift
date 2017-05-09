@@ -109,10 +109,10 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
             execute(command: "sd-dir-read sessions 0 *@*")
         }.then { result -> Promise<[Command]> in
             // For each unsynced session, read its session.txt file
-            when(fulfilled: try result.responseTable().flatMap { $0["Name"] }.map { self.execute(command: "sd-file-read session.txt \($0)") }.makeIterator(), concurrently: 1)
+            when(fulfilled: try result.responseTable().flatMap { $0["Name"] }.map { self.execute(command: "sd-file-read session.txt \($0) 1", compressionEnabled: true) }.makeIterator(), concurrently: 1)
         }.then { result in
             // When all reads finish, return their output as an array
-            completion { return result.map { ($0.command.replacingOccurrences(of: "sd-file-read session.txt sessions/", with: ""), $0.output) } }
+            completion { return result.map { ($0.command.slice(from: "sd-file-read session.txt sessions/", to: " 1")!, $0.output) } }
         }.catch { error in
             // Or thow an error if anything fails along the way
             completion { throw error }
@@ -168,7 +168,7 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
      */
     public func osUpdate(firmware data: Data, completion: @escaping (() throws -> Void) -> Void) {
         firstly {
-            return self.execute(command: "sd-file-write aurora.hex_test / 0 1 250", data: data)
+            return self.execute(command: "sd-file-write aurora.hex_test / 0 1 250 1", data: data, compressionEnabled: true)
         }.then { result in
             return self.execute(command: "os-info")
         }.then { result in
@@ -187,7 +187,7 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
     }
     
     public func write(profile data: Data, completion: @escaping (() throws -> String) -> Void) {
-        execute(command: "sd-file-write profiles/_profiles.list_test 0", data: data).then { result in
+        execute(command: "sd-file-write _profiles.list_test profiles 0 1 250 1", data: data, compressionEnabled: true).then { result in
             completion { return result.responseString() }
         }.catch { error in
             completion { throw error }
@@ -210,7 +210,7 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
         }
     }
     
-    private func execute(command string: String, data: Data? = nil) -> Promise<Command> {
+    private func execute(command string: String, data: Data? = nil, compressionEnabled: Bool = false) -> Promise<Command> {
         return Promise<Command> { resolve, reject in
             async {
                 guard let peripheral = self.peripheral,
@@ -220,30 +220,24 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
                 
                 log("Executing command \(string)")
                 
-                let command = Command(string, data: data)
+                let command = Command(string, data: data, compressionEnabled: compressionEnabled)
                 
                 command.errorHandler = { error in
-                    self.commandQueue.dequeue(command: command)
+                    defer {
+                        self.commandQueue.dequeue(command: command)
+                    }
                     reject(error)
                 }
                 command.successHandler = { command in
-                    self.commandQueue.dequeue(command: command)
+                    defer {
+                        self.commandQueue.dequeue(command: command)
+                    }
                     
-                    if let bleChecksum = command.checksum() {
-                        if let data = data {
-                            let writeChecksum = CRC32(data: data).crc
-                            log("writeChecksum: \(writeChecksum), bleChecksum: \(bleChecksum)")
-                            if writeChecksum != bleChecksum {
-                                return reject(AuroraErrors.corruptionError)
-                            }
-                        }
-                        else if command.hasData {
-                            let readChecksum = CRC32(data: command.output).crc
-                            log("readChecksum: \(readChecksum), bleChecksum: \(bleChecksum)")
-                            if readChecksum != bleChecksum {
-                                return reject(AuroraErrors.corruptionError)
-                            }
-                        }
+                    do {
+                        try command.integrityCheck()
+                    }
+                    catch {
+                        reject(error)
                     }
                     
                     resolve(command)

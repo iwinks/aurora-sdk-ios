@@ -18,6 +18,7 @@ Library dedicated to provide developer access to Aurora BLE API.
   s.dependency 'RZBluetooth'
   s.dependency 'PromiseKit'
   s.dependency 'AwaitKit'
+  s.dependency 'heatshrink-objc'
 
   s.default_subspec = 'Core'
 

@@ -10,6 +10,10 @@
 #endif
 #endif
 
+#import "heatshrink_common.h"
+#import "heatshrink_config.h"
+#import "heatshrink_decoder.h"
+#import "heatshrink_encoder.h"
 
 FOUNDATION_EXPORT double AuroraDreambandVersionNumber;
 FOUNDATION_EXPORT const unsigned char AuroraDreambandVersionString[];

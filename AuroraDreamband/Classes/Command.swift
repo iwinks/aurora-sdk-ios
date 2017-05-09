@@ -5,12 +5,20 @@
 //  Created by Rafael Nobre on 28/02/17.
 //
 //
+import heatshrink_objc
 
 class Command: NSObject {
     
     var data: Data?
-    private(set) var command: String
-    
+    let command: String
+    let compressionEnabled: Bool
+    var successHandler: ((Command) -> Void)?
+    var errorHandler: ((Error) -> Void)?
+    var response = [String]()
+    var hasOutput = false
+    lazy var output: Data = {
+        return Data()
+    }()
     var error: Error?
     
     private var pendingOperations = 0 {
@@ -23,10 +31,14 @@ class Command: NSObject {
     }
     private var status: UInt8 = 0
     private var finished = false
+    private var dataChecksum: UInt32?
     
-    init(_ command: String, data: Data? = nil) {
+    init(_ command: String, data: Data? = nil, compressionEnabled: Bool = false) {
         self.command = command
         self.data = data
+        self.compressionEnabled = compressionEnabled
+        super.init()
+        handleCompression()
     }
     
     override var description: String {
@@ -35,13 +47,7 @@ class Command: NSObject {
         }
     }
     
-    var successHandler: ((Command) -> Void)?
-    var errorHandler: ((Error) -> Void)?
-    var response = [String]()
-    var hasData = false
-    lazy var output: Data = {
-        return Data()
-    }()
+
     
     func responseString() -> String {
         return response.joined(separator: "\n")
@@ -104,7 +110,7 @@ class Command: NSObject {
         pendingOperations += 1
         
         let data = try handler()
-        hasData = true
+        hasOutput = true
         output.append(data)
         log("Appended output chunk with \(data.count) bytes and \((data as NSData).description) content. Total bytes \(output.count)")
         
@@ -128,6 +134,24 @@ class Command: NSObject {
         return nil
     }
     
+    func integrityCheck() throws {
+        if let bleChecksum = checksum() {
+            if let dataChecksum = dataChecksum {
+                log("writeChecksum: \(dataChecksum), bleChecksum: \(bleChecksum)")
+                if dataChecksum != bleChecksum {
+                    throw AuroraErrors.corruptionError
+                }
+            }
+            else if hasOutput {
+                let readChecksum = CRC32(data: output).crc
+                log("readChecksum: \(readChecksum), bleChecksum: \(bleChecksum)")
+                if readChecksum != bleChecksum {
+                    throw AuroraErrors.corruptionError
+                }
+            }
+        }
+    }
+    
     private func handleFinish() {
         log("|====================================\nCommand: \(command)\nStatus: \(status) Error: \(error)\nResponse: \(responseString())\n====================================|")
         if status != 0 {
@@ -137,7 +161,29 @@ class Command: NSObject {
             errorHandler?(error)
         }
         else {
+            handleDecompression()
             successHandler?(self)
+        }
+    }
+    
+    private func handleCompression() {
+        // first pass, compress if needed
+        if let data = data {
+            if compressionEnabled, let encoder = RNHeatshrinkEncoder(windowSize: 8, andLookaheadSize: 4) {
+                self.data = encoder.encode(data)
+            }
+        }
+        // second pass, compute checksum
+        if let data = data {
+            dataChecksum = CRC32(data: data).crc
+        }
+    }
+    
+    private func handleDecompression() {
+        if hasOutput && compressionEnabled {
+            if let decoder = RNHeatshrinkDecoder(windowSize: 8, andLookaheadSize: 4) {
+                output = decoder.decode(output)
+            }
         }
     }
 }
