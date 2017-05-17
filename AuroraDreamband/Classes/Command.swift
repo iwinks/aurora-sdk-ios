@@ -167,15 +167,11 @@ class Command: NSObject {
     }
     
     private func handleCompression() {
-        // first pass, compress if needed
         if let data = data {
+            dataChecksum = CRC32(data: data).crc
             if compressionEnabled, let encoder = RNHeatshrinkEncoder(windowSize: 8, andLookaheadSize: 4) {
                 self.data = encoder.encode(data)
             }
-        }
-        // second pass, compute checksum
-        if let data = data {
-            dataChecksum = CRC32(data: data).crc
         }
     }
     
