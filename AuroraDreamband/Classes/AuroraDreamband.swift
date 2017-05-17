@@ -24,7 +24,7 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
     
     public var centralManager = RZBCentralManager()
     
-    public var connected = false
+    public var isConnected = false
     
     public var loggingEnabled = false {
         didSet {
@@ -48,7 +48,7 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
 
     // MARK: - Connection
     public func connect() {
-        if connected {
+        if isConnected {
             log("ALREADY CONNECTED")
             return
         }
@@ -75,7 +75,7 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
     }
     
     public func afterConnected(handler: @escaping () -> Void) {
-        if connected {
+        if isConnected {
             handler()
         }
         else {
@@ -284,7 +284,7 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
                 return self.execute(command: "event-output-enable \(EventIds([.batteryMonitor]).rawValue) 16")
             }.then { eventMask -> Void in
                 log("AURORA CONNECTED")
-                self.connected = true
+                self.isConnected = true
                 NotificationCenter.default.post(name: .auroraDreambandConnected, object: nil)
                 self.pendingHandlers.forEach { $0() }
                 self.pendingHandlers.removeAll()
@@ -294,7 +294,7 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
         }
         else {
              log("AURORA DISCONNECTED")
-            connected = false
+            isConnected = false
             NotificationCenter.default.post(name: .auroraDreambandDisconnected, object: nil)
             // The device is disconnected. maintainConnection will attempt a connection event
             // immediately after this. This default maintainConnection behavior may not be
