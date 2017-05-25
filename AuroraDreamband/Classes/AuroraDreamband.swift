@@ -40,6 +40,8 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
     
     private var pendingHandlers = [() -> Void]()
     
+    private var eventObserverHandler: ((_ event: UInt8, _ flags: UInt32) -> Void)?
+    
     internal override init() {
         super.init()
     }
@@ -178,16 +180,50 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
         }
     }
     
-    public func readProfile(completion: @escaping (() throws -> Data) -> Void) {
-        execute(command: "sd-file-read profiles/_profiles.list").then { result in
+    public func observeEvents(_ events: EventIds, eventHandler: @escaping ((_ event: UInt8, _ flags: UInt32) -> Void), completion: @escaping (() throws -> Void) -> Void) {
+        execute(command: "event-output-enable \(events.rawValue) 16").then { result -> Void in
+            self.eventObserverHandler = eventHandler
+            completion { }
+        }.catch { error in
+            completion { throw error }
+        }
+    }
+    
+    public func loadProfile(remStim: Bool, completion: @escaping (() throws -> Void) -> Void) {
+        let profile = remStim ? "rem-stim.prof" : "sleep-tracker.prof"
+        execute(command: "prof-load \(profile)").then { result in
+            completion { }
+        }.catch { error in
+            completion { throw error }
+        }
+    }
+    
+    public func unloadProfile(completion: @escaping (() throws -> Void) -> Void) {
+        execute(command: "prof-unload").then { result in
+            completion { }
+        }.catch { error in
+            completion { throw error }
+        }
+    }
+    
+    public func listProfiles(completion: @escaping (() throws -> [String]) -> Void) {
+        execute(command: "sd-dir-read profiles 1 *.prof").then { result in
+            completion { return try result.responseTable().flatMap { $0["Name"] } }
+        }.catch { error in
+            completion { throw error }
+        }
+    }
+    
+    public func readProfile(named profile: String, completion: @escaping (() throws -> Data) -> Void) {
+        execute(command: "sd-file-read profiles/\(profile)").then { result in
             completion { return result.output }
         }.catch { error in
             completion { throw error }
         }
     }
     
-    public func write(profile data: Data, completion: @escaping (() throws -> String) -> Void) {
-        execute(command: "sd-file-write _profiles.list_test profiles 0 1 250 1", data: data, compressionEnabled: true).then { result in
+    public func writeProfile(named profile: String, data: Data, completion: @escaping (() throws -> String) -> Void) {
+        execute(command: "sd-file-write \(profile) profiles 0 1 250 1", data: data, compressionEnabled: true).then { result in
             completion { return result.responseString() }
         }.catch { error in
             completion { throw error }
@@ -274,14 +310,11 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
             requiredSubscriptions.append(helper.subscribe(to: AuroraChars.commandStatus, updateHandler: self.commandStatusHandler))
             requiredSubscriptions.append(helper.subscribe(to: AuroraChars.commandOutputIndicated, updateHandler: self.commandOutputHandler))
             requiredSubscriptions.append(helper.subscribe(to: AuroraChars.eventIndicated, updateHandler: self.eventHandler))
-            requiredSubscriptions.append(helper.subscribe(to: AuroraChars.streamDataIndicated, updateHandler: self.streamHandler))
             
             when(fulfilled: requiredSubscriptions).then { _ in
                 return self.execute(command: "prof-unload")
             }.then { _ in
                 return self.execute(command: "clock-set \(self.clockSetTime())")
-            }.then { _ in
-                return self.execute(command: "event-output-enable \(EventIds([.batteryMonitor]).rawValue) 16")
             }.then { eventMask -> Void in
                 log("AURORA CONNECTED")
                 self.isConnected = true
@@ -401,10 +434,9 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
         log("eventHandler")
         do {
             let data = try updateHandler()
-            let event: Int8 = data.scanValue(start: 0, length: 1)
-            let flags: Int32 = data.scanValue(start: 1, length: 4)
-            log("Char event \(event)")
-            log("Char flags \(flags)")
+            let event: UInt8 = data.scanValue(start: 0, length: 1)
+            let flags: UInt32 = data.scanValue(start: 1, length: 4)
+            self.eventObserverHandler?(event, flags)
         }
         catch {
             log("Error! \(error)")

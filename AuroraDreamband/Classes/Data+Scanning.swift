@@ -9,7 +9,7 @@
 import UIKit
 
 public extension Data {
-    public func scanValue<T: SignedInteger>(start: Int, length: Int) -> T {
+    public func scanValue<T: Integer>(start: Int, length: Int) -> T {
         return self.subdata(in: start..<start+length).withUnsafeBytes {
             (pointer: UnsafePointer<T>) -> T in
             return pointer.pointee

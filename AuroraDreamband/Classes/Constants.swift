@@ -66,48 +66,52 @@ struct EventOutputIds: OptionSet {
     static let bluetooth = EventOutputIds(rawValue: 1 << 4)
 }
 
-struct EventIds: OptionSet {
-    let rawValue: UInt32
+public struct EventIds: OptionSet {
+    public let rawValue: UInt32
 
-    static let signalMonitor       = EventIds(rawValue: 1 << 0)
-    static let sleepTrackerMonitor = EventIds(rawValue: 1 << 1)
-    static let movementMonitor     = EventIds(rawValue: 1 << 2)
-    static let stimPresented       = EventIds(rawValue: 1 << 3)
+    public static let signalMonitor       = EventIds(rawValue: 1 << 0)
+    public static let sleepTrackerMonitor = EventIds(rawValue: 1 << 1)
+    public static let movementMonitor     = EventIds(rawValue: 1 << 2)
+    public static let stimPresented       = EventIds(rawValue: 1 << 3)
 
-    static let awakening           = EventIds(rawValue: 1 << 4)
-    static let autoShutdown        = EventIds(rawValue: 1 << 5)
-    static let eventReserved1      = EventIds(rawValue: 1 << 6)
-    static let eventReserved2      = EventIds(rawValue: 1 << 7)
+    public static let awakening           = EventIds(rawValue: 1 << 4)
+    public static let autoShutdown        = EventIds(rawValue: 1 << 5)
+    public static let eventReserved1      = EventIds(rawValue: 1 << 6)
+    public static let eventReserved2      = EventIds(rawValue: 1 << 7)
 
-    static let eventReserved3      = EventIds(rawValue: 1 << 8)
-    static let eventReserved4      = EventIds(rawValue: 1 << 9)
-    static let eventReserved5      = EventIds(rawValue: 1 << 10)
-    static let eventReserved6      = EventIds(rawValue: 1 << 11)
+    public static let eventReserved3      = EventIds(rawValue: 1 << 8)
+    public static let eventReserved4      = EventIds(rawValue: 1 << 9)
+    public static let eventReserved5      = EventIds(rawValue: 1 << 10)
+    public static let eventReserved6      = EventIds(rawValue: 1 << 11)
 
-    static let eventReserved7      = EventIds(rawValue: 1 << 12)
-    static let eventReserved8      = EventIds(rawValue: 1 << 13)
-    static let eventReserved9      = EventIds(rawValue: 1 << 14)
-    static let eventReserved10     = EventIds(rawValue: 1 << 15)
+    public static let eventReserved7      = EventIds(rawValue: 1 << 12)
+    public static let eventReserved8      = EventIds(rawValue: 1 << 13)
+    public static let eventReserved9      = EventIds(rawValue: 1 << 14)
+    public static let eventReserved10     = EventIds(rawValue: 1 << 15)
 
-    static let buttonMonitor       = EventIds(rawValue: 1 << 16)
-    static let sdcardMonitor       = EventIds(rawValue: 1 << 17)
-    static let usbMonitor          = EventIds(rawValue: 1 << 18)
-    static let batteryMonitor      = EventIds(rawValue: 1 << 19)
+    public static let buttonMonitor       = EventIds(rawValue: 1 << 16)
+    public static let sdcardMonitor       = EventIds(rawValue: 1 << 17)
+    public static let usbMonitor          = EventIds(rawValue: 1 << 18)
+    public static let batteryMonitor      = EventIds(rawValue: 1 << 19)
 
-    static let buzzMonitor         = EventIds(rawValue: 1 << 20)
-    static let ledMonitor          = EventIds(rawValue: 1 << 21)
-    static let eventReserved11     = EventIds(rawValue: 1 << 22)
-    static let eventReserved12     = EventIds(rawValue: 1 << 23)
+    public static let buzzMonitor         = EventIds(rawValue: 1 << 20)
+    public static let ledMonitor          = EventIds(rawValue: 1 << 21)
+    public static let eventReserved11     = EventIds(rawValue: 1 << 22)
+    public static let eventReserved12     = EventIds(rawValue: 1 << 23)
 
-    static let bleMonitor          = EventIds(rawValue: 1 << 24)
-    static let bleNotify           = EventIds(rawValue: 1 << 25)
-    static let bleIndicate         = EventIds(rawValue: 1 << 26)
-    static let clockAlarmFire      = EventIds(rawValue: 1 << 27)
+    public static let bleMonitor          = EventIds(rawValue: 1 << 24)
+    public static let bleNotify           = EventIds(rawValue: 1 << 25)
+    public static let bleIndicate         = EventIds(rawValue: 1 << 26)
+    public static let clockAlarmFire      = EventIds(rawValue: 1 << 27)
 
-    static let clockTimer0Fire     = EventIds(rawValue: 1 << 28)
-    static let clockTimer1Fire     = EventIds(rawValue: 1 << 29)
-    static let clockTimer2Fire     = EventIds(rawValue: 1 << 30)
-    static let clockTimerFire      = EventIds(rawValue: 1 << 31)
+    public static let clockTimer0Fire     = EventIds(rawValue: 1 << 28)
+    public static let clockTimer1Fire     = EventIds(rawValue: 1 << 29)
+    public static let clockTimer2Fire     = EventIds(rawValue: 1 << 30)
+    public static let clockTimerFire      = EventIds(rawValue: 1 << 31)
+    
+    public init(rawValue: UInt32) {
+        self.rawValue = rawValue
+    }
 }
 
 struct StreamIds: OptionSet {
