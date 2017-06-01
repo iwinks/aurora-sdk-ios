@@ -66,6 +66,48 @@ struct EventOutputIds: OptionSet {
     static let bluetooth = EventOutputIds(rawValue: 1 << 4)
 }
 
+public enum EventId: UInt8 {
+    case signalMonitor          = 0
+    case sleepTrackerMonitor    = 1
+    case movementMonitor        = 2
+    case stimPresented          = 3
+    
+    case awakening              = 4
+    case autoShutdown           = 5
+    case alarm                  = 6
+    case eventReserved2         = 7
+    
+    case eventReserved3         = 8
+    case eventReserved4         = 9
+    case eventReserved5         = 10
+    case eventReserved6         = 11
+    
+    case eventReserved7         = 12
+    case eventReserved8         = 13
+    case eventReserved9         = 14
+    case eventReserved10        = 15
+    
+    case buttonMonitor          = 16
+    case sdcardMonitor          = 17
+    case usbMonitor             = 18
+    case batteryMonitor         = 19
+    
+    case buzzMonitor            = 20
+    case ledMonitor             = 21
+    case eventReserved11        = 22
+    case eventReserved12        = 23
+    
+    case bleMonitor             = 24
+    case bleNotify              = 25
+    case bleIndicate            = 26
+    case clockAlarmFire         = 27
+    
+    case clockTimer0Fire        = 28
+    case clockTimer1Fire        = 29
+    case clockTimer2Fire        = 30
+    case clockTimerFire         = 31
+}
+
 public struct EventIds: OptionSet {
     public let rawValue: UInt32
 
@@ -76,7 +118,7 @@ public struct EventIds: OptionSet {
 
     public static let awakening           = EventIds(rawValue: 1 << 4)
     public static let autoShutdown        = EventIds(rawValue: 1 << 5)
-    public static let eventReserved1      = EventIds(rawValue: 1 << 6)
+    public static let alarm               = EventIds(rawValue: 1 << 6)
     public static let eventReserved2      = EventIds(rawValue: 1 << 7)
 
     public static let eventReserved3      = EventIds(rawValue: 1 << 8)
