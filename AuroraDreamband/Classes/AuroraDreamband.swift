@@ -158,7 +158,29 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
             let intVersion = Int(version) ?? (version == "1.4.2" ? 10402 : 10401)
             completion { return intVersion }
         }.catch { error in
+            completion { throw error }
+        }
+    }
+    
+    public func batteryLevel(completion: @escaping (() throws -> Int) -> Void) {
+        execute(command: "os-info").then { result -> Void in
+            guard let levelString = try result.responseObject()["Battery Level"] else {
+                throw AuroraErrors.unparseableCommandResult
+            }
+            guard let level = Int(levelString) else {
+                throw AuroraErrors.unparseableCommandResult
+            }            
+            completion { return level }
+        }.catch { error in
                 completion { throw error }
+        }
+    }
+    
+    public func shutdown(completion: @escaping (() throws -> Void) -> Void) {
+        execute(command: "os-shutdown").then { result -> Void in
+            completion { }
+        }.catch { error in
+            completion { throw error }
         }
     }
     
