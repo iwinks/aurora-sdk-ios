@@ -164,7 +164,7 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
     
     public func batteryLevel(completion: @escaping (() throws -> Int) -> Void) {
         execute(command: "os-info").then { result -> Void in
-            guard let levelString = try result.responseObject()["Battery Level"] else {
+            guard let levelString = try result.responseObject()["Battery Level"]?.replacingOccurrences(of: "%", with: "") else {
                 throw AuroraErrors.unparseableCommandResult
             }
             guard let level = Int(levelString) else {
