@@ -42,6 +42,8 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
     
     private var eventObserverHandler: ((_ event: UInt8, _ flags: UInt32) -> Void)?
     
+    private var _isConnected = false
+    
     internal override init() {
         super.init()
     }
@@ -50,7 +52,7 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
 
     // MARK: - Connection
     public func connect() {
-        if isConnected {
+        if _isConnected {
             log("ALREADY CONNECTED")
             return
         }
@@ -272,7 +274,9 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
         return Promise<Command> { resolve, reject in
             async {
                 guard let peripheral = self.peripheral,
-                    let helper = self.helper else {
+                    let helper = self.helper,
+                    self._isConnected else {
+                    reject(AuroraErrors.notConnected)
                     throw AuroraErrors.notConnected
                 }
                 
@@ -327,6 +331,7 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
             
             self.helper = helper
             self.peripheral = peripheral
+            self._isConnected = true
             
             var requiredSubscriptions = [Promise<CBCharacteristic>]()
             requiredSubscriptions.append(helper.subscribe(to: AuroraChars.commandStatus, updateHandler: self.commandStatusHandler))
@@ -349,6 +354,7 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
         }
         else {
              log("AURORA DISCONNECTED")
+            _isConnected = false
             isConnected = false
             NotificationCenter.default.post(name: .auroraDreambandDisconnected, object: nil)
             // The device is disconnected. maintainConnection will attempt a connection event
