@@ -19,10 +19,6 @@
     "ios": "8.0"
   },
   "source_files": "AuroraDreamband/Classes/**/*",
-  "pod_target_xcconfig": {
-    "SWIFT_INCLUDE_PATHS": "$(SRCROOT)/AuroraDreamband/Classes/heatshrink/**"
-  },
-  "preserve_paths": "AuroraDreamband/Classes/heatshrink/module.map",
   "dependencies": {
     "RZBluetooth": [
 
@@ -31,6 +27,9 @@
 
     ],
     "AwaitKit": [
+
+    ],
+    "heatshrink-objc": [
 
     ]
   },

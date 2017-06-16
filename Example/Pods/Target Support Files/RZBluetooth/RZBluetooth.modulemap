@@ -1,0 +1,6 @@
+framework module RZBluetooth {
+  umbrella header "RZBluetooth-umbrella.h"
+
+  export *
+  module * { export * }
+}

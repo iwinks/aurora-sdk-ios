@@ -27,7 +27,7 @@
 import Foundation
 import PromiseKit
 
-extension DispatchQueue {
+extension Extension where Base: DispatchQueue {
   /**
    Awaits that the given closure finished on the receiver and returns its value or throws an error if the closure failed.
 
@@ -38,7 +38,7 @@ extension DispatchQueue {
    */
   @discardableResult
   public final func await<T>(_ body: @escaping () throws -> T) throws -> T {
-    let promise = self.promise(execute: body)
+    let promise = self.base.promise(execute: body)
 
     return try await(promise)
   }
@@ -52,7 +52,7 @@ extension DispatchQueue {
    */
   @discardableResult
   public final func await<T>(_ promise: Promise<T>) throws -> T {
-    guard label != DispatchQueue.main.label else {
+    guard self.base.label != DispatchQueue.main.label else {
       throw NSError(domain: "com.yannickloriot.awaitkit", code: 0, userInfo: [
         NSLocalizedDescriptionKey: "Operation was aborted.",
         NSLocalizedFailureReasonErrorKey: "The current and target queues are the same."
@@ -60,17 +60,17 @@ extension DispatchQueue {
     }
 
     var result: T?
-    var error: Error?
+    var error: Swift.Error?
 
     let semaphore = DispatchSemaphore(value: 0)
 
     promise
-      .then(on: self) { value -> Void in
+      .then(on: self.base) { value -> Void in
         result = value
 
         semaphore.signal()
       }
-      .catch(on: self) { err in
+      .catch(on: self.base) { err in
         error = err
 
         semaphore.signal()
@@ -81,7 +81,7 @@ extension DispatchQueue {
     guard let unwrappedResult = result else {
       throw error!
     }
-    
+
     return unwrappedResult
   }
 }

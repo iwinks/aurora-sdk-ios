@@ -7,17 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		008C78291DF8CC3D009A700E /* AuroraSimulatedDeviceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008C78281DF8CC3D009A700E /* AuroraSimulatedDeviceTests.swift */; };
-		093A86AAA99CF77F5866406C /* Pods_iwinks_ble_core_ios_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 344133513176B4B6322F6139 /* Pods_iwinks_ble_core_ios_Tests.framework */; };
-		0A315BB86FF2BA10D1C2BF32 /* Pods_AuroraDreamband_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CC8EA3B7DDEBDFFE021A3F4 /* Pods_AuroraDreamband_Example.framework */; };
+		000EC11C1EF2A1DE00870879 /* ProfileParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000EC11B1EF2A1DE00870879 /* ProfileParserTests.swift */; };
+		000EC11E1EF2A4CF00870879 /* rem-stim.prof in Resources */ = {isa = PBXBuildFile; fileRef = 000EC11D1EF2A4CF00870879 /* rem-stim.prof */; };
+		000EC1201EF2A54400870879 /* FileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000EC11F1EF2A54400870879 /* FileHelper.swift */; };
+		2C2551DA2F41EBEB28CE8FC6 /* Pods_AuroraDreamband_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6054E07A29492433EF39D160 /* Pods_AuroraDreamband_Example.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
-		607FACEC1AFB9204008FA782 /* BLETests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* BLETests.swift */; };
-		D9C702ECF9E6AEA1C9C9B5E6 /* Pods_AuroraDreamband_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A20FA64AF6F185664016CD /* Pods_AuroraDreamband_Tests.framework */; };
-		F30774DDC6F6EE05F8583459 /* Pods_iwinks_ble_core_ios_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8119F7AE5A0E9BC26091A86B /* Pods_iwinks_ble_core_ios_Example.framework */; };
+		ADC557C3C3AA602C87DA5F4A /* Pods_AuroraDreamband_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1675A1C59B666BE2C76081FE /* Pods_AuroraDreamband_Tests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,10 +30,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		008C78281DF8CC3D009A700E /* AuroraSimulatedDeviceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuroraSimulatedDeviceTests.swift; sourceTree = "<group>"; };
-		2BE43669FD45DC5AA1037CC1 /* Pods-AuroraDreamband_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AuroraDreamband_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AuroraDreamband_Tests/Pods-AuroraDreamband_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		344133513176B4B6322F6139 /* Pods_iwinks_ble_core_ios_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iwinks_ble_core_ios_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4CC8EA3B7DDEBDFFE021A3F4 /* Pods_AuroraDreamband_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AuroraDreamband_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		000EC11B1EF2A1DE00870879 /* ProfileParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileParserTests.swift; sourceTree = "<group>"; };
+		000EC11D1EF2A4CF00870879 /* rem-stim.prof */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "rem-stim.prof"; sourceTree = "<group>"; };
+		000EC11F1EF2A54400870879 /* FileHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileHelper.swift; sourceTree = "<group>"; };
+		135CB6DFA48BDAEC2CE27E2F /* Pods-AuroraDreamband_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AuroraDreamband_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AuroraDreamband_Tests/Pods-AuroraDreamband_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		1675A1C59B666BE2C76081FE /* Pods_AuroraDreamband_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AuroraDreamband_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6054E07A29492433EF39D160 /* Pods_AuroraDreamband_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AuroraDreamband_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* AuroraDreamband_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AuroraDreamband_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -44,14 +45,11 @@
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* AuroraDreamband_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AuroraDreamband_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* BLETests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLETests.swift; sourceTree = "<group>"; };
-		6A1CA7F581E586BA4B7DC29C /* Pods-AuroraDreamband_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AuroraDreamband_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AuroraDreamband_Example/Pods-AuroraDreamband_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		6CDCD96DC81DFB33A6821B21 /* Pods-AuroraDreamband_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AuroraDreamband_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-AuroraDreamband_Example/Pods-AuroraDreamband_Example.release.xcconfig"; sourceTree = "<group>"; };
-		8119F7AE5A0E9BC26091A86B /* Pods_iwinks_ble_core_ios_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iwinks_ble_core_ios_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		84A20FA64AF6F185664016CD /* Pods_AuroraDreamband_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AuroraDreamband_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7BDA35B019C17E1246DAFCDE /* Pods-AuroraDreamband_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AuroraDreamband_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-AuroraDreamband_Example/Pods-AuroraDreamband_Example.release.xcconfig"; sourceTree = "<group>"; };
 		86CF6146647452ACB66097A3 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		8E25E9B91889684CCF617A5A /* Pods-AuroraDreamband_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AuroraDreamband_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AuroraDreamband_Tests/Pods-AuroraDreamband_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		93F888E0FD06C39841208C91 /* AuroraDreamband.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = AuroraDreamband.podspec; path = ../AuroraDreamband.podspec; sourceTree = "<group>"; };
+		AF57B2D30C809D3A1B521D38 /* Pods-AuroraDreamband_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AuroraDreamband_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AuroraDreamband_Tests/Pods-AuroraDreamband_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		D88F0958F0BA15E88F50088B /* Pods-AuroraDreamband_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AuroraDreamband_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AuroraDreamband_Example/Pods-AuroraDreamband_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		E4C7EA0FDC191922F1D262E2 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -60,8 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F30774DDC6F6EE05F8583459 /* Pods_iwinks_ble_core_ios_Example.framework in Frameworks */,
-				0A315BB86FF2BA10D1C2BF32 /* Pods_AuroraDreamband_Example.framework in Frameworks */,
+				2C2551DA2F41EBEB28CE8FC6 /* Pods_AuroraDreamband_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,8 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				093A86AAA99CF77F5866406C /* Pods_iwinks_ble_core_ios_Tests.framework in Frameworks */,
-				D9C702ECF9E6AEA1C9C9B5E6 /* Pods_AuroraDreamband_Tests.framework in Frameworks */,
+				ADC557C3C3AA602C87DA5F4A /* Pods_AuroraDreamband_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,8 +80,8 @@
 				607FACD21AFB9204008FA782 /* Example for AuroraDreamband */,
 				607FACE81AFB9204008FA782 /* Tests */,
 				607FACD11AFB9204008FA782 /* Products */,
-				CA304107E6D7A9187B9F8436 /* Pods */,
-				6843B2A683589B0311F7DBD4 /* Frameworks */,
+				D94D8D3C562251BC02F11A47 /* Pods */,
+				7CC083DDAF4A170751F2B71E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -123,8 +119,7 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				607FACEB1AFB9204008FA782 /* BLETests.swift */,
-				008C78281DF8CC3D009A700E /* AuroraSimulatedDeviceTests.swift */,
+				000EC11B1EF2A1DE00870879 /* ProfileParserTests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -133,7 +128,9 @@
 		607FACE91AFB9204008FA782 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				000EC11D1EF2A4CF00870879 /* rem-stim.prof */,
 				607FACEA1AFB9204008FA782 /* Info.plist */,
+				000EC11F1EF2A54400870879 /* FileHelper.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -148,24 +145,22 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
-		6843B2A683589B0311F7DBD4 /* Frameworks */ = {
+		7CC083DDAF4A170751F2B71E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8119F7AE5A0E9BC26091A86B /* Pods_iwinks_ble_core_ios_Example.framework */,
-				344133513176B4B6322F6139 /* Pods_iwinks_ble_core_ios_Tests.framework */,
-				4CC8EA3B7DDEBDFFE021A3F4 /* Pods_AuroraDreamband_Example.framework */,
-				84A20FA64AF6F185664016CD /* Pods_AuroraDreamband_Tests.framework */,
+				6054E07A29492433EF39D160 /* Pods_AuroraDreamband_Example.framework */,
+				1675A1C59B666BE2C76081FE /* Pods_AuroraDreamband_Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		CA304107E6D7A9187B9F8436 /* Pods */ = {
+		D94D8D3C562251BC02F11A47 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				6A1CA7F581E586BA4B7DC29C /* Pods-AuroraDreamband_Example.debug.xcconfig */,
-				6CDCD96DC81DFB33A6821B21 /* Pods-AuroraDreamband_Example.release.xcconfig */,
-				8E25E9B91889684CCF617A5A /* Pods-AuroraDreamband_Tests.debug.xcconfig */,
-				2BE43669FD45DC5AA1037CC1 /* Pods-AuroraDreamband_Tests.release.xcconfig */,
+				D88F0958F0BA15E88F50088B /* Pods-AuroraDreamband_Example.debug.xcconfig */,
+				7BDA35B019C17E1246DAFCDE /* Pods-AuroraDreamband_Example.release.xcconfig */,
+				135CB6DFA48BDAEC2CE27E2F /* Pods-AuroraDreamband_Tests.debug.xcconfig */,
+				AF57B2D30C809D3A1B521D38 /* Pods-AuroraDreamband_Tests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -177,12 +172,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "AuroraDreamband_Example" */;
 			buildPhases = (
-				09788308C47A4FFD56077C19 /* [CP] Check Pods Manifest.lock */,
+				3FBC45CF7B2A9EE9A12E495F /* [CP] Check Pods Manifest.lock */,
 				607FACCC1AFB9204008FA782 /* Sources */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
-				C4174762A598D1FB2A667C45 /* [CP] Embed Pods Frameworks */,
-				23654CC79FFBDE28108A435E /* [CP] Copy Pods Resources */,
+				218BCC142A0C7B3524A5CDD6 /* [CP] Embed Pods Frameworks */,
+				A598CF1E0CB566E77AC9A1AA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -197,12 +192,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "AuroraDreamband_Tests" */;
 			buildPhases = (
-				F8F641AA3128BD25F7F85A6A /* [CP] Check Pods Manifest.lock */,
+				E574B9519CE9C8B742956FC0 /* [CP] Check Pods Manifest.lock */,
 				607FACE11AFB9204008FA782 /* Sources */,
 				607FACE21AFB9204008FA782 /* Frameworks */,
 				607FACE31AFB9204008FA782 /* Resources */,
-				3520BE08D1AB97A06167B650 /* [CP] Embed Pods Frameworks */,
-				87010D0D0C653C387DE12B89 /* [CP] Copy Pods Resources */,
+				D02185DE2AF54D150624EADA /* [CP] Embed Pods Frameworks */,
+				686421854B7E2226C3AC6CCB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -232,7 +227,9 @@
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = APA2MKTPVQ;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Manual;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
 				};
@@ -271,73 +268,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				000EC11E1EF2A4CF00870879 /* rem-stim.prof in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		09788308C47A4FFD56077C19 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		23654CC79FFBDE28108A435E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AuroraDreamband_Example/Pods-AuroraDreamband_Example-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3520BE08D1AB97A06167B650 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AuroraDreamband_Tests/Pods-AuroraDreamband_Tests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		87010D0D0C653C387DE12B89 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AuroraDreamband_Tests/Pods-AuroraDreamband_Tests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C4174762A598D1FB2A667C45 /* [CP] Embed Pods Frameworks */ = {
+		218BCC142A0C7B3524A5CDD6 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -352,7 +290,67 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AuroraDreamband_Example/Pods-AuroraDreamband_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F8F641AA3128BD25F7F85A6A /* [CP] Check Pods Manifest.lock */ = {
+		3FBC45CF7B2A9EE9A12E495F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		686421854B7E2226C3AC6CCB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AuroraDreamband_Tests/Pods-AuroraDreamband_Tests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A598CF1E0CB566E77AC9A1AA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AuroraDreamband_Example/Pods-AuroraDreamband_Example-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D02185DE2AF54D150624EADA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AuroraDreamband_Tests/Pods-AuroraDreamband_Tests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E574B9519CE9C8B742956FC0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -383,8 +381,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				008C78291DF8CC3D009A700E /* AuroraSimulatedDeviceTests.swift in Sources */,
-				607FACEC1AFB9204008FA782 /* BLETests.swift in Sources */,
+				000EC11C1EF2A1DE00870879 /* ProfileParserTests.swift in Sources */,
+				000EC1201EF2A54400870879 /* FileHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,14 +505,14 @@
 		};
 		607FACF01AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6A1CA7F581E586BA4B7DC29C /* Pods-AuroraDreamband_Example.debug.xcconfig */;
+			baseConfigurationReference = D88F0958F0BA15E88F50088B /* Pods-AuroraDreamband_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = APA2MKTPVQ;
 				INFOPLIST_FILE = "$(SRCROOT)/AuroraDreamband/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -524,14 +522,14 @@
 		};
 		607FACF11AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6CDCD96DC81DFB33A6821B21 /* Pods-AuroraDreamband_Example.release.xcconfig */;
+			baseConfigurationReference = 7BDA35B019C17E1246DAFCDE /* Pods-AuroraDreamband_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = APA2MKTPVQ;
 				INFOPLIST_FILE = "$(SRCROOT)/AuroraDreamband/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -541,8 +539,9 @@
 		};
 		607FACF31AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8E25E9B91889684CCF617A5A /* Pods-AuroraDreamband_Tests.debug.xcconfig */;
+			baseConfigurationReference = 135CB6DFA48BDAEC2CE27E2F /* Pods-AuroraDreamband_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = APA2MKTPVQ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -552,26 +551,29 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AuroraDreamband_Example.app/AuroraDreamband_Example";
 			};
 			name = Debug;
 		};
 		607FACF41AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2BE43669FD45DC5AA1037CC1 /* Pods-AuroraDreamband_Tests.release.xcconfig */;
+			baseConfigurationReference = AF57B2D30C809D3A1B521D38 /* Pods-AuroraDreamband_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = APA2MKTPVQ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AuroraDreamband_Example.app/AuroraDreamband_Example";
 			};
 			name = Release;
 		};

@@ -2,48 +2,35 @@ PODS:
   - AuroraDreamband (0.1.0):
     - AuroraDreamband/Core (= 0.1.0)
     - AwaitKit
+    - heatshrink-objc
     - PromiseKit
     - RZBluetooth
   - AuroraDreamband/Core (0.1.0):
     - AwaitKit
+    - heatshrink-objc
     - PromiseKit
     - RZBluetooth
-  - AuroraDreamband/Simulation (0.1.0):
-    - AwaitKit
-    - PromiseKit
-    - RZBluetooth
-    - RZBluetooth/Mock
-  - AuroraDreamband/Testing (0.1.0):
-    - AwaitKit
-    - PromiseKit
-    - RZBluetooth
-    - RZBluetooth/Test
-  - AwaitKit (2.0.0):
-    - PromiseKit (~> 4.0)
+  - AwaitKit (3.0.0):
+    - PromiseKit (~> 4.1)
+  - heatshrink-objc (0.1.0)
   - Nimble (5.1.1)
-  - PromiseKit (4.0.5):
-    - PromiseKit/Foundation (= 4.0.5)
-    - PromiseKit/QuartzCore (= 4.0.5)
-    - PromiseKit/UIKit (= 4.0.5)
-  - PromiseKit/CorePromise (4.0.5)
-  - PromiseKit/Foundation (4.0.5):
+  - PromiseKit (4.2.2):
+    - PromiseKit/Foundation (= 4.2.2)
+    - PromiseKit/QuartzCore (= 4.2.2)
+    - PromiseKit/UIKit (= 4.2.2)
+  - PromiseKit/CorePromise (4.2.2)
+  - PromiseKit/Foundation (4.2.2):
     - PromiseKit/CorePromise
-  - PromiseKit/QuartzCore (4.0.5):
+  - PromiseKit/QuartzCore (4.2.2):
     - PromiseKit/CorePromise
-  - PromiseKit/UIKit (4.0.5):
+  - PromiseKit/UIKit (4.2.2):
     - PromiseKit/CorePromise
-  - RZBluetooth (1.1.1):
-    - RZBluetooth/Core (= 1.1.1)
-  - RZBluetooth/Core (1.1.1)
-  - RZBluetooth/Mock (1.1.1):
-    - RZBluetooth/Core
-  - RZBluetooth/Test (1.1.1):
-    - RZBluetooth/Mock
+  - RZBluetooth (1.2.1):
+    - RZBluetooth/Core (= 1.2.1)
+  - RZBluetooth/Core (1.2.1)
 
 DEPENDENCIES:
   - AuroraDreamband (from `../`)
-  - AuroraDreamband/Simulation (from `../`)
-  - AuroraDreamband/Testing (from `../`)
   - Nimble
 
 EXTERNAL SOURCES:
@@ -51,12 +38,13 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AuroraDreamband: b832158cdf0e9f2435e11a3c6c911bec796ad597
-  AwaitKit: 1645b708f13a15ac7fa9c1a39d6808f799e5a1ec
+  AuroraDreamband: 296d9dc6dbc6955cb4d8bfa6c7d134eeb502f854
+  AwaitKit: c469875701a000d6932dc2ec818719967e43be56
+  heatshrink-objc: 5f9adcf1418337b441ee18b3cc0c5af76f020d0d
   Nimble: 415e3aa3267e7bc2c96b05fa814ddea7bb686a29
-  PromiseKit: 593b5e24ded6cbb1ebc708bc2c3428a8a5632d91
-  RZBluetooth: 717ffd8c5f1ba1dac8fe5d56707981e8389c7e6d
+  PromiseKit: 00e8886881f151c7e573d06b437915b0bb2970ec
+  RZBluetooth: 1d3c1812c16438c77822377943c2a3012aa66bb1
 
-PODFILE CHECKSUM: e89e6d1b1df2f5730aea33ef46355ebbe22f66f6
+PODFILE CHECKSUM: cdfd2c1074d467675ee0800210a5e6f82997ae98
 
 COCOAPODS: 1.2.0.beta.1

@@ -75,7 +75,8 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
     public func disconnect() {
         centralManager.stopScan()
         if let peripheral = peripheral {
-            peripheral.cancelConnection()        }
+            peripheral.cancelConnection()
+        }
     }
     
     public func afterConnected(handler: @escaping () -> Void) {
@@ -246,9 +247,45 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
         }
     }
     
-    public func writeProfile(named profile: String, data: Data, completion: @escaping (() throws -> String) -> Void) {
+    public func readProfile(named profile: String) -> Promise<Data> {
+        return Promise { resolve, reject in
+            self.readProfile(named: profile) { response in
+                do { resolve(try response()) } catch { reject(error) }
+            }
+        }
+    }
+    
+    public func writeProfile(named profile: String, data: Data, completion: @escaping (() throws -> Void) -> Void) {
         execute(command: "sd-file-write \(profile) profiles 0 1 250 1", data: data, compressionEnabled: true).then { result in
-            completion { return result.responseString() }
+            completion { }
+        }.catch { error in
+            completion { throw error }
+        }
+    }
+    
+    public func writeProfile(named profile: String, data: Data) -> Promise<Void> {
+        return Promise { resolve, reject in
+            self.writeProfile(named: profile, data: data) { response in
+                do { resolve(try response()) } catch { reject(error) }
+            }
+        }
+    }
+    
+    
+    /**
+     Updates a profile with the given name, apply the given settings and write it back to the Aurora.
+     
+     - parameter profile:    name of the profile to update
+     - parameter settings:   array of settings to apply
+     - parameter completion: handler with an inner closure that returns when the update is finished, or throws in case of errors
+     */
+    public func updateProfile(named profile: String, with settings: [ProfileSetting], completion: @escaping (() throws -> Void) -> Void) {
+        firstly {
+            self.readProfile(named: profile)
+        }.then { data -> Promise<Void> in
+            self.writeProfile(named: profile, data: try self.applyProfileSettings(settings, to: data))
+        }.then {
+            completion { }
         }.catch { error in
             completion { throw error }
         }
@@ -268,6 +305,39 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
         }.catch { error in
             completion { throw error }
         }
+    }
+    
+    public func parseProfileSettings(from profile: Data) throws -> [ProfileSetting] {
+        guard var profileString = String(data: profile) else { throw AuroraErrors.unknownReadError }
+        
+        let settingsGroups = try profileString.matchingStrings(regex: "\\{(\\S+):(.*)\\}")
+        
+        var settings = [ProfileSetting]()
+        
+        for group in settingsGroups {
+            if group.count > 2 {
+                settings.append(ProfileSetting(key: group[1], value: group[2]))                
+            }
+        }
+        
+        return settings
+    }
+    
+    public func applyProfileSettings(_ settings: [ProfileSetting], to profile: Data) throws -> Data {
+        guard var profileString = String(data: profile) else { throw AuroraErrors.unknownReadError }
+        
+        let settingsGroups = try profileString.matchingStrings(regex: "\\{(\\S+):(.*)\\}")
+        
+        for group in settingsGroups {
+            if group.count > 2 {
+                let match = settings.filter { $0.key == group[1] }.first
+                if let match = match {
+                    profileString = profileString.replacingOccurrences(of: group[0], with: match.config)
+                }
+            }
+        }
+        
+        return profileString.data
     }
     
     private func execute(command string: String, data: Data? = nil, compressionEnabled: Bool = false) -> Promise<Command> {

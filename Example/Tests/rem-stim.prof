@@ -1,0 +1,46 @@
+[select]
+led-set {sel-indicator:3 0xFF00FF 0x40} -1
+
+[deselect]
+led-set 3 0 0 -1
+
+[load]
+led-set 3 0xFF00FF 0x40 -1
+stream-config 18 15 {wakeup-window: 1800000} #30min
+stream-config 18 16 {dsl-enabled: 1}
+stream-config 18 17 {wakeup-time: 0} #8am
+stream-session 1
+stream-output-enable 0x01 0x01
+event-output-disable 0x00010000 0x08
+event-output-enable 0x0001006E 0x04
+
+[unload]
+led-set 3 0 0 -1
+clock-timer-free 3
+stream-output-disable 0xFFFFFFFF 0xFF
+event-output-disable 0x0001006E 0x04
+stream-session 0
+
+#signal detected
+[signal-monitor=1]
+event-output-disable 0x00000001 0x08
+led-set 3 0 0 -1 
+event-output-enable 0x00010000 0x08
+stream-output-enable 0x01070003 0x01
+stream-output-enable {data-streams:0x01000403} 0x04
+clock-timer-set 3 {stim-delay:14400000} 0
+
+#button down
+[button-monitor@0]
+led-set {sel-indicator:3 0xFF00FF 0x7F} -1
+
+#button up
+[button-monitor@1]
+led-set 3 0 0 -1
+
+[clock-timer-fire@3]
+stream-config 18 18 {stim-interval:300000} #5min
+
+[stim-presented]
+{stim-led:led-blink 3 0xFF0000 0xFF 5 500 0}
+{stim-buzz:}

@@ -210,3 +210,88 @@ struct StreamOutputIds: OptionSet {
     static let dataLog   = StreamOutputIds(rawValue: 1 << 4)
     static let bluetooth = StreamOutputIds(rawValue: 1 << 5)
 }
+
+public enum ProfileSetting {
+    case wakeupTime(Double)
+    case wakeupWindow(Double) //default 1800000 (30 minutes)
+    case dslEnabled(Bool)
+    case stimDelay(Double) //default 14400000 (4 hours)
+    case stimInterval(Double) //default 300000 (5 minutes)
+    case stimLed(command: String) // default led-blink 3 0xFF0000 0xFF 5 500 0
+    case stimBuzz(command: String)
+    case custom(key: String, value: String)
+    
+    init(key: String, value: String) {
+        switch key {
+        case "wakeup-time":
+            self = .wakeupTime(Double(value) ?? 0)
+        case "wakeup-window":
+            self = .wakeupWindow(Double(value) ?? 1800000)
+        case "dsl-enabled":
+            self = .dslEnabled((value as NSString).boolValue)
+        case "stim-delay":
+            self = .stimDelay(Double(value) ?? 14400000)
+        case "stim-interval":
+            self = .stimInterval(Double(value) ?? 300000)
+        case "stim-led":
+            self = .stimLed(command: value)
+        case "stim-buzz":
+            self = .stimBuzz(command: value)
+        default:
+            self = .custom(key: key, value: value)
+        }
+    }
+    
+    var key: String {
+        switch self {
+        case .wakeupTime(_):
+            return "wakeup-time"
+        case .wakeupWindow(_):
+            return "wakeup-window"
+        case .dslEnabled(_):
+            return "dsl-enabled"
+        case .stimDelay(_):
+            return "stim-delay"
+        case .stimInterval(_):
+            return "stim-interval"
+        case .stimLed(_):
+            return "stim-led"
+        case .stimBuzz(_):
+            return "stim-buzz"
+        case .custom(let key, _):
+            return key
+        }
+    }
+    
+    var value: String {
+        switch self {
+        case .wakeupTime(let time):
+            return "\(time)"
+            
+        case .wakeupWindow(let window):
+            return "\(window)"
+            
+        case .dslEnabled(let enabled):
+            return "\(enabled ? 1 : 0)"
+            
+        case .stimDelay(let delay):
+            return "\(delay)"
+            
+        case .stimInterval(let interval):
+            return "\(interval)"
+            
+        case .stimLed(let command):
+            return command
+            
+        case .stimBuzz(let command):
+            return command
+            
+        case .custom(_, let value):
+            return value
+        }
+    }
+    
+    var config: String {
+        return "{\(key):\(value)}"
+    }
+}

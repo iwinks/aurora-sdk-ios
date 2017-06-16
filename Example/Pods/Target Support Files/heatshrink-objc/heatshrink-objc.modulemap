@@ -1,0 +1,6 @@
+framework module heatshrink_objc {
+  umbrella header "heatshrink-objc-umbrella.h"
+
+  export *
+  module * { export * }
+}

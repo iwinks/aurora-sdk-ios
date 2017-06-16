@@ -2,11 +2,9 @@ use_frameworks!
 
 target 'AuroraDreamband_Example' do
   pod 'AuroraDreamband', :path => '../'
-  pod 'AuroraDreamband/Simulation', :path => '../'
 
   target 'AuroraDreamband_Tests' do
     inherit! :search_paths
     pod 'Nimble'
-    pod 'AuroraDreamband/Testing', :path => '../'
   end
 end

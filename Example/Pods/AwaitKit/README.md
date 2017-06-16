@@ -1,6 +1,10 @@
 ![AwaitKit](http://yannickloriot.com/resources/AwaitKit-Arista-Banner.png)
 
-[![License](https://cocoapod-badges.herokuapp.com/l/AwaitKit/badge.svg)](http://cocoadocs.org/docsets/AwaitKit/) [![Supported Platforms](https://cocoapod-badges.herokuapp.com/p/AwaitKit/badge.svg)](http://cocoadocs.org/docsets/AwaitKit/) [![Version](https://cocoapod-badges.herokuapp.com/v/AwaitKit/badge.svg)](http://cocoadocs.org/docsets/AwaitKit/) [![Build Status](https://travis-ci.org/yannickl/AwaitKit.svg?branch=master)](https://travis-ci.org/yannickl/AwaitKit) [![codecov.io](http://codecov.io/github/yannickl/AwaitKit/coverage.svg?branch=master)](http://codecov.io/github/yannickl/AwaitKit?branch=master) [![codebeat badge](https://codebeat.co/badges/212dd077-388c-4b0a-8829-9ccf16d0a200)](https://codebeat.co/projects/github-com-yannickl-awaitkit) [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+[![Supported Platforms](https://cocoapod-badges.herokuapp.com/p/AwaitKit/badge.svg)](http://cocoadocs.org/docsets/AwaitKit/) [![Version](https://cocoapod-badges.herokuapp.com/v/AwaitKit/badge.svg)](http://cocoadocs.org/docsets/AwaitKit/)
+[![Build Status](https://travis-ci.org/yannickl/AwaitKit.svg?branch=master)](https://travis-ci.org/yannickl/AwaitKit)
+[![codecov.io](http://codecov.io/github/yannickl/AwaitKit/coverage.svg?branch=master)](http://codecov.io/github/yannickl/AwaitKit?branch=master)
+[![codebeat badge](https://codebeat.co/badges/212dd077-388c-4b0a-8829-9ccf16d0a200)](https://codebeat.co/projects/github-com-yannickl-awaitkit)
+[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 
 Have you ever dream to write asynchronous code like its synchronous counterpart?
 
@@ -8,7 +12,15 @@ _AwaitKit_ is a powerful Swift library inspired by the [Async/Await specificatio
 
 Internally it uses [PromiseKit](https://github.com/mxcl/PromiseKit) to create and manage promises.
 
-*N.B.: This branch is Swift 3 compatible, use the [v1.0.1 version](https://github.com/yannickl/AwaitKit/tree/1.0.1) for Swift 2.x.*
+<p align="center">
+    <a href="#requirements">Requirements</a> • <a href="#getting-started">Getting Started</a> • <a href="#usage">Usage</a> • <a href="#installation">Installation</a> • <a href="#contribution">Contribution</a> • <a href="#contact">Contact</a> • <a href="#license-mit">License</a>
+</p>
+
+## Requirements
+
+- iOS 8.0+
+- Xcode 8.0+
+- Swift 3.0+
 
 ## Getting Started
 
@@ -118,11 +130,11 @@ catch {
 The `async` and `await` methods runs by default on a background concurrent queue. Of course, you can choose your own queues and call the following methods:
 
 ```swift
-DispatchQueue.global(qos: .default).async {
+DispatchQueue.global(qos: .default).ak.async {
 
 }
 
-try DispatchQueue.global(qos: .default).await {
+try DispatchQueue.global(qos: .default).ak.await {
 
 }
 ```
@@ -149,7 +161,7 @@ $ touch Podfile
 $ edit Podfile
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
-pod 'AwaitKit', '~> 2.0.0'
+pod 'AwaitKit', '~> 3.0.0'
 ```
 
 Install into your project:
@@ -158,7 +170,7 @@ Install into your project:
 $ pod install
 ```
 
-If CocoaPods did not find the `PromiseKit 4.0.2` dependency execute this command:
+If CocoaPods did not find the `PromiseKit 4.1.8` dependency execute this command:
 
 ```bash
 $ pod repo update
@@ -191,12 +203,15 @@ Note that the [Swift Package Manager](https://swift.org/package-manager) is stil
 
 [Download](https://github.com/YannickL/AwaitKit/archive/master.zip) the project and copy the `AwaitKit` folder into your project to use it in. Note that you also need to download the [PromiseKit](https://github.com/mxcl/PromiseKit) library and import it to your project.
 
+## Contribution
+
+Contributions are welcomed and encouraged *♡*.
+
 ## Contact
 
 Yannick Loriot
  - [https://twitter.com/yannickloriot](https://twitter.com/yannickloriot)
  - [contact@yannickloriot.com](mailto:contact@yannickloriot.com)
-
 
 ## License (MIT)
 

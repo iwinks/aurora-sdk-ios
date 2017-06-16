@@ -79,6 +79,7 @@
                                        matchingUUIDPath:nil
                                               createNew:YES];
     cmd.serviceUUIDs = serviceUUIDs;
+    cmd.scanOptions = options;
     [cmd addCallbackBlock:^(id object, NSError *error) {
         if (error) {
             scanBlock(nil, error);
@@ -92,9 +93,19 @@
 {
     self.activeScanBlock = nil;
     [self completeScanCommand];
-    if (self.coreCentralManager.state == CBCentralManagerStatePoweredOn) {
+    if (self.coreCentralManager.state == CBManagerStatePoweredOn) {
         [self.coreCentralManager stopScan];
     }
+}
+
+- (NSArray<RZBPeripheral *> *)retrieveConnectedPeripheralsWithServices:(NSArray<CBUUID *> *)serviceUUIDs
+{
+    NSMutableArray<RZBPeripheral *> *result = [NSMutableArray array];
+    NSArray<CBPeripheral *> *connectedPeripherals = [self.coreCentralManager retrieveConnectedPeripheralsWithServices:serviceUUIDs];
+    for (CBPeripheral *p in connectedPeripherals) {
+        [result addObject:[self peripheralForCorePeripheral:p]];
+    }
+    return result;
 }
 
 #pragma mark - Lookup Helpers
@@ -158,8 +169,10 @@
                               error:(NSError *)error
 {
     NSArray *commands = [self.dispatch commandsOfClass:cls matchingUUIDPath:UUIDPath isExecuted:YES];
-    RZBCommand *command = commands.firstObject;
-    [self.dispatch completeCommand:command withObject:object error:error];
+    RZBCommand *cmd = commands.firstObject;
+    if (cmd) {
+        [self.dispatch completeCommand:cmd withObject:object error:error];
+    }
 
     return commands.count > 0;
 }
@@ -187,11 +200,22 @@
         self.centralStateHandler(central.state);
     }
     switch (central.state) {
-        case CBCentralManagerStateUnknown:
-        case CBCentralManagerStateResetting:
+        case CBManagerStateUnknown:
+        case CBManagerStateResetting:
+            // These are intermittent states that will have caused any outstanding
+            // commands to not respond. Reset the commands so when the state is
+            // known the commands are retried
             [self.dispatch resetCommands];
             break;
-        default:
+        case CBManagerStateUnsupported:
+        case CBManagerStateUnauthorized:
+        case CBManagerStatePoweredOff:
+            // Reset the commands so when they are dispatched again, they will
+            // generate an error message.
+            [self.dispatch resetCommands];
+            [self.dispatch dispatchPendingCommands];
+            break;
+        case CBManagerStatePoweredOn:
             [self.dispatch dispatchPendingCommands];
     }
 }
@@ -275,7 +299,7 @@
         [self.dispatch completeCommand:command withObject:nil error:error];
     }
     // Clear out any onUpdate blocks
-    [peripheral.notifyBlockByUUID removeAllObjects];
+    [peripheral.notifyBlockByUUIDs removeAllObjects];
     [peripheral connectionEvent:RZBPeripheralStateEventDisconnected error:error];
 }
 
@@ -283,8 +307,11 @@
 
 //- (void)peripheralDidUpdateName:(CBPeripheral *)peripheral {}
 
-// Nothing needs to be done here, everything will be re-discovered automatically
-//- (void)peripheral:(CBPeripheral *)peripheral didModifyServices:(NSArray *)invalidatedServices {}
+// Nothing needs to be done here, everything will be re-discovered automatically. Send the event to the log system.
+- (void)peripheral:(CBPeripheral *)peripheral didModifyServices:(NSArray *)invalidatedServices {
+    RZBLogDelegate(@"%@ - %@ %@", NSStringFromSelector(_cmd), RZBLogIdentifier(peripheral), invalidatedServices);
+}
+
 #if TARGET_OS_OSX
 - (void)peripheralDidUpdateRSSI:(CBPeripheral *)peripheral error:(nullable NSError *)error
 {
@@ -339,7 +366,7 @@
                                                 error:error];
 
     RZBPeripheral *peripheral = [self peripheralForCorePeripheral:corePeripheral];
-    RZBCharacteristicBlock notifyBlock = [peripheral notifyBlockForCharacteristicUUID:characteristic.UUID];
+    RZBCharacteristicBlock notifyBlock = [peripheral notifyBlockForCharacteristicUUID:characteristic.UUID serviceUUID:characteristic.service.UUID];
 
     if (!complete && characteristic.isNotifying && notifyBlock) {
         notifyBlock(characteristic, error);
