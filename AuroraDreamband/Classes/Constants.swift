@@ -12,10 +12,10 @@ let TRANSFER_MAX_PAYLOAD = 120
 let AURORA_SERVICE_UUID = CBUUID(string: "6175726f-7261-454d-af79-42b381af0204")
 let auroraDreambandDefaultProfile = "rem-stim.prof"
 
-public let auroraDreambandDefaultWakeupWindow: Double = 1_800_000
-public let auroraDreambandDefaultStimDelay: Double = 14_400_000
+public let auroraDreambandDefaultWakeupWindow = 1_800_000
+public let auroraDreambandDefaultStimDelay = 14_400_000
 public let auroraDreambandDefaultStimLed = "led-blink 3 0xFF0000 0xFF 5 500 0"
-public let auroraDreambandDefaultStimInterval: Double = 300_000
+public let auroraDreambandDefaultStimInterval = 300_000
 
 struct AuroraChars {
     static let commandData = CBUUID(string: "6175726f-7261-49ce-8077-b954b033c880")
@@ -221,11 +221,11 @@ public enum ProfileSetting {
     /**
      This option configures the alarm time associated with the Smart Alarm. It's value is specified in milliseconds after midnight, and represents the absolute latest you wish to be awakened. The alarm can be disabled by providing a value of 0 and is also the default value.
      */
-    case wakeupTime(Double)
+    case wakeupTime(Int)
     /**
      This option configures the Smart Alarm "window". It's value is specified in milliseconds, and represents the amount of time before the configured wakeup time that the Smart Alarm is allowed to wake you up prematurely if it detects an ideal sleep stage for awakening. This window can be disabled by providing a value of 0. The default value is `auroraDreambandDefaultWakeupWindow` (1_800_000 or 30 minutes).
      */
-    case wakeupWindow(Double)
+    case wakeupWindow(Int)
     /**
       This option determines whether the DSL feature is enabled. It's value can be either 0 to disable or 1 to enable. When enabled the Aurora slowly fades in blue light designed to ease you out of sleep. This option uses the {wakeup-window} option to determine when the light should begin fading in and uses the {wakeup-time} to determine when the light should reach full brightness.
      */
@@ -233,11 +233,11 @@ public enum ProfileSetting {
     /**
      This option determines the delay until REM stimulation can happen and is specified in milliseconds. No stim-presented events will be emitted until this delay has elapsed. If a value of 0 is specified, there is no delay and stim-presented events will be emitted as normal. A value of -1 effectively disables the REM stim feature entirely. The default value is `auroraDreambandDefaultStimDelay` (14_400_400 or 4 hours).
      */
-    case stimDelay(Double)
+    case stimDelay(Int)
     /**
      This option configures the minimum amount of time required between successive stim presentations. This is useful to allow/prevent REM stimulation events from ocurring when long periods of uninterrupted REM occur. A value of 0 allows a stim-presented event to occur any time the Aurora sleep stager identifies a REM period. A value of -1 effectively prevents multiple stim-presented events from being emitted during a continuous period of REM. Note that this does not prevent additional stim-presented events from ocurring if other sleep stages occur in between REM periods. The default value is `auroraDreambandDefaultStimDelay` (300_000 or 5 minutes).
      */
-    case stimInterval(Double)
+    case stimInterval(Int)
     /**
      This is the LED command that is triggered whenever a stim-presented event occurs. It's value can be empty to prevent any light effects from being triggered. By default it's value is `auroraDreambandDefaultStimLed` (`led-blink 3 0xFF0000 0xFF 5 500 0`, which blinks the red LEDs for 5 seconds at 1HZ).
      */
@@ -254,15 +254,15 @@ public enum ProfileSetting {
     init(key: String, value: String) {
         switch key {
         case "wakeup-time":
-            self = .wakeupTime(Double(value) ?? 0)
+            self = .wakeupTime(Int(value) ?? 0)
         case "wakeup-window":
-            self = .wakeupWindow(Double(value) ?? auroraDreambandDefaultWakeupWindow)
+            self = .wakeupWindow(Int(value) ?? auroraDreambandDefaultWakeupWindow)
         case "dsl-enabled":
             self = .dslEnabled((value as NSString).boolValue)
         case "stim-delay":
-            self = .stimDelay(Double(value) ?? auroraDreambandDefaultStimDelay)
+            self = .stimDelay(Int(value) ?? auroraDreambandDefaultStimDelay)
         case "stim-interval":
-            self = .stimInterval(Double(value) ?? auroraDreambandDefaultStimInterval)
+            self = .stimInterval(Int(value) ?? auroraDreambandDefaultStimInterval)
         case "stim-led":
             self = .stimLed(command: value)
         case "stim-buzz":

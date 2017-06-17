@@ -38,8 +38,8 @@ class ProfileParserTests: XCTestCase {
         
         expect(settings).to(contain(.wakeupTime(0)))
         
-        // Custom setting that matches one preset will appear as the preset enum and not a custom key/value
-        expect(settings).notTo(contain(.custom(key: "wakeup-time", value: "0")))
+        // Custom setting that matches a given preset will also be considered
+        expect(settings).to(contain(.custom(key: "wakeup-time", value: "0")))
         
         expect(settings).to(contain(.wakeupWindow(1800000)))
 
@@ -73,7 +73,7 @@ class ProfileParserTests: XCTestCase {
         newSettings.append(.dslEnabled(false))
         newSettings.append(.stimDelay(0))
         newSettings.append(.stimInterval(-1))
-        newSettings.append(.stimBuzz(command: "buzz 56 200"))
+        newSettings.append(.stimBuzz(command: "buzz-note 56 200"))
         newSettings.append(.custom(key: "sel-indicator", value: "xpto"))
         // Duplicate settings
         newSettings.append(.wakeupTime(100000))
@@ -96,7 +96,7 @@ class ProfileParserTests: XCTestCase {
         expect(settings).to(contain(.dslEnabled(false)))
         expect(settings).to(contain(.stimDelay(0)))
         expect(settings).to(contain(.stimInterval(-1)))
-        expect(settings).to(contain(.stimBuzz(command: "buzz 56 200")))
+        expect(settings).to(contain(.stimBuzz(command: "buzz-note 56 200")))
         // When adding duplicate settings the expectation is that only the first one will be applied
         expect(settings).notTo(contain(.wakeupTime(100000)))
         expect(settings).to(contain(.custom(key: "sel-indicator", value: "xpto")))
