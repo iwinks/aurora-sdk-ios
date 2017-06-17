@@ -103,4 +103,19 @@ class ProfileParserTests: XCTestCase {
         expect(settings).notTo(contain(.custom(key: "sel-indicator", value: "3 0xFF00FF 0x7F")))
     }
     
+    func testNoSettingChangeKeepsProfileIntact() {
+        // Given
+        let remStimProf = FileHelper.data(with: "rem-stim", extension: "prof")
+        let auroraApi = AuroraDreamband()
+        
+        // When
+        var modifiedProfile = Data()
+        expect {
+            modifiedProfile = try auroraApi.applyProfileSettings([ProfileSetting](), to: remStimProf)
+            }.notTo(throwError())
+        
+        // Then
+        expect(remStimProf) == modifiedProfile
+    }
+    
 }

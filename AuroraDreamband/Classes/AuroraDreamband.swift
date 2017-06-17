@@ -214,12 +214,27 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
         }
     }
     
-    public func loadProfile(remStim: Bool, completion: @escaping (() throws -> Void) -> Void) {
-        let profile = remStim ? "rem-stim.prof" : "sleep-tracker.prof"
+    public func observeEvents(_ events: EventIds, eventHandler: @escaping ((_ event: UInt8, _ flags: UInt32) -> Void)) -> Promise<Void> {
+        return Promise { resolve, reject in
+            self.observeEvents(events, eventHandler: eventHandler) { response in
+                do { resolve(try response()) } catch { reject(error) }
+            }
+        }
+    }
+    
+    public func loadProfile(named profile: String = auroraDreambandDefaultProfile, completion: @escaping (() throws -> Void) -> Void) {
         execute(command: "prof-load \(profile)").then { result in
             completion { }
         }.catch { error in
             completion { throw error }
+        }
+    }
+    
+    public func loadProfile(named profile: String = auroraDreambandDefaultProfile) -> Promise<Void> {
+        return Promise { resolve, reject in
+            self.loadProfile(named: profile) { response in
+                do { resolve(try response()) } catch { reject(error) }
+            }
         }
     }
     
@@ -231,6 +246,14 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
         }
     }
     
+    public func unloadProfile() -> Promise<Void> {
+        return Promise { resolve, reject in
+            self.unloadProfile() { response in
+                do { resolve(try response()) } catch { reject(error) }
+            }
+        }
+    }
+    
     public func listProfiles(completion: @escaping (() throws -> [String]) -> Void) {
         execute(command: "sd-dir-read profiles 1 *.prof").then { result in
             completion { return try result.responseTable().flatMap { $0["Name"] } }
@@ -239,15 +262,15 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
         }
     }
     
-    public func readProfile(named profile: String, completion: @escaping (() throws -> Data) -> Void) {
-        execute(command: "sd-file-read profiles/\(profile)").then { result in
+    public func readProfile(named profile: String = auroraDreambandDefaultProfile, completion: @escaping (() throws -> Data) -> Void) {
+        execute(command: "sd-file-read \(profile) profiles 1", compressionEnabled: true).then { result in
             completion { return result.output }
         }.catch { error in
             completion { throw error }
         }
     }
     
-    public func readProfile(named profile: String) -> Promise<Data> {
+    public func readProfile(named profile: String = auroraDreambandDefaultProfile) -> Promise<Data> {
         return Promise { resolve, reject in
             self.readProfile(named: profile) { response in
                 do { resolve(try response()) } catch { reject(error) }
@@ -255,7 +278,7 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
         }
     }
     
-    public func writeProfile(named profile: String, data: Data, completion: @escaping (() throws -> Void) -> Void) {
+    public func writeProfile(named profile: String = auroraDreambandDefaultProfile, data: Data, completion: @escaping (() throws -> Void) -> Void) {
         execute(command: "sd-file-write \(profile) profiles 0 1 250 1", data: data, compressionEnabled: true).then { result in
             completion { }
         }.catch { error in
@@ -263,7 +286,7 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
         }
     }
     
-    public func writeProfile(named profile: String, data: Data) -> Promise<Void> {
+    public func writeProfile(named profile: String = auroraDreambandDefaultProfile, data: Data) -> Promise<Void> {
         return Promise { resolve, reject in
             self.writeProfile(named: profile, data: data) { response in
                 do { resolve(try response()) } catch { reject(error) }
@@ -279,7 +302,7 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
      - parameter settings:   array of settings to apply
      - parameter completion: handler with an inner closure that returns when the update is finished, or throws in case of errors
      */
-    public func updateProfile(named profile: String, with settings: [ProfileSetting], completion: @escaping (() throws -> Void) -> Void) {
+    public func updateProfile(named profile: String = auroraDreambandDefaultProfile, with settings: [ProfileSetting], completion: @escaping (() throws -> Void) -> Void) {
         firstly {
             self.readProfile(named: profile)
         }.then { data -> Promise<Void> in
@@ -288,6 +311,14 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
             completion { }
         }.catch { error in
             completion { throw error }
+        }
+    }
+    
+    public func updateProfile(named profile: String = auroraDreambandDefaultProfile, with settings: [ProfileSetting]) -> Promise<Void> {
+        return Promise { resolve, reject in
+            self.updateProfile(named: profile, with: settings) { response in
+                do { resolve(try response()) } catch { reject(error) }
+            }
         }
     }
     
