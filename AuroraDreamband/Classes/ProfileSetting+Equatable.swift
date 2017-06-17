@@ -12,5 +12,5 @@ extension ProfileSetting: Equatable {
 }
 
 public func ==(lhs: ProfileSetting, rhs: ProfileSetting) -> Bool {
-    return lhs.key == rhs.key && lhs.value == rhs.value    
+    return lhs.key == rhs.key && lhs.value == rhs.value
 }

@@ -68,7 +68,16 @@ class ProfileParserTests: XCTestCase {
         
         // When
         var newSettings = [ProfileSetting]()
+        newSettings.append(.wakeupTime(800000))
+        newSettings.append(.wakeupWindow(1000))
+        newSettings.append(.dslEnabled(false))
         newSettings.append(.stimDelay(0))
+        newSettings.append(.stimInterval(-1))
+        newSettings.append(.stimBuzz(command: "buzz 56 200"))
+        newSettings.append(.custom(key: "sel-indicator", value: "xpto"))
+        // Duplicate settings
+        newSettings.append(.wakeupTime(100000))
+        newSettings.append(.custom(key: "sel-indicator", value: "3 0xFF00FF 0x7F"))
         var modifiedProfile = Data()
         expect {
             modifiedProfile = try auroraApi.applyProfileSettings(newSettings, to: remStimProf)
@@ -82,7 +91,16 @@ class ProfileParserTests: XCTestCase {
 
         expect(settings.count) > 0
         
+        expect(settings).to(contain(.wakeupTime(800000)))
+        expect(settings).to(contain(.wakeupWindow(1000)))
+        expect(settings).to(contain(.dslEnabled(false)))
         expect(settings).to(contain(.stimDelay(0)))
+        expect(settings).to(contain(.stimInterval(-1)))
+        expect(settings).to(contain(.stimBuzz(command: "buzz 56 200")))
+        // When adding duplicate settings the expectation is that only the first one will be applied
+        expect(settings).notTo(contain(.wakeupTime(100000)))
+        expect(settings).to(contain(.custom(key: "sel-indicator", value: "xpto")))
+        expect(settings).notTo(contain(.custom(key: "sel-indicator", value: "3 0xFF00FF 0x7F")))
     }
     
 }
