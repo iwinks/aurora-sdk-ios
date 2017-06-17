@@ -322,6 +322,6 @@ public enum ProfileSetting {
     }
     
     var config: String {
-        return "{\(key):\(value)}"
+        return "{\(key): \(value)}"
     }
 }
