@@ -8,7 +8,7 @@ led-set 3 0 0 -1
 led-set 3 0xFF00FF 0x40 -1
 stream-config 18 15 {wakeup-window: 1800000} #30min
 stream-config 18 16 {dsl-enabled: 1}
-stream-config 18 17 {wakeup-time: 0} #8am
+stream-config 18 17 {wakeup-time: 28800000} #8am
 stream-session 1
 stream-output-enable 0x01 0x01
 event-output-disable 0x00010000 0x08

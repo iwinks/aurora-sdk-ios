@@ -36,10 +36,10 @@ class ProfileParserTests: XCTestCase {
         // Then
         expect(settings.count) > 0
         
-        expect(settings).to(contain(.wakeupTime(0)))
+        expect(settings).to(contain(.wakeupTime(28_800_000)))
         
         // Custom setting that matches a given preset will also be considered
-        expect(settings).to(contain(.custom(key: "wakeup-time", value: "0")))
+        expect(settings).to(contain(.custom(key: "wakeup-time", value: "28800000")))
         
         expect(settings).to(contain(.wakeupWindow(1800000)))
 
@@ -118,4 +118,27 @@ class ProfileParserTests: XCTestCase {
         expect(remStimProf) == modifiedProfile
     }
     
+    func testCanDetectExistingSettingsSubset() {
+        // Given
+        let remStimProf = FileHelper.data(with: "rem-stim", extension: "prof")
+        let auroraApi = AuroraDreamband()
+        
+        // When
+        var settings = [ProfileSetting]()
+        expect {
+            settings = try auroraApi.parseProfileSettings(from: remStimProf)
+        }.notTo(throwError())
+        
+        var newSettings = [ProfileSetting]()
+        newSettings.append(.wakeupTime(28_800_000))
+        newSettings.append(.wakeupWindow(1_800_000))
+        newSettings.append(.dslEnabled(true))
+        
+        let existingSet = Set(settings)
+        let proposedSet = Set(newSettings)
+        
+        let isSubSet = proposedSet.isSubset(of: existingSet)
+        
+        expect(isSubSet) == true
+    }
 }

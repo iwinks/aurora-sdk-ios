@@ -306,11 +306,23 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
         firstly {
             self.readProfile(named: profile)
         }.then { data -> Promise<Void> in
-            self.writeProfile(named: profile, data: try self.applyProfileSettings(settings, to: data))
+            let existingSettings = try self.parseProfileSettings(from: data)
+            let existingSet = Set(existingSettings)
+            let proposedSet = Set(settings)
+            if proposedSet.isSubset(of: existingSet) {
+                return self.continuation()
+            }
+            return self.writeProfile(named: profile, data: try self.applyProfileSettings(settings, to: data))
         }.then {
             completion { }
         }.catch { error in
             completion { throw error }
+        }
+    }
+    
+    private func continuation() -> Promise<Void> {
+        return Promise { resolve, reject in
+            resolve()
         }
     }
     
@@ -341,7 +353,7 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
     public func parseProfileSettings(from profile: Data) throws -> [ProfileSetting] {
         guard var profileString = String(data: profile) else { throw AuroraErrors.unknownReadError }
         
-        let settingsGroups = try profileString.matchingStrings(regex: "\\{(\\S+):(.*)\\}")
+        let settingsGroups = try profileString.matchingStrings(regex: "\\{(\\S+)\\s*:\\s*(.*)\\}")
         
         var settings = [ProfileSetting]()
         
@@ -455,6 +467,7 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
         }
         else {
              log("AURORA DISCONNECTED")
+            commandQueue.reset()
             _isConnected = false
             isConnected = false
             NotificationCenter.default.post(name: .auroraDreambandDisconnected, object: nil)

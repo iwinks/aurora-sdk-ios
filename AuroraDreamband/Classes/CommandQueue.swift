@@ -33,5 +33,10 @@ class CommandQueue {
         }
         handlers.first?()
     }
+    
+    func reset() {
+        commands = [Command]()
+        handlers = [() -> Void]()
+    }
 }
 

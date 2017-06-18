@@ -7,287 +7,286 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		001F295235277E8858E94BD0ECCA791E /* Process+Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4807E2DD3EDA0508EC69553E82694547 /* Process+Promise.swift */; };
-		0347EC80D2F985205BE97EEF77FCAD25 /* NSNotificationCenter+AnyPromise.h in Headers */ = {isa = PBXBuildFile; fileRef = 579414D4477866DD4CC12322EC3A167C /* NSNotificationCenter+AnyPromise.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		044E0FACF6CC7137168632EA2945FC32 /* RZBScanInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = FC8DDFEE6070306325DEC0480DD87300 /* RZBScanInfo.m */; };
+		0059E85F372B472CC1BADAAB1322BEBF /* PMKAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E99DEF7DABE35D4F3C07407BF147B1 /* PMKAlertController.swift */; };
+		01FBCB1103F7A9CE3A820298F799A351 /* NSNotificationCenter+AnyPromise.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A54F3E4C66305A0E919B3F5B2E7C256 /* NSNotificationCenter+AnyPromise.m */; };
+		02EC2256887C7EC68AFF86586AD328F8 /* PromiseKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C8A98A96C572C9F16412341259009F3A /* PromiseKit-dummy.m */; };
+		03BBE4B86C8EEC28BCFEA9C7DE15A75E /* RZBErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = A8BC7ACBE43C02084242964C0D43AEE3 /* RZBErrors.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		047A68C646E00EB6D7D4D7343B801D09 /* AdapterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D13F23FCF24D71FB8AD5BD0A1352EA /* AdapterProtocols.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		076A2580A26928F64B3461C3EF92DFBE /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05A76A3E0B88F82D435392EEFC1D6C52 /* PromiseKit.framework */; };
+		0534A57C19EA17109DD28EAB78580B28 /* RNHeatshrinkDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = C2F06D6E5829AEC43A3496F7DE862022 /* RNHeatshrinkDecoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		06BF250F9506DC6A5CE04EB56E7B4D0E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC070AF5B6580F6DB18D63A75C66091A /* UIKit.framework */; };
 		07722FBCF6B380961B9D2832D5883F45 /* BeGreaterThan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AD0F4BB1461D8954A9C9B7644DCB64 /* BeGreaterThan.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
+		094A69FD501DBAD3D23358FDFCDEA7BF /* NSURLSession+AnyPromise.h in Headers */ = {isa = PBXBuildFile; fileRef = 083B2B0C9C2900EFEC0273FCA3711DFC /* NSURLSession+AnyPromise.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A0340EEDE95D46EFFA3BA67B0F80035 /* Promise+AnyPromise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682487DAD3FB4CBD6826602F9BE42A86 /* Promise+AnyPromise.swift */; };
 		0AEC20AACF9B10846830274E3B2AA6FD /* BeLogical.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB94305910A37EAD1A9C8D66D1C18903 /* BeLogical.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		0B7B5791A0A6DAFED384E482CCE05889 /* Pods-AuroraDreamband_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B5FD402707B7D1EBAECA0787DFFFAA /* Pods-AuroraDreamband_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0DF79617D2A59A484078D42415C7629B /* RZBBluetoothRepresentable.h in Headers */ = {isa = PBXBuildFile; fileRef = 872D5EAD727A74B4F548921F381D9EE5 /* RZBBluetoothRepresentable.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0E462FFEAF260200710C1DF59493710A /* afterlife.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB5CB00870687AC8597775584F6BC77 /* afterlife.swift */; };
-		0E99404F1E2C10FD674FFFF2FE430670 /* RZBCentralManager+CommandHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 61626CCC072D82BF5D4A095EE06A5BCF /* RZBCentralManager+CommandHelper.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		0EC7CED1CEDA22867751736DED1668A4 /* URLDataPromise.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D965D3BE30F6E50F6B8C800A6960DA /* URLDataPromise.swift */; };
 		0ECEEBC712D404AA6CF1E76A9284BFF9 /* DSL.h in Headers */ = {isa = PBXBuildFile; fileRef = 134D1A9E6333C5422E48DE3D0AE999EF /* DSL.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0EFD33973CF01B68B8F29E56AA2D7D62 /* AnyPromise.h in Headers */ = {isa = PBXBuildFile; fileRef = B7949EACE5AF70F89C639F994213EFB2 /* AnyPromise.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		10C63B8CEE8410097D329F8B6C106FA2 /* NSURLSession+Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859D6F481CB6E239AABDB3B6BB12824A /* NSURLSession+Promise.swift */; };
+		10EE3BA9119CE4221821553FAA6BC43D /* heatshrink_decoder.c in Sources */ = {isa = PBXBuildFile; fileRef = 658D25C8F51B51C3C2298043655C43BD /* heatshrink_decoder.c */; };
 		110A640A9BE45841BA938B4C29EF5446 /* ThrowAssertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFB8CDB2CFC66C3FFF3FBAD8B9A03BB /* ThrowAssertion.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		127CD37052B8E0BC645D83D4664F59D4 /* NMBStringify.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA1D1469B3B6E25A6953D5A5D1C4F3F /* NMBStringify.m */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		1414D3996F85BAE77E7B20749423951F /* AwaitKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7438497E23832B6287E3D792AE0980 /* AwaitKit.swift */; };
-		14329810389A761FAC6B4F221F4CDEC7 /* RZBCentralManager+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = F22ABD1DA8E6D47850100AA7A35BC899 /* RZBCentralManager+Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		167CEE7DD190367D772D3240B95A09A0 /* RZBCommandDispatch.h in Headers */ = {isa = PBXBuildFile; fileRef = D85D76151FA58B4998A271DFF378EB4D /* RZBCommandDispatch.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		17261E344C2027602431A636759AC7F2 /* DSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F456EAB81CDB5798EE1BE3A458BC1D /* DSL.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		17ADFFF02E92789E5D47F2CAAD033CE3 /* RZBErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = A8BC7ACBE43C02084242964C0D43AEE3 /* RZBErrors.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		189DE4D6D1C6D58984A29D86CEFCDDB3 /* RZBLog+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A84CF3AC9586FC183C2C10E25008783 /* RZBLog+Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		194702C6CE9315E635228B21A3D00E69 /* NSTask+AnyPromise.m in Sources */ = {isa = PBXBuildFile; fileRef = FE99FA08876E84B97E449E6127CCFF21 /* NSTask+AnyPromise.m */; };
+		1879D481C4562AC62DBD1022C294C004 /* RZBScanInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = FC8DDFEE6070306325DEC0480DD87300 /* RZBScanInfo.m */; };
+		1A08E5D201E61E43909AF2EF498F552F /* CBUUID+RZBPublic.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED23B1998A7954840218BA792C1FA3A /* CBUUID+RZBPublic.m */; };
+		1AEF8056D9321C02185C5634345ADC84 /* RZBluetooth-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 496A985526E608390CF9251B682060CF /* RZBluetooth-dummy.m */; };
 		1C50F54510D5C2B2AD84D7B74A6EDEBB /* BeGreaterThanOrEqualTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081FC0851EF90124276E5E958FBE500A /* BeGreaterThanOrEqualTo.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		1C7CA1FAFBF8B865596C739FEA39CDEE /* DSL.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0334F37BFDF4B428E955E68A1A7A66 /* DSL.m */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		1CB1771F4FF569137BF57A158D9401E1 /* join.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8E1C85A55D5BA43F76C6D6CD74472A /* join.swift */; };
-		1DDAD21FB8713BDD93FCE1BCA1DA7ECD /* NSTask+AnyPromise.h in Headers */ = {isa = PBXBuildFile; fileRef = DE7CBA5F472952D4827B0BE671700F47 /* NSTask+AnyPromise.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1EFB5B626B40CEE9646315E680604522 /* RZBDeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D8C91CE4E5F3D08DA8FBBA296687AF /* RZBDeviceInfo.m */; };
-		20A75DDD72FF9EB9F248B0864172E73D /* AwaitKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 985A9367D799649F14A0E7B6E1BE1185 /* AwaitKit.framework */; };
+		1FCD7669C7EEEB4547A7501E6E27F852 /* RZBCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = EA79D9AF03F29FD4A241040BACEBBEE0 /* RZBCommand.m */; };
+		1FCED1FDADE72C8B0E3F90CC54E86CB3 /* NSObject+Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCB3479224B4D8EAC34E32631EDAE90 /* NSObject+Promise.swift */; };
+		221F89CE0A9705DEACAB76A21AF91912 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5697506E6FB906FACFB29DD5D43A693C /* Error.swift */; };
 		22C1DE74D494C10BBE727F239A68447D /* ThrowError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F32C7581B44C645E524FF8CD943E960 /* ThrowError.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		234BFC45ACAC4A8FB945EA17B6A74B0B /* SourceLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955BB7E96F379782E706212EED31AC62 /* SourceLocation.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		23E2E1E02FE79EE1E1688CBBAA777297 /* MatcherProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18145C2360E53D52D5315EF0A3AF95E9 /* MatcherProtocols.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		24EF070BEAF1E0EF02D2DF400A607B2A /* UIView+AnyPromise.h in Headers */ = {isa = PBXBuildFile; fileRef = 10A3539AE676EE0F17C09906B8B2C77B /* UIView+AnyPromise.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		25166F6DF26FC9186AEB4711FA435E3C /* Promise+Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3532A27F5E52DE883249EA9C963BA637 /* Promise+Properties.swift */; };
+		24A5F5B0932BA1189EAEB2AED347512E /* DispatchQueue+Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C6746FD2FA4BCCF1E8E61E4297B248 /* DispatchQueue+Async.swift */; };
+		24F5F629E9D3319C62B0A969D5294DCC /* CBUUID+RZBPublic.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C5FBC2C8FEBD7A0C230C26CE3F934C4 /* CBUUID+RZBPublic.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		25CF00FFEE8BEE679B30FBF246A63393 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7886D17953A71D8B02CB40337189FFF5 /* Foundation.framework */; };
+		25E7E6A5FB3E7E3FF9017C5244318264 /* when.m in Sources */ = {isa = PBXBuildFile; fileRef = B2658C580CA0B821F1E132FE0F7571EA /* when.m */; };
+		27900D0085A1B1B11B239F80956FF16B /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A4EF3E90B5AF6F087532FB8AA86067 /* Log.swift */; };
 		27B262F95D3CF9E3C74541A41929691C /* NMBStringify.h in Headers */ = {isa = PBXBuildFile; fileRef = 3209BC706C0AA465C9005DD40B811B73 /* NMBStringify.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27DBA60B173D032CE9CD18F1B1014479 /* heatshrink_objc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93007F64B44297D39B5DCEBA7E4A0D95 /* heatshrink_objc.framework */; };
-		2838743C09E179CDB5D847B54636A1CE /* RNHeatshrinkDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = C2F06D6E5829AEC43A3496F7DE862022 /* RNHeatshrinkDecoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2BCA41E959A668FE50F2E52EEA0FC2EE /* ProfileSetting+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372A9F99F744141A932FE40F9D332926 /* ProfileSetting+Equatable.swift */; };
-		2C189B5CAEA319BEE7AF5941D3796EF6 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47486EC8C9F4F2288843841B21E276B /* Errors.swift */; };
-		2D90103CBB683E9792153B0E2384D885 /* GlobalState.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9BE980BE204691B0FDD6A9D2A6526 /* GlobalState.m */; };
-		2DE6AA85274B7880BAC11170767CB510 /* heatshrink_config.h in Headers */ = {isa = PBXBuildFile; fileRef = 89C5974F64B9FFB134E0627FBE648803 /* heatshrink_config.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		30151EBDA3D03ACB0F40D907A7C67D83 /* PromiseKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 09226CA23FEC41C214D2A15864AD95C0 /* PromiseKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		310D5F692356B5DAE754C14E4EA9CD7E /* after.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DFDD3712F6C08D1AF295E4AD426065 /* after.m */; };
-		338CA1934917E5C56D800DD39A1A34DB /* CommandQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AEAB087D125710571E26E33E7203BA /* CommandQueue.swift */; };
-		33C62BAB36F5C68663BD0815E2018C2A /* NSURLSession+AnyPromise.m in Sources */ = {isa = PBXBuildFile; fileRef = B6FBFC2A9BD5515AA89885C067F0A615 /* NSURLSession+AnyPromise.m */; };
-		36BA7D62143C8DAF3C4F9E00637DF5E9 /* heatshrink-objc-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 31709A230164D29DF4F2C3D3BF4096AF /* heatshrink-objc-dummy.m */; };
-		38D0AABDD7A0FADF68855A714FA82593 /* UIViewController+Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = F476B72A80888C8A1B79293583034865 /* UIViewController+Promise.swift */; };
+		29CD6DB3208B7C91226AAC8F687E6285 /* AwaitKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7438497E23832B6287E3D792AE0980 /* AwaitKit.swift */; };
+		2B02D48E7CA17D4EF9263D4AB68658F7 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6FB2B84259EA7B800A1ACB7FCC685C /* State.swift */; };
+		2C55EAAE4D34310CE87B71682C939B07 /* PMKFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = 02B9990B900E9FDBA1969424AEDEDF0F /* PMKFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2DE221A206AF9DEC4878E9757CA3D6D6 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05A76A3E0B88F82D435392EEFC1D6C52 /* PromiseKit.framework */; };
+		2E432271CBA465ACF3A3F0A04914B61D /* RZBCommandDispatch.h in Headers */ = {isa = PBXBuildFile; fileRef = D85D76151FA58B4998A271DFF378EB4D /* RZBCommandDispatch.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		2E589006A446DAFFB5A71CB6F8B67B5F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7886D17953A71D8B02CB40337189FFF5 /* Foundation.framework */; };
+		31A74261CB69F7C537BB945D50B04E7E /* RZBCentralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 56FC9F29B2C7B3EB456BC8A00898262C /* RZBCentralManager.m */; };
+		32AEE479147309CF24CD8D579C9333E4 /* RNHeatshrinkDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8B6FAEE08F3DB4A809579E5AAFBB85 /* RNHeatshrinkDecoder.m */; };
+		32F61F85DD2E98956025C1888053A10D /* NSNotificationCenter+Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FB5AA614583A163C401A9875800422 /* NSNotificationCenter+Promise.swift */; };
+		34FD376C8E175DF0DC73445F2E0A503B /* DispatchQueue+Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00968B001F1BC1F40CD22B5A87686397 /* DispatchQueue+Promise.swift */; };
+		356C8F1F17C2FF03E79F5CC324EEE1C3 /* RZBCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 4E7508A16FCF5F66645145AA726ABA25 /* RZBCommand.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		35A73432AA4906E6042992BCB21552D5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7886D17953A71D8B02CB40337189FFF5 /* Foundation.framework */; };
+		361C14A79E5BF48ABBD84C8AB56E69BE /* RZBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F30B68D29C14A40BE9D33AA16324127E /* RZBluetooth.framework */; };
+		38D442AAC61D223BC4100849C51B07D4 /* NSNotificationCenter+AnyPromise.h in Headers */ = {isa = PBXBuildFile; fileRef = 579414D4477866DD4CC12322EC3A167C /* NSNotificationCenter+AnyPromise.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		38DE879B52DB86C9D96F681D9A34F0EF /* UIView+AnyPromise.h in Headers */ = {isa = PBXBuildFile; fileRef = 10A3539AE676EE0F17C09906B8B2C77B /* UIView+AnyPromise.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3915DBB4731CB17B255A7FE86E240B6E /* CwlCatchBadInstruction.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6CFA49697E15B2732B1DA5EBDD8B29 /* CwlCatchBadInstruction.m */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		3A88438B353FC8E136DCF12E51C9C551 /* CBService+RZBExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = C6782E4F74B24CF5E119C0254FBB0E96 /* CBService+RZBExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3B3387F2E95EA69E0A8A07C5CBD5EA3A /* AuroraDreamband.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE65A7C015D6BD9044D1501BE75101D6 /* AuroraDreamband.swift */; };
-		3CAB6042DA69CEB0A5981440D8FC3F57 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC070AF5B6580F6DB18D63A75C66091A /* UIKit.framework */; };
-		3E879B1FB4DEAEC74058B9D6070A2C91 /* join.m in Sources */ = {isa = PBXBuildFile; fileRef = D09ED412BAB921CFA8249DCB69E15A6B /* join.m */; };
-		4011ADD41ABA0DC4609644AD30965451 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C0B8D15F6EDC90F71E731239D1B40 /* Promise.swift */; };
-		40CE92BB7877D114C1F53F0FF07E2914 /* RZBPeripheral+RZBHeartRate.m in Sources */ = {isa = PBXBuildFile; fileRef = F5DEDDF2AC2707C97AF0C61DA2B20C1F /* RZBPeripheral+RZBHeartRate.m */; };
-		441898DC5227662B57A1E3CCDD34CC63 /* PMKFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = 02B9990B900E9FDBA1969424AEDEDF0F /* PMKFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3925430DC5EC3CF458ECBB5B408DD4EA /* join.m in Sources */ = {isa = PBXBuildFile; fileRef = D09ED412BAB921CFA8249DCB69E15A6B /* join.m */; };
+		397AD2C32271B1B09A8A70CA43F43019 /* after.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DBC552584175855CBF714DC005308D /* after.swift */; };
+		3CB51299EEEBB7B7955E67C1CB2B3CC8 /* RZBUUIDPath.h in Headers */ = {isa = PBXBuildFile; fileRef = B14F0B2F6D53D0E218493017B11B7555 /* RZBUUIDPath.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3D028D8050F2C48847AFE1C33F7EE98B /* RZBDeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D8C91CE4E5F3D08DA8FBBA296687AF /* RZBDeviceInfo.m */; };
+		3DE2FC01DE5D240483D27A5A4014331E /* fwd.h in Headers */ = {isa = PBXBuildFile; fileRef = DC323136E1A7C03FC0A146244F359175 /* fwd.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3FAC28BCE1553AED66B71CEADAE92864 /* RZBLog+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A84CF3AC9586FC183C2C10E25008783 /* RZBLog+Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3FADAF23C8FA20221BFEDAD266CF2AF9 /* RZBCentralManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 276F4CF4D76D2937392F860F81A0B9E0 /* RZBCentralManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		41B9A23AECE3244219DE9CD6DC1E3405 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B809EFB89E950F681E2CC803AEAC0A /* Errors.swift */; };
+		4362C1556ABD27DB9BFC67F0090A7FCB /* CBService+RZBExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = C6782E4F74B24CF5E119C0254FBB0E96 /* CBService+RZBExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		469E9C3ED9FD6009F7C9AAF9E537E212 /* Nimble.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C088B939015CBFCE4174285E7094B11 /* Nimble.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		472471A9A3B3D08B209EFF81D9AE006C /* RZBPeripheral.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C747F35A7BD137B1AC5DCD9970A4F3 /* RZBPeripheral.m */; };
-		4AB374EFCEBC588D9CF66AF5FC167F60 /* when.m in Sources */ = {isa = PBXBuildFile; fileRef = B2658C580CA0B821F1E132FE0F7571EA /* when.m */; };
-		4B948EDE07595C2923330CFBA1BE93CB /* AnyPromise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9960FEB2A2A49C3133696FD775BA8CEF /* AnyPromise.swift */; };
+		49EDE1F3028F84E71DCBB43FCDBCA35B /* Array+Remove.swift in Sources */ = {isa = PBXBuildFile; fileRef = C199CF92430C9BF2C249915D10861B7A /* Array+Remove.swift */; };
 		4C9395DBA5A6A8BE83CFA92B991F1CF7 /* Pods-AuroraDreamband_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F870EDBB205A85E5E3E1859C14FF94 /* Pods-AuroraDreamband_Example-dummy.m */; };
+		4D6222C837470AE576DE7532B228F7AB /* RZBHeartRateMeasurement.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D7E0AA74914C70B4F5DE9FF2DAA88D /* RZBHeartRateMeasurement.m */; };
 		4F3F103945CC52D0A3B8A891BB0E21C4 /* RaisesException.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A3FDB3B45A89DB0865667236FC412D /* RaisesException.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		50B80F12A9BAE302F07F6CF94752F462 /* mach_excServer.c in Sources */ = {isa = PBXBuildFile; fileRef = 62C6654A936C49AA81B32D3169CD7F0C /* mach_excServer.c */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		52C5CBB290E1230BF62B59CB0077FF87 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507220FB3B0F48DFA4A4C054730258A1 /* Command.swift */; };
-		530FD61A5D73F1C6D374011CA32C361F /* heatshrink_common.h in Headers */ = {isa = PBXBuildFile; fileRef = 210A82DA935D21597CEE1D4C7071F439 /* heatshrink_common.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		510149947CDB87AF71D087AF2F0B873D /* RZBDeviceInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = DD3BA5F95E815C91A9114233BC1E089F /* RZBDeviceInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5314B25A4B14A91DABEACF45EFD97400 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7886D17953A71D8B02CB40337189FFF5 /* Foundation.framework */; };
-		5328F3E4E6F2BF2B07BEC354D87F22DF /* Array+Remove.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F65028E5B882A95111A6A1801AACF2A /* Array+Remove.swift */; };
-		54012FBC4FE00E5A9AEA0C19CD154B67 /* heatshrink_decoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A4017273486EC3B489FBD05E4E38854 /* heatshrink_decoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		54523B01A77B8B7005D3589B7E2C2726 /* heatshrink_encoder.h in Headers */ = {isa = PBXBuildFile; fileRef = B561F638434793DA7D15C8378242FF0B /* heatshrink_encoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		551440A0F92574039C1D2EB39227D6B8 /* AsyncMatcherWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEFA4F17FBB44DD2269DDEB8B87D716 /* AsyncMatcherWrapper.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		5781F15874047D90EAD1C716B1AA4031 /* NSNotificationCenter+Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FB5AA614583A163C401A9875800422 /* NSNotificationCenter+Promise.swift */; };
-		57C7521C9E2CF61EC866455983CB09C0 /* RZBPeripheral+RZBHeartRate.h in Headers */ = {isa = PBXBuildFile; fileRef = D221293B89BBA9CBC3D22120B2CE4EB9 /* RZBPeripheral+RZBHeartRate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		564C1F471B92AB86B8AA059C6D771BBB /* RZBLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D1BF1055A0D9411969DA05A75917C4C /* RZBLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		582DCF4A8170977D189D662232B3D8CA /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05A76A3E0B88F82D435392EEFC1D6C52 /* PromiseKit.framework */; };
+		591B86FC9CC1C94BF9DED17A5D763F44 /* UIViewController+AnyPromise.h in Headers */ = {isa = PBXBuildFile; fileRef = A5CA54200DCC6F60DD1DDA0B745CE3E1 /* UIViewController+AnyPromise.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		599669823A2EED2928C77F301F6B0515 /* BeNil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF637212D7BF60B9D56886E36D1D63F /* BeNil.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		5CEFAA0089886B2831BC2B2552EBF6E4 /* UIViewController+AnyPromise.h in Headers */ = {isa = PBXBuildFile; fileRef = A5CA54200DCC6F60DD1DDA0B745CE3E1 /* UIViewController+AnyPromise.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5E1127D4690A259F5FABAAF3725C6C32 /* AuroraDreamband-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D841684C552F61D6F5A01C4ED5D0B01E /* AuroraDreamband-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5A54D9369E45371C726A5D0DD331059B /* RZBBluetoothRepresentable.h in Headers */ = {isa = PBXBuildFile; fileRef = 872D5EAD727A74B4F548921F381D9EE5 /* RZBBluetoothRepresentable.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5B426694C4C878FD3C9B16C7B8E46A68 /* RZBErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C8249B2B88EEDF121A369B458BE0E2 /* RZBErrors.m */; };
+		5CEAC9A889590E794468549DE7991FEE /* AuroraDreamband.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01DB4FF1A5068A11AB850254E82FEA7 /* AuroraDreamband.swift */; };
+		5FA8C2E25A86DA98188C4C4B01B17EB0 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC6953AF5869C76DD766D08246704F6 /* Command.swift */; };
+		5FFC6F57A360DEF38034F6C9BF709893 /* AwaitKitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087A0C0001B0986FC23A72F81B5136E3 /* AwaitKitExtension.swift */; };
 		62744EF299751FB49B5FCD81D8C8FFF7 /* SatisfyAnyOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E025434F8F760CDD02A573B2485A43 /* SatisfyAnyOf.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		63BF970479A5E535270BA2653195E056 /* AwaitKitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087A0C0001B0986FC23A72F81B5136E3 /* AwaitKitExtension.swift */; };
-		6403A9120725B37D65477434726AF827 /* AnyPromise.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A884C9BDE1DB9C7C36BEB263CB8A460 /* AnyPromise.m */; };
-		64446FFA1CBBB8A0364E3FC74F73D5C4 /* Data+Scanning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7EE79970B1F75F04A3B1EEA163212A /* Data+Scanning.swift */; };
-		659C2C74BDEEB8EAC1AD330EC1B9DD66 /* RZBErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C8249B2B88EEDF121A369B458BE0E2 /* RZBErrors.m */; };
+		651967D15018AADAFE14F3BE1C6FB41F /* RZBPeripheralStateEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 4970D93DDC7C9966B94299C9D2C5E565 /* RZBPeripheralStateEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		657B68AD9FB4C5299CB7701A56BECD0D /* CBService+RZBExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 374953823B89A80D08156F262C6FDB68 /* CBService+RZBExtension.m */; };
 		65F5217D44A557FC16218DE5DE348C35 /* CwlCatchBadInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = 7998170600BFD8CE27EB2F8234C30D51 /* CwlCatchBadInstruction.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6AA036835D1966175C8EBD18969013DB /* RZBLog.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2D8D7C7785C5764AB428872862C6F6 /* RZBLog.m */; };
-		6CC3C27943EEB516C3B35EB3D5038E25 /* NSNotificationCenter+AnyPromise.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A54F3E4C66305A0E919B3F5B2E7C256 /* NSNotificationCenter+AnyPromise.m */; };
+		6703F2E062092BFF620AE3900B16318A /* heatshrink-objc-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 31709A230164D29DF4F2C3D3BF4096AF /* heatshrink-objc-dummy.m */; };
+		67A8F59BEF58020C62C712174E454904 /* RZBPeripheral+RZBBattery.h in Headers */ = {isa = PBXBuildFile; fileRef = E15BD9A73710FD99C30F766A38C1FD0E /* RZBPeripheral+RZBBattery.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C172FD86131829EF3E06AC21E92CF5D /* RZBPeripheral.h in Headers */ = {isa = PBXBuildFile; fileRef = 83778A2BE4E06C933339DBAB9C426AC6 /* RZBPeripheral.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6CDBA48C3A8621E4EE1DAFFE240F0D82 /* CwlCatchBadInstruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693A0EB85E5B8F816F3A86CDA0D18908 /* CwlCatchBadInstruction.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		6DC6DFBCD5059D0977F83EBB7AD6C143 /* UIViewController+AnyPromise.m in Sources */ = {isa = PBXBuildFile; fileRef = 495A3441A7FD35A3E00C91714EA854E6 /* UIViewController+AnyPromise.m */; };
+		6CDC627AEEA5ECDC8E34B4A654E5CB8A /* AnyPromise.h in Headers */ = {isa = PBXBuildFile; fileRef = B7949EACE5AF70F89C639F994213EFB2 /* AnyPromise.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6D0A59969677FB0EE002DC62DDAA24D1 /* Zalgo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0824A2C92C45965FB3B4B427C6655F67 /* Zalgo.swift */; };
 		6E397D9FB11A47E48D70287D734B12B2 /* BeLessThan.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC152CB74D32596FBCCEF108709448F4 /* BeLessThan.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		70074A77FA0F0204E109CF9A4E142D42 /* RZBDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F28C2B58A9CB6522EED944DFE731EC6 /* RZBDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		70FA1DCA270155806F405C603EAC976D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7886D17953A71D8B02CB40337189FFF5 /* Foundation.framework */; };
+		6EE364D8617E1F4605FD3E296C6D6366 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B813157A7255C61CE2C47DB24669834 /* QuartzCore.framework */; };
+		6F31363D9912D71874DA5C8B3A5D3465 /* RZBCentralManager+CommandHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 73EA038B3556B65D9DF14C3E7B411592 /* RZBCentralManager+CommandHelper.m */; };
 		71A620E4CCE2D7CCF6A122DC1BAA6622 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7886D17953A71D8B02CB40337189FFF5 /* Foundation.framework */; };
-		7366603DA87056D8C27A63D89E050414 /* RZBUserInteraction.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F5181AAEDBEF20141A8F883A63E180 /* RZBUserInteraction.m */; };
 		737E19F3254F5929263982C29237C0BA /* CwlBadInstructionException.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A72EB361F50C7AC0EE7F3B9E498239B /* CwlBadInstructionException.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		73E9BF3C9A15ED412B40081A4D41CA6B /* RZBCentralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 56FC9F29B2C7B3EB456BC8A00898262C /* RZBCentralManager.m */; };
 		74FD712F3B503891B6BD9E5CD287E481 /* AssertionDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50330C73C8E899E833E657D85D61485F /* AssertionDispatcher.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		76036D32625A56D480D84AA46961EF91 /* Nimble-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8226359551A180C6FE56A67562220644 /* Nimble-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7616953A5EB48542A7347DDA05883774 /* String+Slicing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BC47D5CF14720AE159657A699EEA8C /* String+Slicing.swift */; };
+		7740ABF374E369140F60218455FC1B42 /* NSURLSession+Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859D6F481CB6E239AABDB3B6BB12824A /* NSURLSession+Promise.swift */; };
+		778646700CFA399597749744A4FADC88 /* heatshrink-objc-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 32D159002BD8CC886B71CAA9341E7EE5 /* heatshrink-objc-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		787B6829EBCAE0EC0BB70881525F65CB /* RZBUserInteraction.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F5181AAEDBEF20141A8F883A63E180 /* RZBUserInteraction.m */; };
 		78F3DE174B4F8D368EF8EEFD7EE62087 /* BeVoid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672AB3D6224F5A9DE60FC25D17DCA405 /* BeVoid.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		79F9643CEB041457317FFC53B5539995 /* DispatchQueue+Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00968B001F1BC1F40CD22B5A87686397 /* DispatchQueue+Promise.swift */; };
-		7BD9249D511C596ACE7652873BE64165 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7886D17953A71D8B02CB40337189FFF5 /* Foundation.framework */; };
+		799AFB705622873F7EB5223F19B2D1DB /* RZBPeripheral+RZBBattery.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBD9B0BFE6FCA5B670115BCA700587A /* RZBPeripheral+RZBBattery.m */; };
+		7C04EEF21BA7F0AB78AF30DFAA64E0F3 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6C0B8D15F6EDC90F71E731239D1B40 /* Promise.swift */; };
 		7D6269A3CFE53C28DAA6B92E8FC017A7 /* FailureMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC450F634ADD625448FB4AECEF7D507 /* FailureMessage.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		7F6750C7B1847733370B18C4CBFE32DF /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB03F9A741AAE38D78DB69EE282CE83 /* Errors.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		7F67D6236589E080E02FD77FC3F334D8 /* AwaitKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CE09482038900B179CD5DB3A6C581A01 /* AwaitKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8015239010C1D642F14C105F8FF8E035 /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3FD5C034ADE82E627BA8D463FCE631 /* Expression.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		82D9C778AFF795CD87F6A6E9F8F6899C /* heatshrink_encoder.c in Sources */ = {isa = PBXBuildFile; fileRef = C374D4D7FF4BF76CFA11A308CE970882 /* heatshrink_encoder.c */; };
+		80D3081533E55D802293B6147B5004EC /* dispatch_promise.m in Sources */ = {isa = PBXBuildFile; fileRef = 174B397BF33226773A61FD0BEEA92647 /* dispatch_promise.m */; };
+		81DE202757B93A7FD9DD034854DF3B1F /* PromiseKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 09226CA23FEC41C214D2A15864AD95C0 /* PromiseKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8507F4BF7437EB40A3626EDCC68BFF6D /* Contain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F78A4DCE8E6AE3F894419372955C5B /* Contain.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		8523127179603F40E1576D7566F304F0 /* AuroraDreamband-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 52102E2FD1AB0BEEFE6A15462F8E29B9 /* AuroraDreamband-dummy.m */; };
 		8654571F855691C23B7B8E61B2141944 /* EndWith.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8CC2A81CFE6D7C5127F073915468D0 /* EndWith.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		86FFB76B2EDCF4AE79CC4C0BD8A0FE9A /* DSL+Wait.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E02CD11482B1723E9AEF1EED41AE80 /* DSL+Wait.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		87DD62F200DAB5E1D701AB9F94D1D422 /* CwlCatchException.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E708BE2E03445E52100261BC76E6892 /* CwlCatchException.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		88703D064955A6FE80AFA81CD25AD14D /* Zalgo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0824A2C92C45965FB3B4B427C6655F67 /* Zalgo.swift */; };
-		8AA9295711FB667ECEE6BB8EB3D30B22 /* AwaitKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1CEEE8AD8782E7E6FA0D2A6358A322 /* AwaitKit-dummy.m */; };
-		8B5911FC46FAB7D1C0763F8421D7D994 /* RZBPeripheralStateEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 4970D93DDC7C9966B94299C9D2C5E565 /* RZBPeripheralStateEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8BB43E99E69210A04AC7BF5C9AE6A579 /* race.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E09FDEFCF5B34C85FB337894EB46A4 /* race.swift */; };
+		87F01B8A80015122E760C2D7AC9E376A /* RZBCentralManager+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = F22ABD1DA8E6D47850100AA7A35BC899 /* RZBCentralManager+Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		8BC469336C7945D2A68748F6F079568D /* String+MatchingStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB36812CF98C46A82021ACDCFE91530 /* String+MatchingStrings.swift */; };
 		8C30EAD5FFD28B387099B41C74657A67 /* NMBExpectation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A795D05A04CF22FDA0FE06C9A07F1A /* NMBExpectation.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
+		8D22AFD8B5DFE0356816DD99EA4307EA /* UIView+AnyPromise.m in Sources */ = {isa = PBXBuildFile; fileRef = C87A6DE2E520C51E767BC22B79B401A5 /* UIView+AnyPromise.m */; };
+		8E64AD75CE784C1546F8F9FAA5E9C781 /* Data+Scanning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E1E503D6A447402E41B612FFC1EC24 /* Data+Scanning.swift */; };
+		8FC8B5B141AE6C86323708FAE0D80186 /* GlobalState.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EA9BE980BE204691B0FDD6A9D2A6526 /* GlobalState.m */; };
+		90BBBA5D625464C55474BBB39C7D0C7F /* PromiseKit.h in Headers */ = {isa = PBXBuildFile; fileRef = CAAB15FF2F11951111F39A26CB5A97CF /* PromiseKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		917949F596E1188261FC59214782C3D9 /* NMBExceptionCapture.h in Headers */ = {isa = PBXBuildFile; fileRef = F5D41A025620FF519FFDB21C7AF562D0 /* NMBExceptionCapture.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		917CC06C2049F3E10931F0209F99FAB9 /* CALayer+AnyPromise.m in Sources */ = {isa = PBXBuildFile; fileRef = 76E54056F05F38C29DAF346CF1820FD8 /* CALayer+AnyPromise.m */; };
-		9329B4FAFA598626CF6E0DC3E8789F04 /* RZBUUIDPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D1D0045E931FC773968E1723197EBE6 /* RZBUUIDPath.m */; };
 		947162383483B6391F8CDF38249BFBD2 /* CwlCatchException.m in Sources */ = {isa = PBXBuildFile; fileRef = 764772A13D6EA93128CC1F759B362F52 /* CwlCatchException.m */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		94E4A1A84F613E55F65723EF52C29BA5 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5697506E6FB906FACFB29DD5D43A693C /* Error.swift */; };
+		9526EC58DD0274089F157F927F63DB5D /* NSTask+AnyPromise.m in Sources */ = {isa = PBXBuildFile; fileRef = FE99FA08876E84B97E449E6127CCFF21 /* NSTask+AnyPromise.m */; };
 		9544A4EEC2A8448743ECA9981F88B60F /* BeCloseTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1DDF3958BA248B2BD651D260A7104F /* BeCloseTo.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		96AF028F31795515B82F0D510DBC6390 /* RZBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F30B68D29C14A40BE9D33AA16324127E /* RZBluetooth.framework */; };
-		9936F38E0F78D41315022565B3904260 /* DispatchQueue+Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C6746FD2FA4BCCF1E8E61E4297B248 /* DispatchQueue+Async.swift */; };
-		99F7113D7F7A994F78F8334388BA7E02 /* heatshrink_decoder.c in Sources */ = {isa = PBXBuildFile; fileRef = 658D25C8F51B51C3C2298043655C43BD /* heatshrink_decoder.c */; };
-		9ABAEBA454D9D67BE791571390F4125D /* RZBHeartRateMeasurement.h in Headers */ = {isa = PBXBuildFile; fileRef = AB6DA141C4D755342E372FCEF4EA08B3 /* RZBHeartRateMeasurement.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9AF065A1AE6260749C490E4B27D2A120 /* UIView+Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51340C826E9CA07190A1A0B95E1419E1 /* UIView+Promise.swift */; };
+		97076D5E682648BC34C20AAAD753AC5B /* UIViewController+Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = F476B72A80888C8A1B79293583034865 /* UIViewController+Promise.swift */; };
+		97DEB182D04415B6216684B2BDBF65AA /* after.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DFDD3712F6C08D1AF295E4AD426065 /* after.m */; };
+		9A620A3127B57B3B16BB504B53B840DC /* RZBPeripheral+RZBHeartRate.h in Headers */ = {isa = PBXBuildFile; fileRef = D221293B89BBA9CBC3D22120B2CE4EB9 /* RZBPeripheral+RZBHeartRate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9AF235C16362BA00BFBF12147907E953 /* BeEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4E73F2C73BD9FED9B9207A0E5CF727 /* BeEmpty.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		9B8A4CD6FE0A9FE1706AB8439CEA404A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225BE4896E8C98233729118E62BB6E6A /* Constants.swift */; };
 		9BEBD1791C233763A8DC13080BFB99C9 /* Stringers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC951AC32FEC5380F5CB9668C90C679 /* Stringers.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		9C1059001EF30DB9100281CC5DB0B2DF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7886D17953A71D8B02CB40337189FFF5 /* Foundation.framework */; };
-		9C6145242DD9E46935DB407857197D18 /* RNHeatshrinkDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8B6FAEE08F3DB4A809579E5AAFBB85 /* RNHeatshrinkDecoder.m */; };
-		9D3A77B096119C002843C7EFDB2E7EC5 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6FB2B84259EA7B800A1ACB7FCC685C /* State.swift */; };
-		9E477680DA04E1A3C76A964B086499E1 /* RZBPeripheral+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = E7FA381613BD7999FACD4065891F994B /* RZBPeripheral+Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		9E95D6E15DBE9B0FC92AAF60D42D1464 /* Nimble-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9721FA6384E8946872AB64BE6D5133 /* Nimble-dummy.m */; };
-		9F9DE527A8B86994714057BB0109739D /* RZBCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = EA79D9AF03F29FD4A241040BACEBBEE0 /* RZBCommand.m */; };
-		A077882C1C7AB4E36C2C33F724C8B2BB /* CBUUID+RZBPublic.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C5FBC2C8FEBD7A0C230C26CE3F934C4 /* CBUUID+RZBPublic.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A089A4AF36F6301E92422F481D5A96F7 /* wrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B371317455BB75840882CE382CB5F8F /* wrap.swift */; };
-		A1DAD2B27E16AE34847440C79FACE08F /* PMKUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 2EB83E14BA5CDAAA97C7D107C1688093 /* PMKUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9EFE2D6BBA713A333D63B6E9ACC48CF8 /* AwaitKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CE09482038900B179CD5DB3A6C581A01 /* AwaitKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9F5D6FB31EF7FAD87CF302FC7E9E624F /* hang.m in Sources */ = {isa = PBXBuildFile; fileRef = FC40A9CBE1A44C0045B6B263CB54C773 /* hang.m */; };
+		A19DD5A3AC961922C2C4925712D1CCC7 /* CRC32.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387A07380153B814A5C1893107B47628 /* CRC32.swift */; };
 		A33F1754198E8E8CCC7087F6176FFDC8 /* BeIdenticalTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E6AC0EAE520934E1ED38F78D059F8C /* BeIdenticalTo.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		A448F837592E21D9387322E8DA0DD93F /* BeAnInstanceOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3893ADA969087567354A3DF7350D6C2 /* BeAnInstanceOf.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		A4A676FA431F1954FE8205A545A9B1E9 /* CRC32.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77001394251F97F53B3FE1820FF7D5E9 /* CRC32.swift */; };
-		A5EB367483A328940EC973CA9C38DAF9 /* NSURLSession+AnyPromise.h in Headers */ = {isa = PBXBuildFile; fileRef = 083B2B0C9C2900EFEC0273FCA3711DFC /* NSURLSession+AnyPromise.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A6055ED4747488DA12324CAEFC46B7F3 /* BleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17D74C41CE443AEBAF99507A3DE17D1 /* BleHelper.swift */; };
 		A91166D0A5E8F1D5D5377622C381C045 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F091C352B63D945E91A5C58498FC476 /* Match.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		A91C8EBAF61A22EC3AED73CE0D69499D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7886D17953A71D8B02CB40337189FFF5 /* Foundation.framework */; };
-		A9D29A1045F971969620F7FE5261E653 /* PMKAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E99DEF7DABE35D4F3C07407BF147B1 /* PMKAlertController.swift */; };
+		A912450A9D3E114E330F3A117FA1B344 /* CommandQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D0E79F536AAD5F9C423470A4A1C430 /* CommandQueue.swift */; };
+		AA613B458B2F1F4A6DDA49873CAC92B6 /* RNHeatshrinkEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 95D8E34AA41D6B469BC73F700D5B18EC /* RNHeatshrinkEncoder.m */; };
 		AB255C27EF10E742C6567775022F49D5 /* BeginWith.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A71DDAA57C26811C89AAED8C4254C3B /* BeginWith.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		ABA9756C49435AC6FFDDB389872D1662 /* CBService+RZBExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 374953823B89A80D08156F262C6FDB68 /* CBService+RZBExtension.m */; };
 		AC0B24EF198E3BEDFCC9F25D7B8EEDAB /* NMBObjCMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94E0DBC5153EFBD8080715D1F9D764E /* NMBObjCMatcher.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		AC29CC89E22273BF0D0DC2C841B7524C /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C51C9F6C1013F0EE8B23FFA3A36541 /* Async.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		AD415766E8F1D350DAC868DBBAA902BF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B813157A7255C61CE2C47DB24669834 /* QuartzCore.framework */; };
-		AD82E10F882CD64150A66986351ECFB0 /* CALayer+AnyPromise.h in Headers */ = {isa = PBXBuildFile; fileRef = E22C725EBA803ED281BA138C4BFF15B2 /* CALayer+AnyPromise.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AD52C5370BB321EC9F21A22BC07CA924 /* UIView+Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51340C826E9CA07190A1A0B95E1419E1 /* UIView+Promise.swift */; };
 		B093484B1637B3D3AF65DF2232FDBADC /* mach_excServer.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A7C64169139513BC067333D2952AFB0 /* mach_excServer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B2EF3FAE4E7CDC826A17C62C9669F760 /* RZBluetooth-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 496A985526E608390CF9251B682060CF /* RZBluetooth-dummy.m */; };
-		B56B3F5977DA6AB69DCFCC9C8335271A /* RZBluetooth.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F4277DFB40AE2314D8EC6652AD2597F /* RZBluetooth.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B6E72AEC81F7F364D2769A353E108C0C /* RZBLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D1BF1055A0D9411969DA05A75917C4C /* RZBLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B95AD14E6F4051BD3C52E11A6AB0DA64 /* dispatch_promise.m in Sources */ = {isa = PBXBuildFile; fileRef = 174B397BF33226773A61FD0BEEA92647 /* dispatch_promise.m */; };
+		B09771C1886A6127158CECDE0AA581EF /* afterlife.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB5CB00870687AC8597775584F6BC77 /* afterlife.swift */; };
+		B0AAEB2DEFC3A1E54EBD9D2F8C0F00D3 /* RZBPeripheral+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = E7FA381613BD7999FACD4065891F994B /* RZBPeripheral+Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		B1BA63ACF67BD70932F1A5857DBA4451 /* RZBHeartRateMeasurement.h in Headers */ = {isa = PBXBuildFile; fileRef = AB6DA141C4D755342E372FCEF4EA08B3 /* RZBHeartRateMeasurement.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B3F002596684716DD0FB6121D5588064 /* RZBUserInteraction.h in Headers */ = {isa = PBXBuildFile; fileRef = 53334518150EEB67FDC432F415CDBF8E /* RZBUserInteraction.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B51AA2027E4FDC2845CD846C41A20EC9 /* RZBPeripheral+RZBHeartRate.m in Sources */ = {isa = PBXBuildFile; fileRef = F5DEDDF2AC2707C97AF0C61DA2B20C1F /* RZBPeripheral+RZBHeartRate.m */; };
+		B8A32BA92EE2618BB515489310F304B7 /* RZBScanInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = C65C7A272FDD87EBE39EAB216DD57512 /* RZBScanInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B9BD565DAB07F8E2288A960A1D3EFAC1 /* MatcherFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F2E469AEC2FE7C9FCB7EC6C3B74B3D /* MatcherFunc.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		BB10A2D0B1EE5B1BA811354116F83E3F /* CwlDarwinDefinitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACF1D7D65D3A61A6057C09C6CE70E76 /* CwlDarwinDefinitions.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		BE66A59AB535E3A8FCA99E92BE3DFFC2 /* when.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4CD432356A3AD1E571B4CD2E789A9B /* when.swift */; };
+		BC0BFFE308C17FCD553E94D90EC94865 /* RZBPeripheral.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C747F35A7BD137B1AC5DCD9970A4F3 /* RZBPeripheral.m */; };
+		BD60AC26D43803E72FB677C9B24A40C5 /* CALayer+AnyPromise.h in Headers */ = {isa = PBXBuildFile; fileRef = E22C725EBA803ED281BA138C4BFF15B2 /* CALayer+AnyPromise.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BE4283AA694B204497D371E8479B0FA1 /* RZBCommandDispatch.m in Sources */ = {isa = PBXBuildFile; fileRef = A1744BF0EC58EA7ED2B7DD01F6662CCB /* RZBCommandDispatch.m */; };
 		BF3AF1D2B46E09E2B3DCC824E6C1F5AF /* Equal.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13A093D3A10FC3266BB5336201E18BA /* Equal.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		C0791D3830D03C147ECA0AE2BADE4C3D /* fwd.h in Headers */ = {isa = PBXBuildFile; fileRef = DC323136E1A7C03FC0A146244F359175 /* fwd.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C26F44A0A960EBC326A223F2D861A8F3 /* RZBDeviceInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = DD3BA5F95E815C91A9114233BC1E089F /* RZBDeviceInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C2CE2D6639DEF2A3317972414CA9908E /* RZBCommandDispatch.m in Sources */ = {isa = PBXBuildFile; fileRef = A1744BF0EC58EA7ED2B7DD01F6662CCB /* RZBCommandDispatch.m */; };
-		C4BDE9EE8DD88333B237AD47B60DA404 /* RNHeatshrinkEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 95D8E34AA41D6B469BC73F700D5B18EC /* RNHeatshrinkEncoder.m */; };
-		C6BA7250D93AE437467CC9E0151C41BE /* heatshrink-objc-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 32D159002BD8CC886B71CAA9341E7EE5 /* heatshrink-objc-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CA4D24FA8B0760259CCAB91E8FD9F12D /* PromiseKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C8A98A96C572C9F16412341259009F3A /* PromiseKit-dummy.m */; };
+		C10F2C9FDE05A3D2FCC06CBF75DD0283 /* UIViewController+AnyPromise.m in Sources */ = {isa = PBXBuildFile; fileRef = 495A3441A7FD35A3E00C91714EA854E6 /* UIViewController+AnyPromise.m */; };
+		C28844353483B67A867D90488179F5F5 /* RZBDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F28C2B58A9CB6522EED944DFE731EC6 /* RZBDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C28B2535303D7D8D764769A40A5CB10C /* NSURLSession+AnyPromise.m in Sources */ = {isa = PBXBuildFile; fileRef = B6FBFC2A9BD5515AA89885C067F0A615 /* NSURLSession+AnyPromise.m */; };
+		C39B1F7BAABACC6C88C6880DD9A4751C /* join.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8E1C85A55D5BA43F76C6D6CD74472A /* join.swift */; };
+		C4CD8768BD0E3B36CAAA616EDCA1A8F9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7886D17953A71D8B02CB40337189FFF5 /* Foundation.framework */; };
+		C650F15C971F3C17C6C4B8EB7C486BB2 /* Process+Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4807E2DD3EDA0508EC69553E82694547 /* Process+Promise.swift */; };
+		C6C2B774989CC481E0137F09E7319E19 /* wrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B371317455BB75840882CE382CB5F8F /* wrap.swift */; };
+		C8D08FB244D6E40D3AB3931CB362F5F2 /* AuroraDreamband-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 52102E2FD1AB0BEEFE6A15462F8E29B9 /* AuroraDreamband-dummy.m */; };
 		CB7558CCDD935C9E82BBF454022ED1D3 /* Expectation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A009C81218F2199B0E71FF200F93F /* Expectation.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		CC4CE5FD61D89A9DD5B5A683ADEF0D55 /* Pods-AuroraDreamband_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1657BE4C1C124A274408853E357C75 /* Pods-AuroraDreamband_Tests-dummy.m */; };
-		CCCA510CFDB918EA65B2D1BC8B9F6681 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05A76A3E0B88F82D435392EEFC1D6C52 /* PromiseKit.framework */; };
 		CDC6996B83DAF8D3EFE0F13E89BE80E6 /* Pods-AuroraDreamband_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A98D5360743130ABD229E05B869CB0E2 /* Pods-AuroraDreamband_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CE3FA6AE0944D4AE737F0E57CFF4A615 /* HaveCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725C5D2C26B4AEC7CC9E64032AD0F054 /* HaveCount.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		CE4CEF6328E255B380E2B2692B351CF8 /* MatchError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9752080254D25D8AF8A58AA39969CE51 /* MatchError.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		D2490DE8B4B1BBC81BD98A337AE3A893 /* RZBCentralManager+CommandHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 73EA038B3556B65D9DF14C3E7B411592 /* RZBCentralManager+CommandHelper.m */; };
-		D40A5AFE0319AA6782579E856F09B713 /* RZBluetooth-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 868C4CFC751BC3FC3CDD2A4AB9F9C1FC /* RZBluetooth-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D4355CE302A14983315B02541F733D44 /* String+Slicing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3A7F9FA17D1D493AC756A5F1A2E54B /* String+Slicing.swift */; };
-		D5744FAC88FD20E96E65B25F7FACE5E6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7886D17953A71D8B02CB40337189FFF5 /* Foundation.framework */; };
-		D6F544CAAE6AA8E529FCA253181732C4 /* RZBScanInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = C65C7A272FDD87EBE39EAB216DD57512 /* RZBScanInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D7A6A98644CFD0B15CC6F29CFC15C51A /* PMKQuartzCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CC5B6303FFF0CFE08EC13F0544C54E9 /* PMKQuartzCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D7DFDFD4F0830D390792DF9B57951F0A /* RNHeatshrinkEncoder.h in Headers */ = {isa = PBXBuildFile; fileRef = D515174790C3FEA2C38C25ACC28FDCEC /* RNHeatshrinkEncoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D0A92852229B57111F20A40C67314B2F /* AnyPromise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9960FEB2A2A49C3133696FD775BA8CEF /* AnyPromise.swift */; };
+		D126B0E3E875B461B5131628664A6B10 /* RZBCentralManager+CommandHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 61626CCC072D82BF5D4A095EE06A5BCF /* RZBCentralManager+CommandHelper.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D45BF71285A5326B09150FE68563AA32 /* heatshrink_decoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A4017273486EC3B489FBD05E4E38854 /* heatshrink_decoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D79B3DC831BE020F362594D8E9F35D2F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D23E8FA9D645A9BD24D2455FDD0DDD /* Constants.swift */; };
 		D88575ED37BC462E8130CDBEFE9EA308 /* XCTestObservationCenter+Register.m in Sources */ = {isa = PBXBuildFile; fileRef = 46497E1E285A72324D927BD33713A72F /* XCTestObservationCenter+Register.m */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		D97D8D9C2BDA7AFE43F4D649F2630B11 /* Promise+AnyPromise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682487DAD3FB4CBD6826602F9BE42A86 /* Promise+AnyPromise.swift */; };
+		D8EFD9DAD0D0F47F11FE5E1D91ECD405 /* heatshrink_config.h in Headers */ = {isa = PBXBuildFile; fileRef = 89C5974F64B9FFB134E0627FBE648803 /* heatshrink_config.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D99AFC017D76DEDFEA03D54CDD585C3E /* NSTask+AnyPromise.h in Headers */ = {isa = PBXBuildFile; fileRef = DE7CBA5F472952D4827B0BE671700F47 /* NSTask+AnyPromise.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DC24F9141B3ACB274E5B706E6AA4D601 /* heatshrink_objc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93007F64B44297D39B5DCEBA7E4A0D95 /* heatshrink_objc.framework */; };
 		DC32331BE565888E694E1321BB1D80F5 /* NMBExceptionCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 427324A772FB2F796E1A9B74FD2C6EDB /* NMBExceptionCapture.m */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		DCEE854E62441E78FED15CC994497F61 /* AllPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD862DC146B8CD85B26DD9C4FC2E686 /* AllPass.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		DE42A13F61414686E24F175942F5A934 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7886D17953A71D8B02CB40337189FFF5 /* Foundation.framework */; };
-		DE50FED05CB11CA2DC56FF7FA2E8C402 /* RZBCentralManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 276F4CF4D76D2937392F860F81A0B9E0 /* RZBCentralManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DE8560B7755D31F5459918AEB2BC1F58 /* String+MatchingStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44B61EF12727BB9D15F3C16490A1CD0 /* String+MatchingStrings.swift */; };
-		E29D296D6340CC0BA18628AD42955C90 /* heatshrink_encoder.h in Headers */ = {isa = PBXBuildFile; fileRef = B561F638434793DA7D15C8378242FF0B /* heatshrink_encoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E4C8AAAC948C9AF14B464105EF8460FB /* DispatchQueue+Await.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45882B4178BBD9A33AD0619A9B04E5F /* DispatchQueue+Await.swift */; };
+		DE8D7AD9E9B50A3D5B72F45E58BDF6D8 /* Promise+Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3532A27F5E52DE883249EA9C963BA637 /* Promise+Properties.swift */; };
+		DFB6CAB69FAC7E45990E1693DC9D4ABD /* PMKQuartzCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CC5B6303FFF0CFE08EC13F0544C54E9 /* PMKQuartzCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E09EF46BB920C43447B995590B5DA7E5 /* AuroraDreamband-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D841684C552F61D6F5A01C4ED5D0B01E /* AuroraDreamband-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E422F1EDB3B947AEF86117BBE4A77A00 /* RZBUUIDPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D1D0045E931FC773968E1723197EBE6 /* RZBUUIDPath.m */; };
+		E46341569AF06AF711247EF253A1E849 /* CALayer+AnyPromise.m in Sources */ = {isa = PBXBuildFile; fileRef = 76E54056F05F38C29DAF346CF1820FD8 /* CALayer+AnyPromise.m */; };
 		E5CCEF0B83F8272D10671C01AAE4FFA0 /* NimbleXCTestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72C6BFFD39875BCD4D836189387AFA0 /* NimbleXCTestHandler.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		E5FFAFF62D76D4EC3008AAED5CC99931 /* RZBUUIDPath.h in Headers */ = {isa = PBXBuildFile; fileRef = B14F0B2F6D53D0E218493017B11B7555 /* RZBUUIDPath.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		E7628D217ED546AF078DCF8C0FD9FB5D /* NSObject+Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCB3479224B4D8EAC34E32631EDAE90 /* NSObject+Promise.swift */; };
-		E8A73BB40FE0C59ABDD862A859E15346 /* PromiseKit.h in Headers */ = {isa = PBXBuildFile; fileRef = CAAB15FF2F11951111F39A26CB5A97CF /* PromiseKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EA7C223C7D2190201F7CC0EBD5A98C81 /* BleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C08CC10EEA1877E2E48692D6112CEEA /* BleHelper.swift */; };
+		E622E418EE7F42A48E5228E8D209533B /* heatshrink_common.h in Headers */ = {isa = PBXBuildFile; fileRef = 210A82DA935D21597CEE1D4C7071F439 /* heatshrink_common.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EB01E6E14F693049B44381D919CC4525 /* AwaitKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1CEEE8AD8782E7E6FA0D2A6358A322 /* AwaitKit-dummy.m */; };
+		EB22D2153E4909697112657701ED7871 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7886D17953A71D8B02CB40337189FFF5 /* Foundation.framework */; };
+		EB573FEE06AAA430148DC311E3A4F20D /* RZBluetooth-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 868C4CFC751BC3FC3CDD2A4AB9F9C1FC /* RZBluetooth-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EBA52C16F42E42A1824D87C284F4A60C /* PostNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375617CD04FEE399A93EAD27D8489AC7 /* PostNotification.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		ECE38A319D42EE199FD5B9DC07652343 /* RZBPeripheral.h in Headers */ = {isa = PBXBuildFile; fileRef = 83778A2BE4E06C933339DBAB9C426AC6 /* RZBPeripheral.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F019F854791D3B5CBE8C374AC86205EA /* DataConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69D3D73D5BEDE6007F2CF8D9096D5AC /* DataConvertible.swift */; };
-		F29A26B7CCACB0A6572EF62DB5A73924 /* UIView+AnyPromise.m in Sources */ = {isa = PBXBuildFile; fileRef = C87A6DE2E520C51E767BC22B79B401A5 /* UIView+AnyPromise.m */; };
-		F364A6411DBC931572BB6AAE8A0731DD /* hang.m in Sources */ = {isa = PBXBuildFile; fileRef = FC40A9CBE1A44C0045B6B263CB54C773 /* hang.m */; };
-		F493629059B1B928453CE9DAB4507718 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1BCBB2933B5BB0805B188C339E16E5 /* Log.swift */; };
+		EBA7EE372FE1A3BF6C5D1BB8188B5378 /* race.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E09FDEFCF5B34C85FB337894EB46A4 /* race.swift */; };
+		EC2AAEFE6E938043828D8F84E14A7A3F /* when.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4CD432356A3AD1E571B4CD2E789A9B /* when.swift */; };
+		EC2EA656F85280C73DCDE8A2E2772974 /* RZBLog.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2D8D7C7785C5764AB428872862C6F6 /* RZBLog.m */; };
+		ED7F8D08DA99D512B7F64F5A1A9C85B3 /* AnyPromise.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A884C9BDE1DB9C7C36BEB263CB8A460 /* AnyPromise.m */; };
+		F2DFBE2F5C5F1DDDFA16325BEDBEB8CE /* URLDataPromise.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D965D3BE30F6E50F6B8C800A6960DA /* URLDataPromise.swift */; };
+		F3911FC00CFAD83A839AB473108F439B /* RZBluetooth.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F4277DFB40AE2314D8EC6652AD2597F /* RZBluetooth.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F39A5BCB04970D5F4DA07FDDFDC6F9E5 /* DataConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73741FA17BD1E517DC0C26B4939062D6 /* DataConvertible.swift */; };
 		F4A1B7A059AAA6727EB70E58E09332A4 /* CwlCatchException.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D160AF277B2D6D5C31BDD023272290 /* CwlCatchException.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		F51D53788CF39799F4467250087B2506 /* RZBUserInteraction.h in Headers */ = {isa = PBXBuildFile; fileRef = 53334518150EEB67FDC432F415CDBF8E /* RZBUserInteraction.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F538A723A04F755AC22E7907D04E5C5E /* AwaitKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 985A9367D799649F14A0E7B6E1BE1185 /* AwaitKit.framework */; };
 		F60D221B548716DF35193FC2CF244676 /* BeAKindOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14684EE5B3968A2420BBC60CDA0F44BD /* BeAKindOf.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		F693D0A9E0D05F815A85DC258E75AF8D /* CurrentTestCaseTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D6B26E2B78BD5294A2F1E392FF143A2 /* CurrentTestCaseTracker.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		F877E9CB4BDE3107254FDDC181FB0D7A /* RZBPeripheral+RZBBattery.h in Headers */ = {isa = PBXBuildFile; fileRef = E15BD9A73710FD99C30F766A38C1FD0E /* RZBPeripheral+RZBBattery.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F97083CEDE8E8732E206311B0B1D788C /* RZBCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 4E7508A16FCF5F66645145AA726ABA25 /* RZBCommand.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		F95791862BD7021AB1E8632A98E481F8 /* heatshrink_encoder.c in Sources */ = {isa = PBXBuildFile; fileRef = C374D4D7FF4BF76CFA11A308CE970882 /* heatshrink_encoder.c */; };
+		F98D63A87497E1222773458B5B6ECA7D /* RNHeatshrinkEncoder.h in Headers */ = {isa = PBXBuildFile; fileRef = D515174790C3FEA2C38C25ACC28FDCEC /* RNHeatshrinkEncoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F9D61EB5EEB799105913685722FF4C9C /* NimbleEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D38183554CE10243C90943D24EB88E /* NimbleEnvironment.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		F9E05A63D447B51E008B89731192FE7F /* AssertionRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE4C95B1440935D660A97678AFC90AA /* AssertionRecorder.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		FAB4ECE0C5039D99BB7173880670871D /* BeLessThanOrEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE8040B01599BCB5960DD5D4E15AB41 /* BeLessThanOrEqual.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		FBC5866437654CB482C713764BAE29B7 /* CBUUID+RZBPublic.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED23B1998A7954840218BA792C1FA3A /* CBUUID+RZBPublic.m */; };
-		FC02ADEF6E0DA520B052CCF0AE5E6EDD /* RZBPeripheral+RZBBattery.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBD9B0BFE6FCA5B670115BCA700587A /* RZBPeripheral+RZBBattery.m */; };
+		FCC04490F25417971013096FC5CB3A24 /* PMKUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 2EB83E14BA5CDAAA97C7D107C1688093 /* PMKUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FCFFEB587281358CFF05A65ED9E94C12 /* Functional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CD72E6DD209C0241D04FD4331A9CA7 /* Functional.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		FE29EFF93498E8FE7D14C3B691BE46E6 /* after.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DBC552584175855CBF714DC005308D /* after.swift */; };
-		FF64CA5839066D13075478BEF0276AF7 /* RZBHeartRateMeasurement.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D7E0AA74914C70B4F5DE9FF2DAA88D /* RZBHeartRateMeasurement.m */; };
+		FDF617298E58487E0F08D91EEF2BE57B /* DispatchQueue+Await.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45882B4178BBD9A33AD0619A9B04E5F /* DispatchQueue+Await.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		000AFA39A7351BDC48EEE3FE9B4F14EB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 529311B3DC7E76F1AA880C5B2B4BC74B;
-			remoteInfo = "heatshrink-objc";
-		};
-		23EB8C8FCCFC130192C73FEDF4552513 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E510D8DCC459FED2B937F7E240AB472D;
-			remoteInfo = AwaitKit;
-		};
 		2684A55EA6AC1F1A37121899C5342757 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 7D81B5A7F95AC03A7581623E79CA5596;
+			remoteGlobalIDString = 2B1845B2507D41A03262951A3A0BD835;
+			remoteInfo = PromiseKit;
+		};
+		4046F9BA393CC708D1FCC95683AFE97B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2B1845B2507D41A03262951A3A0BD835;
 			remoteInfo = PromiseKit;
 		};
 		434F0DCC1B76041DAF00DBCC35DACE85 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 1D03A22A3621859EA71859B9155A7E6E;
+			remoteGlobalIDString = 8B9DCFA550E49A75E010208851EAF420;
 			remoteInfo = RZBluetooth;
+		};
+		43F80E085979F31E41402B10AFFBFB3B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F1109B8B899F9389187BF99A052C4EA2;
+			remoteInfo = "heatshrink-objc";
+		};
+		5C282F25201DD0DF227091956D381861 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2D8E05C00459481A4E05C287B72C53BC;
+			remoteInfo = AwaitKit;
 		};
 		6F95A9C7ADF866BF6A17825257C0E1E9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 529311B3DC7E76F1AA880C5B2B4BC74B;
+			remoteGlobalIDString = F1109B8B899F9389187BF99A052C4EA2;
 			remoteInfo = "heatshrink-objc";
 		};
-		C50C13A2E843A1EE3696F3B7B1AF2671 /* PBXContainerItemProxy */ = {
+		7C109679877C53FEC4391F290FC2AD3A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 7D81B5A7F95AC03A7581623E79CA5596;
+			remoteGlobalIDString = 2B1845B2507D41A03262951A3A0BD835;
 			remoteInfo = PromiseKit;
+		};
+		BBBDFE03F5949B7655B02CBCF8463133 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8B9DCFA550E49A75E010208851EAF420;
+			remoteInfo = RZBluetooth;
 		};
 		E9CA26051823BAF4FE957EE5B4AA00DB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = E510D8DCC459FED2B937F7E240AB472D;
+			remoteGlobalIDString = 2D8E05C00459481A4E05C287B72C53BC;
 			remoteInfo = AwaitKit;
-		};
-		E9EE18F7760C9F6888AFA89F861044FC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7D81B5A7F95AC03A7581623E79CA5596;
-			remoteInfo = PromiseKit;
 		};
 		EC95ABE2F10E42F786F7D93C2D99139C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 78589239DBFB6AAFFFA4ECD3EC4E3F51;
+			remoteGlobalIDString = DC2B56A21B99F37BC771C5399B211BB6;
 			remoteInfo = AuroraDreamband;
-		};
-		FB9C0AD331F41EEB2C25086E994249D7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1D03A22A3621859EA71859B9155A7E6E;
-			remoteInfo = RZBluetooth;
 		};
 		FE55E0EC8D8C06CE0CC783A27DF115B9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -311,6 +310,7 @@
 		0873330F792BFD728961AAE270DE0855 /* heatshrink_objc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = heatshrink_objc.framework; path = "heatshrink-objc.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		087A0C0001B0986FC23A72F81B5136E3 /* AwaitKitExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AwaitKitExtension.swift; path = Sources/AwaitKitExtension.swift; sourceTree = "<group>"; };
 		088B338278CD180BDE43A71271387682 /* AwaitKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AwaitKit.xcconfig; sourceTree = "<group>"; };
+		08A4EF3E90B5AF6F087532FB8AA86067 /* Log.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		09226CA23FEC41C214D2A15864AD95C0 /* PromiseKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PromiseKit-umbrella.h"; sourceTree = "<group>"; };
 		0B9CBCF05430E48CCD5AB605A326BAC7 /* AwaitKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AwaitKit-prefix.pch"; sourceTree = "<group>"; };
 		0C6CFA49697E15B2732B1DA5EBDD8B29 /* CwlCatchBadInstruction.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CwlCatchBadInstruction.m; path = Sources/Lib/CwlPreconditionTesting/CwlPreconditionTesting/CwlCatchBadInstruction.m; sourceTree = "<group>"; };
@@ -337,7 +337,6 @@
 		1F32C7581B44C645E524FF8CD943E960 /* ThrowError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThrowError.swift; path = Sources/Nimble/Matchers/ThrowError.swift; sourceTree = "<group>"; };
 		1F3932B115BCCCDE645F3C0F07B50823 /* AuroraDreamband-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AuroraDreamband-prefix.pch"; sourceTree = "<group>"; };
 		210A82DA935D21597CEE1D4C7071F439 /* heatshrink_common.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = heatshrink_common.h; path = "heatshrink-objc/Classes/heatshrink/heatshrink_common.h"; sourceTree = "<group>"; };
-		225BE4896E8C98233729118E62BB6E6A /* Constants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		24AA16516A23F02CB109276ED9C12BA5 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		276F4CF4D76D2937392F860F81A0B9E0 /* RZBCentralManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RZBCentralManager.h; path = RZBluetooth/RZBCentralManager.h; sourceTree = "<group>"; };
 		2B6F132BB1436048AF5EFB1FCD4E9F61 /* AwaitKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = AwaitKit.modulemap; sourceTree = "<group>"; };
@@ -346,7 +345,6 @@
 		2EFA9671C9CAF83088C51C4D555F0420 /* RZBluetooth.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = RZBluetooth.modulemap; sourceTree = "<group>"; };
 		2F4277DFB40AE2314D8EC6652AD2597F /* RZBluetooth.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RZBluetooth.h; path = RZBluetooth/RZBluetooth.h; sourceTree = "<group>"; };
 		2F4E73F2C73BD9FED9B9207A0E5CF727 /* BeEmpty.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeEmpty.swift; path = Sources/Nimble/Matchers/BeEmpty.swift; sourceTree = "<group>"; };
-		2F65028E5B882A95111A6A1801AACF2A /* Array+Remove.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Array+Remove.swift"; sourceTree = "<group>"; };
 		2F65125F89BB89571A72626082C4460E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		31709A230164D29DF4F2C3D3BF4096AF /* heatshrink-objc-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "heatshrink-objc-dummy.m"; sourceTree = "<group>"; };
 		3209BC706C0AA465C9005DD40B811B73 /* NMBStringify.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NMBStringify.h; path = Sources/NimbleObjectiveC/NMBStringify.h; sourceTree = "<group>"; };
@@ -354,11 +352,10 @@
 		33C80565D0E7DE7121433D7AE1A8C140 /* Pods-AuroraDreamband_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AuroraDreamband_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		34F870EDBB205A85E5E3E1859C14FF94 /* Pods-AuroraDreamband_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AuroraDreamband_Example-dummy.m"; sourceTree = "<group>"; };
 		3532A27F5E52DE883249EA9C963BA637 /* Promise+Properties.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Promise+Properties.swift"; path = "Sources/Promise+Properties.swift"; sourceTree = "<group>"; };
-		372A9F99F744141A932FE40F9D332926 /* ProfileSetting+Equatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "ProfileSetting+Equatable.swift"; sourceTree = "<group>"; };
 		374953823B89A80D08156F262C6FDB68 /* CBService+RZBExtension.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "CBService+RZBExtension.m"; path = "RZBluetooth/CBService+RZBExtension.m"; sourceTree = "<group>"; };
 		375617CD04FEE399A93EAD27D8489AC7 /* PostNotification.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PostNotification.swift; path = Sources/Nimble/Matchers/PostNotification.swift; sourceTree = "<group>"; };
+		387A07380153B814A5C1893107B47628 /* CRC32.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CRC32.swift; sourceTree = "<group>"; };
 		39012CF2E36C3F7364E9E5BDC106E4A8 /* RZBluetooth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = RZBluetooth.framework; path = RZBluetooth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A1BCBB2933B5BB0805B188C339E16E5 /* Log.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		3A4017273486EC3B489FBD05E4E38854 /* heatshrink_decoder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = heatshrink_decoder.h; path = "heatshrink-objc/Classes/heatshrink/heatshrink_decoder.h"; sourceTree = "<group>"; };
 		3A84CF3AC9586FC183C2C10E25008783 /* RZBLog+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "RZBLog+Private.h"; path = "RZBluetooth/RZBLog+Private.h"; sourceTree = "<group>"; };
 		3B371317455BB75840882CE382CB5F8F /* wrap.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = wrap.swift; path = Sources/wrap.swift; sourceTree = "<group>"; };
@@ -366,6 +363,7 @@
 		3F28C2B58A9CB6522EED944DFE731EC6 /* RZBDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RZBDefines.h; path = RZBluetooth/RZBDefines.h; sourceTree = "<group>"; };
 		427324A772FB2F796E1A9B74FD2C6EDB /* NMBExceptionCapture.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NMBExceptionCapture.m; path = Sources/NimbleObjectiveC/NMBExceptionCapture.m; sourceTree = "<group>"; };
 		4329904FD0418E2B2F48285AB25310DE /* Nimble.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Nimble.xcconfig; sourceTree = "<group>"; };
+		44D23E8FA9D645A9BD24D2455FDD0DDD /* Constants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		46497E1E285A72324D927BD33713A72F /* XCTestObservationCenter+Register.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "XCTestObservationCenter+Register.m"; path = "Sources/NimbleObjectiveC/XCTestObservationCenter+Register.m"; sourceTree = "<group>"; };
 		4807E2DD3EDA0508EC69553E82694547 /* Process+Promise.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Process+Promise.swift"; path = "Extensions/Foundation/Sources/Process+Promise.swift"; sourceTree = "<group>"; };
 		495A3441A7FD35A3E00C91714EA854E6 /* UIViewController+AnyPromise.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+AnyPromise.m"; path = "Extensions/UIKit/Sources/UIViewController+AnyPromise.m"; sourceTree = "<group>"; };
@@ -373,12 +371,12 @@
 		4970D93DDC7C9966B94299C9D2C5E565 /* RZBPeripheralStateEvent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RZBPeripheralStateEvent.h; path = RZBluetooth/RZBPeripheralStateEvent.h; sourceTree = "<group>"; };
 		49A795D05A04CF22FDA0FE06C9A07F1A /* NMBExpectation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NMBExpectation.swift; path = Sources/Nimble/Adapters/NMBExpectation.swift; sourceTree = "<group>"; };
 		49C6746FD2FA4BCCF1E8E61E4297B248 /* DispatchQueue+Async.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DispatchQueue+Async.swift"; path = "Sources/DispatchQueue+Async.swift"; sourceTree = "<group>"; };
+		49E1E503D6A447402E41B612FFC1EC24 /* Data+Scanning.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Data+Scanning.swift"; sourceTree = "<group>"; };
 		4C088B939015CBFCE4174285E7094B11 /* Nimble.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Nimble.h; path = Sources/Nimble/Nimble.h; sourceTree = "<group>"; };
 		4C9721FA6384E8946872AB64BE6D5133 /* Nimble-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Nimble-dummy.m"; sourceTree = "<group>"; };
 		4E7508A16FCF5F66645145AA726ABA25 /* RZBCommand.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RZBCommand.h; path = RZBluetooth/Command/RZBCommand.h; sourceTree = "<group>"; };
 		4FF4359CD512DA8E4EF66CD5976C5B61 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50330C73C8E899E833E657D85D61485F /* AssertionDispatcher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AssertionDispatcher.swift; path = Sources/Nimble/Adapters/AssertionDispatcher.swift; sourceTree = "<group>"; };
-		507220FB3B0F48DFA4A4C054730258A1 /* Command.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		51340C826E9CA07190A1A0B95E1419E1 /* UIView+Promise.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+Promise.swift"; path = "Extensions/UIKit/Sources/UIView+Promise.swift"; sourceTree = "<group>"; };
 		52102E2FD1AB0BEEFE6A15462F8E29B9 /* AuroraDreamband-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AuroraDreamband-dummy.m"; sourceTree = "<group>"; };
 		53334518150EEB67FDC432F415CDBF8E /* RZBUserInteraction.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RZBUserInteraction.h; path = RZBluetooth/RZBUserInteraction.h; sourceTree = "<group>"; };
@@ -408,16 +406,15 @@
 		725C5D2C26B4AEC7CC9E64032AD0F054 /* HaveCount.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HaveCount.swift; path = Sources/Nimble/Matchers/HaveCount.swift; sourceTree = "<group>"; };
 		72E99DEF7DABE35D4F3C07407BF147B1 /* PMKAlertController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PMKAlertController.swift; path = Extensions/UIKit/Sources/PMKAlertController.swift; sourceTree = "<group>"; };
 		73442EC4065CD1319068E25152FDB35B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		73741FA17BD1E517DC0C26B4939062D6 /* DataConvertible.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DataConvertible.swift; sourceTree = "<group>"; };
 		73EA038B3556B65D9DF14C3E7B411592 /* RZBCentralManager+CommandHelper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "RZBCentralManager+CommandHelper.m"; path = "RZBluetooth/RZBCentralManager+CommandHelper.m"; sourceTree = "<group>"; };
 		75F2E469AEC2FE7C9FCB7EC6C3B74B3D /* MatcherFunc.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MatcherFunc.swift; path = Sources/Nimble/Matchers/MatcherFunc.swift; sourceTree = "<group>"; };
 		764772A13D6EA93128CC1F759B362F52 /* CwlCatchException.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CwlCatchException.m; path = Sources/Lib/CwlPreconditionTesting/CwlCatchException/CwlCatchException/CwlCatchException.m; sourceTree = "<group>"; };
 		76E54056F05F38C29DAF346CF1820FD8 /* CALayer+AnyPromise.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "CALayer+AnyPromise.m"; path = "Extensions/QuartzCore/Sources/CALayer+AnyPromise.m"; sourceTree = "<group>"; };
-		77001394251F97F53B3FE1820FF7D5E9 /* CRC32.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CRC32.swift; sourceTree = "<group>"; };
 		7886D17953A71D8B02CB40337189FFF5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		7998170600BFD8CE27EB2F8234C30D51 /* CwlCatchBadInstruction.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CwlCatchBadInstruction.h; path = Sources/Lib/CwlPreconditionTesting/CwlPreconditionTesting/CwlCatchBadInstruction.h; sourceTree = "<group>"; };
 		79B5FD402707B7D1EBAECA0787DFFFAA /* Pods-AuroraDreamband_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AuroraDreamband_Tests-umbrella.h"; sourceTree = "<group>"; };
 		7A0334F37BFDF4B428E955E68A1A7A66 /* DSL.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DSL.m; path = Sources/NimbleObjectiveC/DSL.m; sourceTree = "<group>"; };
-		7C7EE79970B1F75F04A3B1EEA163212A /* Data+Scanning.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Data+Scanning.swift"; sourceTree = "<group>"; };
 		7ED23B1998A7954840218BA792C1FA3A /* CBUUID+RZBPublic.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "CBUUID+RZBPublic.m"; path = "RZBluetooth/Profiles/CBUUID+RZBPublic.m"; sourceTree = "<group>"; };
 		8066C4C272DC5F0CE325EB10B04A514C /* PromiseKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PromiseKit-prefix.pch"; sourceTree = "<group>"; };
 		8226359551A180C6FE56A67562220644 /* Nimble-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Nimble-umbrella.h"; sourceTree = "<group>"; };
@@ -425,17 +422,18 @@
 		83C747F35A7BD137B1AC5DCD9970A4F3 /* RZBPeripheral.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RZBPeripheral.m; path = RZBluetooth/RZBPeripheral.m; sourceTree = "<group>"; };
 		859D6F481CB6E239AABDB3B6BB12824A /* NSURLSession+Promise.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSURLSession+Promise.swift"; path = "Extensions/Foundation/Sources/NSURLSession+Promise.swift"; sourceTree = "<group>"; };
 		868C4CFC751BC3FC3CDD2A4AB9F9C1FC /* RZBluetooth-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RZBluetooth-umbrella.h"; sourceTree = "<group>"; };
+		86D0E79F536AAD5F9C423470A4A1C430 /* CommandQueue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CommandQueue.swift; sourceTree = "<group>"; };
 		872D5EAD727A74B4F548921F381D9EE5 /* RZBBluetoothRepresentable.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RZBBluetoothRepresentable.h; path = RZBluetooth/RZBBluetoothRepresentable.h; sourceTree = "<group>"; };
 		89C5974F64B9FFB134E0627FBE648803 /* heatshrink_config.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = heatshrink_config.h; path = "heatshrink-objc/Classes/heatshrink/heatshrink_config.h"; sourceTree = "<group>"; };
 		89D13F23FCF24D71FB8AD5BD0A1352EA /* AdapterProtocols.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AdapterProtocols.swift; path = Sources/Nimble/Adapters/AdapterProtocols.swift; sourceTree = "<group>"; };
 		8A8B6FAEE08F3DB4A809579E5AAFBB85 /* RNHeatshrinkDecoder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RNHeatshrinkDecoder.m; path = "heatshrink-objc/Classes/RNHeatshrinkDecoder.m"; sourceTree = "<group>"; };
 		8BBD9B0BFE6FCA5B670115BCA700587A /* RZBPeripheral+RZBBattery.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "RZBPeripheral+RZBBattery.m"; path = "RZBluetooth/Profiles/RZBPeripheral+RZBBattery.m"; sourceTree = "<group>"; };
 		8C7FE44E529512AC28670366A58F99CA /* Pods-AuroraDreamband_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AuroraDreamband_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		8D3A7F9FA17D1D493AC756A5F1A2E54B /* String+Slicing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+Slicing.swift"; sourceTree = "<group>"; };
 		8E708BE2E03445E52100261BC76E6892 /* CwlCatchException.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CwlCatchException.h; path = Sources/Lib/CwlPreconditionTesting/CwlCatchException/CwlCatchException/CwlCatchException.h; sourceTree = "<group>"; };
 		8EA9BE980BE204691B0FDD6A9D2A6526 /* GlobalState.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GlobalState.m; path = Sources/GlobalState.m; sourceTree = "<group>"; };
 		8EFB8CDB2CFC66C3FFF3FBAD8B9A03BB /* ThrowAssertion.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThrowAssertion.swift; path = Sources/Nimble/Matchers/ThrowAssertion.swift; sourceTree = "<group>"; };
 		908B27B10D3FD86C92C7E746DEECBB52 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		91BC47D5CF14720AE159657A699EEA8C /* String+Slicing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+Slicing.swift"; sourceTree = "<group>"; };
 		93007F64B44297D39B5DCEBA7E4A0D95 /* heatshrink_objc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = heatshrink_objc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		955BB7E96F379782E706212EED31AC62 /* SourceLocation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SourceLocation.swift; path = Sources/Nimble/Utils/SourceLocation.swift; sourceTree = "<group>"; };
@@ -448,7 +446,6 @@
 		9B34021C4D773CED5008F9505EEE7635 /* PromiseKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = PromiseKit.modulemap; sourceTree = "<group>"; };
 		9B813157A7255C61CE2C47DB24669834 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		9BEFA4F17FBB44DD2269DDEB8B87D716 /* AsyncMatcherWrapper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AsyncMatcherWrapper.swift; path = Sources/Nimble/Matchers/AsyncMatcherWrapper.swift; sourceTree = "<group>"; };
-		9C08CC10EEA1877E2E48692D6112CEEA /* BleHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BleHelper.swift; sourceTree = "<group>"; };
 		9C5FBC2C8FEBD7A0C230C26CE3F934C4 /* CBUUID+RZBPublic.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "CBUUID+RZBPublic.h"; path = "RZBluetooth/Profiles/CBUUID+RZBPublic.h"; sourceTree = "<group>"; };
 		9DC951AC32FEC5380F5CB9668C90C679 /* Stringers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Stringers.swift; path = Sources/Nimble/Utils/Stringers.swift; sourceTree = "<group>"; };
 		9DE8040B01599BCB5960DD5D4E15AB41 /* BeLessThanOrEqual.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeLessThanOrEqual.swift; path = Sources/Nimble/Matchers/BeLessThanOrEqual.swift; sourceTree = "<group>"; };
@@ -456,8 +453,8 @@
 		A3893ADA969087567354A3DF7350D6C2 /* BeAnInstanceOf.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeAnInstanceOf.swift; path = Sources/Nimble/Matchers/BeAnInstanceOf.swift; sourceTree = "<group>"; };
 		A45882B4178BBD9A33AD0619A9B04E5F /* DispatchQueue+Await.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DispatchQueue+Await.swift"; path = "Sources/DispatchQueue+Await.swift"; sourceTree = "<group>"; };
 		A5CA54200DCC6F60DD1DDA0B745CE3E1 /* UIViewController+AnyPromise.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIViewController+AnyPromise.h"; path = "Extensions/UIKit/Sources/UIViewController+AnyPromise.h"; sourceTree = "<group>"; };
-		A69D3D73D5BEDE6007F2CF8D9096D5AC /* DataConvertible.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DataConvertible.swift; sourceTree = "<group>"; };
 		A72E85D7FC36DCEA87E57A32E26395CD /* AwaitKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AwaitKit.framework; path = AwaitKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7B809EFB89E950F681E2CC803AEAC0A /* Errors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		A8BC7ACBE43C02084242964C0D43AEE3 /* RZBErrors.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RZBErrors.h; path = RZBluetooth/RZBErrors.h; sourceTree = "<group>"; };
 		A98D5360743130ABD229E05B869CB0E2 /* Pods-AuroraDreamband_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AuroraDreamband_Example-umbrella.h"; sourceTree = "<group>"; };
 		AB6DA141C4D755342E372FCEF4EA08B3 /* RZBHeartRateMeasurement.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RZBHeartRateMeasurement.h; path = RZBluetooth/Profiles/RZBHeartRateMeasurement.h; sourceTree = "<group>"; };
@@ -472,17 +469,15 @@
 		B13A093D3A10FC3266BB5336201E18BA /* Equal.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Equal.swift; path = Sources/Nimble/Matchers/Equal.swift; sourceTree = "<group>"; };
 		B14F0B2F6D53D0E218493017B11B7555 /* RZBUUIDPath.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RZBUUIDPath.h; path = RZBluetooth/Command/RZBUUIDPath.h; sourceTree = "<group>"; };
 		B2658C580CA0B821F1E132FE0F7571EA /* when.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = when.m; path = Sources/when.m; sourceTree = "<group>"; };
-		B44B61EF12727BB9D15F3C16490A1CD0 /* String+MatchingStrings.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+MatchingStrings.swift"; sourceTree = "<group>"; };
 		B46AF304B14BE99D7248F786B13A52E0 /* Pods-AuroraDreamband_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AuroraDreamband_Tests-resources.sh"; sourceTree = "<group>"; };
-		B47486EC8C9F4F2288843841B21E276B /* Errors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		B561F638434793DA7D15C8378242FF0B /* heatshrink_encoder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = heatshrink_encoder.h; path = "heatshrink-objc/Classes/heatshrink/heatshrink_encoder.h"; sourceTree = "<group>"; };
-		B5AEAB087D125710571E26E33E7203BA /* CommandQueue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CommandQueue.swift; sourceTree = "<group>"; };
 		B5D8C91CE4E5F3D08DA8FBBA296687AF /* RZBDeviceInfo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RZBDeviceInfo.m; path = RZBluetooth/Profiles/RZBDeviceInfo.m; sourceTree = "<group>"; };
 		B6FBFC2A9BD5515AA89885C067F0A615 /* NSURLSession+AnyPromise.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSURLSession+AnyPromise.m"; path = "Extensions/Foundation/Sources/NSURLSession+AnyPromise.m"; sourceTree = "<group>"; };
 		B7949EACE5AF70F89C639F994213EFB2 /* AnyPromise.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AnyPromise.h; path = Sources/AnyPromise.h; sourceTree = "<group>"; };
 		BF1CEEE8AD8782E7E6FA0D2A6358A322 /* AwaitKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AwaitKit-dummy.m"; sourceTree = "<group>"; };
 		BF6FB2B84259EA7B800A1ACB7FCC685C /* State.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = State.swift; path = Sources/State.swift; sourceTree = "<group>"; };
 		C16CAA25B20D597A0AE69D0FF2A14AFC /* RZBluetooth-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RZBluetooth-prefix.pch"; sourceTree = "<group>"; };
+		C199CF92430C9BF2C249915D10861B7A /* Array+Remove.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Array+Remove.swift"; sourceTree = "<group>"; };
 		C1E09FDEFCF5B34C85FB337894EB46A4 /* race.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = race.swift; path = Sources/race.swift; sourceTree = "<group>"; };
 		C2F06D6E5829AEC43A3496F7DE862022 /* RNHeatshrinkDecoder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RNHeatshrinkDecoder.h; path = "heatshrink-objc/Classes/RNHeatshrinkDecoder.h"; sourceTree = "<group>"; };
 		C374D4D7FF4BF76CFA11A308CE970882 /* heatshrink_encoder.c */ = {isa = PBXFileReference; includeInIndex = 1; name = heatshrink_encoder.c; path = "heatshrink-objc/Classes/heatshrink/heatshrink_encoder.c"; sourceTree = "<group>"; };
@@ -501,6 +496,7 @@
 		CB8A009C81218F2199B0E71FF200F93F /* Expectation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Expectation.swift; path = Sources/Nimble/Expectation.swift; sourceTree = "<group>"; };
 		CC78696BCE47E920E4BC31AD8C17F289 /* Pods-AuroraDreamband_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AuroraDreamband_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		CCB9898B75ED13694BB48BA0D65FB6AB /* heatshrink-objc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "heatshrink-objc.xcconfig"; sourceTree = "<group>"; };
+		CDC6953AF5869C76DD766D08246704F6 /* Command.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		CE09482038900B179CD5DB3A6C581A01 /* AwaitKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AwaitKit-umbrella.h"; sourceTree = "<group>"; };
 		CF352B9EB144C318021A9E0D450CD915 /* Pods-AuroraDreamband_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AuroraDreamband_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		CFA1D1469B3B6E25A6953D5A5D1C4F3F /* NMBStringify.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NMBStringify.m; path = Sources/NimbleObjectiveC/NMBStringify.m; sourceTree = "<group>"; };
@@ -520,7 +516,9 @@
 		DE087BDC96F32ECDA53E2AF978B37EEB /* Pods-AuroraDreamband_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AuroraDreamband_Example-resources.sh"; sourceTree = "<group>"; };
 		DE7CBA5F472952D4827B0BE671700F47 /* NSTask+AnyPromise.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSTask+AnyPromise.h"; path = "Extensions/Foundation/Sources/NSTask+AnyPromise.h"; sourceTree = "<group>"; };
 		DEAE346FE754FF4413B985B7A912DCCF /* Pods-AuroraDreamband_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AuroraDreamband_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		E01DB4FF1A5068A11AB850254E82FEA7 /* AuroraDreamband.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AuroraDreamband.swift; sourceTree = "<group>"; };
 		E15BD9A73710FD99C30F766A38C1FD0E /* RZBPeripheral+RZBBattery.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "RZBPeripheral+RZBBattery.h"; path = "RZBluetooth/Profiles/RZBPeripheral+RZBBattery.h"; sourceTree = "<group>"; };
+		E17D74C41CE443AEBAF99507A3DE17D1 /* BleHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BleHelper.swift; sourceTree = "<group>"; };
 		E1D160AF277B2D6D5C31BDD023272290 /* CwlCatchException.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CwlCatchException.swift; path = Sources/Lib/CwlPreconditionTesting/CwlCatchException/CwlCatchException/CwlCatchException.swift; sourceTree = "<group>"; };
 		E22C725EBA803ED281BA138C4BFF15B2 /* CALayer+AnyPromise.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "CALayer+AnyPromise.h"; path = "Extensions/QuartzCore/Sources/CALayer+AnyPromise.h"; sourceTree = "<group>"; };
 		E5D965D3BE30F6E50F6B8C800A6960DA /* URLDataPromise.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = URLDataPromise.swift; path = Extensions/Foundation/Sources/URLDataPromise.swift; sourceTree = "<group>"; };
@@ -530,7 +528,6 @@
 		EA79D9AF03F29FD4A241040BACEBBEE0 /* RZBCommand.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RZBCommand.m; path = RZBluetooth/Command/RZBCommand.m; sourceTree = "<group>"; };
 		EB94305910A37EAD1A9C8D66D1C18903 /* BeLogical.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeLogical.swift; path = Sources/Nimble/Matchers/BeLogical.swift; sourceTree = "<group>"; };
 		EDC450F634ADD625448FB4AECEF7D507 /* FailureMessage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FailureMessage.swift; path = Sources/Nimble/FailureMessage.swift; sourceTree = "<group>"; };
-		EE65A7C015D6BD9044D1501BE75101D6 /* AuroraDreamband.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AuroraDreamband.swift; sourceTree = "<group>"; };
 		F1C8249B2B88EEDF121A369B458BE0E2 /* RZBErrors.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RZBErrors.m; path = RZBluetooth/RZBErrors.m; sourceTree = "<group>"; };
 		F22ABD1DA8E6D47850100AA7A35BC899 /* RZBCentralManager+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "RZBCentralManager+Private.h"; path = "RZBluetooth/RZBCentralManager+Private.h"; sourceTree = "<group>"; };
 		F30B68D29C14A40BE9D33AA16324127E /* RZBluetooth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RZBluetooth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -541,6 +538,7 @@
 		F5DEDDF2AC2707C97AF0C61DA2B20C1F /* RZBPeripheral+RZBHeartRate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "RZBPeripheral+RZBHeartRate.m"; path = "RZBluetooth/Profiles/RZBPeripheral+RZBHeartRate.m"; sourceTree = "<group>"; };
 		F8CCBA4D55AC751EC595D80EA2B04546 /* Pods-AuroraDreamband_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AuroraDreamband_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		FA7438497E23832B6287E3D792AE0980 /* AwaitKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AwaitKit.swift; path = Sources/AwaitKit.swift; sourceTree = "<group>"; };
+		FBB36812CF98C46A82021ACDCFE91530 /* String+MatchingStrings.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+MatchingStrings.swift"; sourceTree = "<group>"; };
 		FC070AF5B6580F6DB18D63A75C66091A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		FC40A9CBE1A44C0045B6B263CB54C773 /* hang.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = hang.m; path = Sources/hang.m; sourceTree = "<group>"; };
 		FC8DDFEE6070306325DEC0480DD87300 /* RZBScanInfo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RZBScanInfo.m; path = RZBluetooth/RZBScanInfo.m; sourceTree = "<group>"; };
@@ -552,42 +550,42 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		08B9C3C8EA6EA426DDCBD00860159C0B /* Frameworks */ = {
+		02E9827318CBC641D50D773CE55AD4BF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A91C8EBAF61A22EC3AED73CE0D69499D /* Foundation.framework in Frameworks */,
+				EB22D2153E4909697112657701ED7871 /* Foundation.framework in Frameworks */,
+				6EE364D8617E1F4605FD3E296C6D6366 /* QuartzCore.framework in Frameworks */,
+				06BF250F9506DC6A5CE04EB56E7B4D0E /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		126A70608C1E38361997B1267E6E4EFA /* Frameworks */ = {
+		21BF6181E81329A1D9CB13E757142551 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE42A13F61414686E24F175942F5A934 /* Foundation.framework in Frameworks */,
-				AD415766E8F1D350DAC868DBBAA902BF /* QuartzCore.framework in Frameworks */,
-				3CAB6042DA69CEB0A5981440D8FC3F57 /* UIKit.framework in Frameworks */,
+				F538A723A04F755AC22E7907D04E5C5E /* AwaitKit.framework in Frameworks */,
+				2E589006A446DAFFB5A71CB6F8B67B5F /* Foundation.framework in Frameworks */,
+				DC24F9141B3ACB274E5B706E6AA4D601 /* heatshrink_objc.framework in Frameworks */,
+				582DCF4A8170977D189D662232B3D8CA /* PromiseKit.framework in Frameworks */,
+				361C14A79E5BF48ABBD84C8AB56E69BE /* RZBluetooth.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		46A5F95D6AAEAA365B24891553AB5CC9 /* Frameworks */ = {
+		48931AA1F4F8C17F474C5E6B33EE73A8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20A75DDD72FF9EB9F248B0864172E73D /* AwaitKit.framework in Frameworks */,
-				D5744FAC88FD20E96E65B25F7FACE5E6 /* Foundation.framework in Frameworks */,
-				27DBA60B173D032CE9CD18F1B1014479 /* heatshrink_objc.framework in Frameworks */,
-				CCCA510CFDB918EA65B2D1BC8B9F6681 /* PromiseKit.framework in Frameworks */,
-				96AF028F31795515B82F0D510DBC6390 /* RZBluetooth.framework in Frameworks */,
+				35A73432AA4906E6042992BCB21552D5 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4E1F98AD6D7251DDF11E25A6612EF0E2 /* Frameworks */ = {
+		5C961296ADF6A898B84C2B48B4852A7F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7BD9249D511C596ACE7652873BE64165 /* Foundation.framework in Frameworks */,
-				076A2580A26928F64B3461C3EF92DFBE /* PromiseKit.framework in Frameworks */,
+				C4CD8768BD0E3B36CAAA616EDCA1A8F9 /* Foundation.framework in Frameworks */,
+				2DE221A206AF9DEC4878E9757CA3D6D6 /* PromiseKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -599,11 +597,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		867664BFF928F5850388D292A2EBC8B4 /* Frameworks */ = {
+		A0A5E71049823E9C995A4EC63BF7A046 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				70FA1DCA270155806F405C603EAC976D /* Foundation.framework in Frameworks */,
+				25CF00FFEE8BEE679B30FBF246A63393 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -662,7 +660,7 @@
 		17755139990FC03E25C3BB62A898C0F7 /* AuroraDreamband */ = {
 			isa = PBXGroup;
 			children = (
-				2F36BC71FEDC6D778A61A2FDBB55CF1C /* AuroraDreamband */,
+				BFB0EF5C8684DCC2152C6085A8E2869C /* AuroraDreamband */,
 				0365936D6D14C0A5B7FA8923BFEDD4C2 /* Support Files */,
 			);
 			name = AuroraDreamband;
@@ -713,37 +711,6 @@
 				EECE4E24F45F8D36940EFC53EC661B79 /* RZBluetooth */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		2F36BC71FEDC6D778A61A2FDBB55CF1C /* AuroraDreamband */ = {
-			isa = PBXGroup;
-			children = (
-				31F21D3DD5C5CBDE37EF21EEA33F011E /* Classes */,
-			);
-			name = AuroraDreamband;
-			path = AuroraDreamband;
-			sourceTree = "<group>";
-		};
-		31F21D3DD5C5CBDE37EF21EEA33F011E /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				2F65028E5B882A95111A6A1801AACF2A /* Array+Remove.swift */,
-				EE65A7C015D6BD9044D1501BE75101D6 /* AuroraDreamband.swift */,
-				9C08CC10EEA1877E2E48692D6112CEEA /* BleHelper.swift */,
-				507220FB3B0F48DFA4A4C054730258A1 /* Command.swift */,
-				B5AEAB087D125710571E26E33E7203BA /* CommandQueue.swift */,
-				225BE4896E8C98233729118E62BB6E6A /* Constants.swift */,
-				77001394251F97F53B3FE1820FF7D5E9 /* CRC32.swift */,
-				7C7EE79970B1F75F04A3B1EEA163212A /* Data+Scanning.swift */,
-				A69D3D73D5BEDE6007F2CF8D9096D5AC /* DataConvertible.swift */,
-				B47486EC8C9F4F2288843841B21E276B /* Errors.swift */,
-				3A1BCBB2933B5BB0805B188C339E16E5 /* Log.swift */,
-				372A9F99F744141A932FE40F9D332926 /* ProfileSetting+Equatable.swift */,
-				B44B61EF12727BB9D15F3C16490A1CD0 /* String+MatchingStrings.swift */,
-				8D3A7F9FA17D1D493AC756A5F1A2E54B /* String+Slicing.swift */,
-			);
-			name = Classes;
-			path = Classes;
 			sourceTree = "<group>";
 		};
 		39862693A37D33F7750DF79DD2562F4F /* Pods-AuroraDreamband_Tests */ = {
@@ -802,6 +769,27 @@
 				0824A2C92C45965FB3B4B427C6655F67 /* Zalgo.swift */,
 			);
 			name = CorePromise;
+			sourceTree = "<group>";
+		};
+		612080976D11EC584F49047C50DAAF3A /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				C199CF92430C9BF2C249915D10861B7A /* Array+Remove.swift */,
+				E01DB4FF1A5068A11AB850254E82FEA7 /* AuroraDreamband.swift */,
+				E17D74C41CE443AEBAF99507A3DE17D1 /* BleHelper.swift */,
+				CDC6953AF5869C76DD766D08246704F6 /* Command.swift */,
+				86D0E79F536AAD5F9C423470A4A1C430 /* CommandQueue.swift */,
+				44D23E8FA9D645A9BD24D2455FDD0DDD /* Constants.swift */,
+				387A07380153B814A5C1893107B47628 /* CRC32.swift */,
+				49E1E503D6A447402E41B612FFC1EC24 /* Data+Scanning.swift */,
+				73741FA17BD1E517DC0C26B4939062D6 /* DataConvertible.swift */,
+				A7B809EFB89E950F681E2CC803AEAC0A /* Errors.swift */,
+				08A4EF3E90B5AF6F087532FB8AA86067 /* Log.swift */,
+				FBB36812CF98C46A82021ACDCFE91530 /* String+MatchingStrings.swift */,
+				91BC47D5CF14720AE159657A699EEA8C /* String+Slicing.swift */,
+			);
+			name = Classes;
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		64B00BAEC5F4F3EFF600F735DB697EAF /* Targets Support Files */ = {
@@ -867,6 +855,15 @@
 			);
 			name = "Support Files";
 			path = "../Target Support Files/PromiseKit";
+			sourceTree = "<group>";
+		};
+		BFB0EF5C8684DCC2152C6085A8E2869C /* AuroraDreamband */ = {
+			isa = PBXGroup;
+			children = (
+				612080976D11EC584F49047C50DAAF3A /* Classes */,
+			);
+			name = AuroraDreamband;
+			path = AuroraDreamband;
 			sourceTree = "<group>";
 		};
 		C22CA7D7B104C99623D015B73FD3EF41 /* Nimble */ = {
@@ -1117,34 +1114,11 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		009B6C9FCE7DD781ED11DB4C23BF97C5 /* Headers */ = {
+		183DFF8577F9232984B14DBD0127E00B /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A88438B353FC8E136DCF12E51C9C551 /* CBService+RZBExtension.h in Headers */,
-				A077882C1C7AB4E36C2C33F724C8B2BB /* CBUUID+RZBPublic.h in Headers */,
-				0DF79617D2A59A484078D42415C7629B /* RZBBluetoothRepresentable.h in Headers */,
-				0E99404F1E2C10FD674FFFF2FE430670 /* RZBCentralManager+CommandHelper.h in Headers */,
-				14329810389A761FAC6B4F221F4CDEC7 /* RZBCentralManager+Private.h in Headers */,
-				DE50FED05CB11CA2DC56FF7FA2E8C402 /* RZBCentralManager.h in Headers */,
-				F97083CEDE8E8732E206311B0B1D788C /* RZBCommand.h in Headers */,
-				167CEE7DD190367D772D3240B95A09A0 /* RZBCommandDispatch.h in Headers */,
-				70074A77FA0F0204E109CF9A4E142D42 /* RZBDefines.h in Headers */,
-				C26F44A0A960EBC326A223F2D861A8F3 /* RZBDeviceInfo.h in Headers */,
-				17ADFFF02E92789E5D47F2CAAD033CE3 /* RZBErrors.h in Headers */,
-				9ABAEBA454D9D67BE791571390F4125D /* RZBHeartRateMeasurement.h in Headers */,
-				189DE4D6D1C6D58984A29D86CEFCDDB3 /* RZBLog+Private.h in Headers */,
-				B6E72AEC81F7F364D2769A353E108C0C /* RZBLog.h in Headers */,
-				D40A5AFE0319AA6782579E856F09B713 /* RZBluetooth-umbrella.h in Headers */,
-				B56B3F5977DA6AB69DCFCC9C8335271A /* RZBluetooth.h in Headers */,
-				9E477680DA04E1A3C76A964B086499E1 /* RZBPeripheral+Private.h in Headers */,
-				F877E9CB4BDE3107254FDDC181FB0D7A /* RZBPeripheral+RZBBattery.h in Headers */,
-				57C7521C9E2CF61EC866455983CB09C0 /* RZBPeripheral+RZBHeartRate.h in Headers */,
-				ECE38A319D42EE199FD5B9DC07652343 /* RZBPeripheral.h in Headers */,
-				8B5911FC46FAB7D1C0763F8421D7D994 /* RZBPeripheralStateEvent.h in Headers */,
-				D6F544CAAE6AA8E529FCA253181732C4 /* RZBScanInfo.h in Headers */,
-				F51D53788CF39799F4467250087B2506 /* RZBUserInteraction.h in Headers */,
-				E5FFAFF62D76D4EC3008AAED5CC99931 /* RZBUUIDPath.h in Headers */,
+				E09EF46BB920C43447B995590B5DA7E5 /* AuroraDreamband-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1164,25 +1138,68 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		330A089F2FF3CE801878F1487BAA9BE0 /* Headers */ = {
+		58407F404F57137ADB09B8513DB03358 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F67D6236589E080E02FD77FC3F334D8 /* AwaitKit-umbrella.h in Headers */,
+				778646700CFA399597749744A4FADC88 /* heatshrink-objc-umbrella.h in Headers */,
+				E622E418EE7F42A48E5228E8D209533B /* heatshrink_common.h in Headers */,
+				D8EFD9DAD0D0F47F11FE5E1D91ECD405 /* heatshrink_config.h in Headers */,
+				D45BF71285A5326B09150FE68563AA32 /* heatshrink_decoder.h in Headers */,
+				54523B01A77B8B7005D3589B7E2C2726 /* heatshrink_encoder.h in Headers */,
+				0534A57C19EA17109DD28EAB78580B28 /* RNHeatshrinkDecoder.h in Headers */,
+				F98D63A87497E1222773458B5B6ECA7D /* RNHeatshrinkEncoder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A64273CA535ABF86E42D5F9F87FF1DDE /* Headers */ = {
+		6ACA644F39770189CAEB7134D90AB34B /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C6BA7250D93AE437467CC9E0151C41BE /* heatshrink-objc-umbrella.h in Headers */,
-				530FD61A5D73F1C6D374011CA32C361F /* heatshrink_common.h in Headers */,
-				2DE6AA85274B7880BAC11170767CB510 /* heatshrink_config.h in Headers */,
-				54012FBC4FE00E5A9AEA0C19CD154B67 /* heatshrink_decoder.h in Headers */,
-				E29D296D6340CC0BA18628AD42955C90 /* heatshrink_encoder.h in Headers */,
-				2838743C09E179CDB5D847B54636A1CE /* RNHeatshrinkDecoder.h in Headers */,
-				D7DFDFD4F0830D390792DF9B57951F0A /* RNHeatshrinkEncoder.h in Headers */,
+				6CDC627AEEA5ECDC8E34B4A654E5CB8A /* AnyPromise.h in Headers */,
+				BD60AC26D43803E72FB677C9B24A40C5 /* CALayer+AnyPromise.h in Headers */,
+				3DE2FC01DE5D240483D27A5A4014331E /* fwd.h in Headers */,
+				38D442AAC61D223BC4100849C51B07D4 /* NSNotificationCenter+AnyPromise.h in Headers */,
+				D99AFC017D76DEDFEA03D54CDD585C3E /* NSTask+AnyPromise.h in Headers */,
+				094A69FD501DBAD3D23358FDFCDEA7BF /* NSURLSession+AnyPromise.h in Headers */,
+				2C55EAAE4D34310CE87B71682C939B07 /* PMKFoundation.h in Headers */,
+				DFB6CAB69FAC7E45990E1693DC9D4ABD /* PMKQuartzCore.h in Headers */,
+				FCC04490F25417971013096FC5CB3A24 /* PMKUIKit.h in Headers */,
+				81DE202757B93A7FD9DD034854DF3B1F /* PromiseKit-umbrella.h in Headers */,
+				90BBBA5D625464C55474BBB39C7D0C7F /* PromiseKit.h in Headers */,
+				38DE879B52DB86C9D96F681D9A34F0EF /* UIView+AnyPromise.h in Headers */,
+				591B86FC9CC1C94BF9DED17A5D763F44 /* UIViewController+AnyPromise.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A46065B0D13BEF0644ED7AEF5294FBB /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4362C1556ABD27DB9BFC67F0090A7FCB /* CBService+RZBExtension.h in Headers */,
+				24F5F629E9D3319C62B0A969D5294DCC /* CBUUID+RZBPublic.h in Headers */,
+				5A54D9369E45371C726A5D0DD331059B /* RZBBluetoothRepresentable.h in Headers */,
+				D126B0E3E875B461B5131628664A6B10 /* RZBCentralManager+CommandHelper.h in Headers */,
+				87F01B8A80015122E760C2D7AC9E376A /* RZBCentralManager+Private.h in Headers */,
+				3FADAF23C8FA20221BFEDAD266CF2AF9 /* RZBCentralManager.h in Headers */,
+				356C8F1F17C2FF03E79F5CC324EEE1C3 /* RZBCommand.h in Headers */,
+				2E432271CBA465ACF3A3F0A04914B61D /* RZBCommandDispatch.h in Headers */,
+				C28844353483B67A867D90488179F5F5 /* RZBDefines.h in Headers */,
+				510149947CDB87AF71D087AF2F0B873D /* RZBDeviceInfo.h in Headers */,
+				03BBE4B86C8EEC28BCFEA9C7DE15A75E /* RZBErrors.h in Headers */,
+				B1BA63ACF67BD70932F1A5857DBA4451 /* RZBHeartRateMeasurement.h in Headers */,
+				3FAC28BCE1553AED66B71CEADAE92864 /* RZBLog+Private.h in Headers */,
+				564C1F471B92AB86B8AA059C6D771BBB /* RZBLog.h in Headers */,
+				EB573FEE06AAA430148DC311E3A4F20D /* RZBluetooth-umbrella.h in Headers */,
+				F3911FC00CFAD83A839AB473108F439B /* RZBluetooth.h in Headers */,
+				B0AAEB2DEFC3A1E54EBD9D2F8C0F00D3 /* RZBPeripheral+Private.h in Headers */,
+				67A8F59BEF58020C62C712174E454904 /* RZBPeripheral+RZBBattery.h in Headers */,
+				9A620A3127B57B3B16BB504B53B840DC /* RZBPeripheral+RZBHeartRate.h in Headers */,
+				6C172FD86131829EF3E06AC21E92CF5D /* RZBPeripheral.h in Headers */,
+				651967D15018AADAFE14F3BE1C6FB41F /* RZBPeripheralStateEvent.h in Headers */,
+				B8A32BA92EE2618BB515489310F304B7 /* RZBScanInfo.h in Headers */,
+				B3F002596684716DD0FB6121D5588064 /* RZBUserInteraction.h in Headers */,
+				3CB51299EEEBB7B7955E67C1CB2B3CC8 /* RZBUUIDPath.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1194,31 +1211,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B661430DD421A81604E976023DD673FD /* Headers */ = {
+		C26746F35D79609D384978C903B228A0 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5E1127D4690A259F5FABAAF3725C6C32 /* AuroraDreamband-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BD5CC21A963F59C18B5634AF8DC197F4 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0EFD33973CF01B68B8F29E56AA2D7D62 /* AnyPromise.h in Headers */,
-				AD82E10F882CD64150A66986351ECFB0 /* CALayer+AnyPromise.h in Headers */,
-				C0791D3830D03C147ECA0AE2BADE4C3D /* fwd.h in Headers */,
-				0347EC80D2F985205BE97EEF77FCAD25 /* NSNotificationCenter+AnyPromise.h in Headers */,
-				1DDAD21FB8713BDD93FCE1BCA1DA7ECD /* NSTask+AnyPromise.h in Headers */,
-				A5EB367483A328940EC973CA9C38DAF9 /* NSURLSession+AnyPromise.h in Headers */,
-				441898DC5227662B57A1E3CCDD34CC63 /* PMKFoundation.h in Headers */,
-				D7A6A98644CFD0B15CC6F29CFC15C51A /* PMKQuartzCore.h in Headers */,
-				A1DAD2B27E16AE34847440C79FACE08F /* PMKUIKit.h in Headers */,
-				30151EBDA3D03ACB0F40D907A7C67D83 /* PromiseKit-umbrella.h in Headers */,
-				E8A73BB40FE0C59ABDD862A859E15346 /* PromiseKit.h in Headers */,
-				24EF070BEAF1E0EF02D2DF400A607B2A /* UIView+AnyPromise.h in Headers */,
-				5CEFAA0089886B2831BC2B2552EBF6E4 /* UIViewController+AnyPromise.h in Headers */,
+				9EFE2D6BBA713A333D63B6E9ACC48CF8 /* AwaitKit-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1250,59 +1247,39 @@
 			productReference = AC68760345539AD440C6FBFD9177E92A /* Nimble.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		1D03A22A3621859EA71859B9155A7E6E /* RZBluetooth */ = {
+		2B1845B2507D41A03262951A3A0BD835 /* PromiseKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 090863BBB2EF5802DAE30E6C6945E018 /* Build configuration list for PBXNativeTarget "RZBluetooth" */;
+			buildConfigurationList = 648DBC46B937C681A6686AB9C0ECA00C /* Build configuration list for PBXNativeTarget "PromiseKit" */;
 			buildPhases = (
-				89EDC3D25E597F3949DC87B3F0E541CF /* Sources */,
-				867664BFF928F5850388D292A2EBC8B4 /* Frameworks */,
-				009B6C9FCE7DD781ED11DB4C23BF97C5 /* Headers */,
+				1B41D8BCE3931B6616C67DB091EB559C /* Sources */,
+				02E9827318CBC641D50D773CE55AD4BF /* Frameworks */,
+				6ACA644F39770189CAEB7134D90AB34B /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = RZBluetooth;
-			productName = RZBluetooth;
-			productReference = 39012CF2E36C3F7364E9E5BDC106E4A8 /* RZBluetooth.framework */;
+			name = PromiseKit;
+			productName = PromiseKit;
+			productReference = 008103E26FBE01DCE683F65599C6FBF4 /* PromiseKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		529311B3DC7E76F1AA880C5B2B4BC74B /* heatshrink-objc */ = {
+		2D8E05C00459481A4E05C287B72C53BC /* AwaitKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8D31BE82321F35DA248BC7104196B676 /* Build configuration list for PBXNativeTarget "heatshrink-objc" */;
+			buildConfigurationList = 9B16FFE6AC016628AE4E64CDA84B7317 /* Build configuration list for PBXNativeTarget "AwaitKit" */;
 			buildPhases = (
-				0B6FDEA52042AC798EA63B2E1A908E0A /* Sources */,
-				08B9C3C8EA6EA426DDCBD00860159C0B /* Frameworks */,
-				A64273CA535ABF86E42D5F9F87FF1DDE /* Headers */,
+				5F26B1D2E39C19129A85A67A21F5E745 /* Sources */,
+				5C961296ADF6A898B84C2B48B4852A7F /* Frameworks */,
+				C26746F35D79609D384978C903B228A0 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				E7596033AC5CFB5B6040D7FB3E329094 /* PBXTargetDependency */,
 			);
-			name = "heatshrink-objc";
-			productName = "heatshrink-objc";
-			productReference = 0873330F792BFD728961AAE270DE0855 /* heatshrink_objc.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		78589239DBFB6AAFFFA4ECD3EC4E3F51 /* AuroraDreamband */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = ACBAB6F337FD14F4EE97D3A0DF31B440 /* Build configuration list for PBXNativeTarget "AuroraDreamband" */;
-			buildPhases = (
-				815E144FD755FBD623DE38B230D8C4BE /* Sources */,
-				46A5F95D6AAEAA365B24891553AB5CC9 /* Frameworks */,
-				B661430DD421A81604E976023DD673FD /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				AF39E48E426370C5280DCC82F46A28EE /* PBXTargetDependency */,
-				812911CB3C4D8C28D34C4C5BAFF27EB1 /* PBXTargetDependency */,
-				C5D7221D32E2BF33F07A74FAA5FF61B2 /* PBXTargetDependency */,
-				1F3692830C96A2C1E6FDF5E153138F7E /* PBXTargetDependency */,
-			);
-			name = AuroraDreamband;
-			productName = AuroraDreamband;
-			productReference = C4272EAF57A1445518AEAE266F0EBF32 /* AuroraDreamband.framework */;
+			name = AwaitKit;
+			productName = AwaitKit;
+			productReference = A72E85D7FC36DCEA87E57A32E26395CD /* AwaitKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		7B9DE4D25012FAA678D3D9CDAAEC5290 /* Pods-AuroraDreamband_Example */ = {
@@ -1327,23 +1304,6 @@
 			productReference = C71ED5BBD5B2E13CFFA17F41E3F8BF9C /* Pods_AuroraDreamband_Example.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		7D81B5A7F95AC03A7581623E79CA5596 /* PromiseKit */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B6DB21E8124A1981A91AF1E56D658703 /* Build configuration list for PBXNativeTarget "PromiseKit" */;
-			buildPhases = (
-				C04E61CC97084A50C4D67B2B20F2A742 /* Sources */,
-				126A70608C1E38361997B1267E6E4EFA /* Frameworks */,
-				BD5CC21A963F59C18B5634AF8DC197F4 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = PromiseKit;
-			productName = PromiseKit;
-			productReference = 008103E26FBE01DCE683F65599C6FBF4 /* PromiseKit.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 		86B424DBD429628481633075DBCD50CD /* Pods-AuroraDreamband_Tests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 18C6B8D8D20FE47A5229479A3F3A9DE4 /* Build configuration list for PBXNativeTarget "Pods-AuroraDreamband_Tests" */;
@@ -1362,22 +1322,59 @@
 			productReference = 01A01A9071F70D49EB99C366FBC4CF0E /* Pods_AuroraDreamband_Tests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		E510D8DCC459FED2B937F7E240AB472D /* AwaitKit */ = {
+		8B9DCFA550E49A75E010208851EAF420 /* RZBluetooth */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A3D0388FD7861B431E999C1163A2F81B /* Build configuration list for PBXNativeTarget "AwaitKit" */;
+			buildConfigurationList = 06FFAC831E12C988871DEFD1906860D4 /* Build configuration list for PBXNativeTarget "RZBluetooth" */;
 			buildPhases = (
-				1AE7A6D9A1760FE1F93BBD0D43E99E72 /* Sources */,
-				4E1F98AD6D7251DDF11E25A6612EF0E2 /* Frameworks */,
-				330A089F2FF3CE801878F1487BAA9BE0 /* Headers */,
+				5010CEA70948B16A3D9B0603DE1B409A /* Sources */,
+				48931AA1F4F8C17F474C5E6B33EE73A8 /* Frameworks */,
+				8A46065B0D13BEF0644ED7AEF5294FBB /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				93E450A155085F5044233F60E9F66AC7 /* PBXTargetDependency */,
 			);
-			name = AwaitKit;
-			productName = AwaitKit;
-			productReference = A72E85D7FC36DCEA87E57A32E26395CD /* AwaitKit.framework */;
+			name = RZBluetooth;
+			productName = RZBluetooth;
+			productReference = 39012CF2E36C3F7364E9E5BDC106E4A8 /* RZBluetooth.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		DC2B56A21B99F37BC771C5399B211BB6 /* AuroraDreamband */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 90B5E53BD8AE52D96571A63DB575745D /* Build configuration list for PBXNativeTarget "AuroraDreamband" */;
+			buildPhases = (
+				E680B2CD3AFA44C7BB9B43B3086B56F4 /* Sources */,
+				21BF6181E81329A1D9CB13E757142551 /* Frameworks */,
+				183DFF8577F9232984B14DBD0127E00B /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				34D1A0C633727054CA2BE5EFDF97C8BB /* PBXTargetDependency */,
+				C65C2460C991228897D5DBBFEEBEAB1D /* PBXTargetDependency */,
+				9261FDD9E00237CC6C3FFF3C90815611 /* PBXTargetDependency */,
+				FC60393C8E444A8D0A717BEF83D0543B /* PBXTargetDependency */,
+			);
+			name = AuroraDreamband;
+			productName = AuroraDreamband;
+			productReference = C4272EAF57A1445518AEAE266F0EBF32 /* AuroraDreamband.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		F1109B8B899F9389187BF99A052C4EA2 /* heatshrink-objc */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2AA7A371B73252F6ED4FB3663EF0CBC5 /* Build configuration list for PBXNativeTarget "heatshrink-objc" */;
+			buildPhases = (
+				1332E6B54DF624CE212B22BD62DB1120 /* Sources */,
+				A0A5E71049823E9C995A4EC63BF7A046 /* Frameworks */,
+				58407F404F57137ADB09B8513DB03358 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "heatshrink-objc";
+			productName = "heatshrink-objc";
+			productReference = 0873330F792BFD728961AAE270DE0855 /* heatshrink_objc.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -1401,40 +1398,71 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				78589239DBFB6AAFFFA4ECD3EC4E3F51 /* AuroraDreamband */,
-				E510D8DCC459FED2B937F7E240AB472D /* AwaitKit */,
-				529311B3DC7E76F1AA880C5B2B4BC74B /* heatshrink-objc */,
+				DC2B56A21B99F37BC771C5399B211BB6 /* AuroraDreamband */,
+				2D8E05C00459481A4E05C287B72C53BC /* AwaitKit */,
+				F1109B8B899F9389187BF99A052C4EA2 /* heatshrink-objc */,
 				1321E318D10CFDC9F5B93A7952492CCD /* Nimble */,
 				7B9DE4D25012FAA678D3D9CDAAEC5290 /* Pods-AuroraDreamband_Example */,
 				86B424DBD429628481633075DBCD50CD /* Pods-AuroraDreamband_Tests */,
-				7D81B5A7F95AC03A7581623E79CA5596 /* PromiseKit */,
-				1D03A22A3621859EA71859B9155A7E6E /* RZBluetooth */,
+				2B1845B2507D41A03262951A3A0BD835 /* PromiseKit */,
+				8B9DCFA550E49A75E010208851EAF420 /* RZBluetooth */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		0B6FDEA52042AC798EA63B2E1A908E0A /* Sources */ = {
+		1332E6B54DF624CE212B22BD62DB1120 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				36BA7D62143C8DAF3C4F9E00637DF5E9 /* heatshrink-objc-dummy.m in Sources */,
-				99F7113D7F7A994F78F8334388BA7E02 /* heatshrink_decoder.c in Sources */,
-				82D9C778AFF795CD87F6A6E9F8F6899C /* heatshrink_encoder.c in Sources */,
-				9C6145242DD9E46935DB407857197D18 /* RNHeatshrinkDecoder.m in Sources */,
-				C4BDE9EE8DD88333B237AD47B60DA404 /* RNHeatshrinkEncoder.m in Sources */,
+				6703F2E062092BFF620AE3900B16318A /* heatshrink-objc-dummy.m in Sources */,
+				10EE3BA9119CE4221821553FAA6BC43D /* heatshrink_decoder.c in Sources */,
+				F95791862BD7021AB1E8632A98E481F8 /* heatshrink_encoder.c in Sources */,
+				32AEE479147309CF24CD8D579C9333E4 /* RNHeatshrinkDecoder.m in Sources */,
+				AA613B458B2F1F4A6DDA49873CAC92B6 /* RNHeatshrinkEncoder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1AE7A6D9A1760FE1F93BBD0D43E99E72 /* Sources */ = {
+		1B41D8BCE3931B6616C67DB091EB559C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8AA9295711FB667ECEE6BB8EB3D30B22 /* AwaitKit-dummy.m in Sources */,
-				1414D3996F85BAE77E7B20749423951F /* AwaitKit.swift in Sources */,
-				63BF970479A5E535270BA2653195E056 /* AwaitKitExtension.swift in Sources */,
-				9936F38E0F78D41315022565B3904260 /* DispatchQueue+Async.swift in Sources */,
-				E4C8AAAC948C9AF14B464105EF8460FB /* DispatchQueue+Await.swift in Sources */,
+				97DEB182D04415B6216684B2BDBF65AA /* after.m in Sources */,
+				397AD2C32271B1B09A8A70CA43F43019 /* after.swift in Sources */,
+				B09771C1886A6127158CECDE0AA581EF /* afterlife.swift in Sources */,
+				ED7F8D08DA99D512B7F64F5A1A9C85B3 /* AnyPromise.m in Sources */,
+				D0A92852229B57111F20A40C67314B2F /* AnyPromise.swift in Sources */,
+				E46341569AF06AF711247EF253A1E849 /* CALayer+AnyPromise.m in Sources */,
+				80D3081533E55D802293B6147B5004EC /* dispatch_promise.m in Sources */,
+				34FD376C8E175DF0DC73445F2E0A503B /* DispatchQueue+Promise.swift in Sources */,
+				221F89CE0A9705DEACAB76A21AF91912 /* Error.swift in Sources */,
+				8FC8B5B141AE6C86323708FAE0D80186 /* GlobalState.m in Sources */,
+				9F5D6FB31EF7FAD87CF302FC7E9E624F /* hang.m in Sources */,
+				3925430DC5EC3CF458ECBB5B408DD4EA /* join.m in Sources */,
+				C39B1F7BAABACC6C88C6880DD9A4751C /* join.swift in Sources */,
+				01FBCB1103F7A9CE3A820298F799A351 /* NSNotificationCenter+AnyPromise.m in Sources */,
+				32F61F85DD2E98956025C1888053A10D /* NSNotificationCenter+Promise.swift in Sources */,
+				1FCED1FDADE72C8B0E3F90CC54E86CB3 /* NSObject+Promise.swift in Sources */,
+				9526EC58DD0274089F157F927F63DB5D /* NSTask+AnyPromise.m in Sources */,
+				C28B2535303D7D8D764769A40A5CB10C /* NSURLSession+AnyPromise.m in Sources */,
+				7740ABF374E369140F60218455FC1B42 /* NSURLSession+Promise.swift in Sources */,
+				0059E85F372B472CC1BADAAB1322BEBF /* PMKAlertController.swift in Sources */,
+				C650F15C971F3C17C6C4B8EB7C486BB2 /* Process+Promise.swift in Sources */,
+				0A0340EEDE95D46EFFA3BA67B0F80035 /* Promise+AnyPromise.swift in Sources */,
+				DE8D7AD9E9B50A3D5B72F45E58BDF6D8 /* Promise+Properties.swift in Sources */,
+				7C04EEF21BA7F0AB78AF30DFAA64E0F3 /* Promise.swift in Sources */,
+				02EC2256887C7EC68AFF86586AD328F8 /* PromiseKit-dummy.m in Sources */,
+				EBA7EE372FE1A3BF6C5D1BB8188B5378 /* race.swift in Sources */,
+				2B02D48E7CA17D4EF9263D4AB68658F7 /* State.swift in Sources */,
+				8D22AFD8B5DFE0356816DD99EA4307EA /* UIView+AnyPromise.m in Sources */,
+				AD52C5370BB321EC9F21A22BC07CA924 /* UIView+Promise.swift in Sources */,
+				C10F2C9FDE05A3D2FCC06CBF75DD0283 /* UIViewController+AnyPromise.m in Sources */,
+				97076D5E682648BC34C20AAAD753AC5B /* UIViewController+Promise.swift in Sources */,
+				F2DFBE2F5C5F1DDDFA16325BEDBEB8CE /* URLDataPromise.swift in Sources */,
+				25E7E6A5FB3E7E3FF9017C5244318264 /* when.m in Sources */,
+				EC2AAEFE6E938043828D8F84E14A7A3F /* when.swift in Sources */,
+				C6C2B774989CC481E0137F09E7319E19 /* wrap.swift in Sources */,
+				6D0A59969677FB0EE002DC62DDAA24D1 /* Zalgo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1502,49 +1530,39 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		815E144FD755FBD623DE38B230D8C4BE /* Sources */ = {
+		5010CEA70948B16A3D9B0603DE1B409A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5328F3E4E6F2BF2B07BEC354D87F22DF /* Array+Remove.swift in Sources */,
-				8523127179603F40E1576D7566F304F0 /* AuroraDreamband-dummy.m in Sources */,
-				3B3387F2E95EA69E0A8A07C5CBD5EA3A /* AuroraDreamband.swift in Sources */,
-				EA7C223C7D2190201F7CC0EBD5A98C81 /* BleHelper.swift in Sources */,
-				52C5CBB290E1230BF62B59CB0077FF87 /* Command.swift in Sources */,
-				338CA1934917E5C56D800DD39A1A34DB /* CommandQueue.swift in Sources */,
-				9B8A4CD6FE0A9FE1706AB8439CEA404A /* Constants.swift in Sources */,
-				A4A676FA431F1954FE8205A545A9B1E9 /* CRC32.swift in Sources */,
-				64446FFA1CBBB8A0364E3FC74F73D5C4 /* Data+Scanning.swift in Sources */,
-				F019F854791D3B5CBE8C374AC86205EA /* DataConvertible.swift in Sources */,
-				2C189B5CAEA319BEE7AF5941D3796EF6 /* Errors.swift in Sources */,
-				F493629059B1B928453CE9DAB4507718 /* Log.swift in Sources */,
-				2BCA41E959A668FE50F2E52EEA0FC2EE /* ProfileSetting+Equatable.swift in Sources */,
-				DE8560B7755D31F5459918AEB2BC1F58 /* String+MatchingStrings.swift in Sources */,
-				D4355CE302A14983315B02541F733D44 /* String+Slicing.swift in Sources */,
+				657B68AD9FB4C5299CB7701A56BECD0D /* CBService+RZBExtension.m in Sources */,
+				1A08E5D201E61E43909AF2EF498F552F /* CBUUID+RZBPublic.m in Sources */,
+				6F31363D9912D71874DA5C8B3A5D3465 /* RZBCentralManager+CommandHelper.m in Sources */,
+				31A74261CB69F7C537BB945D50B04E7E /* RZBCentralManager.m in Sources */,
+				1FCD7669C7EEEB4547A7501E6E27F852 /* RZBCommand.m in Sources */,
+				BE4283AA694B204497D371E8479B0FA1 /* RZBCommandDispatch.m in Sources */,
+				3D028D8050F2C48847AFE1C33F7EE98B /* RZBDeviceInfo.m in Sources */,
+				5B426694C4C878FD3C9B16C7B8E46A68 /* RZBErrors.m in Sources */,
+				4D6222C837470AE576DE7532B228F7AB /* RZBHeartRateMeasurement.m in Sources */,
+				EC2EA656F85280C73DCDE8A2E2772974 /* RZBLog.m in Sources */,
+				1AEF8056D9321C02185C5634345ADC84 /* RZBluetooth-dummy.m in Sources */,
+				799AFB705622873F7EB5223F19B2D1DB /* RZBPeripheral+RZBBattery.m in Sources */,
+				B51AA2027E4FDC2845CD846C41A20EC9 /* RZBPeripheral+RZBHeartRate.m in Sources */,
+				BC0BFFE308C17FCD553E94D90EC94865 /* RZBPeripheral.m in Sources */,
+				1879D481C4562AC62DBD1022C294C004 /* RZBScanInfo.m in Sources */,
+				787B6829EBCAE0EC0BB70881525F65CB /* RZBUserInteraction.m in Sources */,
+				E422F1EDB3B947AEF86117BBE4A77A00 /* RZBUUIDPath.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		89EDC3D25E597F3949DC87B3F0E541CF /* Sources */ = {
+		5F26B1D2E39C19129A85A67A21F5E745 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ABA9756C49435AC6FFDDB389872D1662 /* CBService+RZBExtension.m in Sources */,
-				FBC5866437654CB482C713764BAE29B7 /* CBUUID+RZBPublic.m in Sources */,
-				D2490DE8B4B1BBC81BD98A337AE3A893 /* RZBCentralManager+CommandHelper.m in Sources */,
-				73E9BF3C9A15ED412B40081A4D41CA6B /* RZBCentralManager.m in Sources */,
-				9F9DE527A8B86994714057BB0109739D /* RZBCommand.m in Sources */,
-				C2CE2D6639DEF2A3317972414CA9908E /* RZBCommandDispatch.m in Sources */,
-				1EFB5B626B40CEE9646315E680604522 /* RZBDeviceInfo.m in Sources */,
-				659C2C74BDEEB8EAC1AD330EC1B9DD66 /* RZBErrors.m in Sources */,
-				FF64CA5839066D13075478BEF0276AF7 /* RZBHeartRateMeasurement.m in Sources */,
-				6AA036835D1966175C8EBD18969013DB /* RZBLog.m in Sources */,
-				B2EF3FAE4E7CDC826A17C62C9669F760 /* RZBluetooth-dummy.m in Sources */,
-				FC02ADEF6E0DA520B052CCF0AE5E6EDD /* RZBPeripheral+RZBBattery.m in Sources */,
-				40CE92BB7877D114C1F53F0FF07E2914 /* RZBPeripheral+RZBHeartRate.m in Sources */,
-				472471A9A3B3D08B209EFF81D9AE006C /* RZBPeripheral.m in Sources */,
-				044E0FACF6CC7137168632EA2945FC32 /* RZBScanInfo.m in Sources */,
-				7366603DA87056D8C27A63D89E050414 /* RZBUserInteraction.m in Sources */,
-				9329B4FAFA598626CF6E0DC3E8789F04 /* RZBUUIDPath.m in Sources */,
+				EB01E6E14F693049B44381D919CC4525 /* AwaitKit-dummy.m in Sources */,
+				29CD6DB3208B7C91226AAC8F687E6285 /* AwaitKit.swift in Sources */,
+				5FFC6F57A360DEF38034F6C9BF709893 /* AwaitKitExtension.swift in Sources */,
+				24A5F5B0932BA1189EAEB2AED347512E /* DispatchQueue+Async.swift in Sources */,
+				FDF617298E58487E0F08D91EEF2BE57B /* DispatchQueue+Await.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1556,46 +1574,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C04E61CC97084A50C4D67B2B20F2A742 /* Sources */ = {
+		E680B2CD3AFA44C7BB9B43B3086B56F4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				310D5F692356B5DAE754C14E4EA9CD7E /* after.m in Sources */,
-				FE29EFF93498E8FE7D14C3B691BE46E6 /* after.swift in Sources */,
-				0E462FFEAF260200710C1DF59493710A /* afterlife.swift in Sources */,
-				6403A9120725B37D65477434726AF827 /* AnyPromise.m in Sources */,
-				4B948EDE07595C2923330CFBA1BE93CB /* AnyPromise.swift in Sources */,
-				917CC06C2049F3E10931F0209F99FAB9 /* CALayer+AnyPromise.m in Sources */,
-				B95AD14E6F4051BD3C52E11A6AB0DA64 /* dispatch_promise.m in Sources */,
-				79F9643CEB041457317FFC53B5539995 /* DispatchQueue+Promise.swift in Sources */,
-				94E4A1A84F613E55F65723EF52C29BA5 /* Error.swift in Sources */,
-				2D90103CBB683E9792153B0E2384D885 /* GlobalState.m in Sources */,
-				F364A6411DBC931572BB6AAE8A0731DD /* hang.m in Sources */,
-				3E879B1FB4DEAEC74058B9D6070A2C91 /* join.m in Sources */,
-				1CB1771F4FF569137BF57A158D9401E1 /* join.swift in Sources */,
-				6CC3C27943EEB516C3B35EB3D5038E25 /* NSNotificationCenter+AnyPromise.m in Sources */,
-				5781F15874047D90EAD1C716B1AA4031 /* NSNotificationCenter+Promise.swift in Sources */,
-				E7628D217ED546AF078DCF8C0FD9FB5D /* NSObject+Promise.swift in Sources */,
-				194702C6CE9315E635228B21A3D00E69 /* NSTask+AnyPromise.m in Sources */,
-				33C62BAB36F5C68663BD0815E2018C2A /* NSURLSession+AnyPromise.m in Sources */,
-				10C63B8CEE8410097D329F8B6C106FA2 /* NSURLSession+Promise.swift in Sources */,
-				A9D29A1045F971969620F7FE5261E653 /* PMKAlertController.swift in Sources */,
-				001F295235277E8858E94BD0ECCA791E /* Process+Promise.swift in Sources */,
-				D97D8D9C2BDA7AFE43F4D649F2630B11 /* Promise+AnyPromise.swift in Sources */,
-				25166F6DF26FC9186AEB4711FA435E3C /* Promise+Properties.swift in Sources */,
-				4011ADD41ABA0DC4609644AD30965451 /* Promise.swift in Sources */,
-				CA4D24FA8B0760259CCAB91E8FD9F12D /* PromiseKit-dummy.m in Sources */,
-				8BB43E99E69210A04AC7BF5C9AE6A579 /* race.swift in Sources */,
-				9D3A77B096119C002843C7EFDB2E7EC5 /* State.swift in Sources */,
-				F29A26B7CCACB0A6572EF62DB5A73924 /* UIView+AnyPromise.m in Sources */,
-				9AF065A1AE6260749C490E4B27D2A120 /* UIView+Promise.swift in Sources */,
-				6DC6DFBCD5059D0977F83EBB7AD6C143 /* UIViewController+AnyPromise.m in Sources */,
-				38D0AABDD7A0FADF68855A714FA82593 /* UIViewController+Promise.swift in Sources */,
-				0EC7CED1CEDA22867751736DED1668A4 /* URLDataPromise.swift in Sources */,
-				4AB374EFCEBC588D9CF66AF5FC167F60 /* when.m in Sources */,
-				BE66A59AB535E3A8FCA99E92BE3DFFC2 /* when.swift in Sources */,
-				A089A4AF36F6301E92422F481D5A96F7 /* wrap.swift in Sources */,
-				88703D064955A6FE80AFA81CD25AD14D /* Zalgo.swift in Sources */,
+				49EDE1F3028F84E71DCBB43FCDBCA35B /* Array+Remove.swift in Sources */,
+				C8D08FB244D6E40D3AB3931CB362F5F2 /* AuroraDreamband-dummy.m in Sources */,
+				5CEAC9A889590E794468549DE7991FEE /* AuroraDreamband.swift in Sources */,
+				A6055ED4747488DA12324CAEFC46B7F3 /* BleHelper.swift in Sources */,
+				5FA8C2E25A86DA98188C4C4B01B17EB0 /* Command.swift in Sources */,
+				A912450A9D3E114E330F3A117FA1B344 /* CommandQueue.swift in Sources */,
+				D79B3DC831BE020F362594D8E9F35D2F /* Constants.swift in Sources */,
+				A19DD5A3AC961922C2C4925712D1CCC7 /* CRC32.swift in Sources */,
+				8E64AD75CE784C1546F8F9FAA5E9C781 /* Data+Scanning.swift in Sources */,
+				F39A5BCB04970D5F4DA07FDDFDC6F9E5 /* DataConvertible.swift in Sources */,
+				41B9A23AECE3244219DE9CD6DC1E3405 /* Errors.swift in Sources */,
+				27900D0085A1B1B11B239F80956FF16B /* Log.swift in Sources */,
+				8BC469336C7945D2A68748F6F079568D /* String+MatchingStrings.swift in Sources */,
+				7616953A5EB48542A7347DDA05883774 /* String+Slicing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1610,46 +1606,40 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		1F3692830C96A2C1E6FDF5E153138F7E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "heatshrink-objc";
-			target = 529311B3DC7E76F1AA880C5B2B4BC74B /* heatshrink-objc */;
-			targetProxy = 000AFA39A7351BDC48EEE3FE9B4F14EB /* PBXContainerItemProxy */;
-		};
 		307DB6E00B88E4F6DAB8829A36B44EB2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = PromiseKit;
-			target = 7D81B5A7F95AC03A7581623E79CA5596 /* PromiseKit */;
+			target = 2B1845B2507D41A03262951A3A0BD835 /* PromiseKit */;
 			targetProxy = 2684A55EA6AC1F1A37121899C5342757 /* PBXContainerItemProxy */;
+		};
+		34D1A0C633727054CA2BE5EFDF97C8BB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = AwaitKit;
+			target = 2D8E05C00459481A4E05C287B72C53BC /* AwaitKit */;
+			targetProxy = 5C282F25201DD0DF227091956D381861 /* PBXContainerItemProxy */;
 		};
 		6853FCF4BC2671E80846D1CC17D0B00D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = AwaitKit;
-			target = E510D8DCC459FED2B937F7E240AB472D /* AwaitKit */;
+			target = 2D8E05C00459481A4E05C287B72C53BC /* AwaitKit */;
 			targetProxy = E9CA26051823BAF4FE957EE5B4AA00DB /* PBXContainerItemProxy */;
 		};
 		7F723CE21782EB874236E4CABD7DD8F9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = AuroraDreamband;
-			target = 78589239DBFB6AAFFFA4ECD3EC4E3F51 /* AuroraDreamband */;
+			target = DC2B56A21B99F37BC771C5399B211BB6 /* AuroraDreamband */;
 			targetProxy = EC95ABE2F10E42F786F7D93C2D99139C /* PBXContainerItemProxy */;
 		};
-		812911CB3C4D8C28D34C4C5BAFF27EB1 /* PBXTargetDependency */ = {
+		9261FDD9E00237CC6C3FFF3C90815611 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = PromiseKit;
-			target = 7D81B5A7F95AC03A7581623E79CA5596 /* PromiseKit */;
-			targetProxy = E9EE18F7760C9F6888AFA89F861044FC /* PBXContainerItemProxy */;
-		};
-		93E450A155085F5044233F60E9F66AC7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = PromiseKit;
-			target = 7D81B5A7F95AC03A7581623E79CA5596 /* PromiseKit */;
-			targetProxy = C50C13A2E843A1EE3696F3B7B1AF2671 /* PBXContainerItemProxy */;
+			name = RZBluetooth;
+			target = 8B9DCFA550E49A75E010208851EAF420 /* RZBluetooth */;
+			targetProxy = BBBDFE03F5949B7655B02CBCF8463133 /* PBXContainerItemProxy */;
 		};
 		97E554526AB0E002AE7B012DD27E04EC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "heatshrink-objc";
-			target = 529311B3DC7E76F1AA880C5B2B4BC74B /* heatshrink-objc */;
+			target = F1109B8B899F9389187BF99A052C4EA2 /* heatshrink-objc */;
 			targetProxy = 6F95A9C7ADF866BF6A17825257C0E1E9 /* PBXContainerItemProxy */;
 		};
 		9CBFE3B2F1003FE2C02981E6E5DCBBC7 /* PBXTargetDependency */ = {
@@ -1661,24 +1651,98 @@
 		9CE9722CEA0A041C318F6CD41AEF0A59 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = RZBluetooth;
-			target = 1D03A22A3621859EA71859B9155A7E6E /* RZBluetooth */;
+			target = 8B9DCFA550E49A75E010208851EAF420 /* RZBluetooth */;
 			targetProxy = 434F0DCC1B76041DAF00DBCC35DACE85 /* PBXContainerItemProxy */;
 		};
-		AF39E48E426370C5280DCC82F46A28EE /* PBXTargetDependency */ = {
+		C65C2460C991228897D5DBBFEEBEAB1D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = AwaitKit;
-			target = E510D8DCC459FED2B937F7E240AB472D /* AwaitKit */;
-			targetProxy = 23EB8C8FCCFC130192C73FEDF4552513 /* PBXContainerItemProxy */;
+			name = PromiseKit;
+			target = 2B1845B2507D41A03262951A3A0BD835 /* PromiseKit */;
+			targetProxy = 7C109679877C53FEC4391F290FC2AD3A /* PBXContainerItemProxy */;
 		};
-		C5D7221D32E2BF33F07A74FAA5FF61B2 /* PBXTargetDependency */ = {
+		E7596033AC5CFB5B6040D7FB3E329094 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = RZBluetooth;
-			target = 1D03A22A3621859EA71859B9155A7E6E /* RZBluetooth */;
-			targetProxy = FB9C0AD331F41EEB2C25086E994249D7 /* PBXContainerItemProxy */;
+			name = PromiseKit;
+			target = 2B1845B2507D41A03262951A3A0BD835 /* PromiseKit */;
+			targetProxy = 4046F9BA393CC708D1FCC95683AFE97B /* PBXContainerItemProxy */;
+		};
+		FC60393C8E444A8D0A717BEF83D0543B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "heatshrink-objc";
+			target = F1109B8B899F9389187BF99A052C4EA2 /* heatshrink-objc */;
+			targetProxy = 43F80E085979F31E41402B10AFFBFB3B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		0A2702204082A97C6A64BE2D1BC20625 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1A9F59F2995990B542A7C841BDC9E899 /* RZBluetooth.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/RZBluetooth/RZBluetooth-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RZBluetooth/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/RZBluetooth/RZBluetooth.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = RZBluetooth;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		12F6AD6390102065F6A9B7183090F5AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 088B338278CD180BDE43A71271387682 /* AwaitKit.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/AwaitKit/AwaitKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/AwaitKit/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/AwaitKit/AwaitKit.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = AwaitKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		1A1899539842714EBB45CA67B4F52248 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4329904FD0418E2B2F48285AB25310DE /* Nimble.xcconfig */;
@@ -1712,6 +1776,41 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
+		};
+		1E0237AF47318D9638DC41296EBE1E40 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1B4B72EB477DEB286175B2CFF2547CCA /* AuroraDreamband.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/AuroraDreamband/AuroraDreamband-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/AuroraDreamband/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/AuroraDreamband/AuroraDreamband.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = AuroraDreamband;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
 		};
 		25EDB49724F84F396FCD038053003450 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -1751,41 +1850,40 @@
 			};
 			name = Release;
 		};
-		36DCB6D7198A500E05846672D64EC588 /* Release */ = {
+		3168430256AC710AE9CFE187E8BC0E62 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1B4B72EB477DEB286175B2CFF2547CCA /* AuroraDreamband.xcconfig */;
+			baseConfigurationReference = CCB9898B75ED13694BB48BA0D65FB6AB /* heatshrink-objc.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/AuroraDreamband/AuroraDreamband-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/AuroraDreamband/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/heatshrink-objc/heatshrink-objc-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/heatshrink-objc/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/AuroraDreamband/AuroraDreamband.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = AuroraDreamband;
+				MODULEMAP_FILE = "Target Support Files/heatshrink-objc/heatshrink-objc.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = heatshrink_objc;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
-		37E96E2655368FD0316EB9C34647EAC6 /* Release */ = {
+		420FBBAAD6CEA6F930FAA4A3706AA4C2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1A9F59F2995990B542A7C841BDC9E899 /* RZBluetooth.xcconfig */;
 			buildSettings = {
@@ -1901,7 +1999,7 @@
 			};
 			name = Debug;
 		};
-		4FB9D38E581CA7428414E613860B3FC5 /* Release */ = {
+		661E101B7CEFB7CAFF6534123E02519C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6AC93128E55447E3F9DF09E9586B11C2 /* PromiseKit.xcconfig */;
 			buildSettings = {
@@ -1910,7 +2008,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -1923,50 +2021,18 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/PromiseKit/PromiseKit.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = PromiseKit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
-		};
-		5E05F1C2AF01FC4CE00C27B74B47FCF4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = CCB9898B75ED13694BB48BA0D65FB6AB /* heatshrink-objc.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/heatshrink-objc/heatshrink-objc-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/heatshrink-objc/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/heatshrink-objc/heatshrink-objc.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = heatshrink_objc;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
+			name = Debug;
 		};
 		6AAEEC1EB89E69F49659AFF59789C29A /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -2046,75 +2112,6 @@
 			};
 			name = Debug;
 		};
-		8329990DC795B295FB661E568238E08E /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 088B338278CD180BDE43A71271387682 /* AwaitKit.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/AwaitKit/AwaitKit-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/AwaitKit/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/AwaitKit/AwaitKit.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = AwaitKit;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		8C01F5A11932E4CCF95D8B8ED7C8EE48 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 088B338278CD180BDE43A71271387682 /* AwaitKit.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/AwaitKit/AwaitKit-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/AwaitKit/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/AwaitKit/AwaitKit.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = AwaitKit;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		8DBEFDC3365B4D210483D6415C12963D /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 65E01B0184DB3923ABCEE667F3D4C49B /* Pods-AuroraDreamband_Example.release.xcconfig */;
@@ -2153,40 +2150,7 @@
 			};
 			name = Release;
 		};
-		935194D73305E11758D844E5998E5E8F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1A9F59F2995990B542A7C841BDC9E899 /* RZBluetooth.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/RZBluetooth/RZBluetooth-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/RZBluetooth/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/RZBluetooth/RZBluetooth.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = RZBluetooth;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		9DB0A57000F3DAB145151E14FE976874 /* Debug */ = {
+		B782A1EDBFDD719080FF3C921658A5B0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1B4B72EB477DEB286175B2CFF2547CCA /* AuroraDreamband.xcconfig */;
 			buildSettings = {
@@ -2195,7 +2159,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -2208,18 +2172,17 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/AuroraDreamband/AuroraDreamband.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = AuroraDreamband;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
 		BDD0139D6EB93FA375F887ABD62DAB2E /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -2265,7 +2228,41 @@
 			};
 			name = Release;
 		};
-		D4C4D03BBAB82CBC4C9559380BAD46A8 /* Debug */ = {
+		BF6F02109B41F0A032888A7E3CB0C16A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 088B338278CD180BDE43A71271387682 /* AwaitKit.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/AwaitKit/AwaitKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/AwaitKit/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/AwaitKit/AwaitKit.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = AwaitKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E04CB09D310E6DA5ED72EBB84125AE2A /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6AC93128E55447E3F9DF09E9586B11C2 /* PromiseKit.xcconfig */;
 			buildSettings = {
@@ -2274,7 +2271,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -2287,20 +2284,19 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/PromiseKit/PromiseKit.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = PromiseKit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
-		E0154D9A878BF561B0D65001BC81E008 /* Debug */ = {
+		EAC49ED10FE636318F807D77E459658D /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CCB9898B75ED13694BB48BA0D65FB6AB /* heatshrink-objc.xcconfig */;
 			buildSettings = {
@@ -2309,7 +2305,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -2322,7 +2318,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/heatshrink-objc/heatshrink-objc.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = heatshrink_objc;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -2331,16 +2327,16 @@
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		090863BBB2EF5802DAE30E6C6945E018 /* Build configuration list for PBXNativeTarget "RZBluetooth" */ = {
+		06FFAC831E12C988871DEFD1906860D4 /* Build configuration list for PBXNativeTarget "RZBluetooth" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				935194D73305E11758D844E5998E5E8F /* Debug */,
-				37E96E2655368FD0316EB9C34647EAC6 /* Release */,
+				0A2702204082A97C6A64BE2D1BC20625 /* Debug */,
+				420FBBAAD6CEA6F930FAA4A3706AA4C2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2350,6 +2346,15 @@
 			buildConfigurations = (
 				6AAEEC1EB89E69F49659AFF59789C29A /* Debug */,
 				25EDB49724F84F396FCD038053003450 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2AA7A371B73252F6ED4FB3663EF0CBC5 /* Build configuration list for PBXNativeTarget "heatshrink-objc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3168430256AC710AE9CFE187E8BC0E62 /* Debug */,
+				EAC49ED10FE636318F807D77E459658D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2372,29 +2377,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8D31BE82321F35DA248BC7104196B676 /* Build configuration list for PBXNativeTarget "heatshrink-objc" */ = {
+		648DBC46B937C681A6686AB9C0ECA00C /* Build configuration list for PBXNativeTarget "PromiseKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E0154D9A878BF561B0D65001BC81E008 /* Debug */,
-				5E05F1C2AF01FC4CE00C27B74B47FCF4 /* Release */,
+				661E101B7CEFB7CAFF6534123E02519C /* Debug */,
+				E04CB09D310E6DA5ED72EBB84125AE2A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A3D0388FD7861B431E999C1163A2F81B /* Build configuration list for PBXNativeTarget "AwaitKit" */ = {
+		90B5E53BD8AE52D96571A63DB575745D /* Build configuration list for PBXNativeTarget "AuroraDreamband" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8C01F5A11932E4CCF95D8B8ED7C8EE48 /* Debug */,
-				8329990DC795B295FB661E568238E08E /* Release */,
+				1E0237AF47318D9638DC41296EBE1E40 /* Debug */,
+				B782A1EDBFDD719080FF3C921658A5B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ACBAB6F337FD14F4EE97D3A0DF31B440 /* Build configuration list for PBXNativeTarget "AuroraDreamband" */ = {
+		9B16FFE6AC016628AE4E64CDA84B7317 /* Build configuration list for PBXNativeTarget "AwaitKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9DB0A57000F3DAB145151E14FE976874 /* Debug */,
-				36DCB6D7198A500E05846672D64EC588 /* Release */,
+				12F6AD6390102065F6A9B7183090F5AB /* Debug */,
+				BF6F02109B41F0A032888A7E3CB0C16A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2404,15 +2409,6 @@
 			buildConfigurations = (
 				464ED09E722C2B744F42F5C9596787B9 /* Debug */,
 				1A1899539842714EBB45CA67B4F52248 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B6DB21E8124A1981A91AF1E56D658703 /* Build configuration list for PBXNativeTarget "PromiseKit" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D4C4D03BBAB82CBC4C9559380BAD46A8 /* Debug */,
-				4FB9D38E581CA7428414E613860B3FC5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

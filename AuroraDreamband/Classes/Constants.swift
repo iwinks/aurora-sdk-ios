@@ -325,3 +325,13 @@ public enum ProfileSetting {
         return "{\(key): \(value)}"
     }
 }
+
+extension ProfileSetting: Hashable {
+    public var hashValue: Int {
+        return config.hashValue
+    }
+}
+
+public func ==(lhs: ProfileSetting, rhs: ProfileSetting) -> Bool {
+    return lhs.config == rhs.config
+}
