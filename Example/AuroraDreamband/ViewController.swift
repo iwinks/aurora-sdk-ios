@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func connectTapped(_ sender: Any) {
+        AuroraDreamband.shared.loggingEnabled = true
         AuroraDreamband.shared.connect()
     }
     

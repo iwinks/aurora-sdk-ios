@@ -10,6 +10,7 @@
 		000EC11C1EF2A1DE00870879 /* ProfileParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000EC11B1EF2A1DE00870879 /* ProfileParserTests.swift */; };
 		000EC11E1EF2A4CF00870879 /* rem-stim.prof in Resources */ = {isa = PBXBuildFile; fileRef = 000EC11D1EF2A4CF00870879 /* rem-stim.prof */; };
 		000EC1201EF2A54400870879 /* FileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000EC11F1EF2A54400870879 /* FileHelper.swift */; };
+		0047BC241F1A3DBD00941CDE /* LiveAuroraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0047BC221F1A3D8B00941CDE /* LiveAuroraTests.swift */; };
 		2C2551DA2F41EBEB28CE8FC6 /* Pods_AuroraDreamband_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6054E07A29492433EF39D160 /* Pods_AuroraDreamband_Example.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
@@ -33,6 +34,7 @@
 		000EC11B1EF2A1DE00870879 /* ProfileParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileParserTests.swift; sourceTree = "<group>"; };
 		000EC11D1EF2A4CF00870879 /* rem-stim.prof */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "rem-stim.prof"; sourceTree = "<group>"; };
 		000EC11F1EF2A54400870879 /* FileHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileHelper.swift; sourceTree = "<group>"; };
+		0047BC221F1A3D8B00941CDE /* LiveAuroraTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveAuroraTests.swift; sourceTree = "<group>"; };
 		135CB6DFA48BDAEC2CE27E2F /* Pods-AuroraDreamband_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AuroraDreamband_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AuroraDreamband_Tests/Pods-AuroraDreamband_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		1675A1C59B666BE2C76081FE /* Pods_AuroraDreamband_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AuroraDreamband_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6054E07A29492433EF39D160 /* Pods_AuroraDreamband_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AuroraDreamband_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				000EC11B1EF2A1DE00870879 /* ProfileParserTests.swift */,
+				0047BC221F1A3D8B00941CDE /* LiveAuroraTests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -224,6 +227,11 @@
 						DevelopmentTeam = APA2MKTPVQ;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -383,6 +391,7 @@
 			files = (
 				000EC11C1EF2A1DE00870879 /* ProfileParserTests.swift in Sources */,
 				000EC1201EF2A54400870879 /* FileHelper.swift in Sources */,
+				0047BC241F1A3DBD00941CDE /* LiveAuroraTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
