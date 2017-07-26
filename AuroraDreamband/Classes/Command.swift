@@ -160,6 +160,12 @@ class Command: NSObject {
         else if let error = error {
             errorHandler?(error)
         }
+        else if let responseObject = try? responseObject(),
+            let errorKey = responseObject["Error"],
+            let errorCode = UInt8(errorKey),
+            let errorMessage = responseObject["Message"] {
+            errorHandler?(AuroraErrors.commandError(code: errorCode, message: errorMessage))
+        }
         else {
             handleDecompression()
             successHandler?(self)
