@@ -43,6 +43,9 @@ class LiveAuroraTests: XCTestCase {
     }
 
     func testCanConnectToAurora() {
+        #if TARGET_OS_SIMULATOR
+            return
+        #endif
         // Given
         var connected = false
         connectionHandler = {
@@ -55,6 +58,9 @@ class LiveAuroraTests: XCTestCase {
     }
     
     func testCanDisconnectFromAurora() {
+        #if TARGET_OS_SIMULATOR
+            return
+        #endif
         // Given
         testCanConnectToAurora()
         var disconnected = false

@@ -78,6 +78,8 @@ class ProfileParserTests: XCTestCase {
         // Duplicate settings
         newSettings.append(.wakeupTime(100000))
         newSettings.append(.custom(key: "sel-indicator", value: "3 0xFF00FF 0x7F"))
+        // Non-existing setting
+        newSettings.append(.smartAlarmEnabled(false))
         var modifiedProfile = Data()
         expect {
             modifiedProfile = try auroraApi.applyProfileSettings(newSettings, to: remStimProf)
@@ -101,6 +103,9 @@ class ProfileParserTests: XCTestCase {
         expect(settings).notTo(contain(.wakeupTime(100000)))
         expect(settings).to(contain(.custom(key: "sel-indicator", value: "xpto")))
         expect(settings).notTo(contain(.custom(key: "sel-indicator", value: "3 0xFF00FF 0x7F")))
+        // Should not find keys that aren't present in the profile with either value
+        expect(settings).notTo(contain(.smartAlarmEnabled(true)))
+        expect(settings).notTo(contain(.smartAlarmEnabled(false)))
     }
     
     func testNoSettingChangeKeepsProfileIntact() {

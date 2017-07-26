@@ -12,8 +12,8 @@ let TRANSFER_MAX_PAYLOAD = 120
 let AURORA_SERVICE_UUID = CBUUID(string: "6175726f-7261-454d-af79-42b381af0204")
 let auroraDreambandDefaultProfile = "rem-stim.prof"
 
-public let auroraDreambandDefaultWakeupWindow = 1_800_000
-public let auroraDreambandDefaultStimDelay = 14_400_000
+public let auroraDreambandDefaultWakeupWindow: UInt = 1_800_000
+public let auroraDreambandDefaultStimDelay: UInt = 14_400_000
 public let auroraDreambandDefaultStimLed = "led-blink 3 0xFF0000 0xFF 5 500 0"
 public let auroraDreambandDefaultStimInterval = 300_000
 
@@ -219,21 +219,29 @@ struct StreamOutputIds: OptionSet {
 
 public enum ProfileSetting {
     /**
-     This option configures the alarm time associated with the Smart Alarm. It's value is specified in milliseconds after midnight, and represents the absolute latest you wish to be awakened. The alarm can be disabled by providing a value of 0 and is also the default value.
+     This option configures the alarm time associated with the Smart Alarm. It's value is specified in milliseconds after midnight, and represents the absolute latest you wish to be awakened. The alarm can be disabled by providing a value of -1 which is also the default value.
      */
     case wakeupTime(Int)
     /**
-     This option configures the Smart Alarm "window". It's value is specified in milliseconds, and represents the amount of time before the configured wakeup time that the Smart Alarm is allowed to wake you up prematurely if it detects an ideal sleep stage for awakening. This window can be disabled by providing a value of 0. The default value is `auroraDreambandDefaultWakeupWindow` (1_800_000 or 30 minutes).
+     This option configures the Smart Alarm _window_. It's value is specified in milliseconds, and represents the amount of time before the configured wakeup time that the Smart Alarm is allowed to wake you up prematurely if it detects an ideal sleep stage for awakening. This is also used to determine when DSL therapy begins. The default value is `auroraDreambandDefaultWakeupWindow` (1_800_000 or 30 minutes).
      */
-    case wakeupWindow(Int)
+    case wakeupWindow(UInt)
     /**
-      This option determines whether the DSL feature is enabled. It's value can be either 0 to disable or 1 to enable. When enabled the Aurora slowly fades in blue light designed to ease you out of sleep. This option uses the {wakeup-window} option to determine when the light should begin fading in and uses the {wakeup-time} to determine when the light should reach full brightness.
+      This option is used to enable or disable the Smart Alarm feature. If truthy, Aurora may prematurely emit the `wakeup-alarm` event during the _{wakeup-window}_ if it detects an ideal moment within your sleep cycle to awaken you.
+     */
+    case smartAlarmEnabled(Bool)
+    /**
+      Controls whether DSL (Dawn Simulating Light) therapy is enabled. If this option is truthy, Aurora will gradually fade in blue light, starting at the beginning of the {wakeup-window} and ending when the wakeup-alarm event is emitted.
      */
     case dslEnabled(Bool)
     /**
-     This option determines the delay until REM stimulation can happen and is specified in milliseconds. No stim-presented events will be emitted until this delay has elapsed. If a value of 0 is specified, there is no delay and stim-presented events will be emitted as normal. A value of -1 effectively disables the REM stim feature entirely. The default value is `auroraDreambandDefaultStimDelay` (14_400_400 or 4 hours).
+     Controls whether stim-presented events should occur. If truthy, stim-presented events are emitted whenever REM events occur and in accordance with the {stim-delay} and {stim-interval} options.
      */
-    case stimDelay(Int)
+    case stimEnabled(Bool)
+    /**
+     This option determines the delay until REM stimulation can happen and is specified in milliseconds. No stim-presented events will be emitted until this delay has elapsed. If a value of 0 is specified, there is no delay and stim-presented events will be emitted whenever REM events occur. The default value used in official profiles is `auroraDreambandDefaultStimDelay` (14_400_400 or 4 hours).
+     */
+    case stimDelay(UInt)
     /**
      This option configures the minimum amount of time required between successive stim presentations. This is useful to allow/prevent REM stimulation events from ocurring when long periods of uninterrupted REM occur. A value of 0 allows a stim-presented event to occur any time the Aurora sleep stager identifies a REM period. A value of -1 effectively prevents multiple stim-presented events from being emitted during a continuous period of REM. Note that this does not prevent additional stim-presented events from ocurring if other sleep stages occur in between REM periods. The default value is `auroraDreambandDefaultStimDelay` (300_000 or 5 minutes).
      */
@@ -256,11 +264,15 @@ public enum ProfileSetting {
         case "wakeup-time":
             self = .wakeupTime(Int(value) ?? 0)
         case "wakeup-window":
-            self = .wakeupWindow(Int(value) ?? auroraDreambandDefaultWakeupWindow)
+            self = .wakeupWindow(UInt(value) ?? auroraDreambandDefaultWakeupWindow)
+        case "sa-enabled":
+            self = .smartAlarmEnabled((value as NSString).boolValue)
         case "dsl-enabled":
             self = .dslEnabled((value as NSString).boolValue)
+        case "stim-enabled":
+            self = .stimEnabled((value as NSString).boolValue)
         case "stim-delay":
-            self = .stimDelay(Int(value) ?? auroraDreambandDefaultStimDelay)
+            self = .stimDelay(UInt(value) ?? auroraDreambandDefaultStimDelay)
         case "stim-interval":
             self = .stimInterval(Int(value) ?? auroraDreambandDefaultStimInterval)
         case "stim-led":
@@ -278,8 +290,12 @@ public enum ProfileSetting {
             return "wakeup-time"
         case .wakeupWindow(_):
             return "wakeup-window"
+        case .smartAlarmEnabled(_):
+            return "sa-enabled"
         case .dslEnabled(_):
             return "dsl-enabled"
+        case .stimEnabled(_):
+            return "stim-enabled"
         case .stimDelay(_):
             return "stim-delay"
         case .stimInterval(_):
@@ -302,6 +318,12 @@ public enum ProfileSetting {
             return "\(window)"
             
         case .dslEnabled(let enabled):
+            return "\(enabled ? 1 : 0)"
+            
+        case .smartAlarmEnabled(let enabled):
+            return "\(enabled ? 1 : 0)"
+            
+        case .stimEnabled(let enabled):
             return "\(enabled ? 1 : 0)"
             
         case .stimDelay(let delay):
