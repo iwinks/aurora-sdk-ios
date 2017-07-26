@@ -10,7 +10,7 @@ import CoreBluetooth
 let TRANSFER_MAX_PACKET_LENGTH = 20
 let TRANSFER_MAX_PAYLOAD = 120
 let AURORA_SERVICE_UUID = CBUUID(string: "6175726f-7261-454d-af79-42b381af0204")
-let auroraDreambandDefaultProfile = "rem-stim.prof"
+let auroraDreambandDefaultProfile = "default.prof"
 
 public let auroraDreambandDefaultWakeupWindow: UInt = 1_800_000
 public let auroraDreambandDefaultStimDelay: UInt = 14_400_000
