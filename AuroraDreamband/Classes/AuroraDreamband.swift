@@ -468,9 +468,12 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
         else {
              log("AURORA DISCONNECTED")
             commandQueue.reset()
+            // Only broadcast a disconnection if we were connected in the first place
+            if isConnected {
+                NotificationCenter.default.post(name: .auroraDreambandDisconnected, object: nil)
+            }
             _isConnected = false
             isConnected = false
-            NotificationCenter.default.post(name: .auroraDreambandDisconnected, object: nil)
             // The device is disconnected. maintainConnection will attempt a connection event
             // immediately after this. This default maintainConnection behavior may not be
             // desired for your application. A backoff timer or other behavior could be
