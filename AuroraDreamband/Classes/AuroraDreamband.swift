@@ -452,8 +452,6 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
             requiredSubscriptions.append(helper.subscribe(to: AuroraChars.eventIndicated, updateHandler: self.eventHandler))
             
             when(fulfilled: requiredSubscriptions).then { _ in
-                return self.execute(command: "prof-unload")
-            }.then { _ in
                 return self.execute(command: "clock-set \(self.clockSetTime())")
             }.then { eventMask -> Void in
                 log("AURORA CONNECTED")
