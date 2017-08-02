@@ -179,6 +179,33 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
         }
     }
     
+    public func batteryLevel() -> Promise<Int> {
+        return Promise { resolve, reject in
+            self.batteryLevel { response in
+                do { resolve(try response()) } catch { reject(error) }
+            }
+        }
+    }
+    
+    public func isProfileLoaded(completion: @escaping (() throws -> Bool) -> Void) {
+        execute(command: "os-info").then { result -> Void in
+            guard let profileString = try result.responseObject()["Profile"] else {
+                throw AuroraErrors.unparseableCommandResult
+            }
+            completion { return profileString != "NO" }
+        }.catch { error in
+            completion { throw error }
+        }
+    }
+    
+    public func isProfileLoaded() -> Promise<Bool> {
+        return Promise { resolve, reject in
+            self.isProfileLoaded { response in
+                do { resolve(try response()) } catch { reject(error) }
+            }
+        }
+    }
+    
     public func shutdown(completion: @escaping (() throws -> Void) -> Void) {
         execute(command: "os-shutdown").then { result -> Void in
             completion { }
@@ -481,7 +508,7 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
     
     private func clockSetTime() -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy MM dd A"
+        formatter.dateFormat = "yyyy M d A"
         return formatter.string(from: Date())
     }
     
