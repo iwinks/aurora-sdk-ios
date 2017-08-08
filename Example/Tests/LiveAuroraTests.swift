@@ -13,21 +13,27 @@ import RZBluetooth
 
 class LiveAuroraTests: XCTestCase {
     
-    let aurora = AuroraDreamband.shared
-    
+    private let aurora = AuroraDreamband.shared
     private var connectionObserver: NSObjectProtocol!
     private var disconnectionObserver: NSObjectProtocol!
     private var connectionHandler: (() -> Void)?
     private var disconnectionHandler: (() -> Void)?
     
     
-    override func setUp() {
+    override class func setUp() {
         super.setUp()
         
-        aurora.loggingEnabled = true
-//        RZBSetLogHandler { (level, format, vaList) in
-//            NSLogv(format!, vaList!)
-//        }
+        AsyncDefaults.Timeout = 30
+        AsyncDefaults.PollInterval = 0.1
+        
+        AuroraDreamband.shared.loggingEnabled = true
+        //        RZBSetLogHandler { (level, format, vaList) in
+        //            NSLogv(format!, vaList!)
+        //        }
+    }
+    
+    override func setUp() {
+        super.setUp()
         
         connectionObserver = NotificationCenter.default.addObserver(forName: .auroraDreambandConnected, object: nil, queue: .main) { _ in
             self.connectionHandler?()
@@ -42,41 +48,13 @@ class LiveAuroraTests: XCTestCase {
     override func tearDown() {
         NotificationCenter.default.removeObserver(connectionObserver)
         NotificationCenter.default.removeObserver(disconnectionObserver)
-        
-        aurora.disconnect()
         super.tearDown()
     }
-
-    func testCanConnectToAurora() {
-        #if TARGET_OS_SIMULATOR
-            return
-        #endif
-        // Given
-        var connected = false
-        connectionHandler = {
-            connected = true
-        }
-        // When
-        aurora.connect()
-        
-        // Then
-        expect(connected).toEventually(beTrue(), timeout: 10, pollInterval: 1)
-    }
     
-    func testCanDisconnectFromAurora() {
-        #if TARGET_OS_SIMULATOR
-            return
-        #endif
-        // Given
-        testCanConnectToAurora()
-        var disconnected = false
-        disconnectionHandler = {
-            disconnected = true
-        }
-        // When
-        aurora.disconnect()
-        // Then
-        expect(disconnected).toEventually(beTrue(), timeout: 10, pollInterval: 1)
+    override class func tearDown() {
+
+        AuroraDreamband.shared.disconnect()
+        super.tearDown()
     }
     
     func testCanActivateDSLFeatureOnDevice() {
@@ -84,7 +62,6 @@ class LiveAuroraTests: XCTestCase {
             return
         #endif
         // Given
-        testCanConnectToAurora()
         var settings = [ProfileSetting]()
         
         // When
@@ -96,7 +73,7 @@ class LiveAuroraTests: XCTestCase {
             fail(error.localizedDescription)
         }
         
-        expect(settings).toEventually(contain(.dslEnabled(true)), timeout: 20, pollInterval: 1)
+        expect(settings).toEventually(contain(.dslEnabled(true)))
     }
     
 }

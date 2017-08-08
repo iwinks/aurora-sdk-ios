@@ -476,7 +476,7 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
             var requiredSubscriptions = [Promise<CBCharacteristic>]()
             requiredSubscriptions.append(helper.subscribe(to: AuroraChars.commandStatus, updateHandler: self.commandStatusHandler))
             requiredSubscriptions.append(helper.subscribe(to: AuroraChars.commandOutputIndicated, updateHandler: self.commandOutputHandler))
-            requiredSubscriptions.append(helper.subscribe(to: AuroraChars.eventIndicated, updateHandler: self.eventHandler))
+            requiredSubscriptions.append(helper.subscribe(to: AuroraChars.eventNotified, updateHandler: self.eventHandler))
             
             when(fulfilled: requiredSubscriptions).then { _ in
                 return self.execute(command: "clock-set \(self.clockSetTime())")
