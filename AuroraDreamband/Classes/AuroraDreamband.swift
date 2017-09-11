@@ -112,12 +112,30 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
         firstly {
             // List all unsynced sessions
             execute(command: "sd-dir-read sessions 0 *@*")
-        }.then { result -> Promise<[Command]> in
-            // For each unsynced session, read its session.txt file
-            when(fulfilled: try result.responseTable().flatMap { $0["Name"] }.map { self.execute(command: "sd-file-read session.txt \($0) 1", compressionEnabled: true) }.makeIterator(), concurrently: 1)
+        }.then { sessionDirs in
+            when(fulfilled: try sessionDirs.responseTable().flatMap { $0["Name"] }.map { self.execute(command: "sd-file-info session.txt \($0)") }.makeIterator(), concurrently: 1)
+        }.then { sessionSizeCommands -> Promise<[Command]> in
+            // Copy the session files < 1MB, and delete the others which might be corrupt
+            let promises = sessionSizeCommands.flatMap { sizeCommand -> Promise<Command>? in
+                guard let sizeString = (try? sizeCommand.responseObject()["Size"]) ?? nil,
+                    let size = Int(sizeString) else { return nil }
+                guard let path = try? sizeCommand.responseObject()["File"] ?? nil else { return nil }
+                
+                if size < 1_048_576 {
+                    return self.execute(command: "sd-file-read \(path) 1", compressionEnabled: true)
+                }
+                else {
+                    return self.execute(command: "sd-dir-del \(path)")
+                }
+            }
+            return when(fulfilled: promises.makeIterator(), concurrently: 1)
         }.then { result in
             // When all reads finish, return their output as an array
-            completion { return result.map { ($0.command.slice(from: "sd-file-read session.txt sessions/", to: " 1")!, $0.output) } }
+            completion { return result.flatMap { response in
+                    guard let syncedName = response.command.slice(from: "sd-file-read sessions/", to: "/session.txt") else { return nil }
+                    return (syncedName, response.output)
+                }
+            }
         }.catch { error in
             // Or thow an error if anything fails along the way
             completion { throw error }
