@@ -266,7 +266,9 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
     }
     
     public func unloadProfile(completion: @escaping (() throws -> Void) -> Void) {
-        execute(command: "prof-unload").then { result in
+        execute(command: "prof-unload").then { _ in
+            return after(seconds: 3)
+        }.then { _ in
             completion { }
         }.catch { error in
             completion { throw error }
