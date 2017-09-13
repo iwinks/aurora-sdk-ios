@@ -119,13 +119,13 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
             let promises = sessionSizeCommands.flatMap { sizeCommand -> Promise<Command>? in
                 guard let sizeString = (try? sizeCommand.responseObject()["Size"]) ?? nil,
                     let size = Int(sizeString) else { return nil }
-                guard let path = try? sizeCommand.responseObject()["File"] ?? nil else { return nil }
+                guard let path = (try? sizeCommand.responseObject()["File"]) ?? nil else { return nil }
                 
                 if size < 1_048_576 {
-                    return self.execute(command: "sd-file-read \(path) 1", compressionEnabled: true)
+                    return self.execute(command: "sd-file-read \(path) / 1", compressionEnabled: true)
                 }
                 else {
-                    return self.execute(command: "sd-dir-del \(path)")
+                    return self.execute(command: "sd-dir-del \((path as NSString).deletingLastPathComponent)")
                 }
             }
             return when(fulfilled: promises.makeIterator(), concurrently: 1)
