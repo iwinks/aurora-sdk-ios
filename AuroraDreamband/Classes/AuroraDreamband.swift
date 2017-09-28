@@ -44,8 +44,21 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
     
     private var _isConnected = false
     
+    private var didEnterBackgroundObserver: NSObjectProtocol?
+    
+    private var willEnterForegroundObserver: NSObjectProtocol?
+    
     internal override init() {
         super.init()
+    }
+    
+    deinit {
+        if let didEnterBackgroundObserver = didEnterBackgroundObserver {
+            NotificationCenter.default.removeObserver(didEnterBackgroundObserver)
+        }
+        if let willEnterForegroundObserver = willEnterForegroundObserver {
+            NotificationCenter.default.removeObserver(willEnterForegroundObserver)
+        }
     }
     
     // MARK: - Public API
@@ -68,6 +81,22 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
                 self.centralManager.stopScan()
                 peripheral.maintainConnection = true
                 peripheral.connectionDelegate = self
+            }
+        }
+        if didEnterBackgroundObserver == nil {
+            didEnterBackgroundObserver = NotificationCenter.default.addObserver(forName: .UIApplicationDidEnterBackground, object: nil, queue: .main) { _ in
+                self.isProfileLoaded().then { loaded -> Void in
+                    if !loaded {
+                        self.disconnect()
+                    }
+                }.catch { error in
+                    self.disconnect()
+                }
+            }
+        }
+        if willEnterForegroundObserver == nil {
+            willEnterForegroundObserver = NotificationCenter.default.addObserver(forName: .UIApplicationWillEnterForeground, object: nil, queue: .main) { _ in
+                self.connect()
             }
         }
     }
