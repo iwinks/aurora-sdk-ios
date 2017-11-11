@@ -18,7 +18,7 @@ public extension Notification.Name {
     public static let auroraDreambandDisconnected = Notification.Name("auroraDreambandDisconnected")
 }
 
-public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
+public class AuroraDreamband: NSObject {
     
     public static let shared = AuroraDreamband()
     
@@ -32,17 +32,19 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
         }
     }
     
-    private var peripheral: RZBPeripheral?
+    fileprivate var peripheral: RZBPeripheral?
     
-    private var helper: BleHelper?
+    fileprivate var helper: BleHelper?
     
-    private var commandQueue = CommandQueue()
+    fileprivate var commandQueue = CommandQueue()
     
-    private var pendingHandlers = [() -> Void]()
+    fileprivate var pendingHandlers = [() -> Void]()
     
-    private var eventObserverHandler: ((_ event: UInt8, _ flags: UInt32) -> Void)?
+    fileprivate var eventObserverHandler: ((_ event: UInt8, _ flags: UInt32) -> Void)?
     
-    private var _isConnected = false
+    fileprivate var _isConnected = false
+    
+    fileprivate var _cachedOsVersion: Int?
     
     private var didEnterBackgroundObserver: NSObjectProtocol?
     
@@ -201,6 +203,9 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
     }
     
     public func osVersion(completion: @escaping (() throws -> Int) -> Void) {
+        if let cachedOsVersion = _cachedOsVersion {
+            return completion { return cachedOsVersion }
+        }
         execute(command: "os-info").then { result -> Void in
             guard let version = try result.responseObject()["Version"] else {
                 throw AuroraErrors.unparseableCommandResult
@@ -209,6 +214,14 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
             completion { return intVersion }
         }.catch { error in
             completion { throw error }
+        }
+    }
+    
+    public func osVersion() -> Promise<Int> {
+        return Promise { resolve, reject in
+            self.osVersion { response in
+                do { resolve(try response()) } catch { reject(error) }
+            }
         }
     }
     
@@ -261,6 +274,14 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
         }
     }
     
+    private func sdFileWrite(_ data: Data, fileName: String, directory: String, renameIfExists: Bool = false, silent: Bool = false, timeout: Int = 250, compressionEnabled: Bool = true) -> Promise<Command> {
+        let crcString = " 0x\(String(CRC32(data: data).crc, radix: 16))"
+        
+        return osVersion().then { version in
+            return self.execute(command: "sd-file-write \(fileName) \(directory) \(renameIfExists ? 1 : 0) \(silent ? 1 : 0) \(timeout) \(compressionEnabled ? 1 : 0)\(version >= 20400 ? crcString : "")", data: data, compressionEnabled: compressionEnabled)
+        }
+    }
+    
     /**
      Updates the Aurora with the provided firmware file
      
@@ -269,7 +290,7 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
      */
     public func osUpdate(firmware data: Data, completion: @escaping (() throws -> Void) -> Void) {
         firstly {
-            return self.execute(command: "sd-file-write aurora.hex_test / 0 1 250 1", data: data, compressionEnabled: true)
+            return self.sdFileWrite(data, fileName: "aurora.hex_test", directory: "/")
         }.then { result in
             return self.execute(command: "os-info")
         }.then { result in
@@ -312,9 +333,11 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
         }
     }
     
+    
+    // SOFIA
     public func unloadProfile(completion: @escaping (() throws -> Void) -> Void) {
         execute(command: "prof-unload").then { _ in
-            return after(seconds: 3)
+            return after(interval: 3)
         }.then { _ in
             completion { }
         }.catch { error in
@@ -355,7 +378,7 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
     }
     
     public func writeProfile(named profile: String = auroraDreambandDefaultProfile, data: Data, completion: @escaping (() throws -> Void) -> Void) {
-        execute(command: "sd-file-write \(profile) profiles 0 1 250 1", data: data, compressionEnabled: true).then { result in
+        sdFileWrite(data, fileName: profile, directory: "profiles").then { result in
             completion { }
         }.catch { error in
             completion { throw error }
@@ -393,12 +416,6 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
             completion { }
         }.catch { error in
             completion { throw error }
-        }
-    }
-    
-    private func continuation() -> Promise<Void> {
-        return Promise { resolve, reject in
-            resolve()
         }
     }
     
@@ -459,7 +476,9 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
         return profileString.data
     }
     
-    private func execute(command string: String, data: Data? = nil, compressionEnabled: Bool = false) -> Promise<Command> {
+    // MARK: - Private API
+    
+    fileprivate func execute(command string: String, data: Data? = nil, compressionEnabled: Bool = false) -> Promise<Command> {
         return Promise<Command> { resolve, reject in
             async {
                 guard let peripheral = self.peripheral,
@@ -513,55 +532,13 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
         }
     }
     
-    public func peripheral(_ peripheral: RZBPeripheral, connectionEvent event: RZBPeripheralStateEvent, error: Error?) {
-        if event == .connectSuccess {
-            // perform any connection set up here that should occur on every connection
-            let helper = BleHelper(peripheral: peripheral)
-            
-            self.helper = helper
-            self.peripheral = peripheral
-            self._isConnected = true
-            
-            var requiredSubscriptions = [Promise<CBCharacteristic>]()
-            requiredSubscriptions.append(helper.subscribe(to: AuroraChars.commandStatus, updateHandler: self.commandStatusHandler))
-            requiredSubscriptions.append(helper.subscribe(to: AuroraChars.commandOutputIndicated, updateHandler: self.commandOutputHandler))
-            requiredSubscriptions.append(helper.subscribe(to: AuroraChars.eventNotified, updateHandler: self.eventHandler))
-            
-            when(fulfilled: requiredSubscriptions).then { _ in
-                return self.execute(command: "clock-set \(self.clockSetTime())")
-            }.then { eventMask -> Void in
-                log("AURORA CONNECTED")
-                self.isConnected = true
-                NotificationCenter.default.post(name: .auroraDreambandConnected, object: nil)
-                self.pendingHandlers.forEach { $0() }
-                self.pendingHandlers.removeAll()
-            }.catch { error in
-                log("Failed to subscribe characteristics with error \(error)")
-            }
-        }
-        else {
-             log("AURORA DISCONNECTED")
-            commandQueue.reset()
-            // Only broadcast a disconnection if we were connected in the first place
-            if isConnected {
-                NotificationCenter.default.post(name: .auroraDreambandDisconnected, object: nil)
-            }
-            _isConnected = false
-            isConnected = false
-            // The device is disconnected. maintainConnection will attempt a connection event
-            // immediately after this. This default maintainConnection behavior may not be
-            // desired for your application. A backoff timer or other behavior could be
-            // implemented here.
-        }
-    }
-    
-    private func clockSetTime() -> String {
+    fileprivate func clockSetTime() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy M d A"
         return formatter.string(from: Date())
     }
     
-    private func commandStatusHandler(_ updateHandler: @escaping () throws -> Data) {
+    fileprivate func commandStatusHandler(_ updateHandler: @escaping () throws -> Data) {
         guard let command = self.commandQueue.current else {
             log("Command not found, aborting transferStatusHandler")
             return
@@ -631,7 +608,7 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
         }
     }
     
-    private func commandOutputHandler(_ updateHandler: @escaping () throws -> Data) {
+    fileprivate func commandOutputHandler(_ updateHandler: @escaping () throws -> Data) {
         log("commandOutputHandler")
         guard let command = self.commandQueue.current else {
             log("Command not found, aborting commandOutputHandler")
@@ -649,7 +626,7 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
         }
     }
     
-    private func eventHandler(_ updateHandler: @escaping () throws -> Data) {
+    fileprivate func eventHandler(_ updateHandler: @escaping () throws -> Data) {
         log("eventHandler")
         do {
             let data = try updateHandler()
@@ -662,7 +639,7 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
         }
     }
     
-    private func streamHandler(_ updateHandler: () throws -> Data) {
+    fileprivate func streamHandler(_ updateHandler: () throws -> Data) {
         log("streamHandler")
         do {
             let data = try updateHandler()
@@ -670,6 +647,61 @@ public class AuroraDreamband: NSObject, RZBPeripheralConnectionDelegate {
         }
         catch {
             log("Error! \(error)")
+        }
+    }
+    
+    private func continuation() -> Promise<Void> {
+        return Promise { resolve, reject in
+            resolve()
+        }
+    }
+    
+}
+
+extension AuroraDreamband: RZBPeripheralConnectionDelegate {
+    
+    public func peripheral(_ peripheral: RZBPeripheral, connectionEvent event: RZBPeripheralStateEvent, error: Error?) {
+        if event == .connectSuccess {
+            // perform any connection set up here that should occur on every connection
+            let helper = BleHelper(peripheral: peripheral)
+            
+            self.helper = helper
+            self.peripheral = peripheral
+            self._isConnected = true
+            
+            var requiredSubscriptions = [Promise<CBCharacteristic>]()
+            requiredSubscriptions.append(helper.subscribe(to: AuroraChars.commandStatus, updateHandler: self.commandStatusHandler))
+            requiredSubscriptions.append(helper.subscribe(to: AuroraChars.commandOutputIndicated, updateHandler: self.commandOutputHandler))
+            requiredSubscriptions.append(helper.subscribe(to: AuroraChars.eventNotified, updateHandler: self.eventHandler))
+            
+            when(fulfilled: requiredSubscriptions).then { _ in
+                return self.execute(command: "clock-set \(self.clockSetTime())")
+            }.then { _ in
+                return self.osVersion()
+            }.then { osVersion -> Void in
+                log("AURORA CONNECTED")
+                self.isConnected = true
+                self._cachedOsVersion = osVersion
+                NotificationCenter.default.post(name: .auroraDreambandConnected, object: nil)
+                self.pendingHandlers.forEach { $0() }
+                self.pendingHandlers.removeAll()
+            }.catch { error in
+                log("Failed to subscribe characteristics with error \(error)")
+            }
+        }
+        else {
+            log("AURORA DISCONNECTED")
+            commandQueue.reset()
+            // Only broadcast a disconnection if we were connected in the first place
+            if isConnected {
+                NotificationCenter.default.post(name: .auroraDreambandDisconnected, object: nil)
+            }
+            _isConnected = false
+            isConnected = false
+            // The device is disconnected. maintainConnection will attempt a connection event
+            // immediately after this. This default maintainConnection behavior may not be
+            // desired for your application. A backoff timer or other behavior could be
+            // implemented here.
         }
     }
     
