@@ -274,7 +274,7 @@ public class AuroraDreamband: NSObject {
         }
     }
     
-    private func sdFileWrite(_ data: Data, fileName: String, directory: String, renameIfExists: Bool = false, silent: Bool = false, timeout: Int = 250, compressionEnabled: Bool = true) -> Promise<Command> {
+    private func sdFileWrite(_ data: Data, fileName: String, directory: String, renameIfExists: Bool = false, silent: Bool = true, timeout: Int = 250, compressionEnabled: Bool = true) -> Promise<Command> {
         let crcString = " 0x\(String(CRC32(data: data).crc, radix: 16))"
         
         return osVersion().then { version in
