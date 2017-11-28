@@ -697,6 +697,7 @@ extension AuroraDreamband: RZBPeripheralConnectionDelegate {
                 NotificationCenter.default.post(name: .auroraDreambandDisconnected, object: nil)
             }
             _isConnected = false
+            _cachedOsVersion = nil
             isConnected = false
             // The device is disconnected. maintainConnection will attempt a connection event
             // immediately after this. This default maintainConnection behavior may not be
