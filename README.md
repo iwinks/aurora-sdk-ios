@@ -1,9 +1,6 @@
-# iwinks-ble-core-ios
+# AuroraDreamband's Official iOS SDK
 
-[![CI Status](http://img.shields.io/travis/Rafael Nobre/iwinks-ble-core-ios.svg?style=flat)](https://travis-ci.org/Rafael Nobre/iwinks-ble-core-ios)
-[![Version](https://img.shields.io/cocoapods/v/iwinks-ble-core-ios.svg?style=flat)](http://cocoapods.org/pods/iwinks-ble-core-ios)
-[![License](https://img.shields.io/cocoapods/l/iwinks-ble-core-ios.svg?style=flat)](http://cocoapods.org/pods/iwinks-ble-core-ios)
-[![Platform](https://img.shields.io/cocoapods/p/iwinks-ble-core-ios.svg?style=flat)](http://cocoapods.org/pods/iwinks-ble-core-ios)
+For developers looking for the most control, SDKs are provided to interact with Aurora directly. Execute commands, receive events, and configure profiles without worrying about all the boilerplate and connection logic. Available for iOS, Android, and NodeJS, these are the same SDKs powering the official Aurora apps.
 
 ## Example
 
@@ -13,17 +10,14 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Installation
 
-iwinks-ble-core-ios is available through [CocoaPods](http://cocoapods.org). To install
+AuroraDreamband is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod "iwinks-ble-core-ios"
+pod 'AuroraDreamband'
 ```
 
-## Author
-
-Rafael Nobre, nobre84@gmail.com
 
 ## License
 
-iwinks-ble-core-ios is available under the MIT license. See the LICENSE file for more info.
+AuroraDreamband is available under the MIT license. See the LICENSE file for more info.
