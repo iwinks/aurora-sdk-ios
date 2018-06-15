@@ -4,20 +4,22 @@ Pod::Spec.new do |s|
   s.summary          = 'iWinks BluetoothLE core library'
 
   s.description      = <<-DESC
-Library dedicated to provide developer access to Aurora BLE API.
+    For developers looking for the most control, SDKs are provided to interact with Aurora directly.
+    Execute commands, receive events, and configure profiles without worrying about all the boilerplate and connection logic.
+    Available for iOS, Android, and NodeJS, these are the same SDKs powering the official Aurora apps.
                        DESC
-  s.homepage = 'www.iwinks.io'
+  s.homepage = 'https://sleepwithaurora.com'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Rafael Nobre' => 'nobre84@gmail.com' }
-  s.source           = { :git => 'https://github.com/iwinks/iwinks-ble-core-ios.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/iwinks/aurora-sdk-ios.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '8.0'
 
   s.source_files = 'AuroraDreamband/Classes/**/*'
 
-  s.dependency 'RZBluetooth'
-  s.dependency 'PromiseKit'
-  s.dependency 'AwaitKit'
+  s.dependency 'RZBluetooth', '~> 1.0'
+  s.dependency 'PromiseKit', '~> 4.0'
+  s.dependency 'AwaitKit', '~> 3.0'
   s.dependency 'heatshrink-objc'
 
   s.default_subspec = 'Core'
