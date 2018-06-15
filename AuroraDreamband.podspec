@@ -27,12 +27,6 @@ Pod::Spec.new do |s|
   s.subspec 'Core' do |s|
   end
 
-  s.subspec 'Simulation' do |s|
-    s.source_files = 'AuroraDreamband/Simulation/**/*'
-
-    s.dependency 'RZBluetooth/Mock'
-  end
-
   s.subspec 'Testing' do |s|
     s.dependency 'RZBluetooth/Test'
   end
